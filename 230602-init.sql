@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`logins` (
     PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
--- Table `u206369201_mig_db`.`place`
+-- Table `u206369201_mig_db`.`places`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`places` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users` (
     REFERENCES `u206369201_mig_db`.`places` (`id`));
 
 -- -----------------------------------------------------
--- Table `u206369201_mig_db`.`category`
+-- Table `u206369201_mig_db`.`categories`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`categories` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -162,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas_has_categories` (
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`users_has_categories`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`user_has_categories` (
+CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users_has_categories` (
     `id_user` INT NOT NULL,
     `id_category` INT NOT NULL,
     PRIMARY KEY (`id_user`, `id_category`),
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas_has_places` (
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`users_has_ideas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users_has_idea` (
+CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users_has_ideas` (
     `id_user` INT NOT NULL,
     `id_idea` INT NOT NULL,
     `is_owner` TINYINT NOT NULL,
