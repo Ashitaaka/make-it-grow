@@ -299,6 +299,8 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`user_has_idea` (
   `user_iduser` INT NOT NULL,
   `idea_ididea` INT NOT NULL,
   `is_owner` TINYINT NOT NULL,
+  `has_voted` TINYINT NOT NULL,
+  `vote_value` TINYINT NULL,
   PRIMARY KEY (`user_iduser`, `idea_ididea`),
   INDEX `fk_user_has_idea_idea1_idx` (`idea_ididea` ASC) VISIBLE,
   INDEX `fk_user_has_idea_user1_idx` (`user_iduser` ASC) VISIBLE,
