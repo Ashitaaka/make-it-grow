@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`advantages` (
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`deadline`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`deadline` (
+CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`deadlines` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   PRIMARY KEY (`id`));
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
         REFERENCES `u206369201_mig_db`.`advantages` (`id`),
     CONSTRAINT `fk_idea_deadline`
         FOREIGN KEY (`id_deadline`)
-        REFERENCES `u206369201_mig_db`.`deadline` (`id`),
+        REFERENCES `u206369201_mig_db`.`deadlines` (`id`),
     CONSTRAINT `fk_idea_impact`
         FOREIGN KEY (`id_impact`)
         REFERENCES `u206369201_mig_db`.`impacts` (`id`));
