@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users` (
     `occupation` VARCHAR(150) NOT NULL,
     `service` VARCHAR(150) NOT NULL,
     `picture` VARCHAR(150) NOT NULL,
-    `phone` VARCHAR(20) NULL,
+    `phone` VARCHAR(40) NULL,
     `id_role` INT NOT NULL,
     `id_login` INT NOT NULL,
     `id_location` INT NOT NULL,
