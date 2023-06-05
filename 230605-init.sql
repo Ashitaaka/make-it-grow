@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `firstname` VARCHAR(150) NOT NULL,
     `lastname` VARCHAR(150) NOT NULL,
+    `occupation` VARCHAR(150) NOT NULL,
     `service` VARCHAR(150) NOT NULL,
     `picture` VARCHAR(150) NOT NULL,
     `id_role` INT NOT NULL,
