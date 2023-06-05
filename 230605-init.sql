@@ -9,7 +9,7 @@ USE `u206369201_mig_db` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`roles` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `role_name` VARCHAR(155) NOT NULL,
+    `label` VARCHAR(155) NOT NULL,
     PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
@@ -22,11 +22,13 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`logins` (
     PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
--- Table `u206369201_mig_db`.`places`
+-- Table `u206369201_mig_db`.`locations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`places` (
+CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`locations` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `place_name` VARCHAR(155) NOT NULL,
+    `town` VARCHAR(155) NOT NULL,
+    `region` VARCHAR(155) NOT NULL,
+    `country` VARCHAR(155) NOT NULL,
     PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
@@ -37,23 +39,24 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users` (
     `firstname` VARCHAR(150) NOT NULL,
     `lastname` VARCHAR(150) NOT NULL,
     `service` VARCHAR(150) NOT NULL,
+    `picture` VARCHAR(150) NOT NULL,
     `id_role` INT NOT NULL,
     `id_login` INT NOT NULL,
-    `id_place` INT NOT NULL,
+    `id_location` INT NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`id_role`)
     REFERENCES `u206369201_mig_db`.`roles` (`id`),
     FOREIGN KEY (`id_login`)
     REFERENCES `u206369201_mig_db`.`logins` (`id`),
-    FOREIGN KEY (`id_place`)
-    REFERENCES `u206369201_mig_db`.`places` (`id`));
+    FOREIGN KEY (`id_location`)
+    REFERENCES `u206369201_mig_db`.`locations` (`id`));
 
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`categories`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`categories` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `category_name` VARCHAR(155) NOT NULL,
+    `label` VARCHAR(155) NOT NULL,
     PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
@@ -61,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`categories` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`status` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `status_name` VARCHAR(45) NOT NULL,
+  `label` VARCHAR(45) NOT NULL,
+  `delay` INT NULL,
   PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
@@ -121,16 +125,18 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`impacts` (
 -- Table `u206369201_mig_db`.`ideas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  `id_status` INT NOT NULL,
-  `id_comment` INT NOT NULL,
-  `id_detail` INT NOT NULL,
-  `id_risk` INT NOT NULL,
-  `id_advantage` INT NOT NULL,
-  `id_deadline` INT NOT NULL,
-  `id_impact` INT NOT NULL,
-  PRIMARY KEY (`id`),
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `title` VARCHAR(255) NOT NULL,
+    `id_status` INT NOT NULL,
+    `id_comment` INT NOT NULL,
+    `id_detail` INT NOT NULL,
+    `id_risk` INT NOT NULL,
+    `id_advantage` INT NOT NULL,
+    `id_deadline` INT NOT NULL,
+    `id_impact` INT NOT NULL,
+    `is_closed` TINYINT NOT NULL,
+    `is_rejected` TINYINT NOT NULL,
+    PRIMARY KEY (`id`),
     FOREIGN KEY (`id_status`)
     REFERENCES `u206369201_mig_db`.`status` (`id`),
     FOREIGN KEY (`id_comment`)
@@ -173,16 +179,16 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users_has_categories` (
 
 
 -- -----------------------------------------------------
--- Table `u206369201_mig_db`.`ideas_has_places`
+-- Table `u206369201_mig_db`.`ideas_has_locations`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas_has_places` (
+CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas_has_locations` (
     `id_idea` INT NOT NULL,
-    `id_place` INT NOT NULL,
-    PRIMARY KEY (`id_idea`, `id_place`),
+    `id_location` INT NOT NULL,
+    PRIMARY KEY (`id_idea`, `id_location`),
         FOREIGN KEY (`id_idea`)
         REFERENCES `u206369201_mig_db`.`ideas` (`id`),
-        FOREIGN KEY (`id_place`)
-        REFERENCES `u206369201_mig_db`.`places` (`id`));
+        FOREIGN KEY (`id_location`)
+        REFERENCES `u206369201_mig_db`.`locations` (`id`));
 
 
 -- -----------------------------------------------------
