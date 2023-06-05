@@ -44,10 +44,13 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users` (
     `id_login` INT NOT NULL,
     `id_location` INT NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`id_role`)
-    REFERENCES `u206369201_mig_db`.`roles` (`id`),
-    FOREIGN KEY (`id_login`)
-    REFERENCES `u206369201_mig_db`.`logins` (`id`),
+    CONSTRAINT `fk_user_role`
+        FOREIGN KEY (`id_role`)
+        REFERENCES `u206369201_mig_db`.`roles` (`id`),
+    CONSTRAINT `fk_user_login`
+        FOREIGN KEY (`id_login`)
+        REFERENCES `u206369201_mig_db`.`logins` (`id`),
+    CONSTRAINT `fk_user_location`
     FOREIGN KEY (`id_location`)
     REFERENCES `u206369201_mig_db`.`locations` (`id`));
 
@@ -76,6 +79,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`comments` (
   `content` MEDIUMTEXT NOT NULL,
   `id_comments` INT NOT NULL,
   PRIMARY KEY (`id`),
+  CONSTRAINT `fk_comment_response`
     FOREIGN KEY (`id_comments`)
     REFERENCES `u206369201_mig_db`.`comments` (`id`));
 
@@ -137,20 +141,27 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
     `is_closed` TINYINT NOT NULL,
     `is_rejected` TINYINT NOT NULL,
     PRIMARY KEY (`id`),
-    FOREIGN KEY (`id_status`)
-    REFERENCES `u206369201_mig_db`.`status` (`id`),
-    FOREIGN KEY (`id_comment`)
-    REFERENCES `u206369201_mig_db`.`comments` (`id`),
-    FOREIGN KEY (`id_detail`)
-    REFERENCES `u206369201_mig_db`.`details` (`id`),
-    FOREIGN KEY (`id_risk`)
-    REFERENCES `u206369201_mig_db`.`risks` (`id`),
-    FOREIGN KEY (`id_advantage`)
-    REFERENCES `u206369201_mig_db`.`advantages` (`id`),
-    FOREIGN KEY (`id_deadline`)
-    REFERENCES `u206369201_mig_db`.`deadline` (`id`),
-    FOREIGN KEY (`id_impact`)
-    REFERENCES `u206369201_mig_db`.`impacts` (`id`));
+    CONSTRAINT `fk_idea_status`
+        FOREIGN KEY (`id_status`)
+        REFERENCES `u206369201_mig_db`.`status` (`id`),
+    CONSTRAINT `fk_idea_comment`
+        FOREIGN KEY (`id_comment`)
+        REFERENCES `u206369201_mig_db`.`comments` (`id`),
+    CONSTRAINT `fk_idea_detail`
+        FOREIGN KEY (`id_detail`)
+        REFERENCES `u206369201_mig_db`.`details` (`id`),
+    CONSTRAINT `fk_idea_risk`
+        FOREIGN KEY (`id_risk`)
+        REFERENCES `u206369201_mig_db`.`risks` (`id`),
+    CONSTRAINT `fk_idea_advantages`
+        FOREIGN KEY (`id_advantage`)
+        REFERENCES `u206369201_mig_db`.`advantages` (`id`),
+    CONSTRAINT `fk_idea_deadline`
+        FOREIGN KEY (`id_deadline`)
+        REFERENCES `u206369201_mig_db`.`deadline` (`id`),
+    CONSTRAINT `fk_idea_impact`
+        FOREIGN KEY (`id_impact`)
+        REFERENCES `u206369201_mig_db`.`impacts` (`id`));
 
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`ideas_has_categories`
@@ -159,8 +170,10 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas_has_categories` (
     `id_idea` INT NOT NULL,
     `id_category` INT NOT NULL,
     PRIMARY KEY (`id_idea`, `id_category`),
+    CONSTRAINT `fk_ideas_has_categories_idea`
         FOREIGN KEY (`id_idea`)
         REFERENCES `u206369201_mig_db`.`ideas` (`id`),
+    CONSTRAINT `fk_ideas_has_category`
         FOREIGN KEY (`id_category`)
         REFERENCES `u206369201_mig_db`.`categories` (`id`));
 
@@ -172,8 +185,10 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users_has_categories` (
     `id_user` INT NOT NULL,
     `id_category` INT NOT NULL,
     PRIMARY KEY (`id_user`, `id_category`),
+    CONSTRAINT `fk_users_has_categories_user`
         FOREIGN KEY (`id_user`)
         REFERENCES `u206369201_mig_db`.`users` (`id`),
+    CONSTRAINT `fk_users_has_categories_category`
         FOREIGN KEY (`id_category`)
         REFERENCES `u206369201_mig_db`.`categories` (`id`));
 
@@ -185,8 +200,10 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas_has_locations` (
     `id_idea` INT NOT NULL,
     `id_location` INT NOT NULL,
     PRIMARY KEY (`id_idea`, `id_location`),
+    CONSTRAINT `fk_ideas_has_locations_idea`
         FOREIGN KEY (`id_idea`)
         REFERENCES `u206369201_mig_db`.`ideas` (`id`),
+    CONSTRAINT `fk_ideas_has_locations_location`
         FOREIGN KEY (`id_location`)
         REFERENCES `u206369201_mig_db`.`locations` (`id`));
 
@@ -201,7 +218,9 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users_has_ideas` (
     `has_voted` TINYINT NOT NULL,
     `vote_value` TINYINT NULL,
     PRIMARY KEY (`id_user`, `id_idea`),
+    CONSTRAINT `fk_users_has_ideas_user`
         FOREIGN KEY (`id_user`)
         REFERENCES `u206369201_mig_db`.`users` (`id`),
+    CONSTRAINT `fk_users_has_ideas_idea`
         FOREIGN KEY (`id_idea`)
         REFERENCES `u206369201_mig_db`.`ideas` (`id`));
