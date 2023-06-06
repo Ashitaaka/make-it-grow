@@ -1,0 +1,33 @@
+:root{
+
+  /* Color Variables */
+  --primary-color : #0c3944;
+  --primary-color-light : #859ca1;
+  --secondary-color : #fff30d;
+  --background-color : #f7faf8;
+  --tag-background-color : #f1f6f8;
+  --seperator-color : #dbebe3;
+  --flame-pea-color : #F3976B;
+  --roman-color : #E36164;
+  --cerise-dark-color : #9B084F;
+  --brick-red-color : #C62E43;
+  --sahara-sand-color : #FCF6A0;
+  --atlantis-color : #C1E94E;
+  --calypso-color : #196C84;
+  --silver-tree-color : #70AF90;
+  --parsley-color : #24673A;
+  --zeus-color : #474136;
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+

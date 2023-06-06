@@ -9,7 +9,7 @@ APIRouter.get('/version', function(req, res){
     const { version } = require('./package.json');
     return res.json({ version })
 
-})// créer une route qui me donne la version  du package.json du back
+}) // create route to get the package.json version
 
 app.use('/api', APIRouter);
 
