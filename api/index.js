@@ -1,5 +1,10 @@
+require('dotenv').config();
+
 const express = require('express');
+
 const app = express();
+
+const port = process.env.APP_PORT || 8080
 app.use(express.json());
 
 const APIRouter = express.Router();
@@ -13,6 +18,6 @@ APIRouter.get('/version', function(req, res){
 
 app.use('/api', APIRouter);
 
-app.listen(8080, function() {
-    console.log(`API is running on port 8080`)
+app.listen(port, function() {
+    console.log(`API is running on port ${port}`)
 });
