@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "all": "concurrently \"npm i\" \"cd client && npm i && npm run dev\" \"cd api && npm i && npm run dev\"",
+        "setup": "npm i && npm --prefix ./client i && npm --prefix ./api i",
+        "all": "concurrently \"cd client && npm run dev\" \"cd api && npm run dev\"",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
