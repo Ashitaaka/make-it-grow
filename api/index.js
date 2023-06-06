@@ -1,13 +1,19 @@
 require('dotenv').config();
 
 const express = require('express');
-
 const app = express();
-
 const port = process.env.APP_PORT || 8080
-app.use(express.json());
-
 const APIRouter = express.Router();
+
+//resolving cors issue from fetching from diffrent origins
+const cors = require('cors');
+
+const corsOptions = {
+  origin: '*'
+}
+app.use(cors(corsOptions));
+
+app.use(express.json());
 
 APIRouter.get('/version', function(req, res){
 
