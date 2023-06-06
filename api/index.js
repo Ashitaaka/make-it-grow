@@ -1,8 +1,22 @@
+require('dotenv').config();
+
 const express = require('express');
 const app = express();
+const port = process.env.APP_PORT || 5002;
+const APIRouter = express.Router();
+
+const {userRouter, ideaRouter} = require('./src/routes');
+
+//resolving cors issue from fetching from diffrent origins
+const cors = require('cors');
+const corsOptions = {
+  origin: '*'
+}
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
-const APIRouter = express.Router();
+app.use('/api', APIRouter);
 
 APIRouter.get('/version', function(req, res){
 
@@ -11,8 +25,22 @@ APIRouter.get('/version', function(req, res){
 
 }) // create route to get the package.json version
 
-app.use('/api', APIRouter);
+APIRouter.use('/users', userRouter)
+APIRouter.use('/ideas', ideaRouter)
 
-app.listen(8080, function() {
-    console.log(`API is running on port 8080`)
+
+
+
+
+
+
+
+
+
+
+
+
+app.listen(port, function() {
+    console.log(`API is running on port ${port}`)
 });
+
