@@ -5,14 +5,20 @@ class BaseModel {
     table;
     db;
 
+    fields = [];
+    join = [];
+
     constructor(table){
 
         this.table = table;
         this.db = db;
+        // this.init();
 
     }
 
-    getAll() {
+    init() { }
+
+    getAllHeader() {
         return this.db
         .query(`SELECT * FROM ${this.table}`)
     }
@@ -22,12 +28,12 @@ class BaseModel {
         .query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
     }
     
-    getCardHeader() {
+    getAll() {
         return this.db
             .query(`
-                SELECT ${this.cardHeader.fields}
+                SELECT ${this.fields}
                 FROM ${this.table}
-                ${this.cardHeader.join}
+                ${this.join}
             `)
     }
 }
