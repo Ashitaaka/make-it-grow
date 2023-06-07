@@ -140,16 +140,16 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO `u206369201_mig_db`.`users`
-(id, firstname, lastname, id_role, id_login, id_location)
+(id, firstname, lastname, service, occupation, picture, id_role, id_login, id_location)
 VALUES
-(1, "Martin", "NOËL", 3, 1, 3 ),
-(2, "Guillaume", "LECLOUT", 3, 2, 3 ),
-(3, "Eric", "GODEFROY", 3, 3, 3 ),
-(4, "Olivier", "GOMEZ", 3, 4, 3 ),
-(5, "Axel", "CASTRO", 3, 5, 3 ),
-(6, "Marie", "PASQUIER", 1, 6, 3 ),
-(7, "Tristan", "BOUTET", 2, 7, 3 ),
-(8, "Ludovic", "BERTILLON", 2, 8, 3 );
+(1, "Martin", "NOËL", "Comptabilité", "Comptable","/assets/images/profile-pictures/martin.jpg" , 3, 1, 3 ),
+(2, "Guillaume", "LECLOUT", "Comptabilité", "Comptable","/assets/images/profile-pictures/guillaune.jpg" , 3, 2, 3 ),
+(3, "Eric", "GODEFROY","Comptabilité", "Expert Comptable","/assets/images/profile-pictures/eric.jpg" , 3, 3, 3 ),
+(4, "Olivier", "GOMEZ", "Qualité", "Technicien qualité","/assets/images/profile-pictures/olivier.jpg" , 3, 4, 3 ),
+(5, "Axel", "CASTRO","Qualité","Responsable qualité","/assets/images/profile-pictures/axel.jpg" , 3, 5, 3 ),
+(6, "Marie", "PASQUIER","Qualité", "Directrice qualité","/assets/images/profile-pictures/mpasquier.jpg" , 1, 6, 3 ),
+(7, "Tristan", "BOUTET", "Ressources humaines", "Chargé de recrutement","/assets/images/profile-pictures/tboutet.jpg" , 2, 7, 3 ),
+(8, "Ludovic", "BERTILLON","Ressources humaines" , "Directeur RH","/assets/images/profile-pictures/lbertillon.jpg" , 2, 8, 3 );
 
 -- ------- --------------------------------------------
 -- IDEAS HAS CATEGORIES
