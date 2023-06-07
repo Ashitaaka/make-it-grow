@@ -14,14 +14,22 @@ class BaseModel {
 
     getAll() {
         return this.db
-            .query(`SELECT * FROM ${this.table}`)
+        .query(`SELECT * FROM ${this.table}`)
     }
 
     getById(id) {
         return this.db
-            .query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
+        .query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
     }
-
+    
+    getCardHeader() {
+        return this.db
+            .query(`
+                SELECT ${this.cardHeader.fields}
+                FROM ${this.table}
+                ${this.cardHeader.join}
+            `)
+    }
 }
 
 module.exports = BaseModel;
