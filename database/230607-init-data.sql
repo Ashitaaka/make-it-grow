@@ -30,7 +30,7 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO `u206369201_mig_db`.`locations`
-(id, town, region, country)
+(id, city, region, country)
 VALUES
 (1, "Mexico", "", "Mexique"),
 (2, "Lima", "", "Pérou"),
@@ -92,10 +92,10 @@ VALUES
 (3, "Multiplication des retards ou des absences");
 
 -- -----------------------------------------------------
--- BENEFICIES
+-- benefits
 -- -----------------------------------------------------
 
-INSERT INTO `u206369201_mig_db`.`beneficies`
+INSERT INTO `u206369201_mig_db`.`benefits`
 (id, content)
 VALUE
 (1, "Employés calmes, reposés et concentrés."),
@@ -129,7 +129,7 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO `u206369201_mig_db`.`ideas`
-(id, title, id_status, id_detail, id_risk, id_benefice, id_deadline, id_impact, is_closed, is_rejected)
+(id, title, id_status, id_detail, id_risk, id_benefit, id_deadline, id_impact, is_closed, is_rejected)
 VALUES
 (1, "Espace bien-être", 1, 1, 1, 1, 1, 1, FALSE, FALSE),
 (2, "Journée des salariés", 1, 2, 2, 2, 2, 2, FALSE, FALSE),

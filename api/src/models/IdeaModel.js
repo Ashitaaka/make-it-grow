@@ -6,6 +6,16 @@ class IdeaModel extends BaseModel {
 
         super('ideas')
 
+        this.fieldsGetAll = {
+
+            fields: [
+                `ideas.id`,
+                `ideas.title`,
+                `is_closed`,
+                `is_rejected`,
+            ]
+
+        }
     }
 
 }
