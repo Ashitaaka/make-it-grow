@@ -30,7 +30,7 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO `u206369201_mig_db`.`locations`
-(id, town, region, country)
+(id, city, region, country)
 VALUES
 (1, "Mexico", "", "Mexique"),
 (2, "Lima", "", "Pérou"),
@@ -69,71 +69,16 @@ VALUES
 (6, "accepté", NULL ),
 (7, "refusé", NULL) ;
 
--- -----------------------------------------------------
--- DETAILS
--- -----------------------------------------------------
-
-INSERT INTO `u206369201_mig_db`.`details`
-(id, content)
-VALUES
-(1, "Créer un espace dédié au bien-être au sein de l'entreprise, tel qu'une salle de détente ou une salle de méditation. Cet espace serait conçu pour offrir aux employés un endroit calme et relaxant où ils pourraient se ressourcer, se reposer, pratiquer des exercices de relaxation ou de méditation. L' entreprise pourrait également organiser des sessions de bien-être régulières, telles que des séances de yoga ou des cours de fitness, pour encourager les employés à prendre soin de leur santé physique et mentale."),
-(2, "Organiser une journée de célébration des employés, où l'entreprise reconnaît et célèbre les réalisations et contributions de chaque membre de l'équipe. Cela pourrait inclure des discours, des remises de prix, des activités ludiques et des moments de convivialité."),
-(3, "Mettre en place un programme de covoiturage ou de transport en commun pour les employés qui se rendent au travail. Cela permettrait de réduire la congestion routière, les émissions de carbone et les frais de transport individuels, tout en favorisant la convivialité et la réduction des déplacements en voiture.");
-
--- -----------------------------------------------------
--- RISKS
--- -----------------------------------------------------
-
-INSERT INTO `u206369201_mig_db`.`risks`
-(id, content)
-VALUES
-(1, "Espace utilisé de manière récréative, perte de productivité des employées"),
-(2, "Mis en avant de certains employés au détriement des autres, compétition exacerbée"),
-(3, "Multiplication des retards ou des absences");
-
--- -----------------------------------------------------
--- BENEFICIES
--- -----------------------------------------------------
-
-INSERT INTO `u206369201_mig_db`.`beneficies`
-(id, content)
-VALUE
-(1, "Employés calmes, reposés et concentrés."),
-(2, "Emulation des idées et des projet."),
-(3, "Aspect écologique et meilleure gestion des places de parking");
-
--- -----------------------------------------------------
--- IMPACTS
--- -----------------------------------------------------
-
-INSERT INTO `u206369201_mig_db`.`impacts`
-(id, content)
-VALUES
-(1, "Augmentation de la productivité"),
-(2, "Favorisation de l'innovation"),
-(3, "Flexibilités et synchronisation des horaires nécessaire");
-
--- -----------------------------------------------------
--- DEADLINES
--- -----------------------------------------------------
-
-INSERT INTO `u206369201_mig_db`.`deadlines`
-(id, date)
-VALUES
-(1, "2023-08-30"),
-(2, "2023-10-15"),
-(3, "2023-12-10");
-
 -- ------- --------------------------------------------
 -- IDEAS
 -- -----------------------------------------------------
 
 INSERT INTO `u206369201_mig_db`.`ideas`
-(id, title, id_status, id_detail, id_risk, id_benefice, id_deadline, id_impact, is_closed, is_rejected)
+(id, title, id_status, deadline, detail, risk, benefit, impact, is_closed, is_rejected)
 VALUES
-(1, "Espace bien-être", 1, 1, 1, 1, 1, 1, FALSE, FALSE),
-(2, "Journée des salariés", 1, 2, 2, 2, 2, 2, FALSE, FALSE),
-(3, "Programme de covoiturage", 1, 3, 3, 3, 3, 3, FALSE, FALSE);
+(1, "Espace bien-être", 1, "2023-08-30", "Créer un espace dédié au bien-être au sein de l'entreprise, tel qu'une salle de détente ou une salle de méditation. Cet espace serait conçu pour offrir aux employés un endroit calme et relaxant où ils pourraient se ressourcer, se reposer, pratiquer des exercices de relaxation ou de méditation. L' entreprise pourrait également organiser des sessions de bien-être régulières, telles que des séances de yoga ou des cours de fitness, pour encourager les employés à prendre soin de leur santé physique et mentale.", "Espace utilisé de manière récréative, perte de productivité des employées", "Employés calmes, reposés et concentrés.", "Augmentation de la productivité", FALSE, FALSE),
+(2, "Journée des salariés", 1, "2023-10-15", "Organiser une journée de célébration des employés, où l'entreprise reconnaît et célèbre les réalisations et contributions de chaque membre de l'équipe. Cela pourrait inclure des discours, des remises de prix, des activités ludiques et des moments de convivialité.", "Mis en avant de certains employés au détriement des autres, compétition exacerbée", "Emulation des idées et des projet.", "Favorisation de l'innovation", FALSE, FALSE),
+(3, "Programme de covoiturage", 1, "2023-12-10", "Mettre en place un programme de covoiturage ou de transport en commun pour les employés qui se rendent au travail. Cela permettrait de réduire la congestion routière, les émissions de carbone et les frais de transport individuels, tout en favorisant la convivialité et la réduction des déplacements en voiture.", "Multiplication des retards ou des absences", "Aspect écologique et meilleure gestion des places de parking", "Flexibilités et synchronisation des horaires nécessaire", FALSE, FALSE);
 
 -- ------- --------------------------------------------
 -- USERS

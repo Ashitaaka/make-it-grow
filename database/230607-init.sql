@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`logins` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`locations` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `town` VARCHAR(155) NOT NULL,
+    `city` VARCHAR(155) NOT NULL,
     `region` VARCHAR(155) NOT NULL,
     `country` VARCHAR(155) NOT NULL,
     PRIMARY KEY (`id`));
@@ -86,48 +86,6 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`comments` (
     REFERENCES `u206369201_mig_db`.`comments` (`id`));
 
 -- -----------------------------------------------------
--- Table `u206369201_mig_db`.`details`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`details` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `content` MEDIUMTEXT NOT NULL,
-  PRIMARY KEY (`id`));
-
--- -----------------------------------------------------
--- Table `u206369201_mig_db`.`risks`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`risks` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `content` MEDIUMTEXT NOT NULL,
-  `rate` INT NULL,
-  PRIMARY KEY (`id`));
-
--- -----------------------------------------------------
--- Table `u206369201_mig_db`.`beneficies`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`beneficies` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `content` MEDIUMTEXT NOT NULL,
-  `rate` INT NULL,
-  PRIMARY KEY (`id`));
-
--- -----------------------------------------------------
--- Table `u206369201_mig_db`.`deadline`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`deadlines` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `date` DATE NOT NULL,
-  PRIMARY KEY (`id`));
-
--- -----------------------------------------------------
--- Table `u206369201_mig_db`.`impacts`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`impacts` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `content` MEDIUMTEXT NOT NULL,
-  PRIMARY KEY (`id`));
-
--- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`ideas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
@@ -135,11 +93,11 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
     `title` VARCHAR(255) NOT NULL,
     `id_status` INT NOT NULL,
     `id_comment` INT NOT NULL,
-    `id_detail` INT NOT NULL,
-    `id_risk` INT NOT NULL,
-    `id_benefice` INT NOT NULL,
-    `id_deadline` INT NOT NULL,
-    `id_impact` INT NOT NULL,
+    `deadline` DATE NOT NULL,
+    `detail` MEDIUMTEXT NOT NULL,
+    `risk` MEDIUMTEXT NOT NULL,
+    `benefit` MEDIUMTEXT NOT NULL,
+    `impact` MEDIUMTEXT NOT NULL,
     `is_closed` TINYINT NOT NULL,
     `is_rejected` TINYINT NOT NULL,
     PRIMARY KEY (`id`),
@@ -148,22 +106,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
         REFERENCES `u206369201_mig_db`.`status` (`id`),
     CONSTRAINT `fk_idea_comment`
         FOREIGN KEY (`id_comment`)
-        REFERENCES `u206369201_mig_db`.`comments` (`id`),
-    CONSTRAINT `fk_idea_detail`
-        FOREIGN KEY (`id_detail`)
-        REFERENCES `u206369201_mig_db`.`details` (`id`),
-    CONSTRAINT `fk_idea_risk`
-        FOREIGN KEY (`id_risk`)
-        REFERENCES `u206369201_mig_db`.`risks` (`id`),
-    CONSTRAINT `fk_idea_benefice`
-        FOREIGN KEY (`id_benefice`)
-        REFERENCES `u206369201_mig_db`.`beneficies` (`id`),
-    CONSTRAINT `fk_idea_deadline`
-        FOREIGN KEY (`id_deadline`)
-        REFERENCES `u206369201_mig_db`.`deadlines` (`id`),
-    CONSTRAINT `fk_idea_impact`
-        FOREIGN KEY (`id_impact`)
-        REFERENCES `u206369201_mig_db`.`impacts` (`id`));
+        REFERENCES `u206369201_mig_db`.`comments` (`id`));
 
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`ideas_has_categories`
