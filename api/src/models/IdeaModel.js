@@ -6,33 +6,26 @@ class IdeaModel extends BaseModel {
 
         super('ideas')
 
-        this.fieldsGetAll = {
+        this.cardHeader= {
 
             fields: [
+                `categories.label AS cat_label`,
                 `ideas.id`,
                 `ideas.title`,
-                `ideas.is_closed`,
-                `ideas.is_rejected`,
-                `status.label`,
-                `status.delay`,
-                `details.content`,
-                `comments.content`,
-                `benefits.content`,
-                `risks.content`,
-                `impacts.content`,
-                `deadline.date`,
                 `locations.city`,
                 `locations.region`,
                 `locations.country`,
-                `categories.label`,
-                `users.id`,
-                `users.firstname`,
-                `users.lastname`,
-                `users.picture`,
-                `role.label`
+                `status.label`,
+                `status.delay`
             ],
 
-            join: []
+            join: [
+                `LEFT JOIN ideas_has_categories ON ideas.id = ideas_has_categories.id_idea
+                LEFT JOIN categories ON ideas_has_categories.id_category = categories.id
+                LEFT JOIN ideas_has_locations ON ideas.id = ideas_has_locations .id_idea
+                LEFT JOIN locations ON ideas_has_locations.id_location = locations.id
+                LEFT JOIN status ON ideas.id_status = status.id`
+            ]
 
         }
     }
