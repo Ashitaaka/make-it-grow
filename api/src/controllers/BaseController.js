@@ -11,6 +11,7 @@ class BaseController {
     }
 
     getAll(){
+        console.log(this.req.query)
         this.model.getAll()
             .then(([results]) => this.sendJson(results))
     }
