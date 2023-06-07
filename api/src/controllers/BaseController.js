@@ -16,7 +16,7 @@ class BaseController {
     }
 
     getById(){
-        this.model.getById(this.req.param.id)
+        this.model.getById(this.req.params.id)
             .then(([results]) => this.sendJson(results))
     }
 
