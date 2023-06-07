@@ -1,11 +1,15 @@
-import react, { useState, useEffect } from 'react'
-import image from './assets/images/profile-pictures/guillaume.jpg'
+import {Routes, Route} from 'react-router-dom'
+import Profile from './pages/Profile'
+import Home from './pages/Home'
 
 function App() {
 
   return (
       <div className='app'>
-        <img src={image} alt="" />
+        <Routes>
+            <Route path='/' element={<Home />}/>
+            <Route path='/profile/:id' element={<Profile/>}/>
+        </Routes>
       </div>
   )
 }
