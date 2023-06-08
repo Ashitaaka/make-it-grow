@@ -98,6 +98,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`comments`(
   `id` INT NOT NULL AUTO_INCREMENT,
+  `content` MEDIUMTEXT NULL,
   `id_comment` INT NULL,
   `id_user` INT NOT NULL,
   `id_idea` INT NOT NULL,
