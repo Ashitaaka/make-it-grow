@@ -65,18 +65,19 @@ class IdeaModel extends BaseModel {
       }
       this.join.push(`LEFT JOIN ideas_has_categories ON ideas.id = ideas_has_categories.id_idea
         LEFT JOIN categories ON ideas_has_categories.id_category = categories.id
-        LEFT JOIN ideas_has_locations ON ideas.id = ideas_has_locations .id_idea
+        LEFT JOIN ideas_has_locations ON ideas.id = ideas_has_locations.id_idea
         LEFT JOIN locations ON ideas_has_locations.id_location = locations.id
         LEFT JOIN status ON ideas.id_status = status.id 
+        LEFT JOIN comments ON comments.id_idea = ideas.id
         LEFT JOIN users_has_ideas ON ideas.id = users_has_ideas.id_idea
         LEFT JOIN users ON users_has_ideas.id_user = users.id
         LEFT JOIN roles ON users.id_role = roles.id
-        LEFT JOIN comments ON comments.id_idea = ideas.id
         `)
     }
   }
 
 }
+
 
 module.exports = IdeaModel
 
