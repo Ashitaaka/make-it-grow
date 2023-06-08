@@ -42,7 +42,6 @@ class IdeaModel extends BaseModel {
       if (this.queryFields.includes('impact')) {
         this.fields.push(`ideas.impact`)
       }
-
       if (this.queryFields.includes('users')) {
         this.fields.push(`users.id AS user_id`)
         this.fields.push(`users.firstname`)
@@ -50,26 +49,20 @@ class IdeaModel extends BaseModel {
         this.fields.push(`users.picture`)
         this.fields.push(`users_has_ideas.is_owner`)
         this.fields.push(`roles.label AS role`)
-
       }
-
-      // if (this.queryFields.includes('comments')) {
-      //   this.fields.push(`comments.id AS comment_id`)
-      //   this.fields.push(`comments.content`)
-      // }
-
+      if (this.queryFields.includes('comments')) {
+        this.fields.push(`comments.content AS comment`)
+      }
       if (this.queryFields.includes('categories')) {
         this.fields.push(`categories.label AS category`)
       }
       if (this.queryFields.includes('locations')) {
         this.fields.push(`locations.city`)
       }
-
       if (this.queryFields.includes('status')) {
         this.fields.push(`status.label AS status`)
         this.fields.push(`status.delay`)
       }
-
       this.join.push(`LEFT JOIN ideas_has_categories ON ideas.id = ideas_has_categories.id_idea
         LEFT JOIN categories ON ideas_has_categories.id_category = categories.id
         LEFT JOIN ideas_has_locations ON ideas.id = ideas_has_locations .id_idea
@@ -78,6 +71,7 @@ class IdeaModel extends BaseModel {
         LEFT JOIN users_has_ideas ON ideas.id = users_has_ideas.id_idea
         LEFT JOIN users ON users_has_ideas.id_user = users.id
         LEFT JOIN roles ON users.id_role = roles.id
+        LEFT JOIN comments ON comments.id_idea = ideas.id
         `)
     }
   }
