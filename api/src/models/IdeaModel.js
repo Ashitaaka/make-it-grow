@@ -7,7 +7,7 @@ class IdeaModel extends BaseModel {
     constructor({fields}){
         super('ideas')
         
-        this.init(fields.split(','));
+        this.init(fields && fields.split(','));
 
         // this.fields = [
         //         `categories.label AS category`,
@@ -28,12 +28,16 @@ class IdeaModel extends BaseModel {
         // ]
     }
 
-    init(fields) {
-        this.queryFields = fields
 
-        console.log(this.queryFields);
-        console.log(fields);
+
+    init(fields) {
+      if(!fields){
+        this.fields.push('*')
+      } else {
+      this.queryFields = fields
+
         // id,title,categories,locations,status
+     
         if(this.queryFields.includes('id')) {
             this.fields.push(`ideas.id`)
         }
@@ -47,10 +51,9 @@ class IdeaModel extends BaseModel {
             this.join.push(`LEFT JOIN status ON ideas.id_status = status.id`)
         }
 
-
     }
+  }
     
-
 }
 
 module.exports = IdeaModel
