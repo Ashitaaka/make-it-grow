@@ -2,40 +2,40 @@ const { db } = require('../config');
 
 class BaseModel {
 
-    table;
-    db;
+  table;
+  db;
 
-    fields = [];
-    join = [];
+  fields = [];
+  join = [];
 
-    constructor(table){
+  constructor(table) {
 
-        this.table = table;
-        this.db = db;
-        // this.init();
+    this.table = table;
+    this.db = db;
+    // this.init();
 
-    }
+  }
 
-    init() { }
+  init() { }
 
-    getAllHeader() {
-        return this.db
-        .query(`SELECT * FROM ${this.table}`)
-    }
+  getAll() {
+    return this.db
+      .query(`
+      SELECT ${this.fields}
+      FROM ${this.table}
+      ${this.join}
+      `)
+  }
 
-    getById(id) {
-        return this.db
-        .query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
-    }
-    
-    getAll() {
-        return this.db
-            .query(`
-                SELECT ${this.fields}
-                FROM ${this.table}
-                ${this.join}
-            `)
-    }
+  getById(id) {
+    return this.db
+      .query(`
+      SELECT ${this.fields}
+      FROM ${this.table}
+      ${this.join} 
+      WHERE ${this.table}.id  = ?`, [id])
+  }
+
 }
 
 module.exports = BaseModel;

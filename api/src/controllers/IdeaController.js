@@ -10,12 +10,6 @@ class IdeaController extends BaseController {
 
     }
 
-    getIdeaHeader(){
-        this.model.getIdeaHeader()
-        .then(([results]) => this.sendJson(results))
-    }
-    
-
 }
 
 module.exports = IdeaController;
