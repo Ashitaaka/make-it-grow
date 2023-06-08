@@ -73,17 +73,6 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`status` (
   `delay` INT NULL,
   PRIMARY KEY (`id`));
 
--- -----------------------------------------------------
--- Table `u206369201_mig_db`.`comments`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`comments` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `content` MEDIUMTEXT NOT NULL,
-  `id_comments` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `fk_comment_response`
-    FOREIGN KEY (`id_comments`)
-    REFERENCES `u206369201_mig_db`.`comments` (`id`));
 
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`ideas`
@@ -92,7 +81,6 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
     `id_status` INT NOT NULL,
-    `id_comment` INT NOT NULL,
     `deadline` DATE NOT NULL,
     `detail` MEDIUMTEXT NOT NULL,
     `risk` MEDIUMTEXT NOT NULL,
@@ -103,10 +91,26 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_idea_status`
         FOREIGN KEY (`id_status`)
-        REFERENCES `u206369201_mig_db`.`status` (`id`),
-    CONSTRAINT `fk_idea_comment`
-        FOREIGN KEY (`id_comment`)
-        REFERENCES `u206369201_mig_db`.`comments` (`id`));
+        REFERENCES `u206369201_mig_db`.`status` (`id`));
+
+-- -----------------------------------------------------
+-- Table `u206369201_mig_db`.`comments`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`comments`(
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_comment` INT NULL,
+  `id_user` INT NOT NULL,
+  `id_idea` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_comment_response`
+    FOREIGN KEY (`id_comment`)
+    REFERENCES `u206369201_mig_db`.`comments` (`id`),
+  CONSTRAINT `fk_comment_user`
+    FOREIGN KEY (`id_user`)
+    REFERENCES `u206369201_mig_db`.`users` (`id`),
+  CONSTRAINT `fk_comment_idea`
+    FOREIGN KEY (`id_idea`)
+    REFERENCES `u206369201_mig_db`.`ideas` (`id`));
 
 -- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`ideas_has_categories`
