@@ -1,12 +1,12 @@
-import React from 'react'
+import React from 'react';
+import IdeaExtended from '../components/ideas/ideaExtended/ideaExtended';
 
 const Home = () => {
-
   return (
     <div>
-        HOME
+      <IdeaExtended />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
