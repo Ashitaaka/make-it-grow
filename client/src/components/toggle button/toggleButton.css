@@ -1,0 +1,36 @@
+/*Toggle button background*/
+.switch-background {
+    height: 18px;
+    width: 35px;
+    background-color: var(--primary-color);
+    box-shadow: inset 0 0 7px rgba(68, 105, 99, 0.15), inset 0 0 5px -2px rgba(68, 105, 99, 0.25);
+    background-color: var(--primary-color);
+    border-radius: 17px;
+    position: relative;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+/*Toggle button background*/
+.switched-background {
+    background-color: #fff;
+}
+
+/*Toggle button*/
+.switch-button {
+    position: absolute;
+    left: calc(35px - 17px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--primary-color);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    transition: all .5s ease;
+}
+
+/*Toggle button when switched off*/
+.switched-button {
+    left: 5%;
+    background-color: #fff;
+}

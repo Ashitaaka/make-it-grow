@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.APP_PORT ?? 5002;
 const APIRouter = express.Router();
 
-const {userRouter, ideaRouter} = require('./src/routes');
+const { userRouter, ideaRouter } = require('./src/routes');
 
 //resolving cors issue from fetching from diffrent origins
 const cors = require('cors');
@@ -18,10 +18,10 @@ app.use(express.json());
 
 app.use('/api', APIRouter);
 
-APIRouter.get('/version', function(req, res){
+APIRouter.get('/version', function (req, res) {
 
-    const { version } = require('./package.json');
-    return res.json({ version })
+  const { version } = require('./package.json');
+  return res.json({ version })
 
 }) // create route to get the package.json version
 
@@ -40,7 +40,7 @@ APIRouter.use('/ideas', ideaRouter)
 
 
 
-app.listen(port, function() {
-    console.log(`API is running on port ${port}`)
+app.listen(port, function () {
+  console.log(`API is running on port ${port}`)
 });
 
