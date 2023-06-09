@@ -4,7 +4,7 @@ import axios from 'axios'
 
 import IdeasCard from './IdeasCard'
 
-import './IdeasCard.css'
+import './ideasCard.css'
 
 
 const IdeasCardsBackground = () => {
