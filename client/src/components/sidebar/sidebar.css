@@ -1,0 +1,89 @@
+.sidebar{
+    width:6em;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 6em 1em 2em 1em;
+    overflow-x: hidden;
+    position: fixed;
+    transition: width .3s ease-out
+}
+
+.button_container,
+.new_project_button_container,
+.toggle_button_container{
+    padding: .5em 1.2em;
+    border-radius: 1.2em;
+}
+
+.button_container:hover{
+    background-color: var(--background-color);
+}
+
+.new_project_button_container{
+    transition: background-color .25s ease-in-out;
+}
+
+.toggle_button_container{
+    display: flex;
+    flex-direction: row;
+    width: 15em;
+    gap : 1em;
+}
+
+.sidebar_menu_buttons,
+.config_buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.sidebar_button{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.sidebar a{
+   text-decoration: none;
+   color: var(--primary-color);
+   width: 15em;
+}
+
+.sidebar span{
+     display: none;
+}
+
+.sidebar_icon{
+    width: 1.6em;
+}
+
+.dark-mode-txt{
+    font-size: .85em;
+    text-align: center;
+    display: none;
+}
+
+.new_project_txt{
+    color: #fff;
+}
+/* ANIMATIONS HOVER */
+
+.sidebar:hover{
+    width: 15em;
+}
+
+.sidebar:hover span,
+.sidebar:hover .dark-mode-txt{
+    display: flex;
+}
+
+.sidebar:hover .toggle_button_container{
+    flex-direction: row;
+}
+
+.sidebar:hover .new_project_button_container{
+    background-color: var(--primary-color);
+}
