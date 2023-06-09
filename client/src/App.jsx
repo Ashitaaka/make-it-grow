@@ -4,7 +4,7 @@ import Profile from './pages/Profile'
 import Home from './pages/Home'
 import Sidebar from './components/sidebar/Sidebar'
 //import css
-import './app.css'
+import './App.css'
 import ProfileDetails from './components/ProfileDetails/ProfileDetails'
 
 function App() {
