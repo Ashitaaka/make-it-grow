@@ -1,14 +1,14 @@
 import React from 'react'
 import IdeasCardsBackground from '../components/ideas/ideasCard/IdeasCardsBackground'
+import './home.css'
 
 const Home = () => {
 
   return (
-    <div>
-        HOME
+    <div className="home_background">
         <IdeasCardsBackground />
-     
-    </div>
+   </div>
+   
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './IdeasCard.css'
+import './ideasCard.css'
 
 
 const IdeasCard = ({idea}) => {
