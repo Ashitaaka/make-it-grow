@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users` (
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`categories` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `label` VARCHAR(155) NOT NULL,
+    `color` VARCHAR(20) NOT NULL, 
     PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
