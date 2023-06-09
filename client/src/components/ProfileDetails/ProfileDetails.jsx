@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import './profiledetails.css'
 
 
 const ProfileDetails = () => {
@@ -26,7 +27,7 @@ return !isDataLoaded ?  null :
  (
       <>
         <p>{user.firstname}</p>
-        <img src='/images/profile-pictures/martin.jpg' alt="" />
+        <img src={user.picture} alt="" />
       </>
 
   )

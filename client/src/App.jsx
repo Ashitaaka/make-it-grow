@@ -1,6 +1,6 @@
 import {Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
-import ProfileDetails from './components/ProfileDetails'
+import ProfileDetails from './components/ProfileDetails/ProfileDetails'
 
 function App() {
 
