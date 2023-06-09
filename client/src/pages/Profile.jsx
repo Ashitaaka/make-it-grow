@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ProfileDetails from '../components/ProfileDetails'
+import ProfileDetails from '../components/ProfileDetails/ProfileDetails'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
