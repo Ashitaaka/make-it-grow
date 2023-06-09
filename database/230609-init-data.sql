@@ -86,14 +86,14 @@ VALUES
 INSERT INTO `u206369201_mig_db`.`users`
 (id, firstname, lastname, service, occupation, picture, id_role, id_login, id_location)
 VALUES
-(1, "Martin", "NOËL", "Comptabilité", "Comptable","./images/profile-pictures/martin.jpg" , 2, 1, 3 ),
-(2, "Guillaume", "LECLOUT", "Comptabilité", "Comptable","./images/profile-pictures/guillaume.jpg" , 2, 2, 3 ),
-(3, "Eric", "GODEFROY","Environnement", "Sylvophile","./images/profile-pictures/eric.jpg" , 2, 3, 3 ),
-(4, "Olivier", "GOMEZ", "Qualité", "Technicien qualité","./images/profile-pictures/olive.jpg" , 2, 4, 3 ),
-(5, "Axel", "CASTRO","Qualité","Responsable qualité","./images/profile-pictures/axel.jpg" , 2, 5, 3 ),
-(6, "Marie", "PASQUIER","Qualité", "Directrice qualité","./images/profile-pictures/mpasquier.jpg" , 1, 6, 3 ),
-(7, "Tristan", "BOUTET", "Ressources humaines", "Chargé de recrutement","./images/profile-pictures/tboutet.jpg" , 1, 7, 3 ),
-(8, "Ludovic", "BERTILLON","Ressources humaines" , "Directeur RH","./images/profile-pictures/lbertillon.jpg" , 1, 8, 3 );
+(1, "Martin", "NOËL", "Comptabilité", "Comptable","/images/profile-pictures/martin.jpg" , 2, 1, 3 ),
+(2, "Guillaume", "LECLOUT", "Comptabilité", "Comptable","/images/profile-pictures/guillaume.jpg" , 2, 2, 3 ),
+(3, "Eric", "GODEFROY","Environnement", "Sylvophile","/images/profile-pictures/eric.jpg" , 2, 3, 3 ),
+(4, "Olivier", "GOMEZ", "Qualité", "Technicien qualité","/images/profile-pictures/olive.jpg" , 2, 4, 3 ),
+(5, "Axel", "CASTRO","Qualité","Responsable qualité","/images/profile-pictures/axel.jpg" , 2, 5, 3 ),
+(6, "Marie", "PASQUIER","Qualité", "Directrice qualité","/images/profile-pictures/mpasquier.jpg" , 1, 6, 3 ),
+(7, "Tristan", "BOUTET", "Ressources humaines", "Chargé de recrutement","/images/profile-pictures/tboutet.jpg" , 1, 7, 3 ),
+(8, "Ludovic", "BERTILLON","Ressources humaines" , "Directeur RH","/images/profile-pictures/lbertillon.jpg" , 1, 8, 3 );
 
 -- ------- --------------------------------------------
 -- IDEAS HAS CATEGORIES
