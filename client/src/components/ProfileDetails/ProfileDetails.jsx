@@ -25,10 +25,33 @@ const ProfileDetails = () => {
 return !isDataLoaded ?  null : 
 
  (
-      <>
-        <p>{user.firstname}</p>
-        <img src={user.picture} alt="" />
-      </>
+      <div className='profile_page'>
+        <div className="profile_container">
+          <div className="profile_head">
+            <img src={user.picture} alt="" />
+            <div className="profile_infos">
+              <div className="profile_name">
+                <h1>{user.firstname} {user.lastname}</h1>
+                <p className='occupation'>{user.occupation}</p>
+              </div>
+              <button className='button_profil'>Modifier le profil</button>
+            </div>
+          </div>
+
+          <div className="profile_content">
+              <div className="profile_details">
+                <p>Email:</p>
+                <p>{user.email}</p>
+                <br />
+                <p>Ville:</p>
+                <p>{user.city}</p>
+                <br />
+                <p>Pays:</p>
+                <p>{user.country}</p>
+              </div>
+          </div>
+        </div>
+      </div>
 
   )
 }

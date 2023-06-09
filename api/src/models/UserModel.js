@@ -35,6 +35,7 @@ class UserModel extends BaseModel {
       }
       if (this.queryFields.includes('locations')) {
         this.fields.push(`locations.city`)
+        this.fields.push('locations.country')
       }
       if (this.queryFields.includes('email')) {
         this.fields.push(`logins.email`)
