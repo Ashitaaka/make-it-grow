@@ -6,7 +6,7 @@
   --secondary-color : #fff30d;
   --background-color : #f7faf8;
   --tag-background-color : #f1f6f8;
-  --seperator-color : #dbebe3;
+  --separator-color : #dbebe3;
   --flame-pea-color : #F3976B;
   --roman-color : #E36164;
   --cerise-dark-color : #9B084F;
@@ -17,6 +17,9 @@
   --silver-tree-color : #70AF90;
   --parsley-color : #24673A;
   --zeus-color : #474136;
+
+  /* Separator */
+  --separator : 1px solid #dbebe3;
 
 }
 
@@ -29,5 +32,6 @@
 
 html {
   font-size: 16px;
+  color: var(--primary-color);
 }
 
