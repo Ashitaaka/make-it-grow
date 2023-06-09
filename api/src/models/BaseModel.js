@@ -22,7 +22,7 @@ class BaseModel {
     return this.db
       .query(`
       SELECT ${this.fields}
-      FROM ${this.table}
+      FROM ${this.table}  
       ${this.join}
       `)
   }
