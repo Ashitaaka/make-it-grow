@@ -44,14 +44,14 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO `u206369201_mig_db`.`categories`
-(id, label)
+(id, label, color)
 VALUES
-(1, "Bien-être"),
-(2, "Evènement"),
-(3, "Organisation"),
-(4, "Déplacement"),
-(5, "Ethique"),
-(6, "Développement");
+(1, "Bien-être","--cerise-dark-color"),
+(2, "Evènement","--brick-red-color"),
+(3, "Organisation","--calypso-color"),
+(4, "Déplacement","--parsley-color"),
+(5, "Ethique","--zeus-color "),
+(6, "Développement","--silver-tree-color");
 
 -- -----------------------------------------------------
 -- STATUS
