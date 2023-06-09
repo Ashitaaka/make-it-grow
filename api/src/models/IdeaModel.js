@@ -19,8 +19,6 @@ class IdeaModel extends BaseModel {
       this.fields.push('*')
     } else {
       this.queryFields = fields
-      // id,title,categories,locations,status
-
       if (this.queryFields.includes('id')) {
         this.fields.push(`ideas.id`)
       }
