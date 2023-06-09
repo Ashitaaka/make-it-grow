@@ -3,11 +3,11 @@ const { UserModel } = require('../models')
 
 class UserController extends BaseController {
 
-    constructor(req, res){
+  constructor(req, res) {
 
-        super(req, res)
-        this.model = new UserModel()
-    }
+    super(req, res)
+    this.model = new UserModel(req.query)
+  }
 
 }
 
