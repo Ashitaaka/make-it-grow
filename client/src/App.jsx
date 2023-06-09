@@ -1,6 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
 //import components
-import Profile from './pages/Profile'
 import Home from './pages/Home'
 import Sidebar from './components/sidebar/Sidebar'
 //import css
