@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import './ideaextendedheader.css';
 
 const IdeaExtendedHeader = () => {
-  axios;
   return <div>IdeaExtendedHeader</div>;
 };
 
