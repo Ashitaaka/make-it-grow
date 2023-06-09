@@ -22,15 +22,16 @@ class BaseModel {
     return this.db
       .query(`
       SELECT ${this.fields}
-      FROM ${this.table}
+      FROM ${this.table}  
       ${this.join}
       `)
   }
 
   getById(id) {
+
     return this.db
       .query(`
-      SELECT ${this.fields}
+      SELECT DISTINCT ${this.fields}
       FROM ${this.table}
       ${this.join} 
       WHERE ${this.table}.id  = ?`, [id])
