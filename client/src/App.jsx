@@ -1,6 +1,6 @@
 import {Routes, Route} from 'react-router-dom'
-import Profile from './pages/Profile'
 import Home from './pages/Home'
+import ProfileDetails from './components/ProfileDetails'
 
 function App() {
 
@@ -8,7 +8,7 @@ function App() {
       <div className='app'>
         <Routes>
             <Route path='/' element={<Home />}/>
-            <Route path='/profile/:id' element={<Profile/>}/>
+            <Route path='/profile/:userid' element={<ProfileDetails/>}/>
         </Routes>
       </div>
   )
