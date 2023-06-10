@@ -15,26 +15,26 @@ const Sidebar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
-    <div className='sidebar'>
+    <div className='sidebar_desktop'>
 
-      <div className='sidebar_menu_buttons'>
+      <div className='sidebar_desktop_menu_buttons'>
         <div className='button_container'>
-            <a href='#' className='sidebar_button'>
-              <img className ='sidebar_icon' src={homeIcon} alt='Home' />
+            <a href='#' className='sidebar_desktop_button'>
+              <img className ='sidebar_desktop_icon' src={homeIcon} alt='Home' />
               <span>Home</span>
             </a>
         </div>
         
         <div className='button_container'>
-            <a href='#' className='sidebar_button'>
-              <img className ='sidebar_icon' src={profileIcon} alt='Profile' />
+            <a href='#' className='sidebar_desktop_button'>
+              <img className ='sidebar_desktop_icon' src={profileIcon} alt='Profile' />
               <span>Profile</span>
             </a>
         </div>
         <hr className='separator'/>
         <div className='new_project_button_container'>
-          <a href='#' className='sidebar_button'>
-            <img className ='sidebar_icon' src={addProjectIcon} alt='Nouvelle idée' />
+          <a href='#' className='sidebar_desktop_button'>
+            <img className ='sidebar_desktop_icon' src={addProjectIcon} alt='Nouvelle idée' />
             <span className='new_project_txt'>Ajouter une idée</span>
           </a>
         </div>
@@ -43,8 +43,8 @@ const Sidebar = () => {
       <div className='config_buttons'>
         <hr className='separator'/>
         <div className='button_container'>
-            <a href='#' className='sidebar_button'>
-              <img className ='sidebar_icon' src={filterIcon} alt='filtres' />
+            <a href='#' className='sidebar_desktop_button'>
+              <img className ='sidebar_desktop_icon' src={filterIcon} alt='filtres' />
               <span>Filtres</span>
             </a>
         </div>
