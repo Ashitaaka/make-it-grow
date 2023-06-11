@@ -1,6 +1,13 @@
+.sidebar_space{
+    width:6.5em;
+    height: 100vh;
+    position: relative;
+}
+
 .sidebar_desktop{
     width:6em;
     height: 100vh;
+    z-index: 10;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,6 +36,10 @@
     background-color: var(--background-color);
 }
 
+.active_button{
+    background-color: var(--background-color);
+}
+
 .new_project_button_container{
     transition: background-color .25s ease-in-out;
 }
@@ -47,8 +58,6 @@
 }
 
 .sidebar_desktop a{
-   text-decoration: none;
-   color: var(--primary-color);
    width: 15em;
 }
 
@@ -91,9 +100,10 @@
 
 /* MEDIA QUERIES */
 
-@media (max-width : 720px) {
+@media (max-width : 1024px) {
 
-    .sidebar_desktop{
+    .sidebar_desktop,
+    .sidebar_space{
         display: none;
     }
 
