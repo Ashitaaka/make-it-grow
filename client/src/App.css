@@ -1,9 +1,20 @@
 .app{
     background-color: var(--background-color);
     display: flex;
+    /* flex-direction: column; */
+}
+
+.app_container{
+    display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .separator{
     border : var(--separator)
+}
+
+a{
+    text-decoration: none;
+    color: var(--primary-color);
 }

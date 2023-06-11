@@ -1,0 +1,63 @@
+.top_bar{
+    height: 6em;
+    border-bottom: 2px solid #dbebe3;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+    gap: 3em;
+}
+
+.top_bar .logo{
+    height: 4em;
+}
+
+.top_bar .right_container{
+    display: flex;
+    align-items: center;
+    gap: 3em;
+}
+
+.top_bar .searchbar{
+    display: flex;
+    align-items: center;
+    gap:1em;
+    height: 3em;
+    width: 20em;
+    padding: .7em 1.5em;
+    border-radius: 2em;
+    background-color: #fff;
+}
+
+.top_bar .search_icon,
+.top_bar .notification_icon{
+    height:1.5em;
+}
+
+.top_bar #search_input{
+    width: 100%;
+    border: none;
+    outline: none;
+}
+
+.top_bar .personnal_profile{
+    display: flex;
+    align-items: center;
+    gap: 1.5em;
+}
+
+.top_bar .profile_infos{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 0 0 1em;
+    border-left: 1px solid var(--primary-color);
+}
+
+.top_bar .profile_picture{
+    width: 3em;
+    border-radius: 50%;
+}
+
+.top_bar .profile_name{
+   font-weight: 600;
+}
