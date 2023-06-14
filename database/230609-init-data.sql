@@ -69,7 +69,7 @@ VALUES
 -- -----------------------------------------------------
 
 INSERT INTO `u206369201_mig_db`.`users`
-(id, firstname, lastname, service, occupation, picture, email, password, id_role, id_location)
+(id, firstname, lastname, service, occupation, picture, email, hashed_password, id_role, id_location)
 VALUES
 (1, "Martin", "NOËL", "Comptabilité", "Comptable","/images/profile-pictures/martin.jpg", "martin.noel@makesense.com", "martin", 2, 3 ),
 (2, "Guillaume", "LECLOUT", "Comptabilité", "Comptable","/images/profile-pictures/guillaume.jpg", "guillaume.leclout@makesense.com", "guillaume", 2, 3 ),
