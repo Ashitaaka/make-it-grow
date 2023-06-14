@@ -9,7 +9,7 @@ const IdeaExtendedStatus = () => {
       </div>
 
       <div className="timeline-container">
-          <div className="creation checkpoint">
+          <div className="creation">
             <p>Projet créé</p>
             <div className="creation-dot dot"></div>
           </div>
@@ -29,7 +29,7 @@ const IdeaExtendedStatus = () => {
             <div className="vote-dot dot"></div>
           </div>
 
-          <div className="deadline checkpoint">
+          <div className="deadline">
             <p>Date de fin</p>
             <div className="deadline-dot dot"></div>
           </div>
