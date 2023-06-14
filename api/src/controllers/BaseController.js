@@ -3,10 +3,11 @@ class BaseController {
   res;
   model;
 
-  constructor(req, res) {
+  constructor(req, res, next) {
 
     this.req = req
     this.res = res
+    this.next = next
 
   }
 
