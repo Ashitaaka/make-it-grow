@@ -8,10 +8,14 @@ class UserModel extends BaseModel {
 
     super('users')
 
+
     //securisation si fields vide et split de la chaine issue de la query
     this.init(fields && fields.split(','));
 
   }
+
+
+
   //si la query est vide, on affiche toutes les idees, sinon uniquement les donnes pour la card
   init(fields) {
     if (!fields) {
@@ -45,6 +49,7 @@ class UserModel extends BaseModel {
       LEFT JOIN logins ON logins.id = users.id_login `)
     }
   }
+
 }
 
 module.exports = UserModel;

@@ -4,14 +4,12 @@ import axios from 'axios'
 
 import IdeasCard from './IdeasCard'
 
-import './ideasCard.css'
+import './IdeasCard.css'
 
 
 const IdeasCardsBackground = () => {
 
     const [ideas, setIdeas] = useState([])
-
-    console.log(ideas)
 
     useEffect(()=>{
     axios.get(`http://localhost:5080/api/ideas/?fields=id,title,locations,status,categories,users`)
