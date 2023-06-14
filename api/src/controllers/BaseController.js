@@ -22,9 +22,10 @@ class BaseController {
 
   postItem() {
     this.model.postItem(this.req.body)
-      .then(([results]) => {
-        this.res.status(201).json({ id: results.insertId, ...results })
-      })
+      .then(([result]) => {
+        this.res.status(201).json({ id: result.insertId, ...this.req.body })
+      }
+      )
 
   }
 

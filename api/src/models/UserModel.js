@@ -14,8 +14,6 @@ class UserModel extends BaseModel {
 
   }
 
-
-
   //si la query est vide, on affiche toutes les idees, sinon uniquement les donnes pour la card
   init(fields) {
     if (!fields) {

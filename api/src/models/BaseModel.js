@@ -58,7 +58,8 @@ class BaseModel {
     sql2 = removeLastChar(sql2)
     sql3 = removeLastChar(sql3)
 
-    db.query(`${sql1} (${sql2}) VALUES (${sql3})`, paramVals)
+    return db.query(`${sql1} (${sql2}) VALUES (${sql3})`, paramVals)
+
 
   }
 }
