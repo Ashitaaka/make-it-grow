@@ -37,16 +37,15 @@ class UserModel extends BaseModel {
       if (this.queryFields.includes('occupation')) {
         this.fields.push(`users.occupation`)
       }
+      if (this.queryFields.includes('email')) {
+        this.fields.push(`users.email`)
+      }
       if (this.queryFields.includes('locations')) {
         this.fields.push(`locations.city`)
         this.fields.push('locations.country')
       }
-      if (this.queryFields.includes('email')) {
-        this.fields.push(`logins.email`)
-      }
 
-      this.join.push(`LEFT JOIN locations ON locations.id = users.id_location
-      LEFT JOIN logins ON logins.id = users.id_login `)
+      this.join.push(`LEFT JOIN locations ON locations.id = users.id_location`)
     }
   }
 
