@@ -7,7 +7,7 @@ import IdeaExtendedDetails from './ideaExtendedDetails/IdeaExtendedDetails';
 
 const IdeaExtended = () => {
   return (
-    <div>
+    <div className="idea-extended-container">
       <IdeaExtendedHeader />
       <IdeaExtendedStatus />
       <IdeaExtendedUsers />
