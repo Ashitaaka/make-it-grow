@@ -1,0 +1,124 @@
+.ideas_cards_background{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+    gap: 2rem;
+    grid-auto-rows: 18rem;
+    padding: 1.5rem;
+    
+    
+}
+
+.card_background{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1em;
+    background-color: white;
+}
+
+.card_categories{
+    margin-top: 1rem;
+    display: inline;
+    padding: 0.3rem 0.8rem;
+    white-space: nowrap;
+    border-radius: 1.5em;
+    font-size: 0.3em;
+    font-weight: bold;
+    transition: font-size 0.5s ease;
+   
+}
+
+.card_background:hover .card_categories {
+    font-size: 0.7em;
+    color: black;
+    
+}
+
+
+.card_title{
+    font-size: 1.2em;
+    font-weight: bold;
+    color:var(--primary-color);
+}
+
+.card_city{
+    background-color: var(--tag-background-color);
+    color: var(--primary-color) ;
+    display: inline;
+    padding: 0.3rem 0.8rem;
+    border-radius: 1em;
+    font-size: 0.8em;
+}
+
+.card_state{
+    display: inline;
+    background-color: var(--secondary-color);
+    padding: 0.3em 0.8em ;
+    border-radius: 1em;
+    font-weight: bold;
+}
+
+.card_state_background{
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+/* var can't be call on jsx, so we create class with name of variable to change color dynamicly*/
+
+.card_number_day_left{
+    color: var(--primary-color);
+}
+
+.--flame-pea-color{
+    background-color: var(--flame-pea-color);
+    color: var(--flame-pea-color);
+}
+
+.--roman-color{
+    background-color: var(--roman-color);
+    color: var(--roman-color);
+}
+
+.--cerise-dark-color{
+    background-color: var(--cerise-dark-color);
+    color: var(--cerise-dark-color);
+}
+
+.--brick-red-color{
+    background-color: var(--brick-red-color);
+    color: var(--brick-red-color);
+}
+
+.--sahara-sand-color{
+    background-color: var(--sahara-sand-color);
+    color: var(--sahara-sand-color);
+}
+
+.--atlantis-color{
+    background-color: var(--atlantis-color);
+    color: var(--atlantis-color);
+}
+
+.--calypso-color{
+    background-color: var(--calypso-color);
+    color: var(--calypso-color);
+}
+
+.--silver-tree-color{
+    background-color: var(--silver-tree-color);
+    color: var(--silver-tree-color);
+}
+
+.--parsley-color{
+    background-color: var(--parsley-color);
+    color: var(--parsley-color);
+}
+
+.--zeus-color{
+    background-color: var(--zeus-color);
+    color: var(--zeus-color);
+}
+

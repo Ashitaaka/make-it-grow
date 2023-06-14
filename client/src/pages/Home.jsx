@@ -1,9 +1,13 @@
 import React from 'react';
 import IdeaExtended from '../components/ideas/ideaExtended/ideaExtended';
+import React from 'react';
+import IdeasCardsBackground from '../components/ideas/ideasCard/IdeasCardsBackground';
+import './home.css';
 
 const Home = () => {
   return (
-    <div>
+    <div className="home_background">
+      <IdeasCardsBackground />
       <IdeaExtended />
     </div>
   );

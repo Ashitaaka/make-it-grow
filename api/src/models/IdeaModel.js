@@ -53,6 +53,8 @@ class IdeaModel extends BaseModel {
       }
       if (this.queryFields.includes('categories')) {
         this.fields.push(`categories.label AS category`)
+        this.fields.push(`categories.color`)
+
       }
       if (this.queryFields.includes('locations')) {
         this.fields.push(`locations.city`)
