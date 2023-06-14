@@ -1,0 +1,108 @@
+.create_idea_bckg{
+    padding-top: 4em;
+    display: flex;
+    justify-content: center;
+}
+
+.create_idea_background_form{
+    background-color: white;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+    border-radius: 1em;
+}
+
+.categorie_name{
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+/* section TITLE */
+.title_form_section{
+    padding-top: 1em;
+    width: 100%;
+}
+
+.title_form{
+    width: 100%;
+    font-size: 2em;
+    padding: 0.3em;
+    color: var(--primary-color-light);
+    border: none;
+    border-bottom: solid 0.08em var(--primary-color-light);
+    transition: padding-bottom 0.3s;
+
+}
+
+.title_form:focus-visible {
+    border-bottom: solid 0.08em var(--primary-color);
+    outline: none;
+    padding-bottom: 0.6em;
+}
+
+/* section categorie-date-place */
+
+.section_date_categorie_place{
+    padding: 2em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+/*date-element*/
+
+.form_date_picker{
+    background-color: var(--background-color);
+    padding-top: 0.6em ;
+    padding-bottom: 0.6em ;
+    text-align: center;
+    font-size: 1em;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    border: none;
+    border-radius: 0.8em;
+}
+
+.date_square_section{
+    position: relative;
+    display: flex;
+}
+
+.react-datepicker{
+    font-family: 'Raleway', sans-serif ;
+}
+
+.react-datepicker__header {
+    background-color: var(--background-color);
+    border-bottom: 1px solid #ccc;
+  }
+
+.react-datepicker__navigation{
+    color: var(--background-color);
+}
+
+.react-datepicker__current-month{
+    color: var(--primary-color);
+}
+
+.react-datepicker__day--selected{
+    background-color: var(--primary-color);
+}
+
+.arrow_down{
+    height: 0.6em;
+    width: 0.6em;
+    transform: rotate(45deg); 
+    position: absolute;
+    top: 0.8em;
+    right: 0.8em;
+    border-bottom: solid 0.12em var(--primary-color);
+    border-right:  solid 0.12em var(--primary-color);
+    
+}
+

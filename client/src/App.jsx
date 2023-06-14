@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Sidebar from './components/sidebar/Sidebar'
 import ProfileDetails from './components/ProfileDetails/ProfileDetails'
 import TopBar from './components/top bar/TopBar'
+import CreateIdea from './components/ideas/createIdea/createIdea'
 //import css
 import './App.css'
 
@@ -21,6 +22,7 @@ function App() {
           <Routes>
               <Route path='/' element={<Home />}/>
               <Route path='/profile/:userid' element={<ProfileDetails/>}/>
+              <Route path='/newidea' element={<CreateIdea />}/>
           </Routes>
         </div>
       </div>
