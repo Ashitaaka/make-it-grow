@@ -30,6 +30,16 @@ class UserController extends BaseController {
       })
   }
 
+  getByEmailWithPass() {
+    this.model.getByEmailWithPass(this.req.body.email)
+      .then(([[user]]) => {
+
+        this.req.users = user;
+        this.next();
+
+      })
+  }
+
 }
 
 module.exports = UserController;

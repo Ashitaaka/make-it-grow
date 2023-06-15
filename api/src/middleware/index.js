@@ -1,5 +1,5 @@
 const ifUserAlreadyExists = require('./ifUserAlreadyExists')
-const { hashedPassword, hidePassword } = require("./auth.js");
+const { hashedPassword, hidePassword, verifyPassword } = require("./auth.js");
 const { validateRequest } = require('./validators')
 
 module.exports = {
@@ -7,4 +7,5 @@ module.exports = {
   hashedPassword,
   hidePassword,
   validateRequest,
+  verifyPassword
 }
