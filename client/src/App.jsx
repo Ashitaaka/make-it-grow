@@ -6,6 +6,7 @@ import Sidebar from './components/sidebar/Sidebar'
 import ProfileDetails from './components/ProfileDetails/ProfileDetails'
 import TopBar from './components/top bar/TopBar'
 import Login from './pages/login/Login'
+import Register from './pages/register/Register'
 //import css
 import './App.css'
 
@@ -18,7 +19,13 @@ function App() {
   //Which button is active?
   const [clickedButton , setClickedButton] = useState("")
 
-  if(!isLoggedIn) return <Login />
+  if(!isLoggedIn) 
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  )
 
   if(isLoggedIn)
   return (

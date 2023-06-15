@@ -43,7 +43,8 @@ const verifyPassword = (req, res) => {
           if(!isVerified){
               res.sendStatus(404);
           }else{
-              res.send("Mot de pass valide");
+            
+              res.status(200).send(req.users);
           }
       })
       .catch((err) => {

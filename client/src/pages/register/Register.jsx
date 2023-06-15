@@ -2,13 +2,12 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 // Import css
-import './login.css'
+import './register.css'
 //import assets
 import mig_logo from '../../assets/logo_MIG.svg'
 import gellule from '../../assets/icons/gellule.svg'
 
-const login = () => {
-
+const Register = () => {
     const [form, setForm] = useState({email : "", password: ""});
     const [error, setError] = useState(false);
 
@@ -18,7 +17,7 @@ const login = () => {
 
     const formSending = (e) =>{
         e.preventDefault()
-        axios.post('http://localhost:5080/api/users/login', form)
+        axios.post('http://localhost:5080/api/users/register', form)
             .then((res) => {
                 console.log(res.data);
                 setError(false);
@@ -33,26 +32,29 @@ const login = () => {
     };
 
   return (
-    <div className='login'>
+    <div className='register'>
         <img className="gellule_small" src={gellule} alt="" />
         <img className="gellule_mid" src={gellule} alt="" />
         <img className="gellule_large" src={gellule} alt="" />
 
        <div className="left_container">
-           <div className="login_container">
+           <div className="register_container">
                 <img className="logo" src={mig_logo} alt="Make It Grow" />
 
                 <div className="login_register">
-                    <Link to="#"><p style={{fontWeight:'600'}}>Login</p></Link>
-                    <Link to="/register"><p>Créer un nouveau compte</p></Link>
+                    <Link to="/login"><p>Login</p></Link>
+                    <Link to="#"><p style={{fontWeight:'600'}}>Créer un nouveau compte</p></Link>
                 </div>
 
-                <form className="login_form" action="" onSubmit={formSending} onChange={formChanges}>
+                <form className="register_form" action="" onSubmit={formSending} onChange={formChanges}>
+                    <div className="fullname">
+                        <input type="text" id="firstname" name="firstname" placeholder="Prénom" required/>
+                        <input type="text" id="lastname" name="lastname" placeholder="Nom" required/>
+                    </div>
                     <input type="text" id="email" name="email" placeholder="Email" required/>
                     <input type="text" id="password" name="password" placeholder="Password" required/>
-                    {error? <p className='login_error'>Email ou mot de passe invalide</p> : null}
-                    <Link to="#"><p className="forgotten_password">Mot de passe oublié</p></Link>
-                    <button type='submit'>Connectez-vous</button>
+                    {error? <p className='register_error'>Email ou mot de passe invalide</p> : null}
+                    <button type='submit'>Créez un compte</button>
                 </form>
            </div>
        </div>
@@ -60,4 +62,4 @@ const login = () => {
   );
 }
 
-export default login
+export default Register
