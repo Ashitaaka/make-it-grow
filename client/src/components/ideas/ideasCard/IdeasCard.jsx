@@ -7,7 +7,7 @@ const IdeasCard = ({idea}) => {
   return (
     <div className='card_background'>
         <div > 
-        <p className={`card_categories ${idea.color}`} >
+        <p style={{backgroundColor : `var(${idea.color})` }} className={"card_categories"} >
             {idea.category}</p>
         </div>
         <p className="card_title">

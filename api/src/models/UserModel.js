@@ -14,6 +14,11 @@ class UserModel extends BaseModel {
 
   }
 
+  getByEmailWithPass(email) {
+    return this.db
+      .query("SELECT * FROM users WHERE email = ?", [email])
+  }
+
   //si la query est vide, on affiche toutes les idees, sinon uniquement les donnes pour la card
   init(fields) {
     if (!fields) {
