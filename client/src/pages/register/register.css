@@ -1,0 +1,99 @@
+.register{
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 2em;
+}
+
+.gellule_small, 
+.gellule_mid, 
+.gellule_large{
+    position: absolute;
+}
+
+.gellule_small{
+    width: 14em;
+    left: 50%;
+    top: 5%;
+    transform: rotate(20deg);
+}
+
+.gellule_mid{
+    height: 11em;
+    left: 25%;
+    top: calc(100% - 5em);
+    transform: rotate(-25deg);
+}
+
+.gellule_large{
+    width: 30em;
+    left: calc(100% - 15em);
+    top: 40%;
+    transform: rotate(-30deg);
+}
+
+.left_container{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.register_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20em;
+    min-width: 16em;
+}
+
+p{
+    font-size: .85em;
+}
+
+.logo{
+    height: 4em;
+    margin-bottom: 2.5em ;
+}
+
+.login_register{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.register_form{
+    width: 100%;
+}
+
+.register_form input,
+.register_form select{
+    margin-top: 1.5em;
+    padding: .85em 1.5em;
+    border-radius: 2em;
+    width: 100%;
+    border: 1px solid var(--primary-color-light);
+}
+
+select{
+    margin-bottom: 2em;
+}
+
+button{
+    width: 100%;
+    padding: .85em 2em;
+    border-radius: 2.5em;
+    border: none;
+    color: var(--ultra-light-color);
+    background-color: var(--primary-color);
+}
+
+.register_error{
+    color: red;
+    margin : 1em 0
+}

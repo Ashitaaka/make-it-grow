@@ -41,9 +41,10 @@ const verifyPassword = (req, res) => {
       .verify(req.users.hashed_password, req.body.password)
       .then((isVerified) => {
           if(!isVerified){
-              res.sendStatus(401);
+              res.sendStatus(404);
           }else{
-              res.send("Mot de pass valide");
+            
+              res.status(200).send(req.users);
           }
       })
       .catch((err) => {
