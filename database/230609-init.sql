@@ -13,15 +13,6 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`roles` (
     PRIMARY KEY (`id`));
 
 -- -----------------------------------------------------
--- Table `u206369201_mig_db`.`login`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`logins` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `email` VARCHAR(250) NOT NULL,
-    `password` VARCHAR(255) NOT NULL,
-    PRIMARY KEY (`id`));
-
--- -----------------------------------------------------
 -- Table `u206369201_mig_db`.`locations`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`locations` (
@@ -38,20 +29,18 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`users` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `firstname` VARCHAR(150) NOT NULL,
     `lastname` VARCHAR(150) NOT NULL,
-    `occupation` VARCHAR(150) NOT NULL,
-    `service` VARCHAR(150) NOT NULL,
-    `picture` VARCHAR(150) NOT NULL,
-    `phone` VARCHAR(40) NULL,
-    `id_role` INT NOT NULL,
-    `id_login` INT NOT NULL,
+    `occupation` VARCHAR(150) NOT NULL DEFAULT "",
+    `service` VARCHAR(150) NOT NULL DEFAULT "",
+    `picture` VARCHAR(150) NOT NULL DEFAULT "",
+    `phone` VARCHAR(40) NULL DEFAULT "",
+    `email` VARCHAR(250) NOT NULL,
+    `hashed_password` VARCHAR(255) NOT NULL,
+    `id_role` INT NOT NULL DEFAULT 1,
     `id_location` INT NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_user_role`
         FOREIGN KEY (`id_role`)
         REFERENCES `u206369201_mig_db`.`roles` (`id`),
-    CONSTRAINT `fk_user_login`
-        FOREIGN KEY (`id_login`)
-        REFERENCES `u206369201_mig_db`.`logins` (`id`),
     CONSTRAINT `fk_user_location`
     FOREIGN KEY (`id_location`)
     REFERENCES `u206369201_mig_db`.`locations` (`id`));

@@ -1,9 +1,16 @@
 const { Router } = require('express');
 const { UserController } = require('../controllers');
+const { ifUserAlreadyExists, hashedPassword, hidePassword, validateRequest, verifyPassword } = require('../middleware/index')
 
 const userRouter = Router();
 
-userRouter.get("", (req, res) => new UserController(req, res).getAll())
-userRouter.get("/:id", (req, res) => new UserController(req, res).getById())
+//ROUTES USERS
+userRouter.get("", (req, res, next) => new UserController(req, res, next).getAll(), hidePassword)
+userRouter.get("/:id", (req, res, next) => new UserController(req, res, next).getById(), hidePassword)
+
+userRouter.post("/register", ifUserAlreadyExists, validateRequest, hashedPassword, (req, res) => new UserController(req, res).postItem())
+userRouter.post("/login", validateRequest, (req, res, next) => new UserController(req, res, next).getByEmailWithPass(), verifyPassword)
+
+
 
 module.exports = userRouter;
