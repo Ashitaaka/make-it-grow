@@ -41,6 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
 }
 
 .register_container{
@@ -70,7 +71,8 @@ p{
     width: 100%;
 }
 
-.register_form input{
+.register_form input,
+.register_form select{
     margin-top: 1.5em;
     padding: .85em 1.5em;
     border-radius: 2em;
@@ -78,10 +80,8 @@ p{
     border: 1px solid var(--primary-color-light);
 }
 
-.forgotten_password{
-    text-align: right;
-    color: var(--primary-color-light);
-    margin: 2em 0 2.5em 0;
+select{
+    margin-bottom: 2em;
 }
 
 button{

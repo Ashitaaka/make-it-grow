@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 // Import css
@@ -8,10 +8,29 @@ import mig_logo from '../../assets/logo_MIG.svg'
 import gellule from '../../assets/icons/gellule.svg'
 
 const Register = () => {
-    const [form, setForm] = useState({email : "", password: ""});
+    const [form, setForm] = useState({
+        firstname: "",
+        lastname: "",
+        email : "",
+        password: "",
+        id_location : ""
+    });
     const [error, setError] = useState(false);
+    const [locations, setLocations] = useState([])
+    const [isLocationsLoaded, setIsLocationsLoaded] = useState(false)
+
+    console.log(form);
+
+    useEffect(()=>{
+        axios.get('http://localhost:5080/api/locations')
+            .then((res) => {
+                setLocations(res.data)
+                setIsLocationsLoaded(true);
+            })
+    },[])
 
     const formChanges = (e) =>{
+        console.log(e.target.name);
         setForm({ ...form, [e.target.name] : e.target.value })
     };
 
@@ -27,8 +46,11 @@ const Register = () => {
                 setError(true);
             });
             
+        document.getElementById("firstname").value = "";
+        document.getElementById("lastname").value = "";
         document.getElementById("email").value = "";
         document.getElementById("password").value = "";
+        document.getElementById("id_location").value = "";
     };
 
   return (
@@ -53,6 +75,15 @@ const Register = () => {
                     </div>
                     <input type="text" id="email" name="email" placeholder="Email" required/>
                     <input type="text" id="password" name="password" placeholder="Password" required/>
+                    {/* <input type="text" id="repeated_password" name="repeated_password" placeholder="Confirmez votre password" required/> */}
+                    <select  name="id_location" id="id_location" defaultValue="" required>
+                        <option value="" disabled hidden>
+                            Sélectionnez une option
+                        </option>
+                        {isLocationsLoaded && locations.map((location)=>(
+                            <option key={location.id} value={location.id} >{location.country} - {location.city}</option>
+                        ))}
+                    </select>
                     {error? <p className='register_error'>Email ou mot de passe invalide</p> : null}
                     <button type='submit'>Créez un compte</button>
                 </form>
