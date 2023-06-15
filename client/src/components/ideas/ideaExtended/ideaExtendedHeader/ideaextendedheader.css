@@ -1,6 +1,7 @@
 .header-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .top-header {
   display: flex;
@@ -8,22 +9,30 @@
   justify-content: center;
 }
 
+.closing-button {
+  width: 3em;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+
 .tags-container {
   display: flex;
+  flex: 2;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  width: 70vw;
-  padding: 3rem;
+  justify-content: flex-end;
+  padding: 2rem;
+  gap: 2em;
 }
 
 .location-tag {
-  padding: 0.5em 1.2em;
+  padding: 0.25em 0.8em;
   border-radius: 1.2em;
   background-color: var(--background-color);
 }
 
 .status-tag {
-  padding: 0.5em 1.2em;
+  padding: 0.25em 0.8em;
   border-radius: 1.2em;
+  background-color: var(--background-color);
 }
