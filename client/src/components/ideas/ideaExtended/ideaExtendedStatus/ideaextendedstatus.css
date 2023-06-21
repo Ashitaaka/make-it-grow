@@ -1,57 +1,57 @@
-.idea-status-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5em;
-    padding: 0 4em;
+.idea-status-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5em;
+  padding: 0 4em;
 }
 
 .idea-title {
-    width: 65%;
-    text-align: center;
-    padding-top: 1.5em;
-}   
-
-.timeline-container{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
+  width: 65%;
+  text-align: center;
 }
 
-.creation{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 0.5em;
+.timeline-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 
-.checkpoint{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5em;
+.creation {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5em;
 }
 
-.deadline{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-end;
-    gap: 0.5em;
+.checkpoint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
 }
 
-.dot{
-    width: 1em;
-    height: 1em;
-    background: var(--primary-color);
-    border-radius: 50px;
+.deadline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.5em;
 }
 
-.rod{
-    width:100%;
-    border: 3px solid;
-    position: absolute;
-    top: 32px;
+.dot {
+  width: 1em;
+  height: 1em;
+  border-radius: 50px;
+  background-color: var(--tag-background-color);
+}
+
+.rod {
+  width: 100%;
+  border: 3px solid;
+  position: absolute;
+  top: 32px;
+  color: var(--tag-background-color);
 }

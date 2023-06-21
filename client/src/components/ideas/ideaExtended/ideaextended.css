@@ -4,6 +4,7 @@
   align-items: center;
   width: 80vw;
   height: 90vh;
-  background-color: #d08c8c;
+  background-color: var(--ultra-light-color);
   border-radius: 1.5rem;
+  gap: 2.5em;
 }

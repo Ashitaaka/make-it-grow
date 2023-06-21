@@ -18,6 +18,9 @@ const IdeaExtended = () => {
   return (
     <div className="idea-extended-container">
       <IdeaExtendedHeader idea={idea} />
+      <IdeaExtendedStatus idea={idea} />
+      <IdeaExtendedUsers users={idea.users} />
+      <IdeaExtendedDetails idea={idea} users={idea.users} />
     </div>
   );
 };
