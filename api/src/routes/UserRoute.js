@@ -9,7 +9,7 @@ userRouter.get("", (req, res, next) => new UserController(req, res, next).getAll
 userRouter.get("/:id", (req, res, next) => new UserController(req, res, next).getById(), hidePassword)
 
 userRouter.post("/register", ifUserAlreadyExists, validateRequest, hashedPassword, (req, res) => new UserController(req, res).postItem())
-userRouter.post("/login", validateRequest, (req, res, next) => new UserController(req, res, next).getByEmailWithPass(), verifyPassword)
+userRouter.post("/login", (req, res, next) => new UserController(req, res, next).getByEmailWithPass(), verifyPassword)
 
 
 
