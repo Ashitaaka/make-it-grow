@@ -6,6 +6,9 @@ const {
   hidePassword,
   validateRequest,
   verifyPassword,
+  tokenEmission,
+  authorizationUser,
+  authorizationAdmin,
 } = require("../middleware/index");
 
 const userRouter = Router();
@@ -13,6 +16,7 @@ const userRouter = Router();
 //ROUTES USERS
 userRouter.get(
   "",
+  authorizationAdmin,
   (req, res, next) => new UserController(req, res, next).getAll(),
   hidePassword
 );
@@ -33,7 +37,8 @@ userRouter.post(
 userRouter.post(
   "/login",
   (req, res, next) => new UserController(req, res, next).getByEmailWithPass(),
-  verifyPassword
+  verifyPassword,
+  tokenEmission
 );
 
 userRouter.put("/:id", (req, res, next) =>
