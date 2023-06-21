@@ -18,8 +18,6 @@ const ProfileDetails = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [locations, setLocations] = useState([]);
 
-  console.log(user);
-
   useEffect(() => {
     axios
       .get(
@@ -104,6 +102,7 @@ const ProfileDetails = () => {
                 type="text"
                 name="firstname"
                 id="firstname"
+                required
               />
             </div>
             <div>
@@ -113,6 +112,7 @@ const ProfileDetails = () => {
                 type="text"
                 name="lastname"
                 id="lastname"
+                required
               />
             </div>
             <div>
@@ -134,8 +134,11 @@ const ProfileDetails = () => {
               />
             </div>
             <div>
-              <label htmlFor="id_location">Sélectionnez une option:</label>
-              <select name="id_location" id="id_location">
+              <label htmlFor="id_location">Sélectionnez un lieu:</label>
+              <select name="id_location" id="id_location" defaultValue="">
+                <option value="" disabled hidden>
+                  {`${user.country} - ${user.city}`}
+                </option>
                 {locations &&
                   locations.map((location) => (
                     <option key={location.id} value={location.id}>

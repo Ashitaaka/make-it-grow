@@ -44,11 +44,8 @@ const Register = () => {
         setError(true);
       });
 
-    // document.getElementById("firstname").value = "";
-    // document.getElementById("lastname").value = "";
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
-    // document.getElementById("id_location").value = "";
   };
 
   return (
