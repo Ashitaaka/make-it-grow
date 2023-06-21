@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+// Import component
+import { getAllLocations, registerUser } from '../../services/httpServices'
 // Import css
 import "./register.css";
 //import assets
@@ -8,44 +10,49 @@ import mig_logo from "../../assets/logo_MIG.svg";
 import gellule from "../../assets/icons/gellule.svg";
 
 const Register = () => {
-  const [form, setForm] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    id_location: "",
-  });
-
-  const [formError, setFormError] = useState();
-  const [locations, setLocations] = useState([]);
-  const [isLocationsLoaded, setIsLocationsLoaded] = useState(false);
-
-  useEffect(() => {
-    axios.get("http://localhost:5080/api/locations").then((res) => {
-      setLocations(res.data);
-      setIsLocationsLoaded(true);
+    const [form, setForm] = useState({
+        firstname: "",
+        lastname: "",
+        email : "",
+        password: "",
+        id_location : ""
     });
-  }, []);
+    const [formError, setFormError] = useState([]);
+    const [locations, setLocations] = useState([])
+    const [isLocationsLoaded, setIsLocationsLoaded] = useState(false)
 
-  const formChanges = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
 
-  const formSending = (e) => {
-    e.preventDefault();
-    axios
-      .post("http://localhost:5080/api/users/register", form)
-      .then((res) => {
-        console.log(res.data);
-        setError(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(true);
-      });
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-  };
+    useEffect(()=>{
+        getAllLocations()
+            .then((res) => {
+                setLocations(res)
+                setIsLocationsLoaded(true);
+            })
+            .catch((error) =>{
+                setFormError(error);
+                setIsLocationsLoaded(false);
+        }); 
+    },[])
+
+    const formChanges = (e) =>{
+        setForm({ ...form, [e.target.name] : e.target.value })
+    };
+
+    const formSending = (e) =>{
+        e.preventDefault();
+        
+        registerUser(form)
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                setFormError(error);
+            });
+            
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+    };
+
 
   return (
     <div className="register">
