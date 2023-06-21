@@ -133,20 +133,6 @@ const ProfileDetails = () => {
                 id="occupation"
               />
             </div>
-            <div>
-              <label htmlFor="id_location">Sélectionnez un lieu:</label>
-              <select name="id_location" id="id_location" defaultValue="">
-                <option value="" disabled hidden>
-                  {`${user.country} - ${user.city}`}
-                </option>
-                {locations &&
-                  locations.map((location) => (
-                    <option key={location.id} value={location.id}>
-                      {location.country} - {location.city}
-                    </option>
-                  ))}
-              </select>
-            </div>
           </div>
           <button id="update_button" type="submit">
             Confirmez les modifications

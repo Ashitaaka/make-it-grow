@@ -107,8 +107,7 @@
   gap: 1em;
 }
 
-.update_content input,
-.update_content select {
+.update_content input {
   width: 100%;
   padding: 0.85em 1.5em;
   border-radius: 2em;
@@ -120,7 +119,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2em;
+  gap: 4em;
 }
 
 #update_button {
