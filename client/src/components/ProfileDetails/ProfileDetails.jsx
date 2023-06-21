@@ -5,18 +5,12 @@ import { useParams } from "react-router-dom";
 import "./profiledetails.css";
 
 const ProfileDetails = () => {
-  const [updateForm, setUpdateForm] = useState({
-    firstname: "",
-    lastname: "",
-    service: "",
-    occupation: "",
-    id_location: "",
-  });
-
   const { userid } = useParams();
   const [user, setUser] = useState({});
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [locations, setLocations] = useState([]);
+
+  const [updateForm, setUpdateForm] = useState({});
 
   useEffect(() => {
     axios
@@ -24,9 +18,15 @@ const ProfileDetails = () => {
         `http://localhost:5080/api/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
       )
       .then((res) => res.data)
-      .then((data) => {
-        setUser(...data);
+      .then(([data]) => {
+        setUser(data);
         setIsDataLoaded(true);
+        setUpdateForm({
+          firstname: data.firstname,
+          lastname: data.lastname,
+          service: data.service,
+          occupation: data.occupation,
+        });
       });
   }, []);
 
@@ -48,7 +48,7 @@ const ProfileDetails = () => {
   const updateformSending = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5080/api/users/${userid}/update`, updateForm)
+      .put(`http://localhost:5080/api/users/${userid}`, updateForm)
       .then((res) => {
         setError(false);
       })
@@ -88,17 +88,13 @@ const ProfileDetails = () => {
 
       <div className="update_profile">
         <h2>Modifiez vos informations</h2>
-        <form
-          className="update_form"
-          action=""
-          onSubmit={updateformSending}
-          onChange={updateformChanges}
-        >
+        <form className="update_form" action="" onSubmit={updateformSending}>
           <div className="update_content">
             <div>
               <label htmlFor="firstname"> Prenom : </label>
               <input
-                defaultValue={user.firstname}
+                onChange={updateformChanges}
+                value={updateForm.firstname}
                 type="text"
                 name="firstname"
                 id="firstname"
@@ -108,7 +104,8 @@ const ProfileDetails = () => {
             <div>
               <label htmlFor="lastname"> NOM : </label>
               <input
-                defaultValue={user.lastname}
+                onChange={updateformChanges}
+                value={updateForm.lastname}
                 type="text"
                 name="lastname"
                 id="lastname"
@@ -118,7 +115,8 @@ const ProfileDetails = () => {
             <div>
               <label htmlFor="service"> Service : </label>
               <input
-                defaultValue={user.service}
+                onChange={updateformChanges}
+                value={updateForm.service}
                 type="text"
                 name="service"
                 id="service"
@@ -127,7 +125,8 @@ const ProfileDetails = () => {
             <div>
               <label htmlFor="occupation"> Fonction : </label>
               <input
-                defaultValue={user.occupation}
+                onChange={updateformChanges}
+                value={updateForm.occupation}
                 type="text"
                 name="occupation"
                 id="occupation"

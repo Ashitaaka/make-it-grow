@@ -36,7 +36,7 @@ userRouter.post(
   verifyPassword
 );
 
-userRouter.put("/:id/update", (req, res, next) =>
+userRouter.put("/:id", (req, res, next) =>
   new UserController(req, res, next).updateItem()
 );
 
