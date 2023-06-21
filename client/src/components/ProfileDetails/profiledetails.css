@@ -8,7 +8,7 @@
   gap: 2em;
 }
 
-.profile_container{
+.profile_container {
   width: 80%;
   max-width: 860px;
   height: 35%;
@@ -20,8 +20,9 @@
   padding: 2em;
 }
 
-.profile_head, .profile_content {
-  flex : 1;
+.profile_head,
+.profile_content {
+  flex: 1;
 }
 
 .profile_head {
@@ -50,26 +51,24 @@
 }
 
 .profile_name h1 {
-
   font-size: 1.25em;
-
 }
 
 .button_profil {
   background-color: var(--primary-color);
   border-style: none;
-  color: white ;
+  color: white;
   padding: 0.7em 2em;
   border-radius: 2em;
-
 }
+
 .profile_content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.update_profile{
+.update_profile {
   width: 80%;
   max-width: 860px;
   background-color: #fff;
@@ -78,10 +77,10 @@
   align-items: center;
   border-radius: 2em;
   padding: 3em;
-  gap: 2em;
+  gap: 3em;
 }
 
-.update_profile h2{
+.update_profile h2 {
   width: 100%;
   text-align: center;
 }
@@ -89,27 +88,44 @@
 .update_content {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+
+  /* justify-content: space-between; */
   gap: 2em;
-  align-items: center;
 }
 
-.left_fields, .right_fields {
+.update_content div {
+  width: calc(50% - 2em);
+}
+
+.left_fields,
+.right_fields {
   flex: 1;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
 }
 
-.update_content input, .update_content select  {
+.update_content input,
+.update_content select {
   width: 100%;
-  padding: .85em 1.5em;
+  padding: 0.85em 1.5em;
   border-radius: 2em;
-  border : 1px solid var(--primary-color-light);
+  border: 1px solid var(--primary-color-light);
   margin-top: 1em;
 }
 
-label  {
-  margin-top: 4em;
+.update_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2em;
 }
 
-
-
-
+#update_button {
+  width: auto;
+  margin: auto;
+  padding: 1em 2em;
+  border-radius: 2em;
+}
