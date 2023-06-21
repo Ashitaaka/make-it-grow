@@ -18,10 +18,12 @@ const ProfileDetails = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [locations, setLocations] = useState([]);
 
+  console.log(user);
+
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5080/api/users/${userid}/?fields=id,firstname,lastname,picture,occupation,locations,email`
+        `http://localhost:5080/api/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
       )
       .then((res) => res.data)
       .then((data) => {
@@ -48,18 +50,13 @@ const ProfileDetails = () => {
   const updateformSending = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:5080/api/users/update", updateForm)
+      .put(`http://localhost:5080/api/users/${userid}/update`, updateForm)
       .then((res) => {
         setError(false);
       })
       .catch((error) => {
         setError(true);
       });
-
-    document.getElementById("firstname").value = "";
-    document.getElementById("lastname").value = "";
-    document.getElementById("service").value = "";
-    document.getElementById("occupation").value = "";
   };
 
   return !isDataLoaded ? null : (
@@ -103,30 +100,42 @@ const ProfileDetails = () => {
             <div>
               <label htmlFor="firstname"> Prenom : </label>
               <input
-                placeholder={user.firstname}
+                defaultValue={user.firstname}
                 type="text"
                 name="firstname"
+                id="firstname"
               />
             </div>
             <div>
               <label htmlFor="lastname"> NOM : </label>
-              <input placeholder={user.lastname} type="text" name="lastname" />
+              <input
+                defaultValue={user.lastname}
+                type="text"
+                name="lastname"
+                id="lastname"
+              />
             </div>
             <div>
               <label htmlFor="service"> Service : </label>
-              <input placeholder={user.service} type="text" name="service" />
+              <input
+                defaultValue={user.service}
+                type="text"
+                name="service"
+                id="service"
+              />
             </div>
             <div>
               <label htmlFor="occupation"> Fonction : </label>
               <input
-                placeholder={user.occupation}
+                defaultValue={user.occupation}
                 type="text"
                 name="occupation"
+                id="occupation"
               />
             </div>
             <div>
               <label htmlFor="id_location">Sélectionnez une option:</label>
-              <select name="id_location">
+              <select name="id_location" id="id_location">
                 {locations &&
                   locations.map((location) => (
                     <option key={location.id} value={location.id}>
