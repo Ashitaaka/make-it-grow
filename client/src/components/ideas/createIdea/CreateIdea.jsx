@@ -15,10 +15,7 @@ const CreateIdea = () => {
   const [categorys, setCategory] = useState([]);
   const[filterCategorys, setFilterCategorys] = useState([])
 
-  
 
-  console.log(categorys)
- 
   const handleTitleChange = (e) => {
     setTitle(e.target.value)
   }
@@ -42,6 +39,21 @@ const CreateIdea = () => {
         .then((res)  => res.data)
         .then((data)=> setCategory(data))
     },[])
+
+
+  // Take all the categorys from the bd and create a new Array with no repeat categorys
+  const noRepeatCategorys = []
+
+  for (let i = 0; i < categorys.length; i++) {
+    const valeur = categorys[i];
+    if (!noRepeatCategorys.includes(valeur)) {
+      noRepeatCategorys.push(valeur);
+    }
+  }
+
+  console.log(noRepeatCategorys)
+
+  
 
   return (
     <div className='create_idea_bckg'>
@@ -81,11 +93,11 @@ const CreateIdea = () => {
           <div className="section_categorie">
             <p className='categorie_name'>Catégorie</p>
             <label htmlFor="category"></label>
-            <select id="category" value={categorys} onChange={handleCategoryChange}>
+            <select id="category" value={choosenCategory} onChange={handleCategoryChange} >
               <option value="">Sélectionnez une catégorie</option>
-              {categorys.map((category) => (
+              {noRepeatCategorys.map((category, index) => (
 
-                <option value={category.category}>{category.category}</option>
+                < option  key={index} value={category.category}>{category.category}</option>
               ))}
             </select>
             
