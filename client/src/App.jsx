@@ -12,7 +12,7 @@ import "./App.css";
 
 function App() {
   //Is the user logged in?
-  const [isLoggedIn, setIseLoggedIn] = useState(true);
+  const [isLoggedIn, setIseLoggedIn] = useState(false);
 
   //Which button is active?
   const [clickedButton, setClickedButton] = useState("");
