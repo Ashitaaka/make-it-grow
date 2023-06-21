@@ -5,7 +5,8 @@ const app = express();
 const port = process.env.APP_PORT ?? 5002;
 const APIRouter = express.Router();
 
-const { userRouter, ideaRouter, locationRouter } = require('./src/routes');
+const { userRouter, ideaRouter, locationRouter, categoryRouter } = require('./src/routes');
+
 
 //resolving cors issue from fetching from diffrent origins
 const cors = require('cors');
@@ -28,6 +29,7 @@ APIRouter.get('/version', function (req, res) {
 APIRouter.use('/users', userRouter)
 APIRouter.use('/ideas', ideaRouter)
 APIRouter.use('/locations', locationRouter)
+APIRouter.use('/categories', categoryRouter)
 
 
 
