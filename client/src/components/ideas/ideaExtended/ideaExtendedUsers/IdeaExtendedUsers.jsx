@@ -1,67 +1,56 @@
 import React from 'react';
 import './ideaextendedusers.css';
-import guillaume from '../../../../../public/images/profile-pictures/guillaume.jpg';
+const USER_LENGTH = 4;
 
-const IdeaExtendedUsers = ({ idea }) => {
-  const users = [
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-    { guillaume },
-  ]; // Add your image sources here
-
+const IdeaExtendedUsers = ({ users }) => {
   // Add condition to replace the 11th image if there are more than 11 images
+  console.log(users);
+  const experts = users.filter((user) => user.is_expert);
+  const owner = users.find((user) => user.is_owner);
 
   return (
     <div className="users-container">
       <div className="creator">
-        <p>Par Guillaume Leclout</p>
-        <img className="users-img" src={guillaume} />
+        <p>
+          Par {owner.firstname} {owner.lastname}
+        </p>
+        <img className="users-img" src={owner.picture} />
       </div>
+      <div className="vertical-line"></div>
       <div className="impacted-users">
         <p>Personnes impactées</p>
 
         <div className="img-mapping">
-          {images.map((image, index) => {
-            if (index < 4) {
+          {users.map((user, index) => {
+            if (index < USER_LENGTH) {
               return (
-                <img key={index} className="users-img" src={image.guillaume} />
+                <img key={index} className="users-img" src={user.picture} />
               ); // Return the JSX element to render the image
             }
           })}
-          {images.length > 4 ? (
+          {users.length > USER_LENGTH ? (
             <div className="overlay_img">
               <p>...</p>
-              <img className="g" src={images[5].guillaume} />
+              <img className="g" src={users[users.length - 1].picture} />
             </div>
           ) : null}
         </div>
       </div>
+      <div className="vertical-line"></div>
       <div className="experts">
         <p>Personnes expertes</p>
         <div className="img-mapping">
-          {images.map((image, index) => {
-            if (index < 4) {
+          {experts.map((expert, index) => {
+            if (index < USER_LENGTH) {
               return (
-                <img key={index} className="users-img" src={image.guillaume} />
+                <img key={index} className="users-img" src={expert.picture} />
               ); // Return the JSX element to render the image
             }
           })}
-          {images.length > 4 ? (
+          {experts.length > USER_LENGTH ? (
             <div className="overlay_img">
               <p>...</p>
-              <img className="g" src={images[5].guillaume} />
+              <img className="g" src={experts[experts.length - 1].picture} />
             </div>
           ) : null}
         </div>

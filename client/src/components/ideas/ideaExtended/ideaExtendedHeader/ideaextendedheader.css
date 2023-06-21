@@ -28,11 +28,10 @@
 .location-tag {
   padding: 0.25em 0.8em;
   border-radius: 1.2em;
-  background-color: var(--background-color);
+  background-color: var(--tag-background-color);
 }
 
 .status-tag {
   padding: 0.25em 0.8em;
   border-radius: 1.2em;
-  background-color: var(--background-color);
 }

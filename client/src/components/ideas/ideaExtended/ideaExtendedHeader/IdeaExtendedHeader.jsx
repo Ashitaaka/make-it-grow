@@ -10,7 +10,11 @@ const IdeaExtendedHeader = ({ idea }) => {
         <div className="tags-container">
           <p className="location-tag">{idea.city}</p>
           <p className="location-tag">{idea.city}</p>
-          <p className="status-tag">{idea.categories}</p>
+          <p
+            style={{ backgroundColor: `var(${idea.color})` }}
+            className="status-tag tag_categories">
+            {idea.category}
+          </p>
         </div>
       </div>
       <hr className="separator" />
