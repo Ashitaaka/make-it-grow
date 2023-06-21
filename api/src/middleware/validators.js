@@ -8,7 +8,7 @@ const validEmailRegex = /@makesense\.com$/;
 // RegExp to ensure that the email is containing '@makesense.com'
 
 const passswordFormatError =
-  "Le mot de passe doit contenir au minimum une lettre en majuscule, une lettre en minuscule, un chiffre et un caractère spécial et doit être constitué de 8 caractères minimum";
+  "Le mot de passe doit contenir minimum une majuscule, une minuscule, un chiffre et un caractère spécial et faire minimum 8 caractères";
 //message sent if the password is not valid
 
 const emailFormatError = "L'email doit appartenir au domaine @makesense.com";
