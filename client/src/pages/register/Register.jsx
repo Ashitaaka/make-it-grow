@@ -15,7 +15,8 @@ const Register = () => {
     password: "",
     id_location: "",
   });
-  const [error, setError] = useState(false);
+
+  const [formError, setFormError] = useState();
   const [locations, setLocations] = useState([]);
   const [isLocationsLoaded, setIsLocationsLoaded] = useState(false);
 
@@ -27,7 +28,6 @@ const Register = () => {
   }, []);
 
   const formChanges = (e) => {
-    console.log(e.target.name);
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -43,7 +43,6 @@ const Register = () => {
         console.log(error);
         setError(true);
       });
-
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
   };
@@ -103,7 +102,6 @@ const Register = () => {
               placeholder="Password"
               required
             />
-            {/* <input type="text" id="repeated_password" name="repeated_password" placeholder="Confirmez votre password" required/> */}
             <select
               name="id_location"
               id="id_location"
@@ -111,7 +109,7 @@ const Register = () => {
               required
             >
               <option value="" disabled hidden>
-                Sélectionnez une option
+                Sélectionnez un lieu
               </option>
               {isLocationsLoaded &&
                 locations.map((location) => (
@@ -120,9 +118,13 @@ const Register = () => {
                   </option>
                 ))}
             </select>
-            {error ? (
-              <p className="register_error">Email ou mot de passe invalide</p>
-            ) : null}
+            {formError
+              ? formError.map((el) => (
+                  <p key={el.context.label} className="register_error">
+                    {el.context.label} : {el.message}
+                  </p>
+                ))
+              : null}
             <button type="submit">Créez un compte</button>
           </form>
         </div>
