@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 //import components
 import Home from "./pages/Home";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -18,14 +18,15 @@ function App() {
   //Which button is active?
   const [clickedButton, setClickedButton] = useState("");
 
-if (!token){
+if (!token)
     return (
       <Routes>
-        <Route path="/" element={<Login setToken={setToken}/>} />
+        <Route path="/" element={<Navigate to="/login"/>} />
+        <Route path="/login" element={<Login setToken={setToken}/>} />
         <Route path="/register" element={<Register />} />
       </Routes>
     );
-  };
+
   
     return (
       <div className="app">
@@ -39,7 +40,8 @@ if (!token){
             setClickedButton={setClickedButton}
           />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Navigate to="/dashboard"/>} />
+            <Route path="/dashboard" element={<Home />} />
             <Route path="/profile/:userid" element={<ProfileDetails />} />
           </Routes>
         </div>
