@@ -26,7 +26,7 @@ class BaseModel {
   getById(id) {
     console.log(
       `
-    SELECT DISTINCT ${this.fields}
+    SELECT ${this.fields}
     FROM ${this.table}
     ${this.join} 
     WHERE ${this.table}.id  = ?`,
@@ -35,7 +35,7 @@ class BaseModel {
 
     return this.db.query(
       `
-      SELECT DISTINCT ${this.fields}
+      SELECT ${this.fields}
       FROM ${this.table}
       ${this.join} 
       WHERE ${this.table}.id  = ?`,

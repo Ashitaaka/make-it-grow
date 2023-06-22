@@ -9,21 +9,33 @@ class IdeaController extends BaseController {
 
   async getById() {
     const [results] = await this.model.getById(this.req.params.id);
+    console.clear();
     this.sendJson(
       results.reduce(
-        (acc, { category, city, color, delay, id, status, title, ...user }) => {
+        (
+          acc,
+          { categories, city, color, delay, id, status, title, ...user }
+        ) => {
+          const allCategories = acc.categories;
+          const allUsers = acc.users;
+          if (!allCategories.includes(categories)) {
+            allCategories.push(categories);
+          }
+          if (!allUsers.some(({ user_id }) => user_id === user.user_id)) {
+            allUsers.push(user);
+          }
           return {
-            category,
+            categories: allCategories,
             city,
             color,
             delay,
             id,
             status,
             title,
-            users: [...(acc.users || []), user],
+            users: allUsers,
           };
         },
-        {}
+        { categories: [], users: [] }
       )
     );
   }

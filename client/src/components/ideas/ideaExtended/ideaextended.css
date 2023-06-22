@@ -8,3 +8,8 @@
   border-radius: 1.5rem;
   gap: 2.5em;
 }
+
+.separator {
+  width: 85%;
+  margin: auto;
+}
