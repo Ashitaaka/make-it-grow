@@ -12,20 +12,21 @@ import "./App.css";
 
 function App() {
   //Is the user logged in?
-  const [isLoggedIn, setIseLoggedIn] = useState(false);
+  const [token, setToken] = useState();
+  console.log(token)
 
   //Which button is active?
   const [clickedButton, setClickedButton] = useState("");
 
-  if (!isLoggedIn)
+if (!token){
     return (
       <Routes>
-        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Login setToken={setToken}/>} />
         <Route path="/register" element={<Register />} />
       </Routes>
     );
-
-  if (isLoggedIn)
+  };
+  
     return (
       <div className="app">
         <Sidebar
