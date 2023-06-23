@@ -1,4 +1,4 @@
-const { db } = require("../config");
+const { db } = require('../config');
 
 class BaseModel {
   table;
@@ -39,12 +39,12 @@ class BaseModel {
     const paramVals = Object.values(reqBody);
 
     const sql1 = `INSERT INTO ${this.table}`;
-    let sql2 = "";
-    let sql3 = "";
+    let sql2 = '';
+    let sql3 = '';
 
     paramKeys.forEach((key) => {
       sql2 += `${key},`;
-      sql3 += "?,";
+      sql3 += '?,';
     });
 
     const removeLastChar = (string) =>
@@ -61,7 +61,7 @@ class BaseModel {
     const paramVals = Object.values(reqBody);
 
     const sql1 = `UPDATE ${this.table} SET`;
-    let sql2 = "";
+    let sql2 = '';
 
     paramKeys.forEach((key) => {
       sql2 += `${key} = ?, `;
