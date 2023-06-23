@@ -34,6 +34,9 @@
   flex-direction: column;
   gap: 0.5em;
   padding: 1em 10em 1em 5em;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  margin: 1em 0;
 }
 
 .cta-button-container {

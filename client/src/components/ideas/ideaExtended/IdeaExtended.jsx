@@ -6,12 +6,16 @@ import IdeaExtendedStatus from './ideaExtendedStatus/IdeaExtendedStatus';
 import IdeaExtendedUsers from './ideaExtendedUsers/IdeaExtendedUsers';
 import IdeaExtendedDetails from './ideaExtendedDetails/IdeaExtendedDetails';
 import { getIdeaById } from '../../../services/httpServices';
+import { useParams } from 'react-router-dom';
 
 const IdeaExtended = () => {
   const [idea, setIdea] = useState();
 
+  const ideaIdString = useParams();
+
   useEffect(() => {
-    getIdeaById(3).then((data) => setIdea(data));
+    ideaIdString.id &&
+      getIdeaById(parseInt(ideaIdString.id)).then((data) => setIdea(data));
   }, []);
 
   if (!idea) return null;

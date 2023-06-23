@@ -5,6 +5,7 @@ import axios from 'axios';
 import IdeasCard from './IdeasCard';
 
 import './IdeasCard.css';
+import { Link } from 'react-router-dom';
 
 const IdeasCardsBackground = () => {
   const [ideas, setIdeas] = useState([]);
@@ -21,7 +22,9 @@ const IdeasCardsBackground = () => {
   return (
     <div className="ideas_cards_background">
       {ideas.map((idea, index) => (
-        <IdeasCard idea={idea} key={index} />
+        <Link to={`/idea/${idea.id}`} className="card_background">
+          <IdeasCard idea={idea} key={index} />
+        </Link>
       ))}
     </div>
   );

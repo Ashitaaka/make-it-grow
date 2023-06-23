@@ -9,6 +9,7 @@ import Login from './pages/login/Login';
 import Register from './pages/register/Register';
 //import css
 import './App.css';
+import IdeaExtended from './components/ideas/ideaExtended/IdeaExtended';
 
 function App() {
   //Is the user logged in?
@@ -40,6 +41,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile/:userid" element={<ProfileDetails />} />
+            <Route path="/idea/:id" element={<IdeaExtended />} />
           </Routes>
         </div>
       </div>

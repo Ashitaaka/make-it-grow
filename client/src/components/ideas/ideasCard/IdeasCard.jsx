@@ -3,12 +3,12 @@ import './IdeasCard.css';
 
 const IdeasCard = ({ idea }) => {
   return (
-    <div className="card_background">
+    <>
       <div>
         <p
           style={{ backgroundColor: `var(${idea.color})` }}
           className={'card_categories'}>
-          {idea.category}
+          {idea.categories}
         </p>
       </div>
       <p className="card_title">{idea.title}</p>
@@ -21,7 +21,7 @@ const IdeasCard = ({ idea }) => {
         </div>
         <p className="card_number_day_left">{`${idea.delay} days left`}</p>
       </div>
-    </div>
+    </>
   );
 };
 
