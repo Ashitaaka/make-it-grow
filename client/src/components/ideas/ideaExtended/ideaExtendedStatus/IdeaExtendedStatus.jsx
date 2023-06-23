@@ -1,60 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ideaextendedstatus.css';
-
 const IdeaExtendedStatus = ({ idea }) => {
-  const calculateProgress = (checkpoint) => {
-    if (idea.status === checkpoint) {
-      return 'progress';
-    }
-    return '';
+  const [progress, setProgress] = useState(0);
+  const updateProgress = () => {
+    // Simulating progress update
+    const newProgress = progress + 25;
+    setProgress(newProgress > 100 ? 100 : newProgress);
   };
-
   return (
     <div className="idea-status-container">
       <div className="idea-title">
         <h1>{idea.title}</h1>
       </div>
-
       <div className="timeline-container">
-        <div className={`creation ${calculateProgress('Projet créé')}`}>
+        <div className="creation">
           <p>Projet créé</p>
           <div
-            className={`creation-dot dot ${calculateProgress(
-              'Projet créé'
-            )}`}></div>
+            className="creation-dot dot progress"
+            style={{ backgroundColor: `var(${idea.color})` }}></div>
         </div>
-
-        <div className={`debate checkpoint ${calculateProgress('En débat')}`}>
+        <div className="debate checkpoint">
           <p>En débat</p>
           <div
-            className={`debate-dot dot ${calculateProgress('En débat')}`}></div>
+            className="debate-dot dot progress"
+            style={{ backgroundColor: `var(${idea.color})` }}></div>
         </div>
-
-        <div
-          className={`synthese checkpoint ${calculateProgress(
-            'Synthèse en cours'
-          )}`}>
+        <div className="synthese checkpoint">
           <p>Synthèse en cours</p>
           <div
-            className={`synthese-dot dot ${calculateProgress(
-              'Synthèse en cours'
-            )}`}></div>
+            className="synthese-dot dot progress"
+            style={{ backgroundColor: `var(${idea.color})` }}></div>
         </div>
-
-        <div className={`vote checkpoint ${calculateProgress('En vote')}`}>
+        <div className="vote checkpoint">
           <p>En vote</p>
-          <div className={`vote-dot dot ${calculateProgress('En vote')}`}></div>
+          <div
+            className="vote-dot dot progress"
+            style={{ backgroundColor: `var(${idea.color})` }}></div>
         </div>
-
         <div className="deadline">
           <p>Date de fin</p>
-          <div className="deadline-dot dot"></div>
+          <div
+            className="deadline-dot dot progress"
+            style={{ backgroundColor: `var(${idea.color})` }}></div>
         </div>
-
-        <div className={`rod ${calculateProgress('Date de fin')}`}></div>
+        <div
+          className="rod progress"
+          style={{ width: `${progress}%`, color: `var(${idea.color})` }}></div>
       </div>
+      <button className="button-next" onClick={updateProgress}>
+        Next
+      </button>
     </div>
   );
 };
-
 export default IdeaExtendedStatus;

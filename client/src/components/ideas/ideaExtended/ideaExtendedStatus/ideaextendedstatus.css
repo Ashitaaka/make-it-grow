@@ -6,33 +6,28 @@
   gap: 2.5em;
   padding: 0 4em;
 }
-
 .idea-title {
   width: 65%;
   text-align: center;
 }
-
 .timeline-container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   position: relative;
 }
-
 .creation {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   gap: 0.5em;
 }
-
 .checkpoint {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5em;
 }
-
 .deadline {
   display: flex;
   flex-direction: column;
@@ -40,14 +35,12 @@
   justify-content: flex-end;
   gap: 0.5em;
 }
-
 .dot {
   width: 1em;
   height: 1em;
   border-radius: 50px;
   background-color: var(--tag-background-color);
 }
-
 .rod {
   width: 100%;
   border: 3px solid;
