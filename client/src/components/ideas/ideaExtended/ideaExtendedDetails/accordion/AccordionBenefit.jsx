@@ -5,7 +5,7 @@ import './accordion.css';
 import Monochev from '../../../../../assets/icons/mono_chevrons_icone.svg';
 import MonochevBlanc from '../../../../../assets/icons/mono_chevrons_icone_blanc.svg';
 
-const Accordion = ({ title, idea }) => {
+const AccordionBenefit = ({ title, idea }) => {
   const [open, setOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = createRef();
@@ -61,10 +61,9 @@ const Accordion = ({ title, idea }) => {
         ref={contentContainer}
         className="content_container"
         style={{ maxHeight }}>
-        <h3>{idea.title}</h3>
-        <div className="p-content">{idea.detail}</div>
+        <div className="p-content">{idea.benefit}</div>
       </div>
     </div>
   );
 };
-export default Accordion;
+export default AccordionBenefit;

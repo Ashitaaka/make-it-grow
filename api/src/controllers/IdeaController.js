@@ -13,7 +13,20 @@ class IdeaController extends BaseController {
       results.reduce(
         (
           acc,
-          { categories, city, color, delay, id, status, title, detail, ...user }
+          {
+            categories,
+            city,
+            color,
+            delay,
+            id,
+            status,
+            title,
+            detail,
+            impact,
+            risk,
+            benefit,
+            ...user
+          }
         ) => {
           const allCategories = acc.categories;
           const allUsers = acc.users;
@@ -32,6 +45,9 @@ class IdeaController extends BaseController {
             status,
             title,
             detail,
+            impact,
+            risk,
+            benefit,
             users: allUsers,
           };
         },
