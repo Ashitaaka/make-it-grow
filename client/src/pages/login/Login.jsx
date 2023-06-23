@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 // Import Component
 import { loginUser } from "../../services/httpServices";
 // Import css
@@ -12,9 +12,10 @@ import useToken from "../../hooks/useToken";
 
 const login = () => {
 
-  const { setToken } = useToken();
+  const { token, setToken } = useToken();
   const [form, setForm] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState(false);
+
 
   const formChanges = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
