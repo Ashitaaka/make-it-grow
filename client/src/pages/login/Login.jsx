@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 // Import Component
 import { loginUser } from "../../services/httpServices";
 // Import css
@@ -7,8 +7,12 @@ import "./login.css";
 // Import assets
 import mig_logo from "../../assets/logo_MIG.svg";
 import gellule from "../../assets/icons/gellule.svg";
+import useToken from "../../hooks/useToken";
 
-const login = ({ setToken }) => {
+
+const login = () => {
+
+  const { setToken } = useToken();
   const [form, setForm] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState(false);
 
@@ -30,6 +34,7 @@ const login = ({ setToken }) => {
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
   };
+
 
   return (
     <div className="login">
