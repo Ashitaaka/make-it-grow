@@ -45,7 +45,7 @@ const Register = () => {
                 console.log(res);
             })
             .catch((error) => {
-                setFormError(error);
+              setFormError(error);
             });
             
         document.getElementById("email").value = "";

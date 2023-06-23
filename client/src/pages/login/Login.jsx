@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 // Import Component
 import { loginUser } from "../../services/httpServices";
+import { useUser } from "../../hooks/UserContext";
+import useToken from "../../hooks/useToken";
 // Import css
 import "./login.css";
 // Import assets
 import mig_logo from "../../assets/logo_MIG.svg";
 import gellule from "../../assets/icons/gellule.svg";
-import useToken from "../../hooks/useToken";
 
 
 const login = () => {
 
-  const { token, setToken } = useToken();
+  const { login } = useUser();
+  const { setToken } = useToken;
+
   const [form, setForm] = useState({ email: "", password: "" });
   const [formError, setFormError] = useState(false);
 
@@ -27,6 +30,8 @@ const login = () => {
     loginUser(form)
       .then((res) => {
         setToken(res);
+        const {id, firstname, lastname, id_role, id_location, picture} = res;
+        login(id, firstname, lastname, id_role, id_location, picture);
       })
       .catch((error) => {
         setFormError(true);

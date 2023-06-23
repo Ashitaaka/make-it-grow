@@ -51,7 +51,7 @@ const verifyPassword = (req, res, next) => {
 };
 
 const tokenEmission = (req, res, next) => {
-  const { id, id_role, firstname, lastname, picture } = req.user;
+  const { id, id_role, firstname, lastname, picture, id_location} = req.user;
 
   const payload = {
     sub: id,
@@ -72,6 +72,7 @@ const tokenEmission = (req, res, next) => {
       lastname: lastname,
       picture: picture,
       id_role: id_role,
+      id_location : id_location,
     });
 };
 

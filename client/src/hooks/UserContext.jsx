@@ -6,18 +6,36 @@ import React, { createContext, useContext, useState } from "react";
 
   const UserProvider = ({ children }) => {
     
-    const [user, setUser] = useState({ firstname: "", auth: false });
+    const [user, setUser] = useState({ 
+        id : "",
+        firstname: "",
+        lastname: "",
+        id_role: "",
+        id_location: "",
+        picture: "",
+        auth: false, 
+    });
 
-    const login = (name) => {
+    const login = (id, firstname, lastname, id_role, id_location, picture) => {
       setUser((user) => ({
-        firstname: name,
+        id : id,
+        firstname: firstname,
+        lastname : lastname,
+        id_role : id_role,
+        id_location : id_location,
+        picture : picture,
         auth: true,
       }));
     };
 
     const logout = () => {
       setUser((user) => ({
+        id : "",
         firstname: "",
+        lastname: "",
+        id_role: "",
+        id_location: "",
+        picture: "",
         auth: false,
       }));
     };

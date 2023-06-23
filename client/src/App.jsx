@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 //import components
 import Home from "./pages/Home";
@@ -7,25 +7,24 @@ import ProfileDetails from "./components/ProfileDetails/ProfileDetails";
 import TopBar from "./components/top bar/TopBar";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-// import useToken from "./hooks/useToken";
 import { useUser } from "./hooks/UserContext"
+import useToken from "./hooks/useToken";
 //import css
 import "./App.css";
 
 
 function App() {
 
+  //import the UserContext 
   const { user } = useUser();
-  // console.log(useUser());
-
-  //Is the user logged in?
-  // const {token , setToken} = useToken();
+  const { token } = useToken;
+ 
 
   //Which button is active?
   const [clickedButton, setClickedButton] = useState("");
 
 
-    return !user.auth
+    return !user.auth || !token
     ? (
       <Routes>
         <Route path="*" element={<Navigate to="/login"/>} />
@@ -46,7 +45,7 @@ function App() {
             setClickedButton={setClickedButton}
           />
           <Routes>
-            <Route path="/" element={<Navigate to="/dashboard"/>} />
+            <Route path="*" element={<Navigate to="/dashboard"/>} />
             <Route path="/dashboard" element={<Home />} />
             <Route path="/profile/:userid" element={<ProfileDetails />} />
           </Routes>
