@@ -13,7 +13,7 @@ const IdeaExtendedHeader = ({ idea }) => {
           <p
             style={{ backgroundColor: `var(${idea.color})` }}
             className="status-tag tag_categories">
-            {idea.category}
+            {idea.categories}
           </p>
         </div>
       </div>

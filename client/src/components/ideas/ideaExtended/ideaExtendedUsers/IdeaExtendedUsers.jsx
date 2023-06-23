@@ -4,7 +4,7 @@ const USER_LENGTH = 4;
 
 const IdeaExtendedUsers = ({ users }) => {
   // Add condition to replace the 11th image if there are more than 11 images
-  console.log(users);
+
   const experts = users.filter((user) => user.is_expert);
   const owner = users.find((user) => user.is_owner);
 
@@ -31,7 +31,7 @@ const IdeaExtendedUsers = ({ users }) => {
           {users.length > USER_LENGTH ? (
             <div className="overlay_img">
               <p>...</p>
-              <img className="g" src={users[users.length - 1].picture} />
+              <img className="img" src={users[users.length - 1].picture} />
             </div>
           ) : null}
         </div>
@@ -50,7 +50,7 @@ const IdeaExtendedUsers = ({ users }) => {
           {experts.length > USER_LENGTH ? (
             <div className="overlay_img">
               <p>...</p>
-              <img className="g" src={experts[experts.length - 1].picture} />
+              <img className="img" src={experts[experts.length - 1].picture} />
             </div>
           ) : null}
         </div>

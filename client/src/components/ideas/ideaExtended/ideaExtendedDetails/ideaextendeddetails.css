@@ -43,4 +43,24 @@
   flex-direction: column;
   gap: 0.5em;
   padding: 1em 10em 1em 5em;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  margin: 1em 0;
+}
+
+.cta-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  gap: 1.5em;
+  padding-top: 5em;
+  padding-bottom: 8em;
+}
+
+.cta-button {
+  width: 12em;
+  padding: 0.5em 1.2em;
+  border-radius: 1.2em;
+  background-color: var(--primary-color);
 }

@@ -1,9 +1,18 @@
 import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:5080/api';
+
+//
+
+export const getIdeaById = (id) => {
+  return axios
+    .get(`/ideas/${id}/?fields=id,title,locations,status,categories,users`)
+    .then((res) => res.data);
+};
 
 //To get all locations
 export const getAllLocations = () => {
   return axios
-    .get('http://localhost:5080/api/locations')
+    .get('/locations')
     .then((res) => {
       return res.data;
     })
@@ -15,7 +24,7 @@ export const getAllLocations = () => {
 //To register
 export const registerUser = (userDatas) => {
   return axios
-    .post('http://localhost:5080/api/users/register', userDatas)
+    .post('/users/register', userDatas)
     .then((res) => {
       return res.data;
     })
