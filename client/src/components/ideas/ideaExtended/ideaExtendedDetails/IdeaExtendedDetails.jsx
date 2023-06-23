@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Monochev from '../../../../assets/icons/mono_chevrons_icone.svg';
 import MonochevBlanc from '../../../../assets/icons/mono_chevrons_icone_blanc.svg';
-import './ideaextendeddetails.css';
+// import './ideaextendeddetails.css';
+import Accordion from './accordion/Accordion';
 
 const IdeaExtendedDetails = ({ idea, users }) => {
   const owner = users.find((user) => user.is_owner);
@@ -23,6 +24,7 @@ const IdeaExtendedDetails = ({ idea, users }) => {
 
   return (
     <div className="idea-details-container">
+      <Accordion idea={idea} title={"Détails de l'idée"} />
       {/* ------------------------------------ page detail */}
       <div className={`details ${expandedSections.details ? 'active' : ''}`}>
         <div className="header">
@@ -62,9 +64,7 @@ const IdeaExtendedDetails = ({ idea, users }) => {
         </div>
         {expandedSections.details && (
           <div className="content-container">
-            <div className="title">
-              <h3>{idea.title}</h3>
-            </div>
+            <h3>{idea.title}</h3>
             <div className="p-content">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -9,12 +9,11 @@ class IdeaController extends BaseController {
 
   async getById() {
     const [results] = await this.model.getById(this.req.params.id);
-    console.clear();
     this.sendJson(
       results.reduce(
         (
           acc,
-          { categories, city, color, delay, id, status, title, ...user }
+          { categories, city, color, delay, id, status, title, detail, ...user }
         ) => {
           const allCategories = acc.categories;
           const allUsers = acc.users;
@@ -32,6 +31,7 @@ class IdeaController extends BaseController {
             id,
             status,
             title,
+            detail,
             users: allUsers,
           };
         },

@@ -1,0 +1,40 @@
+/*Accordion header*/
+.header {
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--background-color);
+}
+.title {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.categorie {
+  width: 1.8em;
+  border-radius: 15px;
+  height: 0.5em;
+}
+
+.header img {
+  width: 1.5em;
+  height: 1.5em;
+  transform: rotate(90deg);
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.3em;
+}
+
+/*Accordion content*/
+.content_container {
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out;
+  padding: 1em 3em 2em;
+}
+
+.content_container h3 {
+  margin-bottom: 1em;
+}
