@@ -1,21 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
+axios.defaults.baseURL = 'http://localhost:5080/api';
+
+//To get Idea by ID
+export const getIdeaById = (id) => {
+  return axios
+    .get(`/ideas/${id}/?fields=id,title,locations,status,categories,users`)
+    .then((res) => res.data);
+};
 
 //To get all locations
 export const getAllLocations = () => {
   return axios
-    .get("http://localhost:5080/api/locations")
-    .then((res) => {
-      return res.data;
-    })
-    .catch((error) => {
-      return Promise.reject(error.response.data);
-    });
-};
-
-//To register
-export const registerUser = (userDatas) => {
-  return axios
-    .post("http://localhost:5080/api/users/register", userDatas)
+    .get('/locations')
     .then((res) => {
       return res.data;
     })
@@ -27,7 +23,13 @@ export const registerUser = (userDatas) => {
 //To Login
 export const loginUser = (userDatas) => {
   return axios
-    .post("http://localhost:5080/api/users/login", userDatas)
+    .post("/users/login", userDatas)
+  
+  
+//To register
+export const registerUser = (userDatas) => {
+  return axios
+    .post('/users/register', userDatas)
     .then((res) => {
       return res.data;
     })

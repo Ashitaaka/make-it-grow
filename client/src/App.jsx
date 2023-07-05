@@ -9,20 +9,19 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import { useUser } from "./hooks/UserContext"
 import tokenStorage from "./hooks/useToken";
+import CreateIdea from './components/ideas/createIdea/CreateIdea'
+import IdeaExtended from './components/ideas/ideaExtended/IdeaExtended';
 //import css
-import "./App.css";
+import './App.css';
 
 
 function App() {
 
-  //import the UserContext 
-  // const { user } = useUser();
   const { removeToken, setToken, token } = tokenStorage();
   
-  console.log(token);
  
   //Which button is active?
-  const [clickedButton, setClickedButton] = useState("");
+  const [clickedButton, setClickedButton] = useState('');
 
 
     return !token
