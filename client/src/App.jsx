@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
 //import components
 import Home from './pages/Home';
 import Sidebar from './components/sidebar/Sidebar';
@@ -13,6 +14,8 @@ import CreateIdea from './components/ideas/createIdea/CreateIdea';
 import IdeaExtended from './components/ideas/ideaExtended/IdeaExtended';
 //import css
 import './App.css';
+
+axios.defaults.baseURL = '/api';
 
 function App() {
   const { removeToken, setToken, token } = tokenStorage();

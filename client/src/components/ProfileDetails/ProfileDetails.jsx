@@ -15,7 +15,7 @@ const ProfileDetails = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5080/api/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
+        `/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
       )
       .then((res) => res.data)
       .then(([data]) => {
@@ -34,7 +34,7 @@ const ProfileDetails = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5080/api/locations`)
+      .get(`/locations`)
       .then((res) => res.data)
       .then((data) => {
         setLocations(data);
@@ -48,7 +48,7 @@ const ProfileDetails = () => {
   const updateformSending = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5080/api/users/${userid}`, updateForm)
+      .put(`/users/${userid}`, updateForm)
       .then((res) => {
         setError(false);
       })
