@@ -42,8 +42,42 @@
   margin: 2em;
 }
 
-hr {
+.comment_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.user_picture {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  object-fit: cover; /* Ensure the image fills the container */
+}
+
+.user_comment_container {
+  display: flex;
+  flex-direction: column;
   width: calc(100% - 4em);
-  margin: auto;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 700;
+  gap: 1em;
+}
+
+hr {
+  width: 100%;
+
   border: 1px solid var(--background-color);
+}
+
+.comment {
+  margin-bottom: 1em;
+  width: calc(100% - 4em);
 }

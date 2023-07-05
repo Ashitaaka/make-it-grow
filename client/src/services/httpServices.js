@@ -1,6 +1,7 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:5080/api';
-//
+
+//To get Idea by ID
 export const getIdeaById = (id) => {
   return axios
     .get(

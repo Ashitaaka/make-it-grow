@@ -1,16 +1,17 @@
 import React, { useState, createRef } from 'react';
-//import css
+// import css
 import './accordion.css';
-//import assets
+// import assets
 import Monochev from '../../../../../assets/icons/mono_chevrons_icone.svg';
 import MonochevBlanc from '../../../../../assets/icons/mono_chevrons_icone_blanc.svg';
+import genericIcon from './../../../../../assets/icons/genericPicture_2.jpg';
 
 const AccordionComment = ({ title, idea }) => {
   const [open, setOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = createRef();
 
-  let onOpening = (e) => {
+  const onOpening = (e) => {
     setOpen(!open);
     setMaxHeight(maxHeight === 0 ? contentContainer.current.scrollHeight : 0);
   };
@@ -31,10 +32,8 @@ const AccordionComment = ({ title, idea }) => {
               backgroundColor: open ? `var(${idea.color})` : 'transparent',
               border: open ? 'none' : `2px solid var(${idea.color})`,
             }}></div>
-
           <h2>{title}</h2>
         </div>
-
         {open ? (
           <img
             src={MonochevBlanc}
@@ -62,16 +61,33 @@ const AccordionComment = ({ title, idea }) => {
         <div className="p-content">
           <div className="comment_container">
             {idea.comment &&
-              idea.comment.map((comment, index) => (
-                <div key={index}>
-                  {comment}
-                  <hr />
-                </div>
-              ))}
+              idea.comment.map((comment, index) => {
+                const userId = idea.id_user[index];
+                const user = idea.users.find((user) => user.user_id === userId);
+
+                return (
+                  <div key={index} className="user_comment_container">
+                    <div className="user_info">
+                      <img
+                        src={user.picture ? user.picture : genericIcon}
+                        alt="User"
+                        className="user_picture"
+                      />
+                      <p>
+                        {user.firstname} {user.lastname}
+                      </p>
+                    </div>
+
+                    <div className="comment">{comment}</div>
+                    <hr />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
     </div>
   );
 };
+
 export default AccordionComment;
