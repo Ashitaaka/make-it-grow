@@ -20,6 +20,19 @@ export const getAllLocations = () => {
       return Promise.reject(error.response.data);
     });
 };
+
+//To Login
+export const loginUser = (userDatas) => {
+  return axios
+    .post('/users/login', userDatas)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
+};
+
 //To register
 export const registerUser = (userDatas) => {
   return axios

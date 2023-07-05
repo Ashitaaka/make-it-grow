@@ -1,36 +1,53 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// Import Component
+import { loginUser } from "../../services/httpServices";
+import { useUser } from "../../hooks/UserContext";
 // Import css
-import './login.css';
-//import assets
-import mig_logo from '../../assets/logo_MIG.svg';
-import gellule from '../../assets/icons/gellule.svg';
+import "./login.css";
+// Import assets
+import mig_logo from "../../assets/logo_MIG.svg";
+import gellule from "../../assets/icons/gellule.svg";
 
-const login = () => {
-  const [form, setForm] = useState({ email: '', password: '' });
-  const [error, setError] = useState(false);
 
+const login = ({ setToken }) => {
+
+  // const { login } = useUser();
+
+  //form Email/Password
+  const [form, setForm] = useState({ 
+    email: "",
+    password: "" 
+  });
+
+  //Check if there is a login error
+  const [formError, setFormError] = useState(false);
+
+  //On changing login form input
   const formChanges = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  //On submiting login form 
   const formSending = (e) => {
     e.preventDefault();
-    axios
-      .post('http://localhost:5080/api/users/login', form)
+
+    //POST on users/login route
+    loginUser(form)
       .then((res) => {
-        res.data;
-        setError(false);
+        setToken(res);
+        console.log(res);
+        // const {id, firstname, lastname, id_role, id_location, picture} = res;
+        // login(id, firstname, lastname, id_role, id_location, picture);
       })
       .catch((error) => {
-        error;
-        setError(true);
+        setFormError(true);
       });
 
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
   };
+
 
   return (
     <div className="login">
@@ -44,7 +61,7 @@ const login = () => {
 
           <div className="login_register">
             <Link to="#">
-              <p style={{ fontWeight: '600' }}>Login</p>
+              <p style={{ fontWeight: "600" }}>Login</p>
             </Link>
             <Link to="/register">
               <p>Créer un nouveau compte</p>
@@ -55,7 +72,8 @@ const login = () => {
             className="login_form"
             action=""
             onSubmit={formSending}
-            onChange={formChanges}>
+            onChange={formChanges}
+          >
             <input
               type="text"
               id="email"
@@ -70,7 +88,7 @@ const login = () => {
               placeholder="Password"
               required
             />
-            {error ? (
+            {formError ? (
               <p className="login_error">Email ou mot de passe invalide</p>
             ) : null}
             <Link to="#">
