@@ -22,9 +22,7 @@ const AccordionDetail = ({ title, idea }) => {
         className="header"
         onClick={onOpening}
         style={{
-          backgroundColor: open
-            ? `var(--ultra-light-color)`
-            : `var(--background-color)`,
+          backgroundColor: `var(--ultra-light-color)`,
         }}>
         <div className="title">
           <div
@@ -66,6 +64,7 @@ const AccordionDetail = ({ title, idea }) => {
           {idea.detail}
         </div>
       </div>
+      <hr />
     </div>
   );
 };

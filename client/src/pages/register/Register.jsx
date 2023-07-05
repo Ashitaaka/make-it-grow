@@ -1,58 +1,56 @@
-import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 // Import component
-import { getAllLocations, registerUser } from '../../services/httpServices'
+import { getAllLocations, registerUser } from '../../services/httpServices';
 // Import css
-import "./register.css";
+import './register.css';
 //import assets
-import mig_logo from "../../assets/logo_MIG.svg";
-import gellule from "../../assets/icons/gellule.svg";
+import mig_logo from '../../assets/logo_MIG.svg';
+import gellule from '../../assets/icons/gellule.svg';
 
 const Register = () => {
-    const [form, setForm] = useState({
-        firstname: "",
-        lastname: "",
-        email : "",
-        password: "",
-        id_location : ""
-    });
-    const [formError, setFormError] = useState([]);
-    const [locations, setLocations] = useState([])
-    const [isLocationsLoaded, setIsLocationsLoaded] = useState(false)
+  const [form, setForm] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+    id_location: '',
+  });
+  const [formError, setFormError] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [isLocationsLoaded, setIsLocationsLoaded] = useState(false);
 
+  useEffect(() => {
+    getAllLocations()
+      .then((res) => {
+        setLocations(res);
+        setIsLocationsLoaded(true);
+      })
+      .catch((error) => {
+        setFormError(error);
+        setIsLocationsLoaded(false);
+      });
+  }, []);
 
-    useEffect(()=>{
-        getAllLocations()
-            .then((res) => {
-                setLocations(res)
-                setIsLocationsLoaded(true);
-            })
-            .catch((error) =>{
-                setFormError(error);
-                setIsLocationsLoaded(false);
-        }); 
-    },[])
+  const formChanges = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-    const formChanges = (e) =>{
-        setForm({ ...form, [e.target.name] : e.target.value })
-    };
+  const formSending = (e) => {
+    e.preventDefault();
 
-    const formSending = (e) =>{
-        e.preventDefault();
-        
-        registerUser(form)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((error) => {
-                setFormError(error);
-            });
-            
-        document.getElementById("email").value = "";
-        document.getElementById("password").value = "";
-    };
+    registerUser(form)
+      .then((res) => {
+        res;
+      })
+      .catch((error) => {
+        setFormError(error);
+      });
 
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+  };
 
   return (
     <div className="register">
@@ -69,7 +67,7 @@ const Register = () => {
               <p>Login</p>
             </Link>
             <Link to="#">
-              <p style={{ fontWeight: "600" }}>Créer un nouveau compte</p>
+              <p style={{ fontWeight: '600' }}>Créer un nouveau compte</p>
             </Link>
           </div>
 
@@ -77,8 +75,7 @@ const Register = () => {
             className="register_form"
             action=""
             onSubmit={formSending}
-            onChange={formChanges}
-          >
+            onChange={formChanges}>
             <div className="fullname">
               <input
                 type="text"
@@ -113,8 +110,7 @@ const Register = () => {
               name="id_location"
               id="id_location"
               defaultValue=""
-              required
-            >
+              required>
               <option value="" disabled hidden>
                 Sélectionnez un lieu
               </option>

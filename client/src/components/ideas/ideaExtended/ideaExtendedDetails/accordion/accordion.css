@@ -41,3 +41,9 @@
 .p-content {
   margin: 2em;
 }
+
+hr {
+  width: calc(100% - 4em);
+  margin: auto;
+  border: 1px solid var(--background-color);
+}

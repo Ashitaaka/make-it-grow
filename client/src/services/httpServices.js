@@ -8,7 +8,7 @@ export const getIdeaById = (id) => {
     .get(
       `/ideas/${id}/?fields=id,title,locations,status,categories,users,detail, risk, impact, benefit`
     )
-    .then((res) => res.data);
+    .then((res) => console.log(res.data));
 };
 
 //To get all locations

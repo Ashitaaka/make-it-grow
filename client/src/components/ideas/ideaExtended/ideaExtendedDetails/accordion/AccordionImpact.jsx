@@ -14,7 +14,6 @@ const AccordionImpact = ({ title, idea }) => {
     setOpen(!open);
     setMaxHeight(maxHeight === 0 ? contentContainer.current.scrollHeight : 0);
   };
-
   return (
     <div className="accordion_container">
       {/* Header */}
@@ -22,9 +21,7 @@ const AccordionImpact = ({ title, idea }) => {
         className="header"
         onClick={onOpening}
         style={{
-          backgroundColor: open
-            ? `var(--ultra-light-color)`
-            : `var(--background-color)`,
+          backgroundColor: `var(--ultra-light-color)`,
         }}>
         <div className="title">
           <div
@@ -63,6 +60,7 @@ const AccordionImpact = ({ title, idea }) => {
         style={{ maxHeight }}>
         <div className="p-content">{idea.impact}</div>
       </div>
+      <hr />
     </div>
   );
 };
