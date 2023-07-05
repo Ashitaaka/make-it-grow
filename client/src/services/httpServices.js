@@ -1,16 +1,13 @@
 import axios from 'axios';
 axios.defaults.baseURL = 'http://localhost:5080/api';
-
 //
-
 export const getIdeaById = (id) => {
   return axios
     .get(
       `/ideas/${id}/?fields=id,title,locations,status,categories,users,detail, risk, impact, benefit`
     )
-    .then((res) => console.log(res.data));
+    .then((res) => res.data);
 };
-
 //To get all locations
 export const getAllLocations = () => {
   return axios
@@ -22,7 +19,6 @@ export const getAllLocations = () => {
       return Promise.reject(error.response.data);
     });
 };
-
 //To register
 export const registerUser = (userDatas) => {
   return axios

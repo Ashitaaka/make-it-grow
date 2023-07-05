@@ -1,12 +1,10 @@
-const BaseController = require('./BaseController');
-const { IdeaModel } = require('../models');
-
+const BaseController = require("./BaseController");
+const { IdeaModel } = require("../models");
 class IdeaController extends BaseController {
   constructor(req, res) {
     super(req, res);
     this.model = new IdeaModel(req.query);
   }
-
   async getById() {
     const [results] = await this.model.getById(this.req.params.id);
     this.sendJson(
@@ -55,7 +53,6 @@ class IdeaController extends BaseController {
       )
     );
   }
-
   // async getAll() {
   //   const [results] = await this.model.getAll();
   //   console.clear();
@@ -67,7 +64,6 @@ class IdeaController extends BaseController {
   //       }
   //     }, [])
   //   );
-
   //   this.sendJson(
   //     results.reduce(
   //       (
@@ -98,5 +94,4 @@ class IdeaController extends BaseController {
   //   );
   // }
 }
-
 module.exports = IdeaController;

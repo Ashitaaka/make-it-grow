@@ -45,6 +45,6 @@
   width: 100%;
   border: 3px solid;
   position: absolute;
-  top: 32px;
+  top: 1.9em;
   color: var(--tag-background-color);
 }
