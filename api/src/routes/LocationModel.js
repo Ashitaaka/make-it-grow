@@ -1,4 +1,4 @@
-const BaseModel = require('./BaseModel');
+const BaseModel = require('../models/BaseModel');
 
 class LocationModel extends BaseModel {
 
