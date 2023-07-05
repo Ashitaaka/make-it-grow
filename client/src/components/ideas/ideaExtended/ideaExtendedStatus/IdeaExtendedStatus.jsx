@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ideaextendedstatus.css';
 
 const IdeaExtendedStatus = ({ idea }) => {
   const [progress, setProgress] = useState(0);
 
-  const updateProgress = (event) => {
-    const newProgress = progress + Number(event.target.value);
-    console.log(newProgress, event.target.value, progress);
-    setProgress(newProgress > 100 ? 100 : newProgress);
-  };
+  // const updateProgress = (event) => {
+  //   const newProgress = progress + Number(event.target.value);
+  //   console.log(newProgress, event.target.value, progress);
+  //   setProgress(newProgress > 100 ? 100 : newProgress);
+  // };
+  useEffect(() => {
+    if (idea.status === 'modération') {
+      setProgress(0);
+    } else if (idea.status === 'débat' ) {
+      setProgress(25);
+    } else if (idea.status === 'synthèse' || idea.status === 'expertise') {
+      setProgress(50);
+    } else if (idea.status === 'vote') {
+      setProgress(75);
+    }
+  }, [idea.status]);
 
   const getDotColor = (dotName) => {
     if (dotName === 'debate-dot') {
@@ -39,6 +50,13 @@ const IdeaExtendedStatus = ({ idea }) => {
       return 'var(--tag-background-color)';
     }
   };
+
+  // if (idea.status === 'modération'){setProgress(25)} 
+  // débat 
+  // if(idea.status === 'synthèse' ||idea.status === 'expertise') {setProgress=50}
+  // expertise
+  //  if (idea.status === 'vote' ){setProgress=75}
+  // vote
 
   return (
     <div className="idea-status-container">
@@ -88,7 +106,7 @@ const IdeaExtendedStatus = ({ idea }) => {
         <div className="initial"></div>
       </div>
       <div className="button-timeline">
-        <button
+        {/* <button
           className="button-next"
           onClick={updateProgress}
           value={-25}
@@ -129,7 +147,7 @@ const IdeaExtendedStatus = ({ idea }) => {
           }}
         >
           Next
-        </button>
+        </button> */}
       </div>
     </div>
   );
