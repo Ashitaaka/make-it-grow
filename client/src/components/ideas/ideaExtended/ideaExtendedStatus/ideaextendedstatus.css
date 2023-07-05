@@ -39,12 +39,43 @@
   width: 1em;
   height: 1em;
   border-radius: 50px;
-  background-color: var(--tag-background-color);
+  z-index: 2;
+  transition: background-color .6s ease-in-out;
 }
 .rod {
-  width: 100%;
+  width: 98%;
   border: 3px solid;
   position: absolute;
-  top: 1.9em;
+  top: 1.8em;
+  
   color: var(--tag-background-color);
+  transition: 0.8s ease-in-out;
+  z-index: 2;
 }
+.initial {
+  width: 98%;
+  border: 3px solid;
+  position: absolute;
+  top: 1.8em;
+ 
+  color: var(--tag-background-color);
+  transition: 0.8s ease-in-out;
+  
+}
+.button-timeline{
+  margin: 5em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-previous{
+  width: 20%;
+  cursor: pointer;
+}
+.button-next{
+  width: 20%;
+  cursor: pointer;
+}
+
+
