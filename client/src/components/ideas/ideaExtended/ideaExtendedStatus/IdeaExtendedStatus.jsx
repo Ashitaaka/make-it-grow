@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
-import './ideaextendedstatus.css';
+import React, { useState } from "react";
+import "./ideaextendedstatus.css";
 
 const IdeaExtendedStatus = ({ idea }) => {
   const [progress, setProgress] = useState(0);
-  
+  console.log(idea);
 
   const updateProgress = (event) => {
-
-    const newProgress = progress+Number(event.target.value);
-    console.log(newProgress,event.target.value,progress);
+    const newProgress = progress + Number(event.target.value);
     setProgress(newProgress > 100 ? 100 : newProgress);
   };
 
@@ -57,7 +55,6 @@ const IdeaExtendedStatus = ({ idea }) => {
           className="rod progress"
           style={{ width: `${progress}%`, color: `var(${idea.color})` }}
         ></div>
-
       </div>
       <button className="button-next" onClick={updateProgress} value={25}>
         Next

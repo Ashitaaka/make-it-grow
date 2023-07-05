@@ -1,68 +1,104 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 //import css
 import './topBar.css';
 //import assets
-import mig_logo from '../../assets/logo_MIG.svg';
-import search_icon from '../../assets/icons/search_icone.svg';
-import notification_icon from '../../assets/icons/notification_icone.svg';
+import mig_logo from '../../assets/logo_MIG.svg'
+import search_icon from '../../assets/icons/search_icone.svg'
+import notification_icon from '../../assets/icons/notification_icone.svg'
+import genericPicture from '../../assets/icons/genericPicture.jpg'
+import { MdLogout } from 'react-icons/md'
+import { AiOutlineUser } from 'react-icons/ai'
 
-const TopBar = ({ clickedButton, setClickedButton }) => {
-  const [user, setUser] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  const onSearch = (e) => {
-    e.target.value;
-  };
+const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5080/api/users/2`)
-      .then((res) => res.data)
-      .then((data) => {
-        setUser(...data);
-        setIsLoaded(true);
-      });
-  }, []);
+    //Getting user infos
+    const { id, firstname, lastname, picture, id_role, id_location } = token;
 
-  if (!isLoaded) return null;
+    //is User modal opened?
+    const [ isUserMenu, setIsUserMenu ] = useState(false);
 
-  return (
-    <div className="top_bar">
-      <Link to={'/'} onClick={() => setClickedButton('home')}>
-        <img className="logo" src={mig_logo} alt="Make It Grow" />
-      </Link>
+    //Creating a ref to the User Modal
+    const closeUserMenuRef = useRef(null);
 
-      <div className="right_container">
-        <div className="searchbar">
-          <img className="search_icon" src={search_icon} alt="" />
-          <input
-            type="text"
-            id="search_input"
-            name="search_input"
-            onKeyUp={onSearch}
-            placeholder="Rechercher une idée"
-          />
-        </div>
-        <Link
-          to={`/profile/${user.id}`}
-          onClick={() => setClickedButton('profile')}>
-          <div className="personnal_profile">
-            <img className="notification_icon" src={notification_icon} alt="" />
-            <div className="profile_infos">
-              <img
-                className="profile_picture"
-                src={user.picture}
-                alt="profile picture"
-              />
-              <p className="profile_name">{`${user.firstname} ${user.lastname}`}</p>
+    //When click outsit of the User Modal => closing Modal
+    useEffect(() => {
+        const handleOutsideClick = (e) => {
+          if (closeUserMenuRef.current && !closeUserMenuRef.current.contains(e.target)) {
+            setIsUserMenu(false);
+          }
+        };
+
+        document.addEventListener('click', handleOutsideClick);
+
+        //When unmounting component
+        return () => {
+          document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);    
+
+    //Show/hide User Modal
+    const showHideUserModal = (e) => {
+        e.stopPropagation();
+        setIsUserMenu(!isUserMenu)
+    }
+
+    //on changing search bar input
+    const onSearch = (e) =>{
+        console.log(e.target.value)
+    }
+
+    if(!token) return null;
+
+    return (
+        <div className='top_bar'>
+            <Link 
+                to={'/'}
+                onClick={()=>setClickedButton('home')}
+            >
+                <img className="logo" src={mig_logo} alt="Make It Grow" />
+            </Link>
+
+            <div className="right_container">
+                <div className="searchbar">
+                    <img className="search_icon" src={search_icon} alt="" />
+                    <input type="text" id="search_input" name="search_input" onKeyUp={onSearch} placeholder="Rechercher une idée" />
+                </div>
+               
+                <div className="personnal_profile">
+                    <img className="notification_icon" src={notification_icon} alt="" />
+                    <div 
+                        className="profile_infos"
+                        onClick={showHideUserModal}
+                    >
+                        <img className='profile_picture' src={picture? picture : genericPicture} alt="profile picture" />
+                        <p className='profile_name'>{`${firstname} ${lastname}`}</p>
+                    </div>
+                </div>
+                
+                <div 
+                    className={isUserMenu ? 'user_menu_modal' : 'user_menu_modal invisible'} 
+                    ref={closeUserMenuRef}
+                >
+                    <div className="user_logout_container"  onClick={removeToken}>
+                        <MdLogout className='logout-icon'/>
+                        <p className="logout">Se déconnecter</p>
+                    </div>
+                
+                    <Link 
+                        to={`/profile/${id}`}
+                        onClick={()=>setClickedButton('profile')}
+                        className="user_profile_container"
+                    >
+                        <AiOutlineUser className='profile-icon'/>
+                        <p className="profile">Accéder à mon profile</p>
+                    </Link>                    
+                </div>
+
             </div>
-          </div>
-        </Link>
-      </div>
-    </div>
-  );
-};
+        </div>
+    )
+}
 
 export default TopBar;
