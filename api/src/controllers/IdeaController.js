@@ -40,47 +40,20 @@ class IdeaController extends BaseController {
     );
   }
 
-  // async getAll() {
-  //   const [results] = await this.model.getAll();
-  //   console.clear();
-  //   return this.sendJson(
-  //     results.reduce((acc, current) => {
-  //       const foundIdea = acc.find(({ id }) => id === current.id);
-  //       if (!foundIdea.includes(ideas)) {
-  //         foundIdea.push(ideas);
-  //       }
-  //     }, [])
-  //   );
 
-  //   this.sendJson(
-  //     results.reduce(
-  //       (
-  //         acc,
-  //         { categories, city, color, delay, id, status, title, ...user }
-  //       ) => {
-  //         const allCategories = acc.categories;
-  //         const allUsers = acc.users;
-  //         if (!allCategories.includes(categories)) {
-  //           allCategories.push(categories);
-  //         }
-  //         if (!allUsers.some(({ user_id }) => user_id === user.user_id)) {
-  //           allUsers.push(user);
-  //         }
-  //         return {
-  //           categories: allCategories,
-  //           city,
-  //           color,
-  //           delay,
-  //           id,
-  //           status,
-  //           title,
-  //           users: allUsers,
-  //         };
-  //       },
-  //       { categories: [], users: [] }
-  //     )
-  //   );
-  // }
+    postItem() {
+        this.model.postItem(this.req.body)
+          .then((result) => {
+            console.log("lalalala")
+            this.res.status(201).json({ id: result.insertId, ...this.req.body });
+          })
+          .catch((error) => {
+            console.error(error);
+            this.res.status(500).json({ error: "An error occurred" });
+          });
+      }
+    
+
 }
 
 module.exports = IdeaController;

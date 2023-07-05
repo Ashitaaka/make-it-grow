@@ -6,7 +6,8 @@ const app = express();
 const port = process.env.APP_PORT ?? 5002;
 const APIRouter = express.Router();
 
-const { userRouter, ideaRouter, locationRouter } = require("./src/routes");
+
+const { userRouter, ideaRouter, locationRouter, categoryRouter } = require('./src/routes');
 
 //resolving cors issue from fetching from diffrent origins
 const cors = require("cors");
@@ -20,16 +21,21 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 
-app.use("/api", APIRouter);
 
-APIRouter.get("/version", function (req, res) {
-  const { version } = require("./package.json");
-  return res.json({ version });
-}); // create route to get the package.json version
+app.use('/api', APIRouter);
 
-APIRouter.use("/users", userRouter);
-APIRouter.use("/ideas", ideaRouter);
-APIRouter.use("/locations", locationRouter);
+APIRouter.get('/version', function (req, res) {
+
+  const { version } = require('./package.json');
+  return res.json({ version })
+
+}) // create route to get the package.json version
+
+APIRouter.use('/users', userRouter)
+APIRouter.use('/ideas', ideaRouter)
+APIRouter.use('/locations', locationRouter)
+APIRouter.use('/categories', categoryRouter)
+
 
 app.listen(port, function () {
   console.log(`API is running on port ${port}`);
