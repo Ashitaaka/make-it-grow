@@ -13,7 +13,7 @@ const IdeasCardsBackground = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5080/api/ideas/?fields=id,title,locations,status,categories,users`
+        `/ideas/?fields=id,title,locations,status,categories,users`
       )
       .then((res) => res.data)
       .then((data) => setIdeas(data));
@@ -22,8 +22,12 @@ const IdeasCardsBackground = () => {
   return (
     <div className="ideas_cards_background">
       {ideas.map((idea, index) => (
-        <Link to={`/idea/${idea.id}`} className="card_background">
-          <IdeasCard idea={idea} key={index} />
+        <Link 
+          to={`/idea/${idea.id}`} 
+          className="card_background"
+          key={index}
+        >
+          <IdeasCard idea={idea} />
         </Link>
       ))}
     </div>
