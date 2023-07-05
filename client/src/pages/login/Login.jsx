@@ -12,8 +12,6 @@ import gellule from "../../assets/icons/gellule.svg";
 
 const login = ({ setToken }) => {
 
-  // const { login } = useUser();
-
   //form Email/Password
   const [form, setForm] = useState({ 
     email: "",
@@ -37,8 +35,6 @@ const login = ({ setToken }) => {
       .then((res) => {
         setToken(res);
         console.log(res);
-        // const {id, firstname, lastname, id_role, id_location, picture} = res;
-        // login(id, firstname, lastname, id_role, id_location, picture);
       })
       .catch((error) => {
         setFormError(true);
