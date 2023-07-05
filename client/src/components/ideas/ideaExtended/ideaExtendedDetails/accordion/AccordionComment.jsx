@@ -59,7 +59,17 @@ const AccordionComment = ({ title, idea }) => {
         ref={contentContainer}
         className="content_container"
         style={{ maxHeight }}>
-        <div className="p-content">{idea.risk}</div>
+        <div className="p-content">
+          <div className="comment_container">
+            {idea.comment &&
+              idea.comment.map((comment, index) => (
+                <div key={index}>
+                  {comment}
+                  <hr />
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ const IdeaExtended = () => {
     ideaIdString.id &&
       getIdeaById(parseInt(ideaIdString.id)).then((data) => setIdea(data));
   }, []);
+  console.log(idea);
 
   if (!idea) return null;
   return (

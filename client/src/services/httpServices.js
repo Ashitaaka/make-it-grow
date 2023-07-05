@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'http://localhost:5080/api';
 export const getIdeaById = (id) => {
   return axios
     .get(
-      `/ideas/${id}/?fields=id,title,locations,status,categories,users,detail, risk, impact, benefit`
+      `/ideas/${id}/?fields=id,title,locations,status,categories,users,detail,risk,impact,benefit,comments`
     )
     .then((res) => res.data);
 };
