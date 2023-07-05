@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-export default function useToken(){
+export default function tokenStorage(){
 
     const getToken = () => {
-        const tokenString = localStorage.getItem('token');
+        const tokenString = localStorage.getItem('makeItGrowToken');
         const userToken = JSON.parse(tokenString);
         return userToken
     };
@@ -11,13 +11,18 @@ export default function useToken(){
     const [token, setToken] = useState(getToken());
 
     const saveToken = (userToken) => {
-        localStorage.setItem('token', JSON.stringify(userToken));
+        localStorage.setItem('makeItGrowToken', JSON.stringify(userToken));
         setToken(userToken);
     };
 
-    return {
-        setToken : saveToken,
-        token
+    const removeToken = () =>{
+        localStorage.removeItem('makeItGrowToken');
+        setToken(getToken());
     }
 
+    return {
+        removeToken,
+        setToken : saveToken,
+        token,
+    }
 }

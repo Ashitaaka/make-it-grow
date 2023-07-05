@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 // Import Component
 import { loginUser } from "../../services/httpServices";
 import { useUser } from "../../hooks/UserContext";
-import useToken from "../../hooks/useToken";
 // Import css
 import "./login.css";
 // Import assets
@@ -11,27 +10,35 @@ import mig_logo from "../../assets/logo_MIG.svg";
 import gellule from "../../assets/icons/gellule.svg";
 
 
-const login = () => {
+const login = ({ setToken }) => {
 
-  const { login } = useUser();
-  const { setToken } = useToken;
+  // const { login } = useUser();
 
-  const [form, setForm] = useState({ email: "", password: "" });
+  //form Email/Password
+  const [form, setForm] = useState({ 
+    email: "",
+    password: "" 
+  });
+
+  //Check if there is a login error
   const [formError, setFormError] = useState(false);
 
-
+  //On changing login form input
   const formChanges = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  //On submiting login form 
   const formSending = (e) => {
     e.preventDefault();
 
+    //POST on users/login route
     loginUser(form)
       .then((res) => {
         setToken(res);
-        const {id, firstname, lastname, id_role, id_location, picture} = res;
-        login(id, firstname, lastname, id_role, id_location, picture);
+        console.log(res);
+        // const {id, firstname, lastname, id_role, id_location, picture} = res;
+        // login(id, firstname, lastname, id_role, id_location, picture);
       })
       .catch((error) => {
         setFormError(true);

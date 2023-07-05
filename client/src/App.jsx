@@ -8,7 +8,7 @@ import TopBar from "./components/top bar/TopBar";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import { useUser } from "./hooks/UserContext"
-import useToken from "./hooks/useToken";
+import tokenStorage from "./hooks/useToken";
 //import css
 import "./App.css";
 
@@ -16,19 +16,20 @@ import "./App.css";
 function App() {
 
   //import the UserContext 
-  const { user } = useUser();
-  const { token } = useToken;
+  // const { user } = useUser();
+  const { removeToken, setToken, token } = tokenStorage();
+  
+  console.log(token);
  
-
   //Which button is active?
   const [clickedButton, setClickedButton] = useState("");
 
 
-    return !user.auth || !token
+    return !token
     ? (
       <Routes>
         <Route path="*" element={<Navigate to="/login"/>} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setToken={setToken} />} />
         <Route path="/register" element={<Register />} />
       </Routes>
       
@@ -43,6 +44,8 @@ function App() {
           <TopBar
             clickedButton={clickedButton}
             setClickedButton={setClickedButton}
+            removeToken={removeToken}
+            token={token}
           />
           <Routes>
             <Route path="*" element={<Navigate to="/dashboard"/>} />
