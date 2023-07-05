@@ -27,7 +27,7 @@ const Sidebar = ({ clickedButton , setClickedButton }) => {
         <div className="sidebar_desktop_menu_buttons">
           <div className={clickedButton === "home" ? "button_container active_button": "button_container"}>
             <Link 
-              to="/" 
+              to={"/dashboard"} 
               className="sidebar_desktop_button"
               onClick={() => setClickedButton("home")}
             >

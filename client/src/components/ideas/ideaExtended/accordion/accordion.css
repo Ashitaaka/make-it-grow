@@ -1,0 +1,5 @@
+.content_container{
+    overflow : hidden;
+    transition: max-height 0.5s ease-in-out;
+    margin: 1em 0;
+}
