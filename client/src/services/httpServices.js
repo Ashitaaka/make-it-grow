@@ -1,5 +1,5 @@
-import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:5080/api';
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:5080/api";
 
 //To get Idea by ID
 export const getIdeaById = (id) => {
@@ -11,7 +11,7 @@ export const getIdeaById = (id) => {
 //To get all locations
 export const getAllLocations = () => {
   return axios
-    .get('/locations')
+    .get("/locations")
     .then((res) => {
       return res.data;
     })
@@ -22,14 +22,13 @@ export const getAllLocations = () => {
 
 //To Login
 export const loginUser = (userDatas) => {
-  return axios
-    .post("/users/login", userDatas)
-  
-  
+  return axios.post("/users/login", userDatas);
+};
+
 //To register
 export const registerUser = (userDatas) => {
   return axios
-    .post('/users/register', userDatas)
+    .post("/users/register", userDatas)
     .then((res) => {
       return res.data;
     })
