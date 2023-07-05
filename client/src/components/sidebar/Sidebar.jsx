@@ -55,7 +55,7 @@ const Sidebar = ({ clickedButton , setClickedButton }) => {
 
           <div className={clickedButton === "new-idea" ? "new_project_button_container active_button" :"new_project_button_container"}>
             <Link
-              to="#" 
+              to="/newIdea" 
               className="sidebar_desktop_button"
               onClick={()=>setClickedButton("new-idea")}
             >

@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 //import components
-import Home from './pages/Home';
-import Sidebar from './components/sidebar/Sidebar';
-import ProfileDetails from './components/ProfileDetails/ProfileDetails';
-import TopBar from './components/top bar/TopBar';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
+
+import Home from './pages/Home'
+import Sidebar from './components/sidebar/Sidebar'
+import ProfileDetails from './components/ProfileDetails/ProfileDetails'
+import TopBar from './components/top bar/TopBar'
+import Login from './pages/login/Login'
+import Register from './pages/register/Register'
+import CreateIdea from './components/ideas/createIdea/CreateIdea'
 import IdeaExtended from './components/ideas/ideaExtended/IdeaExtended';
+
 //import css
 import './App.css';
 
@@ -39,9 +42,11 @@ function App() {
             setClickedButton={setClickedButton}
           />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/profile/:userid" element={<ProfileDetails />} />
+              <Route path='/' element={<Home />}/>
+              <Route path='/profile/:userid' element={<ProfileDetails/>}/>
+              <Route path='/newidea' element={<CreateIdea />}/>
             <Route path="/idea/:id" element={<IdeaExtended />} />
+
           </Routes>
         </div>
       </div>
