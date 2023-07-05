@@ -7,7 +7,7 @@ import ProfileDetails from './components/ProfileDetails/ProfileDetails'
 import TopBar from './components/top bar/TopBar'
 import Login from './pages/login/Login'
 import Register from './pages/register/Register'
-import CreateIdea from './components/ideas/createIdea/createIdea'
+import CreateIdea from './components/ideas/createIdea/CreateIdea'
 //import css
 import './App.css'
 

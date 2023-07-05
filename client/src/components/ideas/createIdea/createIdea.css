@@ -1,154 +1,208 @@
-.create_idea_bckg{
-    padding-top: 4em;
-    display: flex;
-    justify-content: center;
+.create_idea_bckg {
+  padding-top: 4em;
+  display: flex;
+  justify-content: center;
 }
 
-.create_idea_background_form{
-    background-color: white;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 3rem;
-    border-radius: 1em;
+.create_idea_background_form {
+  background-color: white;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  border-radius: 1em;
 }
 
-.categorie_name{
-    font-size: 1.2em;
-    font-weight: 500;
-    margin-bottom: 0.8em;
-    text-align: center;
+.categorie_name {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-bottom: 0.8em;
+  text-align: center;
 }
 /* section TITLE */
-.title_form_section{
-    padding-top: 1em;
-    width: 100%;
+.title_form_section {
+  padding-top: 1em;
+  width: 100%;
 }
 
-.title_form{
-    width: 100%;
-    font-size: 2em;
-    padding: 0.3em;
-    color: var(--primary-color-light);
-    border: none;
-    border-bottom: solid 0.08em var(--primary-color-light);
-    transition: padding-bottom 0.3s;
+.title_form {
+  width: 100%;
+  font-size: 2em;
+  padding: 0.3em;
+  color: var(--primary-color-light);
+  border: none;
+  border-bottom: solid 0.08em var(--primary-color-light);
+  transition: padding-bottom 0.3s;
+}
 
+.uncomplete_title {
+  color: var(--brick-red-color);
+  border-bottom: solid 0.08em var(--brick-red-color);
 }
 
 .title_form:focus-visible {
-    border-bottom: solid 0.08em var(--primary-color);
-    outline: none;
-    padding-bottom: 0.6em;
+  border-bottom: solid 0.08em var(--primary-color);
+  outline: none;
+  padding-bottom: 0.6em;
 }
 
 /* section categorie-date-place */
 
-.section_date_categorie_place{
-    padding: 2em;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 1em;
-    position: relative;
+.section_date_categorie_place {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+  width: 100%;
+  display: flex;
+  gap: 2em;
+  position: relative;
+  flex-wrap: wrap;
 }
 
-
+.react-datepicker__input-container {
+  display: flex;
+  justify-content: center;
+}
 /*date-element , categorys-element, locations-element*/
 
-.form_date_picker, .category_options, .location_options {
-    background-color: var(--background-color);
-    padding: 0.85em 1em;
-    text-align: center;
-    font-size: 1em;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 400;
-    border: none;
-    border-radius: 2em;
-    border: 1px solid var(--primary-color-light);
+.form_date_picker,
+.category_options,
+.location_options {
+  background-color: var(--background-color);
+  padding: 0.85em 1em;
+  text-align: center;
+  font-size: 0.8em;
+  font-family: "Raleway", sans-serif;
+  font-weight: 400;
+  border: none;
+  border-radius: 2em;
+  border: 1px solid var(--primary-color-light);
 }
 
-.date_square_section{
-
-    position: relative;
-    display: flex;
+.date_square_section {
+  position: relative;
+  display: flex;
+  width: 100%;
 }
 
-.react-datepicker{
-    font-family: 'Raleway', sans-serif ;
+.react-datepicker {
+  font-family: "Raleway", sans-serif;
 }
 
 .react-datepicker__header {
-    background-color: var(--background-color);
-    border-bottom: 1px solid #ccc;
-  }
-
-.react-datepicker__navigation{
-    color: var(--background-color);
+  background-color: var(--background-color);
+  border-bottom: 1px solid #ccc;
 }
 
-.react-datepicker__current-month{
-    color: var(--primary-color);
+.react-datepicker__navigation {
+  color: var(--background-color);
 }
 
-.react-datepicker__day--selected{
-    background-color: var(--primary-color);
+.react-datepicker__current-month {
+  color: var(--primary-color);
+}
+
+.react-datepicker__day--selected {
+  background-color: var(--primary-color);
 }
 .quill_container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
-    position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  position: relative;
 }
-.text_zone{
-    padding: 0;
-    /* margin-top: 1em;
-    margin-bottom: 1em; */
+
+.quill.text_zone {
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+.ql-container {
+  border-radius: 0 0 0.5em 0.5em;
 }
 
 .ql-editor {
-    height: 40vh
+  height: 40vh;
+  border-radius: 0 0 0.5em 0.5em;
+}
+
+.ql-editor:focus {
+  border: 0.2em solid var(--primary-color);
 }
 
 .ql-toolbar {
-    background-color: var(--background-color);
+  background-color: var(--background-color);
+  border-radius: 0.5em 0.5em 0 0;
 }
 
 .title_section {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-    padding-bottom: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  padding-bottom: 1em;
 }
 
 .idea_description {
-    font-size: 1.2em;
-    font-weight: 500;
+  font-size: 1.2em;
+  font-weight: 500;
 }
 
 .help_section {
-    padding: 0.1em 0.4em;
-    font-size: 0.8em;
-    font-weight: 700;
-    border: 1.5px solid var(--primary-color);
-    border-radius: 4em;
+  padding: 0.1em 0.4em;
+  font-size: 0.8em;
+  font-weight: 700;
+  border: 1.5px solid var(--primary-color);
+  border-radius: 4em;
 }
 
 .help_info {
-    width: 50%;
-    padding: 1em;
-    position: absolute;
-    right: 50px;
-    background-color: var(--primary-color-light);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s;
+  width: 50%;
+  padding: 1em 2em;
+  position: absolute;
+  background-color: var(--silver-tree-color);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s;
+  z-index: 1000;
+  border-radius: 0.5em;
+  font-weight: 500;
+  color: var(--tag-background-color);
+  font-size: 1em;
+  margin: 0.2em;
 }
 
-
 .help_section:hover .help_info {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
+}
+
+/* SUBMIT SECTION */
+.submit_section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+}
+.new_idea_submit_button {
+  width: 10em;
+  cursor: pointer;
+}
+
+.new_idea_submit_button:hover {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  border: solid 1px var(--primary-color);
+}
+
+.missing_info_section {
+  color: var(--brick-red-color);
+  padding: 0.8em;
+}
+
+.uncomplete {
+  border: 0.2em solid var(--brick-red-color);
+  border-radius: 1em;
 }
