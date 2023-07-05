@@ -64,7 +64,6 @@ const AccordionComment = ({ title, idea }) => {
               idea.comment.map((comment, index) => {
                 const userId = idea.id_user[index];
                 const user = idea.users.find((user) => user.user_id === userId);
-
                 return (
                   <div key={index} className="user_comment_container">
                     <div className="user_info">
