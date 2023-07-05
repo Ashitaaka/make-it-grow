@@ -12,16 +12,16 @@ import tokenStorage from "./hooks/useToken";
 import CreateIdea from './components/ideas/createIdea/CreateIdea'
 import IdeaExtended from './components/ideas/ideaExtended/IdeaExtended';
 //import css
-import './App.css';
+import "./App.css";
 
 
 function App() {
 
+
   const { removeToken, setToken, token } = tokenStorage();
   
- 
   //Which button is active?
-  const [clickedButton, setClickedButton] = useState('');
+  const [clickedButton, setClickedButton] = useState("");
 
 
     return !token
@@ -50,6 +50,8 @@ function App() {
             <Route path="*" element={<Navigate to="/dashboard"/>} />
             <Route path="/dashboard" element={<Home />} />
             <Route path="/profile/:userid" element={<ProfileDetails />} />
+            <Route path='/newidea' element={<CreateIdea />}/>
+            <Route path="/idea/:id" element={<IdeaExtended />} />
           </Routes>
         </div>
       </div>
