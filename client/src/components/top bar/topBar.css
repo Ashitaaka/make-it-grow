@@ -15,6 +15,7 @@
     display: flex;
     align-items: center;
     gap: 3em;
+    position: relative;
 }
 
 .top_bar .searchbar{
@@ -51,6 +52,7 @@
     align-items: center;
     padding: 0 0 0 1em;
     border-left: 1px solid var(--primary-color);
+    cursor: pointer;
 }
 
 .top_bar .profile_picture{
@@ -60,4 +62,33 @@
 
 .top_bar .profile_name{
    font-weight: 600;
+}
+
+.user_menu_modal{
+    position: absolute;
+    background-color: var(--ultra-light-color);
+    padding: 2em;
+    border-radius: .5em;
+    right: 0;
+    bottom: -7em;
+    box-shadow: 0 .25em .5em 0 rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap : 1em;
+}
+
+.invisible{
+    display: none;
+}
+
+.user_logout_container,
+.user_profile_container{
+    display: flex;
+    gap : .5em;
+    cursor: pointer;
+}
+
+.logout:hover,
+.profile:hover{
+    text-decoration: underline;
 }

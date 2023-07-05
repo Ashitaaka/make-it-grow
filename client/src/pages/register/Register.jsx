@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 // Import component
 import { getAllLocations, registerUser } from '../../services/httpServices'
 // Import css
@@ -46,7 +45,7 @@ const Register = () => {
                 console.log(res);
             })
             .catch((error) => {
-                setFormError(error);
+              setFormError(error);
             });
             
         document.getElementById("email").value = "";
