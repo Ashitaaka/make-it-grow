@@ -1,15 +1,20 @@
 import React from 'react';
 import './ideaextendedheader.css';
+import closingicon from '../../../../assets/icons/closing-icon.svg';
 
-const IdeaExtendedHeader = () => {
+const IdeaExtendedHeader = ({ idea }) => {
   return (
     <div className="header-container">
       <div className="top-header">
-        <button className="closing-button"></button>
+        <img className="closing-button" src={closingicon} alt="Home" />
         <div className="tags-container">
-          <p className="location-tag">Bordeaux</p>
-          <p className="location-tag">Saint-Jean-de-pied-de-Port</p>
-          <p className="status-tag">A voter</p>
+          <p className="location-tag">{idea.city}</p>
+          <p className="location-tag">{idea.city}</p>
+          <p
+            style={{ backgroundColor: `var(${idea.color})` }}
+            className="status-tag tag_categories">
+            {idea.categories}
+          </p>
         </div>
       </div>
       <hr className="separator" />

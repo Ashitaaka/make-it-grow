@@ -4,10 +4,12 @@ class IdeaModel extends BaseModel {
   queryFields;
 
   constructor({ fields }) {
-    super("ideas");
+
+    super('ideas');
 
     //securisation si fields vide et split de la chaine issue de la query
-    this.init(fields && fields.split(","));
+    this.init(fields && fields.split(','));
+
   }
 
   //si la query est vide, on affiche toutes les idees, sinon uniquement les donnes pour la card
@@ -38,6 +40,7 @@ class IdeaModel extends BaseModel {
         this.fields.push(`ideas.impact`);
       }
       if (this.queryFields.includes("users")) {
+       
         this.fields.push(`users.id AS user_id`);
         this.fields.push(`users.firstname`);
         this.fields.push(`users.lastname`);
@@ -45,6 +48,7 @@ class IdeaModel extends BaseModel {
         this.fields.push(`users_has_ideas.is_owner`);
         this.fields.push(`roles.label AS role`);
       }
+
       if (this.queryFields.includes("comments")) {
         this.fields.push(`comments.content AS comment`);
       }
@@ -57,7 +61,9 @@ class IdeaModel extends BaseModel {
         this.fields.push(`locations.id`);
         this.fields.push(`locations.city`);
       }
-      if (this.queryFields.includes("status")) {
+      
+      if (this.queryFields.includes('status')) {
+
         this.fields.push(`status.label AS status`);
         this.fields.push(`status.delay`);
       }
@@ -74,6 +80,7 @@ class IdeaModel extends BaseModel {
         `);
     }
   }
+
 
   insertIdeaHasCategories(ideaId, labelId) {
     const insertQuery = `INSERT INTO ideas_has_categories (id_idea, id_category) VALUES (?, ?)`;
@@ -135,8 +142,7 @@ class IdeaModel extends BaseModel {
       });
   }
   
-  
-  
+
 }
 
 module.exports = IdeaModel;
