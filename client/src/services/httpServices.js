@@ -25,7 +25,7 @@ export const loginUser = (userDatas) => {
   return axios
     .post("/users/login", userDatas)
   
-  
+}
 //To register
 export const registerUser = (userDatas) => {
   return axios
