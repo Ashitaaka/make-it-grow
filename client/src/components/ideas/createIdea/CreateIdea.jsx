@@ -9,7 +9,6 @@ import confetti from "canvas-confetti"; //confetti for button
 import "./createIdea.css";
 import PopUp from "./pop up/PopUp";
 
-axios.defaults.baseURL = "http://localhost:5080/api"
 
 const CreateIdea = () => {
   // state for data
