@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-=======
-import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
->>>>>>> dev
 // Import component
 import { getAllLocations, registerUser } from '../../services/httpServices';
 // Import css
@@ -44,19 +39,19 @@ const Register = () => {
   const formSending = (e) => {
     e.preventDefault();
 
-    const formSending = (e) =>{
-        e.preventDefault();
-        
-        registerUser(form)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((error) => {
-              setFormError(error);
-            });
-            
-        document.getElementById("email").value = "";
-        document.getElementById("password").value = "";
+    const formSending = (e) => {
+      e.preventDefault();
+
+      registerUser(form)
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((error) => {
+          setFormError(error);
+        });
+
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
     };
 
     document.getElementById('email').value = '';
