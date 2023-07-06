@@ -39,7 +39,7 @@ const AccordionComment = ({ title, idea, users }) => {
             src={MonochevBlanc}
             alt="Arrow"
             style={{
-              backgroundColor: `var(${idea.content})`,
+              backgroundColor: `var(${idea.color})`,
               transform: 'rotate(270deg)',
             }}
           />

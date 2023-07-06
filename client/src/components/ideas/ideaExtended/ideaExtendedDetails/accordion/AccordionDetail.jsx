@@ -1,40 +1,41 @@
-import React, { useState, createRef } from 'react';
-//import css
+import React, { useState, useEffect, useRef } from 'react';
 import './accordion.css';
-//import assets
 import Monochev from '../../../../../assets/icons/mono_chevrons_icone.svg';
 import MonochevBlanc from '../../../../../assets/icons/mono_chevrons_icone_blanc.svg';
 
 const AccordionDetail = ({ title, idea }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [maxHeight, setMaxHeight] = useState(0);
-  const contentContainer = createRef();
+  const contentContainerRef = useRef(null);
 
-  let onOpening = (e) => {
-    setOpen(!open);
-    setMaxHeight(maxHeight === 0 ? contentContainer.current.scrollHeight : 0);
+  useEffect(() => {
+    const contentHeight = contentContainerRef.current.scrollHeight;
+    setMaxHeight(open ? contentHeight : 0);
+  }, [open]);
+
+  const toggleAccordion = () => {
+    setOpen((prevOpen) => !prevOpen);
   };
 
   return (
     <div className="accordion_container">
-      {/* Header */}
       <div
         className="header"
-        onClick={onOpening}
+        onClick={toggleAccordion}
         style={{
           backgroundColor: `var(--ultra-light-color)`,
-        }}>
+        }}
+      >
         <div className="title">
           <div
             className="categorie"
             style={{
               backgroundColor: open ? `var(${idea.color})` : 'transparent',
               border: open ? 'none' : `2px solid var(${idea.color})`,
-            }}></div>
-
+            }}
+          ></div>
           <h2>{title}</h2>
         </div>
-
         {open ? (
           <img
             src={MonochevBlanc}
@@ -54,11 +55,11 @@ const AccordionDetail = ({ title, idea }) => {
           />
         )}
       </div>
-      {/* Content */}
       <div
-        ref={contentContainer}
+        ref={contentContainerRef}
         className="content_container"
-        style={{ maxHeight }}>
+        style={{ maxHeight }}
+      >
         <div className="p-content">
           <h3>{idea.title}</h3>
           {idea.detail}
@@ -68,4 +69,5 @@ const AccordionDetail = ({ title, idea }) => {
     </div>
   );
 };
+
 export default AccordionDetail;
