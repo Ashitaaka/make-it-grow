@@ -7,7 +7,12 @@ export const getIdeaById = (id) => {
     .get(
       `/ideas/${id}/?fields=id,title,locations,status,categories,users,detail,risk,impact,benefit,comments`
     )
-    .then((res) => res.data);
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
 };
 //To get all locations
 export const getAllLocations = () => {

@@ -32,7 +32,7 @@ const IdeaExtendedDetails = ({ idea, users }) => {
       <AccordionImpact idea={idea} title={"Impact sur l'organisation"} />
       <AccordionBenefit idea={idea} title={'Bénéfices'} />
       <AccordionRisk idea={idea} title={'Risque'} />
-      <AccordionComment idea={idea} title={'Commentaires'} />
+      <AccordionComment idea={idea} title={'Commentaires'} users={users} />
 
       {/*  Wysiwyg comments section */}
 

@@ -7,13 +7,12 @@ class IdeaController extends BaseController {
   }
   async getById() {
     const [results] = await this.model.getById(this.req.params.id);
-    console.log(results);
     this.sendJson(
       results.reduce(
         (
           acc,
           {
-            categories,
+            category,
             city,
             color,
             delay,
@@ -34,8 +33,8 @@ class IdeaController extends BaseController {
           const allUsers = acc.users;
           const allIdUsers = acc.id_user;
 
-          if (!allCategories.includes(categories)) {
-            allCategories.push(categories);
+          if (!allCategories.includes(category)) {
+            allCategories.push(category);
           }
           if (!allUsers.some(({ user_id }) => user_id === user.user_id)) {
             allUsers.push(user);
