@@ -1,43 +1,43 @@
-const BaseModel = require('./BaseModel');
+const BaseModel = require("./BaseModel");
 
 class IdeaModel extends BaseModel {
   queryFields;
 
   constructor({ fields }) {
-    super('ideas');
+    super("ideas");
 
     //securisation si fields vide et split de la chaine issue de la query
-    this.init(fields && fields.split(','));
+    this.init(fields && fields.split(","));
   }
 
   //si la query est vide, on affiche toutes les idees, sinon uniquement les donnes pour la card
   init(fields) {
     if (!fields) {
-      this.fields.push('*');
+      this.fields.push("*");
     } else {
       this.queryFields = fields;
-      if (this.queryFields.includes('id')) {
+      if (this.queryFields.includes("id")) {
         this.fields.push(`ideas.id`);
       }
-      if (this.queryFields.includes('title')) {
+      if (this.queryFields.includes("title")) {
         this.fields.push(`ideas.title`);
       }
-      if (this.queryFields.includes('deadline')) {
+      if (this.queryFields.includes("deadline")) {
         this.fields.push(`ideas.deadline`);
       }
-      if (this.queryFields.includes('detail')) {
+      if (this.queryFields.includes("detail")) {
         this.fields.push(`ideas.detail`);
       }
-      if (this.queryFields.includes('risk')) {
+      if (this.queryFields.includes("risk")) {
         this.fields.push(`ideas.risk`);
       }
-      if (this.queryFields.includes('benefit')) {
+      if (this.queryFields.includes("benefit")) {
         this.fields.push(`ideas.benefit`);
       }
-      if (this.queryFields.includes('impact')) {
+      if (this.queryFields.includes("impact")) {
         this.fields.push(`ideas.impact`);
       }
-      if (this.queryFields.includes('users')) {
+      if (this.queryFields.includes("users")) {
         this.fields.push(`users.id AS user_id`);
         this.fields.push(`users.firstname`);
         this.fields.push(`users.lastname`);
@@ -46,24 +46,25 @@ class IdeaModel extends BaseModel {
         this.fields.push(`roles.label AS role`);
       }
 
-      if (this.queryFields.includes('comments')) {
+      if (this.queryFields.includes("comments")) {
         this.fields.push(`comments.content AS comment`);
         this.fields.push(`comments.id_user`);
       }
-      if (this.queryFields.includes('categories')) {
+      if (this.queryFields.includes("categories")) {
         this.fields.push(`categories.id`);
         this.fields.push(`categories.label AS category`);
         this.fields.push(`categories.color`);
       }
-      if (this.queryFields.includes('locations')) {
+      if (this.queryFields.includes("locations")) {
         this.fields.push(`locations.id`);
         this.fields.push(`locations.city`);
       }
 
-      if (this.queryFields.includes('status')) {
+      if (this.queryFields.includes("status")) {
         this.fields.push(`status.label AS status`);
         this.fields.push(`status.delay`);
       }
+
       this.join
         .push(`LEFT JOIN ideas_has_categories ON ideas.id = ideas_has_categories.id_idea
         LEFT JOIN categories ON ideas_has_categories.id_category = categories.id
@@ -97,12 +98,12 @@ class IdeaModel extends BaseModel {
     const paramVals = Object.values(ideaData);
 
     const sql1 = `INSERT INTO ${this.table}`;
-    let sql2 = '';
-    let sql3 = '';
+    let sql2 = "";
+    let sql3 = "";
 
     paramKeys.forEach((key) => {
       sql2 += `${key},`;
-      sql3 += '?,';
+      sql3 += "?,";
     });
 
     const removeLastChar = (string) => string.substring(0, string.length - 1);
@@ -133,7 +134,7 @@ class IdeaModel extends BaseModel {
       .then(() => ({ id: ideaId, ...ideaData }))
       .catch((error) => {
         console.error(error);
-        throw new Error('An error occurred');
+        throw new Error("An error occurred");
       });
   }
 }
