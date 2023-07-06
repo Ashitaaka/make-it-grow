@@ -12,21 +12,16 @@ const IdeasCardsBackground = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `/ideas/?fields=id,title,locations,status,categories,users`
-      )
+      .get(`/ideas/?fields=id,title,locations,status,categories,users`)
       .then((res) => res.data)
+
       .then((data) => setIdeas(data));
   }, []);
 
   return (
     <div className="ideas_cards_background">
       {ideas.map((idea, index) => (
-        <Link 
-          to={`/idea/${idea.id}`} 
-          className="card_background"
-          key={index}
-        >
+        <Link to={`/idea/${idea.id}`} className="card_background" key={index}>
           <IdeasCard idea={idea} />
         </Link>
       ))}

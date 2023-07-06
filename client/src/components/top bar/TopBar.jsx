@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 //import css
-import './topBar.css'
+import './topBar.css';
 //import assets
 import mig_logo from '../../assets/logo_MIG.svg'
 import search_icon from '../../assets/icons/search_icone.svg'
@@ -101,4 +101,4 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
     )
 }
 
-export default TopBar
+export default TopBar;

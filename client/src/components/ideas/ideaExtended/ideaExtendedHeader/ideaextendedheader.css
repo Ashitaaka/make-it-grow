@@ -6,13 +6,19 @@
 .top-header {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 1rem;
+  padding-left: 1rem;
 }
 
 .closing-button {
-  width: 3em;
-  justify-content: flex-start;
-  padding-left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
 }
 
 .tags-container {

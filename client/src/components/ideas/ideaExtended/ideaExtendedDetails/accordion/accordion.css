@@ -1,0 +1,83 @@
+/*Accordion header*/
+.header {
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--background-color);
+}
+.title {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.categorie {
+  width: 1.8em;
+  border-radius: 15px;
+  height: 0.5em;
+}
+
+.header img {
+  width: 1.5em;
+  height: 1.5em;
+  transform: rotate(90deg);
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.3em;
+}
+
+/*Accordion content*/
+.content_container {
+  overflow: hidden;
+  transition: max-height 0.6s ease-in-out;
+}
+
+.content_container h3 {
+  margin-bottom: 1em;
+}
+
+.p-content {
+  margin: 2em;
+}
+
+.comment_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.user_picture {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  object-fit: cover; /* Ensure the image fills the container */
+}
+
+.user_comment_container {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 4em);
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 700;
+  gap: 1em;
+}
+
+hr {
+  width: 100%;
+
+  border: 1px solid var(--background-color);
+}
+
+.comment {
+  margin-bottom: 1em;
+  width: calc(100% - 4em);
+}
