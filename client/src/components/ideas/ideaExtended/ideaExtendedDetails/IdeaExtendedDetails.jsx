@@ -37,8 +37,32 @@ const IdeaExtendedDetails = ({ idea, users }) => {
       {/*  Wysiwyg comments section */}
 
       <div className="cta-button-container">
-        <button className="cta-button">Voter</button>
-        <button className="cta-button">Donner mon avis</button>
+        <button className="cta-button"           style={{
+            backgroundColor: `transparent`,
+            border: `2px solid var(${idea.color})`,
+            color: `var(${idea.color})`,
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = `var(${idea.color})`;
+            e.target.style.color = `white`;
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = `transparent`;
+            e.target.style.color = `var(${idea.color})`;
+          }}>Voter</button>
+        <button className="cta-button"           style={{
+            backgroundColor: `transparent`,
+            border: `2px solid var(${idea.color})`,
+            color: `var(${idea.color})`,
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.backgroundColor = `var(${idea.color})`;
+            e.target.style.color = `white`;
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.backgroundColor = `transparent`;
+            e.target.style.color = `var(${idea.color})`;
+          }}>Donner mon avis</button>
       </div>
     </div>
   );
