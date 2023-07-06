@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import './ideaextendedstatus.css';
 
@@ -68,22 +69,25 @@ const IdeaExtendedStatus = ({ idea }) => {
           <p>Projet créé</p>
           <div
             className="creation-dot dot progress"
-            style={{ backgroundColor: `var(${idea.color})` }}
-          ></div>
+            style={{ backgroundColor: `var(${idea.color})` }}></div>
         </div>
         <div className="debate checkpoint">
           <p>En débat</p>
           <div
             className="debate-dot dot progress"
+
             style={{ backgroundColor: getDotColor('debate-dot') }}
           ></div>
+
         </div>
         <div className="synthese checkpoint">
           <p>Synthèse en cours</p>
           <div
             className="synthese-dot dot progress"
+
             style={{ backgroundColor: getDotColor('synthese-dot') }}
           ></div>
+
         </div>
         <div className="vote checkpoint">
           <p>En vote</p>
@@ -96,6 +100,7 @@ const IdeaExtendedStatus = ({ idea }) => {
           <p>Date de fin</p>
           <div
             className="deadline-dot dot progress"
+
             style={{ backgroundColor: getDotColor('deadline-dot') }}
           ></div>
         </div>

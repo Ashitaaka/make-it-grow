@@ -23,12 +23,13 @@
   border-radius: 1.5em;
   font-size: 0.3em;
   font-weight: bold;
+  color: var(--ultra-light-color);
   transition: font-size 0.5s ease;
 }
 
 .card_background:hover .card_categories {
   font-size: 0.7em;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .card_title {

@@ -9,14 +9,13 @@ import { getIdeaById } from '../../../services/httpServices';
 import { useParams } from 'react-router-dom';
 
 const IdeaExtended = () => {
-  const [idea, setIdea] = useState();
+  const [idea, setIdea] = useState(null);
 
-  const ideaIdString = useParams();
+  const { id } = useParams(); // Destructure the `id` property from useParams()
 
   useEffect(() => {
-    ideaIdString.id &&
-      getIdeaById(parseInt(ideaIdString.id)).then((data) => setIdea(data));
-  }, []);
+    id && getIdeaById(parseInt(id)).then((data) => setIdea(data));
+  }, [id]); // Add `id` to the dependency array to trigger the effect when it changes
 
   if (!idea) return null;
   return (

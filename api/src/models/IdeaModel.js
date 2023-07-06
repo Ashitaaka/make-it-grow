@@ -48,6 +48,7 @@ class IdeaModel extends BaseModel {
 
       if (this.queryFields.includes("comments")) {
         this.fields.push(`comments.content AS comment`);
+        this.fields.push(`comments.id_user`);
       }
       if (this.queryFields.includes("categories")) {
         this.fields.push(`categories.id`);
@@ -58,8 +59,8 @@ class IdeaModel extends BaseModel {
         this.fields.push(`locations.id`);
         this.fields.push(`locations.city`);
       }
+
       if (this.queryFields.includes("status")) {
-        this.fields.push(`ideas.id_status`);
         this.fields.push(`status.label AS status`);
         this.fields.push(`status.delay`);
       }
