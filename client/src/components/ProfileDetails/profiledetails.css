@@ -1,0 +1,130 @@
+.profile_page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2em;
+}
+
+.profile_container {
+  width: 80%;
+  max-width: 860px;
+  height: 35%;
+  min-height: 260px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 2em;
+  padding: 2em;
+}
+
+.profile_head,
+.profile_content {
+  flex: 1;
+}
+
+.profile_head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  border-right: var(--separator);
+}
+
+.profile_head img {
+  width: 30%;
+  border-radius: 50%;
+}
+
+.profile_infos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.profile_name {
+  text-align: center;
+  line-height: 2em;
+}
+
+.profile_name h1 {
+  font-size: 1.25em;
+}
+
+.button_profil {
+  background-color: var(--primary-color);
+  border-style: none;
+  color: white;
+  padding: 0.7em 2em;
+  border-radius: 2em;
+}
+
+.profile_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.update_profile {
+  width: 80%;
+  max-width: 860px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2em;
+  padding: 3em;
+  gap: 3em;
+}
+
+.update_profile h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.update_content {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  /* justify-content: space-between; */
+  gap: 2em;
+}
+
+.update_content div {
+  width: calc(50% - 2em);
+}
+
+.left_fields,
+.right_fields {
+  flex: 1;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.update_content input {
+  width: 100%;
+  padding: 0.85em 1.5em;
+  border-radius: 2em;
+  border: 1px solid var(--primary-color-light);
+  margin-top: 1em;
+}
+
+.update_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4em;
+}
+
+#update_button {
+  width: auto;
+  margin: auto;
+  padding: 1em 2em;
+  border-radius: 2em;
+}

@@ -1,0 +1,81 @@
+.idea-status-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5em;
+  padding: 0 4em;
+}
+.idea-title {
+  width: 65%;
+  text-align: center;
+}
+.timeline-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.creation {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+.checkpoint {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+.deadline {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.5em;
+}
+.dot {
+  width: 1em;
+  height: 1em;
+  border-radius: 50px;
+  z-index: 2;
+  transition: background-color .6s ease-in-out;
+}
+.rod {
+  width: 98%;
+  border: 3px solid;
+  position: absolute;
+  top: 1.8em;
+  
+  color: var(--tag-background-color);
+  transition: 0.8s ease-in-out;
+  z-index: 2;
+}
+.initial {
+  width: 98%;
+  border: 3px solid;
+  position: absolute;
+  top: 1.8em;
+ 
+  color: var(--tag-background-color);
+  transition: 0.8s ease-in-out;
+  
+}
+.button-timeline{
+  margin: 5em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-previous{
+  width: 20%;
+  cursor: pointer;
+}
+.button-next{
+  width: 20%;
+  cursor: pointer;
+}
+
+

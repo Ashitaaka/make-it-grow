@@ -1,0 +1,109 @@
+.sidebar_space{
+    width:6.5em;
+    height: 100vh;
+    position: relative;
+}
+
+.sidebar_desktop{
+    width:6em;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff;
+    padding: 6em 1em 2em 1em;
+    overflow-x: hidden;
+    position: fixed;
+    transition: width .3s ease-out
+}
+
+.sidebar_desktop_menu_buttons,
+.config_buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.button_container,
+.new_project_button_container,
+.toggle_button_container{
+    padding: .5em 1.2em;
+    border-radius: 1.2em;
+}
+
+.button_container:hover{
+    background-color: var(--background-color);
+}
+
+.active_button{
+    background-color: var(--background-color);
+}
+
+.new_project_button_container{
+    transition: background-color .25s ease-in-out;
+}
+
+.toggle_button_container{
+    display: flex;
+    flex-direction: row;
+    width: 15em;
+    gap : 1em;
+}
+
+.sidebar_desktop_button{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+.sidebar_desktop a{
+   width: 15em;
+}
+
+.sidebar_desktop span{
+     display: none;
+}
+
+.sidebar_desktop_icon{
+    width: 1.6em;
+}
+
+.dark-mode-txt{
+    font-size: .85em;
+    text-align: center;
+    display: none;
+}
+
+.new_project_txt{
+    color: #fff;
+}
+
+/* ANIMATIONS HOVER */
+
+.sidebar_desktop:hover{
+    width: 15em;
+}
+
+.sidebar_desktop:hover span,
+.sidebar_desktop:hover .dark-mode-txt{
+    display: flex;
+}
+
+.sidebar_desktop:hover .toggle_button_container{
+    flex-direction: row;
+}
+
+.sidebar_desktop:hover .new_project_button_container{
+    background-color: var(--primary-color);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width : 1024px) {
+
+    .sidebar_desktop,
+    .sidebar_space{
+        display: none;
+    }
+}

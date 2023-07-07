@@ -1,0 +1,22 @@
+.idea-details-container {
+  width: 100%;
+  background-color: var(--ultra-light-color);
+  box-shadow: 0 -3px 18px 0 #00000025;
+}
+
+.cta-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  gap: 1.5em;
+  padding-top: 5em;
+  padding-bottom: 8em;
+}
+
+.cta-button {
+  width: 12em;
+  padding: 0.5em 1.2em;
+  border-radius: 1.2em;
+  background-color: var(--primary-color);
+}
