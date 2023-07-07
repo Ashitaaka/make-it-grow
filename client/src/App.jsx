@@ -20,6 +20,7 @@ axios.defaults.baseURL = "/api";
 
 function App() {
   const { removeToken, setToken, token } = tokenStorage();
+ 
 
   //Which button is active?
   const [clickedButton, setClickedButton] = useState("");
@@ -47,7 +48,7 @@ function App() {
           <Route path="*" element={<Navigate to="/dashboard" />} />
           <Route path="/dashboard" element={<Home />} />
           <Route path="/profile/:userid" element={<ProfileDetails />} />
-          <Route path="/newidea" element={<CreateIdea />} />
+          <Route path="/newidea" element={<CreateIdea token={token}/>} />
           <Route path="/idea/:id" element={<IdeaExtended />} />
           <Route path="/admin" element={<Admin />} />
         </Routes>
