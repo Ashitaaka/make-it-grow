@@ -39,9 +39,6 @@ const Register = () => {
   const formSending = (e) => {
     e.preventDefault();
 
-    const formSending = (e) => {
-      e.preventDefault();
-
       registerUser(form)
         .then((res) => {
           console.log(res);
@@ -50,12 +47,8 @@ const Register = () => {
           setFormError(error);
         });
 
-      document.getElementById('email').value = '';
       document.getElementById('password').value = '';
-    };
 
-    document.getElementById('email').value = '';
-    document.getElementById('password').value = '';
   };
 
   return (
