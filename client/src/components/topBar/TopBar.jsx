@@ -10,8 +10,9 @@ import genericPicture from "../../assets/icons/genericPicture.jpg";
 import { MdLogout } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { GoGear } from "react-icons/go";
+import BurgerButton from "../menuBurger/BurgerButton";
 
-const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
+const TopBar = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
   //Getting user infos
   const { id, firstname, lastname, picture, id_role, id_location } = token;
 
@@ -55,7 +56,7 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
 
   return (
     <div className="top_bar">
-      <Link to={"/"} onClick={() => setClickedButton("home")}>
+      <Link to={"/"}>
         <img className="logo" src={mig_logo} alt="Make It Grow" />
       </Link>
 
@@ -89,19 +90,17 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
           }
           ref={closeUserMenuRef}
         >
-          <div className="user_logout_container" onClick={removeToken}>
-            <MdLogout className="logout-icon" />
-            <p className="logout">Se déconnecter</p>
-          </div>
-
           <Link
-            to={`/profile/${id}`}
-            onClick={() => setClickedButton("profile")}
             className="user_profile_container"
+            to={`/profile/${id}`}
+            onClick={(e) => {
+              showHideUserModal(e);
+            }}
           >
             <AiOutlineUser className="profile-icon" />
-            <p className="profile">Accéder à mon profile</p>
+            <p className="profile">Accéder à mon profil</p>
           </Link>
+
           {id_role && id_role === 2 ? (
             <Link
               to={"/admin"}
@@ -112,7 +111,16 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
               <p className="admin_icon_text">Administration</p>
             </Link>
           ) : null}
+
+          <div className="user_logout_container" onClick={removeToken}>
+            <MdLogout className="logout-icon" />
+            <p className="logout">Se déconnecter</p>
+          </div>
         </div>
+        <BurgerButton
+          showHideMenuBurger={showHideMenuBurger}
+          isMenuBurger={isMenuBurger}
+        />
       </div>
     </div>
   );

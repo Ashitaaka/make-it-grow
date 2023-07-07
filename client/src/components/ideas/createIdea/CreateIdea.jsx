@@ -9,7 +9,7 @@ import confetti from "canvas-confetti"; //confetti for button
 import "./createIdea.css";
 import PopUp from "./pop up/PopUp";
 
-const CreateIdea = () => {
+const CreateIdea = ({ token }) => {
   // state for data
   const [title, setTitle] = useState("Titre de l'idée *");
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -191,7 +191,7 @@ const CreateIdea = () => {
     ) {
       const newIdea = {
         title: title,
-        id_status: 3,
+        id_status: 1,
         deadline: selectedDate,
         detail: ideaDetailsText,
         risk: ideaImpactText,
@@ -201,8 +201,11 @@ const CreateIdea = () => {
         is_rejected: false,
         label: idChoosenCategory && idChoosenCategory[0].id,
         city: idChoosenLocation && idChoosenLocation[0].id,
+        id_user: token && token.id,
+        is_owner: 1,
       };
 
+      console.log(newIdea);
       // post the new Idea
       axios.post("/ideas", newIdea).then((response) => {
         if (response.status === 201) {

@@ -1,28 +1,36 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 //import components
 import Home from "./pages/Home";
 import Sidebar from "./components/sidebar/Sidebar";
 import ProfileDetails from "./components/ProfileDetails/ProfileDetails";
-import TopBar from "./components/top bar/TopBar";
+import TopBar from "./components/topBar/TopBar";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import { useUser } from "./hooks/UserContext";
 import tokenStorage from "./hooks/useToken";
 import CreateIdea from "./components/ideas/createIdea/CreateIdea";
 import IdeaExtended from "./components/ideas/ideaExtended/IdeaExtended";
-//import css  display: flex;
+import MenuBurger from "./components/menuBurger/MenuBurger";
+//import css
+
 import "./App.css";
 import Admin from "./pages/admin/Admin";
 
 axios.defaults.baseURL = "/api";
 
 function App() {
+  //Getting user infos
   const { removeToken, setToken, token } = tokenStorage();
 
-  //Which button is active?
-  const [clickedButton, setClickedButton] = useState("");
+  //is Menu Burger opened?
+  const [isMenuBurger, setIsMenuBurger] = useState(false);
+
+  //Show/hide Menu Burger
+  const showHideMenuBurger = (e) => {
+    e.stopPropagation();
+    setIsMenuBurger(!isMenuBurger);
+  };
 
   return !token ? (
     <Routes>
@@ -32,16 +40,21 @@ function App() {
     </Routes>
   ) : (
     <div className="app">
-      <Sidebar
-        clickedButton={clickedButton}
-        setClickedButton={setClickedButton}
+      <MenuBurger
+        removeToken={removeToken}
+        token={token}
+        isMenuBurger={isMenuBurger}
+        setIsMenuBurger={setIsMenuBurger}
+        showHideMenuBurger={showHideMenuBurger}
       />
+      <Sidebar token={token} />
       <div className="app_container">
         <TopBar
-          clickedButton={clickedButton}
-          setClickedButton={setClickedButton}
           removeToken={removeToken}
           token={token}
+          isMenuBurger={isMenuBurger}
+          setIsMenuBurger={setIsMenuBurger}
+          showHideMenuBurger={showHideMenuBurger}
         />
         <Routes>
           <Route path="*" element={<Navigate to="/dashboard" />} />

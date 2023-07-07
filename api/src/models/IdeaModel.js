@@ -91,8 +91,14 @@ class IdeaModel extends BaseModel {
     return this.db.query(insertQuery, [ideaId, cityId]);
   }
 
+  insertIdeasHasUsers(ideaId, userId, is_owner) {
+    const insertQuery = `INSERT INTO users_has_ideas (id_idea, id_user, is_owner) VALUES (?, ?, ?)`;
+
+    return this.db.query(insertQuery, [ideaId, userId, is_owner]);
+  }
+
   postItem(reqBody) {
-    const { label, city, ...ideaData } = reqBody;
+    const { label, city, id_user, is_owner, ...ideaData } = reqBody;
 
     const paramKeys = Object.keys(ideaData);
     const paramVals = Object.values(ideaData);
@@ -127,6 +133,13 @@ class IdeaModel extends BaseModel {
       .then(() => {
         if (city) {
           return this.insertIdeasHasLocations(ideaId, city);
+        } else {
+          return Promise.resolve();
+        }
+      })
+      .then(() => {
+        if (id_user) {
+          return this.insertIdeasHasUsers(ideaId, id_user, is_owner);
         } else {
           return Promise.resolve();
         }
