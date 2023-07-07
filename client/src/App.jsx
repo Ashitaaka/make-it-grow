@@ -12,11 +12,11 @@ import tokenStorage from "./hooks/useToken";
 import CreateIdea from './components/ideas/createIdea/CreateIdea'
 import IdeaExtended from './components/ideas/ideaExtended/IdeaExtended';
 import MenuBurger from "./components/menu burger/MenuBurger";
-
 //import css
 import "./App.css";
+import Admin from "./pages/admin/Admin";
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = "/api";
 
 function App() {
 
@@ -67,10 +67,12 @@ function App() {
             <Route path="/profile/:userid" element={<ProfileDetails />} />
             <Route path='/newidea' element={<CreateIdea />}/>
             <Route path="/idea/:id" element={<IdeaExtended />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
       </div>
-    );
+    </div>
+  );
 }
 
 export default App;
