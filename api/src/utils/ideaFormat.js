@@ -26,9 +26,9 @@ module.exports = function (ideasFromDb) {
       }
     ) => {
       const allComments = acc.comment;
+
       const allCategories = acc.categories;
       const allUsers = acc.users;
-      const allIdUsers = acc.id_user_comment;
 
       if (!allCategories.includes(category)) {
         allCategories.push(category);
@@ -36,12 +36,13 @@ module.exports = function (ideasFromDb) {
       if (!allUsers.some(({ user_id }) => user_id === user.user_id)) {
         allUsers.push(user);
       }
-      if (!allComments.includes(comment)) {
-        allComments.push(comment);
+      if (!allComments.some(({ user_id }) => user_id === id_user_comment)) {
+        allComments.push({
+          user_id: id_user_comment,
+          content: comment,
+        });
       }
-      if (!allIdUsers.includes(id_user_comment)) {
-        allIdUsers.push(id_user_comment);
-      }
+
       return {
         categories: allCategories,
         city,
@@ -56,7 +57,6 @@ module.exports = function (ideasFromDb) {
         risk,
         benefit,
         comment: allComments,
-        id_user_comment: allIdUsers,
         deadline,
         id_status,
         is_closed,
@@ -65,6 +65,6 @@ module.exports = function (ideasFromDb) {
         users: allUsers,
       };
     },
-    { categories: [], users: [], comment: [], id_user_comment: [] }
+    { categories: [], users: [], comment: [] }
   );
 };
