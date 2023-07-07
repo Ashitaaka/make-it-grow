@@ -1,11 +1,11 @@
 import React, { useState, createRef } from 'react';
 import axios from 'axios'
 // import css
-import './accordion.css';
+import "./accordion.css";
 // import assets
-import Monochev from '../../../../../assets/icons/mono_chevrons_icone.svg';
-import MonochevBlanc from '../../../../../assets/icons/mono_chevrons_icone_blanc.svg';
-import genericIcon from './../../../../../assets/icons/genericPicture_2.jpg';
+import Monochev from "../../../../../assets/icons/mono_chevrons_icone.svg";
+import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc.svg";
+import genericIcon from "../../../../../assets/icons/genericPicture_2.jpg";
 
 
 const AccordionComment = ({ title, idea, users }) => {
@@ -53,8 +53,8 @@ const AccordionComment = ({ title, idea, users }) => {
         return Promise.reject(error.response.data);
       });
     }
-    console.log(idea);
-    console.log(users);
+    console.log(idea,'-----------',users);
+    
 
   return (
     <div className="accordion_container">
@@ -64,14 +64,16 @@ const AccordionComment = ({ title, idea, users }) => {
         onClick={onOpening}
         style={{
           backgroundColor: `var(--ultra-light-color)`,
-        }}>
+        }}
+      >
         <div className="title">
           <div
             className="categorie"
             style={{
-              backgroundColor: open ? `var(${idea.color})` : 'transparent',
-              border: open ? 'none' : `2px solid var(${idea.color})`,
-            }}></div>
+              backgroundColor: open ? `var(${idea.color})` : "transparent",
+              border: open ? "none" : `2px solid var(${idea.color})`,
+            }}
+          ></div>
           <h2>{title}</h2>
         </div>
         {open ? (
@@ -80,7 +82,7 @@ const AccordionComment = ({ title, idea, users }) => {
             alt="Arrow"
             style={{
               backgroundColor: `var(${idea.color})`,
-              transform: 'rotate(270deg)',
+              transform: "rotate(270deg)",
             }}
           />
         ) : (
@@ -88,7 +90,7 @@ const AccordionComment = ({ title, idea, users }) => {
             src={Monochev}
             alt="Arrow"
             style={{
-              backgroundColor: 'var(--ultra-light-color)',
+              backgroundColor: "var(--ultra-light-color)",
             }}
           />
         )}
@@ -97,7 +99,8 @@ const AccordionComment = ({ title, idea, users }) => {
       <div
         ref={contentContainer}
         className="content_container"
-        style={{ maxHeight }}>
+        style={{ maxHeight }}
+      >
         <div className="p-content">
           <div className="comment_container">
             

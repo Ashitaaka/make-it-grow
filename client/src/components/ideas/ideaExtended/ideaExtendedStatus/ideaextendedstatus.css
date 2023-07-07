@@ -8,9 +8,11 @@
 }
 .idea-title {
   width: 65%;
+  margin-top: 2em;
   text-align: center;
 }
 .timeline-container {
+  margin: 5em;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -62,13 +64,6 @@
   transition: 0.8s ease-in-out;
   
 }
-.button-timeline{
-  margin: 5em;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
 .button-previous{
   width: 20%;
   cursor: pointer;
@@ -77,5 +72,3 @@
   width: 20%;
   cursor: pointer;
 }
-
-

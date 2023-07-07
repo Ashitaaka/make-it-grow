@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 //import css
-import './topBar.css';
+import './topBar.css'
 //import assets
 import mig_logo from '../../assets/logo_MIG.svg'
 import search_icon from '../../assets/icons/search_icone.svg'
@@ -9,9 +9,11 @@ import notification_icon from '../../assets/icons/notification_icone.svg'
 import genericPicture from '../../assets/icons/genericPicture.jpg'
 import { MdLogout } from 'react-icons/md'
 import { AiOutlineUser } from 'react-icons/ai'
+import { GoGear } from "react-icons/go"
+import BurgerButton from '../menu burger/burgerButton'
 
 
-const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
+const TopBar = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
 
     //Getting user infos
     const { id, firstname, lastname, picture, id_role, id_location } = token;
@@ -55,7 +57,6 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
         <div className='top_bar'>
             <Link 
                 to={'/'}
-                onClick={()=>setClickedButton('home')}
             >
                 <img className="logo" src={mig_logo} alt="Make It Grow" />
             </Link>
@@ -63,7 +64,13 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
             <div className="right_container">
                 <div className="searchbar">
                     <img className="search_icon" src={search_icon} alt="" />
-                    <input type="text" id="search_input" name="search_input" onKeyUp={onSearch} placeholder="Rechercher une idée" />
+                    <input 
+                        type="text" 
+                        id="search_input" 
+                        name="search_input" 
+                        onKeyUp={onSearch} 
+                        placeholder="Rechercher une idée" 
+                    />
                 </div>
                
                 <div className="personnal_profile">
@@ -81,24 +88,42 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
                     className={isUserMenu ? 'user_menu_modal' : 'user_menu_modal invisible'} 
                     ref={closeUserMenuRef}
                 >
+        
+                    <Link 
+                        className="user_profile_container"
+                        to={`/profile/${id}`}
+                        onClick={(e)=>{
+                            showHideUserModal(e)
+                        }}
+                    >
+                        <AiOutlineUser className='profile-icon'/>
+                        <p className="profile">Accéder à mon profil</p>
+                    </Link> 
+
+                    {id_role && id_role === 2 
+                    ?<Link
+                        to={"/admin"}
+                        onClick={() => setClickedButton("admin")}
+                        className="admin_panel_container"
+                        >
+                        <GoGear className="admin_icon" />
+                        <p className="admin_icon_text">Administration</p>
+                    </Link>
+                    : null}
+
                     <div className="user_logout_container"  onClick={removeToken}>
                         <MdLogout className='logout-icon'/>
                         <p className="logout">Se déconnecter</p>
                     </div>
-                
-                    <Link 
-                        to={`/profile/${id}`}
-                        onClick={()=>setClickedButton('profile')}
-                        className="user_profile_container"
-                    >
-                        <AiOutlineUser className='profile-icon'/>
-                        <p className="profile">Accéder à mon profile</p>
-                    </Link>                    
-                </div>
 
+                </div>
+                <BurgerButton 
+                    showHideMenuBurger={showHideMenuBurger}
+                    isMenuBurger = {isMenuBurger}
+                />                  
             </div>
         </div>
     )
 }
 
-export default TopBar;
+export default TopBar

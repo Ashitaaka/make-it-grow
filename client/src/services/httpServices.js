@@ -1,5 +1,5 @@
-import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:5080/api';
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:5080/api";
 
 //To get Idea by ID
 const fakeid ={
@@ -24,17 +24,17 @@ const fakeid ={
   },
   {
     id:2,
-    user_id:11,
+    user_id:1,
     content:"blabla"
   },
   {
     id:13,
-    user_id:11,
+    user_id:1,
     content:"blabla"
   },
   {
     id:15,
-    user_id:11,
+    user_id:1,
     content:"blabla"
   }
 
@@ -105,7 +105,6 @@ export const getIdeaById = (id) => {
       `/ideas/${id}/?fields=id,title,locations,status,categories,users,detail,risk,impact,benefit,comments`
     )
     .then((res) => {
-      return fakeid
       return res.data;
     })
     .catch((error) => {
@@ -115,7 +114,7 @@ export const getIdeaById = (id) => {
 //To get all locations
 export const getAllLocations = () => {
   return axios
-    .get('/locations')
+    .get("/locations")
     .then((res) => {
       return res.data;
     })
@@ -127,7 +126,7 @@ export const getAllLocations = () => {
 //To Login
 export const loginUser = (userDatas) => {
   return axios
-    .post('/users/login', userDatas)
+    .post("/users/login", userDatas)
     .then((res) => {
       return res.data;
     })
@@ -139,7 +138,7 @@ export const loginUser = (userDatas) => {
 //To register
 export const registerUser = (userDatas) => {
   return axios
-    .post('/users/register', userDatas)
+    .post("/users/register", userDatas)
     .then((res) => {
       return res.data;
     })

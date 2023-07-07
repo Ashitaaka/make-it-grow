@@ -1,10 +1,10 @@
-import React from 'react';
-import './ideaextendedusers.css';
+import React from "react";
+import "./ideaextendedusers.css";
 const USER_LENGTH = 4;
 
 const IdeaExtendedUsers = ({ users }) => {
   // Add condition to replace the 11th image if there are more than 11 images
-
+  console.log(users);
   const experts = users.filter((user) => user.is_expert);
   const owner = users.find((user) => user.is_owner);
 
