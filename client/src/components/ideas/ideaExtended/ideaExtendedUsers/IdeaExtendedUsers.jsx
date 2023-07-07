@@ -2,9 +2,9 @@ import React from "react";
 import "./ideaextendedusers.css";
 const USER_LENGTH = 4;
 
-const IdeaExtendedUsers = ({ users }) => {
+const IdeaExtendedUsers = ({ users, impactedUsers }) => {
   // Add condition to replace the 11th image if there are more than 11 images
-  console.log(users);
+
   const experts = users.filter((user) => user.is_expert);
   const owner = users.find((user) => user.is_owner);
 
@@ -21,7 +21,7 @@ const IdeaExtendedUsers = ({ users }) => {
         <p>Personnes impactées</p>
 
         <div className="img-mapping">
-          {users.map((user, index) => {
+          {impactedUsers.map((user, index) => {
             if (index < USER_LENGTH) {
               return (
                 <img key={index} className="users-img" src={user.picture} />

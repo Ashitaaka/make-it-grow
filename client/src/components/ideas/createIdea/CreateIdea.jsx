@@ -9,7 +9,6 @@ import confetti from "canvas-confetti"; //confetti for button
 import "./createIdea.css";
 import PopUp from "./pop up/PopUp";
 
-
 const CreateIdea = () => {
   // state for data
   const [title, setTitle] = useState("Titre de l'idée *");
@@ -87,14 +86,14 @@ const CreateIdea = () => {
 
   useEffect(() => {
     axios
-      .get(`/ideas/?fields=categories`)
+      .get(`/categories`)
       .then((res) => res.data)
       .then((data) => setCategory(data));
   }, []);
 
   useEffect(() => {
     axios
-      .get(`/ideas/?fields=locations`)
+      .get(`/locations`)
       .then((res) => res.data)
       .then((data) => setIdeaLocation(data));
   }, []);
@@ -113,9 +112,11 @@ const CreateIdea = () => {
   useEffect(() => {
     categorys &&
       setIdChoosenCategory(
-        categorys.filter((el) => el.category === choosenCategory)
+        categorys.filter((el) => el.label === choosenCategory)
       );
   }, [choosenCategory]);
+
+  console.log(choosenCategory);
 
   // Take all the locations from the bd and create a new Array with no repeat locations
   const noRepeatLocations = [];
@@ -130,14 +131,11 @@ const CreateIdea = () => {
   // get the id location
 
   useEffect(() => {
-
     ideaLocation &&
-    setIdChoosenLocation(
-      ideaLocation.filter((el) => el.city === choosenLocation)
-    );
-
-  },[choosenLocation])
-
+      setIdChoosenLocation(
+        ideaLocation.filter((el) => el.city === choosenLocation)
+      );
+  }, [choosenLocation]);
 
   // handle pour texteArea
 
@@ -208,7 +206,7 @@ const CreateIdea = () => {
       // post the new Idea
       axios.post("/ideas", newIdea).then((response) => {
         if (response.status === 201) {
-          console.log(newIdea)
+          console.log(newIdea);
           confetti();
           setPopUpIsActive(true);
         }
@@ -237,6 +235,7 @@ const CreateIdea = () => {
       setshowMissingInfo(true);
     }
   };
+  console.log(choosenCategory);
 
   return (
     <div className="create_idea_bckg">
@@ -291,9 +290,9 @@ const CreateIdea = () => {
               onChange={handleCategoryChange}
             >
               <option value="">Sélectionnez une catégorie</option>
-              {noRepeatCategorys.map((category, index) => (
-                <option key={index} value={category}>
-                  {category}
+              {categorys.map((category, index) => (
+                <option key={index} value={category.label}>
+                  {category.label}
                 </option>
               ))}
             </select>
@@ -312,9 +311,9 @@ const CreateIdea = () => {
               onChange={handleLocationChange}
             >
               <option value="">Sélectionnez un lieu</option>
-              {noRepeatLocations.map((city, index) => (
-                <option key={index} value={city}>
-                  {city}
+              {ideaLocation.map((city, index) => (
+                <option key={index} value={city.city}>
+                  {city.city}
                 </option>
               ))}
             </select>
