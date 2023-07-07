@@ -1,6 +1,6 @@
 import React from "react";
 import "./ideaextendedusers.css";
-import genericPicture from "../../../../assets/icons/genericPicture.jpg";
+import genericPicture from "../../../../assets/icons/genericPicture_2.jpg";
 const USER_LENGTH = 4;
 
 const IdeaExtendedUsers = ({ users, impactedUsers }) => {

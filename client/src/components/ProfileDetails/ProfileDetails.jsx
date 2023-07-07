@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import genericPicture from "../../assets/icons/genericPicture_2.jpg";
 import "./profiledetails.css";
 
 const ProfileDetails = () => {
@@ -61,7 +62,7 @@ const ProfileDetails = () => {
     <div className="profile_page">
       <div className="profile_container">
         <div className="profile_head">
-          <img src={user.picture} alt="" />
+          <img src={user.picture ? user.picture : genericPicture} alt="" />
           <div className="profile_infos">
             <div className="profile_name">
               <h1>
