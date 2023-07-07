@@ -13,6 +13,7 @@ import CreateIdea from './components/ideas/createIdea/CreateIdea'
 import IdeaExtended from './components/ideas/ideaExtended/IdeaExtended';
 import MenuBurger from "./components/menu burger/MenuBurger";
 //import css
+
 import "./App.css";
 import Admin from "./pages/admin/Admin";
 

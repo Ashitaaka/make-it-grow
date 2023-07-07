@@ -16,7 +16,6 @@ const userRouter = Router();
 //ROUTES USERS
 userRouter.get(
   "",
-  authorizationAdmin,
   (req, res, next) => new UserController(req, res, next).getAll(),
   hidePassword
 );
