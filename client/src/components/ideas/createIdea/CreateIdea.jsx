@@ -175,7 +175,7 @@ const CreateIdea = ({ token }) => {
   const editorStyle = {
     fontSize: "16px",
   };
-
+  console.log(token);
   //On click Submit button
   const handleButtonClick = () => {
     if (
