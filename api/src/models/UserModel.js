@@ -14,6 +14,17 @@ class UserModel extends BaseModel {
     return this.db.query("SELECT * FROM users WHERE email = ?", [email]);
   }
 
+  getByCity(city) {
+    return this.db.query(
+      `
+      SELECT ${this.fields}
+      FROM ${this.table} 
+      ${this.join}
+      WHERE locations.city = ?`,
+      [city]
+    );
+  }
+
   //si la query est vide, on affiche toutes les idees, sinon uniquement les donnes pour la card
   init(fields) {
     if (!fields) {
@@ -21,7 +32,7 @@ class UserModel extends BaseModel {
     } else {
       this.queryFields = fields;
       if (this.queryFields.includes("id")) {
-        this.fields.push(`users.id`);
+        this.fields.push(`users.id AS user_id`);
       }
       if (this.queryFields.includes("firstname")) {
         this.fields.push(`users.firstname`);
@@ -45,8 +56,15 @@ class UserModel extends BaseModel {
         this.fields.push(`locations.city`);
         this.fields.push("locations.country");
       }
+      if (this.queryFields.includes("users")) {
+        this.fields.push(`users.id AS user_id`);
+        this.fields.push(`users.firstname`);
+        this.fields.push(`users.lastname`);
+        this.fields.push(`users.picture`);
+      }
 
-      this.join.push(`LEFT JOIN locations ON locations.id = users.id_location`);
+      this.join.push(`LEFT JOIN locations ON locations.id = users.id_location
+      `);
     }
   }
 }
