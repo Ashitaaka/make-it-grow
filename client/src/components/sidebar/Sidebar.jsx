@@ -9,12 +9,9 @@ import filterIcon from "../../assets/icons/filter-icon.svg";
 
 //import css
 import "./sidebar.css";
-import ToggleButton from "../toggle button/ToggleButton";
-
-
+import ToggleButton from "../toggleButton/ToggleButton";
 
 const Sidebar = ({ token }) => {
-  
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   //To know what's the current URL
@@ -29,25 +26,28 @@ const Sidebar = ({ token }) => {
       <div className="sidebar_desktop">
         {/* Top buttons*/}
         <div className="sidebar_desktop_menu_buttons">
-          <div className={location.includes("dashboard") 
-            ? "button_container active_button"
-            : "button_container"}
+          <div
+            className={
+              location.includes("dashboard")
+                ? "button_container active_button"
+                : "button_container"
+            }
           >
-            <Link 
-              to={"/dashboard"} 
-              className="sidebar_desktop_button"
-            >
+            <Link to={"/dashboard"} className="sidebar_desktop_button">
               <img className="sidebar_desktop_icon" src={homeIcon} alt="Home" />
               <span>Home</span>
             </Link>
           </div>
 
-          <div className={location.includes("profile") 
-              ? "button_container active_button"
-              : "button_container"}
-            >
-            <Link 
-              to={`/profile/${token.id}`} 
+          <div
+            className={
+              location.includes("profile")
+                ? "button_container active_button"
+                : "button_container"
+            }
+          >
+            <Link
+              to={`/profile/${token.id}`}
               className="sidebar_desktop_button"
             >
               <img
@@ -61,13 +61,14 @@ const Sidebar = ({ token }) => {
 
           <hr className="separator" />
 
-          <div className={location.includes("newIdea") 
-            ? "new_project_button_container active_button" :"new_project_button_container"}
+          <div
+            className={
+              location.includes("newIdea")
+                ? "new_project_button_container active_button"
+                : "new_project_button_container"
+            }
           >
-            <Link
-              to="/newIdea" 
-              className="sidebar_desktop_button"
-            >
+            <Link to="/newIdea" className="sidebar_desktop_button">
               <img
                 className="sidebar_desktop_icon"
                 src={addProjectIcon}
@@ -82,14 +83,14 @@ const Sidebar = ({ token }) => {
         <div className="config_buttons">
           <hr className="separator" />
 
-          <div className={location.includes("filters") 
-            ? "button_container active_button"
-            : "button_container"}
+          <div
+            className={
+              location.includes("filters")
+                ? "button_container active_button"
+                : "button_container"
+            }
           >
-            <Link 
-              to="/filters" 
-              className="sidebar_desktop_button"
-            >
+            <Link to="/filters" className="sidebar_desktop_button">
               <img
                 className="sidebar_desktop_icon"
                 src={filterIcon}
