@@ -17,7 +17,7 @@ class IdeaModel extends BaseModel {
     } else {
       this.queryFields = fields;
       if (this.queryFields.includes("id")) {
-        this.fields.push(`ideas.id`);
+        this.fields.push(`ideas.id AS idea_id`);
       }
       if (this.queryFields.includes("title")) {
         this.fields.push(`ideas.title`);
@@ -48,21 +48,21 @@ class IdeaModel extends BaseModel {
 
       if (this.queryFields.includes("comments")) {
         this.fields.push(`comments.content AS comment`);
-        this.fields.push(`comments.id_user`);
+        this.fields.push(`comments.id_user AS id_user_comment`);
       }
       if (this.queryFields.includes("categories")) {
-        this.fields.push(`categories.id`);
+        this.fields.push(`categories.id AS cat_id`);
         this.fields.push(`categories.label AS category`);
         this.fields.push(`categories.color`);
       }
       if (this.queryFields.includes("locations")) {
-        this.fields.push(`locations.id`);
+        this.fields.push(`locations.id AS location_id`);
         this.fields.push(`locations.city`);
       }
 
       if (this.queryFields.includes("status")) {
         this.fields.push(`status.label AS status`);
-        this.fields.push(`status.delay`);
+        this.fields.push(`status.delay AS delay`);
       }
 
       this.join

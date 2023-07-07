@@ -12,7 +12,7 @@ import { useUser } from "./hooks/UserContext";
 import tokenStorage from "./hooks/useToken";
 import CreateIdea from "./components/ideas/createIdea/CreateIdea";
 import IdeaExtended from "./components/ideas/ideaExtended/IdeaExtended";
-//import css
+//import css  display: flex;
 import "./App.css";
 import Admin from "./pages/admin/Admin";
 
