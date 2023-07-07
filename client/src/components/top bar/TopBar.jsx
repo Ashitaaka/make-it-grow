@@ -9,9 +9,10 @@ import notification_icon from '../../assets/icons/notification_icone.svg'
 import genericPicture from '../../assets/icons/genericPicture.jpg'
 import { MdLogout } from 'react-icons/md'
 import { AiOutlineUser } from 'react-icons/ai'
+import BurgerButton from '../menu burger/burgerButton'
 
 
-const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
+const TopBar = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
 
     //Getting user infos
     const { id, firstname, lastname, picture, id_role, id_location } = token;
@@ -55,7 +56,6 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
         <div className='top_bar'>
             <Link 
                 to={'/'}
-                onClick={()=>setClickedButton('home')}
             >
                 <img className="logo" src={mig_logo} alt="Make It Grow" />
             </Link>
@@ -87,15 +87,20 @@ const TopBar = ({ clickedButton, setClickedButton, removeToken, token }) => {
                     </div>
                 
                     <Link 
-                        to={`/profile/${id}`}
-                        onClick={()=>setClickedButton('profile')}
                         className="user_profile_container"
+                        to={`/profile/${id}`}
+                        onClick={(e)=>{
+                            showHideUserModal(e)
+                        }}
                     >
                         <AiOutlineUser className='profile-icon'/>
-                        <p className="profile">Accéder à mon profile</p>
-                    </Link>                    
+                        <p className="profile">Accéder à mon profil</p>
+                    </Link>  
                 </div>
-
+                <BurgerButton 
+                    showHideMenuBurger={showHideMenuBurger}
+                    isMenuBurger = {isMenuBurger}
+                />                  
             </div>
         </div>
     )
