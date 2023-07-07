@@ -91,6 +91,16 @@
 
 .logout:hover,
 .profile:hover,
-.admin_icon_text:hover {
-  text-decoration: underline;
+.admin_icon_text:hover{
+    text-decoration: underline;
+}
+
+@media (max-width : 1024px) {
+
+    .top_bar .searchbar,
+    .top_bar .personnal_profile,
+    .top_bar .user_menu_modal{
+        display: none;
+    }
+  
 }
