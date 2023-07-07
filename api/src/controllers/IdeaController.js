@@ -71,7 +71,6 @@ class IdeaController extends BaseController {
     this.model
       .postItem(this.req.body)
       .then((result) => {
-        console.log('lalalala');
         this.res.status(201).json({ id: result.insertId, ...this.req.body });
       })
       .catch((error) => {

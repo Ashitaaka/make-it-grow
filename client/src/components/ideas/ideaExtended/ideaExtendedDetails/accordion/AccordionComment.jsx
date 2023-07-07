@@ -1,4 +1,5 @@
 import React, { useState, createRef } from 'react';
+import axios from 'axios'
 // import css
 import './accordion.css';
 // import assets
@@ -6,15 +7,54 @@ import Monochev from '../../../../../assets/icons/mono_chevrons_icone.svg';
 import MonochevBlanc from '../../../../../assets/icons/mono_chevrons_icone_blanc.svg';
 import genericIcon from './../../../../../assets/icons/genericPicture_2.jpg';
 
+
 const AccordionComment = ({ title, idea, users }) => {
   const [open, setOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = createRef();
 
+  const userInfos = JSON.parse(localStorage.getItem('makeItGrowToken'))
+  
+  const [newComment, setNewComment]= useState({
+    content: "",
+    id_comment: null,
+    id_user: userInfos.id ,
+    id_idea: idea.id + 1
+}
+  )
+
   const onOpening = (e) => {
     setOpen(!open);
     setMaxHeight(maxHeight === 0 ? contentContainer.current.scrollHeight : 0);
   };
+
+  const textCommentChanging =(e)=>{
+    const key = e.target.name
+    const value = e.target.value
+    
+    setNewComment({
+      ...newComment,
+      [key]:value
+    })
+  }
+  
+  
+  const postComment = (e) => {
+    e.preventDefault()
+    return axios
+      .post(
+        `/comments`,newComment
+      )
+      .then((res) => {
+        
+        return res.data;
+      })
+      .catch((error) => {
+        return Promise.reject(error.response.data);
+      });
+    }
+    console.log(idea);
+    console.log(users);
 
   return (
     <div className="accordion_container">
@@ -60,13 +100,18 @@ const AccordionComment = ({ title, idea, users }) => {
         style={{ maxHeight }}>
         <div className="p-content">
           <div className="comment_container">
-            {idea.comment && idea.comment.length > 0
-              ? idea.comment.map((comment, index) => {
-                  const userId = idea.id_user[index];
-                  const user = users.find((user) => user.user_id === userId);
-                  return (
+            
+            {/* {idea.comment && idea.comment.length > 0
+              ? idea.comment.map((comment, index) => (
+
+                  
                     <div key={index} className="user_comment_container">
                       <div className="user_info">
+                        <img
+                          src={users.picture ? user.picture : genericIcon}
+                          alt="User"
+                          className="user_picture"
+                        />
                         {user && user.picture && (
                           <img
                             src={user.picture ? user.picture : genericIcon}
@@ -81,10 +126,17 @@ const AccordionComment = ({ title, idea, users }) => {
                       <div className="comment">{comment}</div>
                       <hr />
                     </div>
-                  );
-                })
-              : null}
+                  
+              ))
+              : null} */}
           </div>
+          <form onChange={textCommentChanging}>
+            <textarea id="content" name="content" placeholder='Exprimez-vous . . .'>
+            
+            </textarea>
+            <button type='submit' onClick={postComment}>Commentez</button>
+            
+          </form>
         </div>
       </div>
     </div>
