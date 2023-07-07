@@ -1,5 +1,5 @@
-import React from 'react';
-import './IdeasCard.css';
+import React from "react";
+import "./IdeasCard.css";
 
 const IdeasCard = ({ idea }) => {
   return (
@@ -7,8 +7,9 @@ const IdeasCard = ({ idea }) => {
       <div>
         <p
           style={{ backgroundColor: `var(${idea.color})` }}
-          className={'card_categories'}>
-          {idea.category}
+          className={"card_categories"}
+        >
+          {idea.categories[0]}
         </p>
       </div>
       <p className="card_title">{idea.title}</p>
