@@ -16,6 +16,8 @@ const Admin = () => {
   const sortedIdeas =
     ideas && ideas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
 
+  console.log(ideas);
+
   return (
     <div className="admin_page">
       <div className="admin_ideas_container">
