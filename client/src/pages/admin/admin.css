@@ -22,23 +22,33 @@
 .admin_ideas_moderation {
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  gap: 2.5em;
 }
 
 .moderation_lines {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
   width: 100%;
 }
 
 .moderation_line {
   display: flex;
+  gap: 1.5em;
+  width: 100%;
+}
+
+.moderation_icon {
+  width: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .moderation_title {
   width: 90%;
 }
-.moderation_icon {
-  width: 10%;
+
+.moderation_delete_icon {
+  width: 5%;
 }

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TbZoomCheck } from "react-icons/tb";
+import { AiOutlineDelete } from "react-icons/ai";
 import "./admin.css";
 
 const Admin = () => {
@@ -15,10 +16,11 @@ const Admin = () => {
       .then((data) => setIdeas(...[data]));
   }, []);
 
-  // const sortedIdeas =
-  //   ideas && ideas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
-
   const toCheckIdeas = ideas && ideas.filter((idea) => idea.id_status === 1);
+  const allOtherIDeas = ideas && ideas.filter((idea) => idea.id_status !== 1);
+  const sortedOtherIdeas =
+    allOtherIDeas &&
+    allOtherIDeas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
 
   return (
     <div className="admin_page">
@@ -28,12 +30,16 @@ const Admin = () => {
           <div className="moderation_lines">
             {toCheckIdeas &&
               toCheckIdeas.map((idea, index) => (
-                <Link key={index} to={`/ideas/${idea.idea_id}`}>
-                  <div className="moderation_line">
-                    <TbZoomCheck className="moderation_icon" />
-                    <div className="moderation_title">{idea.title}</div>
-                  </div>
-                </Link>
+                <div key={index} className="moderation_line">
+                  <Link
+                    to={`/idea/${idea.idea_id}`}
+                    className="moderation_icon"
+                  >
+                    <TbZoomCheck />
+                  </Link>
+                  <div className="moderation_title">{idea.title}</div>
+                  <AiOutlineDelete className="moderation_delete_icon" />
+                </div>
               ))}
           </div>
         </div>
