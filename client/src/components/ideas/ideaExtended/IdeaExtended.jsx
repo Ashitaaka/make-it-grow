@@ -27,8 +27,6 @@ const IdeaExtended = () => {
           .then((data) => setusers(...[data]))
       : null;
   }, [idea]);
-  console.log(users);
-
   if (!idea) return null;
 
   return (

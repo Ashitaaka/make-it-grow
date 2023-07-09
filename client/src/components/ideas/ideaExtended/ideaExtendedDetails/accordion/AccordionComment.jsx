@@ -65,23 +65,31 @@ const AccordionComment = ({ title, idea, users }) => {
           <div className="comment_container">
             {idea.comment && idea.comment.length > 0
               ? idea.comment.map((comment, index) => {
-                  const userId = idea.id_user;
-                  const user = users.find((user) => user.user_id === userId);
+                  const commentOfUser = comment.user_id;
+                  const userInfos = users.find(
+                    (user) => user.user_id === commentOfUser
+                  );
                   return (
                     <div key={index} className="user_comment_container">
                       <div className="user_info">
-                        {user && user.picture && (
+                        {userInfos && userInfos.picture && (
                           <img
-                            src={user.picture ? user.picture : genericIcon}
+                            src={
+                              userInfos.picture
+                                ? userInfos.picture
+                                : genericIcon
+                            }
                             alt="User"
                             className="user_picture"
                           />
                         )}
                         <p>
-                          {user ? `${user.firstname} ${user.lastname}` : null}
+                          {userInfos
+                            ? `${userInfos.firstname} ${userInfos.lastname}`
+                            : null}
                         </p>
                       </div>
-                      <div className="comment">{comment}</div>
+                      <div className="comment">{comment.content}</div>
                       <hr />
                     </div>
                   );
