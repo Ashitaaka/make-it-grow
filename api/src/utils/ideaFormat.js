@@ -37,8 +37,11 @@ module.exports = function (ideasFromDb) {
       if (!allUsers.some(({ user_id }) => user_id === user.user_id)) {
         allUsers.push(user);
       }
-      if (!allComments.includes(comment)) {
-        allComments.push({ id : comment_id, content : comment, id_user : id_user_comment})
+      if (!allComments.some(({ user_id }) => user_id === id_user_comment)) {
+        allComments.push({
+          user_id: id_user_comment,
+          content: comment,
+        });
       }
 
       return {
@@ -54,8 +57,7 @@ module.exports = function (ideasFromDb) {
         impact,
         risk,
         benefit,
-        comments: allComments,
-        id_user_comment,
+        comment: allComments,
         deadline,
         id_status,
         is_closed,
@@ -64,6 +66,6 @@ module.exports = function (ideasFromDb) {
         users: allUsers,
       };
     },
-    { categories: [], users: [], comments: [] }
+    { categories: [], users: [], comment: [] }
   );
 };

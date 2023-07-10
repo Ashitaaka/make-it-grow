@@ -1,5 +1,6 @@
 import React from "react";
 import "./ideaextendedusers.css";
+import genericPicture from "../../../../assets/icons/genericPicture_2.jpg";
 const USER_LENGTH = 4;
 
 const IdeaExtendedUsers = ({ users, impactedUsers }) => {
@@ -14,7 +15,10 @@ const IdeaExtendedUsers = ({ users, impactedUsers }) => {
         <p>
           Par {owner.firstname} {owner.lastname}
         </p>
-        <img className="users-img" src={owner.picture} />
+        <img
+          className="users-img"
+          src={owner.picture ? owner.picture : genericPicture}
+        />
       </div>
       <div className="vertical-line"></div>
       <div className="impacted-users">
@@ -31,7 +35,14 @@ const IdeaExtendedUsers = ({ users, impactedUsers }) => {
           {users.length > USER_LENGTH ? (
             <div className="overlay_img">
               <p>...</p>
-              <img className="img" src={users[users.length - 1].picture} />
+              <img
+                className="img"
+                src={
+                  users[users.length - 1].picture
+                    ? users[users.length - 1].picture
+                    : genericPicture
+                }
+              />
             </div>
           ) : null}
         </div>
@@ -43,7 +54,11 @@ const IdeaExtendedUsers = ({ users, impactedUsers }) => {
           {experts.map((expert, index) => {
             if (index < USER_LENGTH) {
               return (
-                <img key={index} className="users-img" src={expert.picture} />
+                <img
+                  key={index}
+                  className="users-img"
+                  src={expert.picture ? expert.picture : expert.picture}
+                />
               ); // Return the JSX element to render the image
             }
           })}

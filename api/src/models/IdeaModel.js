@@ -65,6 +65,7 @@ class IdeaModel extends BaseModel {
       if (this.queryFields.includes("status")) {
         this.fields.push(`status.label AS status`);
         this.fields.push(`status.delay AS delay`);
+        this.fields.push(`status.id AS id_status`);
       }
 
       this.join
