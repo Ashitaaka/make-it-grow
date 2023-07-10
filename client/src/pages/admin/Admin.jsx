@@ -8,6 +8,11 @@ import "./admin.css";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
+  const [error, setError] = useState(false);
+  const [archiveForm, setArchiveForm] = useState({
+    is_closed: 1,
+    id_status: 8,
+  });
 
   useEffect(() => {
     axios
@@ -15,6 +20,18 @@ const Admin = () => {
       .then((res) => res.data)
       .then((data) => setIdeas(...[data]));
   }, []);
+
+  const archiveformSending = (e, id_idea) => {
+    e.preventDefault();
+    axios
+      .put(`/ideas/${id_idea}`, archiveForm)
+      .then((res) => {
+        setError(false);
+      })
+      .catch((error) => {
+        setError(true);
+      });
+  };
 
   const toCheckIdeas = ideas && ideas.filter((idea) => idea.id_status === 1);
   const allOtherIDeas = ideas && ideas.filter((idea) => idea.id_status !== 1);
@@ -38,7 +55,13 @@ const Admin = () => {
                     <TbZoomCheck />
                   </Link>
                   <div className="moderation_title">{idea.title}</div>
-                  <AiOutlineDelete className="moderation_delete_icon" />
+                  <AiOutlineDelete
+                    className="moderation_delete_icon"
+                    onClick={(e) => {
+                      archiveformSending(e, idea.idea_id);
+                      window.location.reload(false);
+                    }}
+                  />
                 </div>
               ))}
           </div>

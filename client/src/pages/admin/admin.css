@@ -51,4 +51,5 @@
 
 .moderation_delete_icon {
   width: 5%;
+  cursor: pointer;
 }

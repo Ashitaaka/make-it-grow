@@ -50,7 +50,8 @@ VALUES
 (4, "expertise", 5),
 (5, "vote", 5 ),
 (6, "accepté", NULL ),
-(7, "refusé", NULL);
+(7, "refusé", NULL),
+(8, "rejeté", NULL);
 
 -- ------- --------------------------------------------
 -- IDEAS
