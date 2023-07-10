@@ -14,7 +14,10 @@ const AccordionComment = ({ title, idea, users }) => {
   const contentContainer = createRef();
 
   const userInfos = JSON.parse(localStorage.getItem('makeItGrowToken'))
-  
+  console.log(userInfos)
+  console.log('idea:',idea);
+
+
   const [newComment, setNewComment]= useState({
     content: "",
     id_comment: null,
@@ -53,8 +56,7 @@ const AccordionComment = ({ title, idea, users }) => {
         return Promise.reject(error.response.data);
       });
     }
-    console.log(idea,'-----------',users);
-    
+
 
   return (
     <div className="accordion_container">
@@ -104,26 +106,22 @@ const AccordionComment = ({ title, idea, users }) => {
         <div className="p-content">
           <div className="comment_container">
             
-            {/* {idea.comment && idea.comment.length > 0
+            {idea.comment && idea.comment.length > 0
               ? idea.comment.map((comment, index) => (
 
                   
                     <div key={index} className="user_comment_container">
                       <div className="user_info">
-                        <img
-                          src={users.picture ? user.picture : genericIcon}
-                          alt="User"
-                          className="user_picture"
-                        />
-                        {user && user.picture && (
+
+                   
                           <img
-                            src={user.picture ? user.picture : genericIcon}
+                            src={users[0].picture ? users[0].picture : genericIcon}
                             alt="User"
                             className="user_picture"
                           />
-                        )}
+                        
                         <p>
-                          {user ? `${user.firstname} ${user.lastname}` : null}
+                          {users ? `${users[0].firstname} ${users[0].lastname}` : null}
                         </p>
                       </div>
                       <div className="comment">{comment}</div>
@@ -131,7 +129,7 @@ const AccordionComment = ({ title, idea, users }) => {
                     </div>
                   
               ))
-              : null} */}
+              : null}
           </div>
           <form onChange={textCommentChanging}>
             <textarea id="content" name="content" placeholder='Exprimez-vous . . .'>

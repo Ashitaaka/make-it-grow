@@ -1,4 +1,5 @@
 module.exports = function (ideasFromDb) {
+  console.log(ideasFromDb);
   return ideasFromDb.reduce(
     (
       acc,
@@ -16,6 +17,7 @@ module.exports = function (ideasFromDb) {
         risk,
         benefit,
         comment,
+        comment_id,
         id_user_comment,
         deadline,
         id_status,
@@ -25,10 +27,9 @@ module.exports = function (ideasFromDb) {
         ...user
       }
     ) => {
-      const allComments = acc.comment;
+      const allComments = acc.comments;
       const allCategories = acc.categories;
       const allUsers = acc.users;
-      const allIdUsers = acc.id_user_comment;
 
       if (!allCategories.includes(category)) {
         allCategories.push(category);
@@ -37,11 +38,9 @@ module.exports = function (ideasFromDb) {
         allUsers.push(user);
       }
       if (!allComments.includes(comment)) {
-        allComments.push(comment);
+        allComments.push({ id : comment_id, content : comment, id_user : id_user_comment})
       }
-      if (!allIdUsers.includes(id_user_comment)) {
-        allIdUsers.push(id_user_comment);
-      }
+
       return {
         categories: allCategories,
         city,
@@ -55,8 +54,8 @@ module.exports = function (ideasFromDb) {
         impact,
         risk,
         benefit,
-        comment: allComments,
-        id_user_comment: allIdUsers,
+        comments: allComments,
+        id_user_comment,
         deadline,
         id_status,
         is_closed,
@@ -65,6 +64,6 @@ module.exports = function (ideasFromDb) {
         users: allUsers,
       };
     },
-    { categories: [], users: [], comment: [], id_user_comment: [] }
+    { categories: [], users: [], comments: [] }
   );
 };

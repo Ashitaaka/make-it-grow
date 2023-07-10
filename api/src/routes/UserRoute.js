@@ -25,6 +25,12 @@ userRouter.get(
   hidePassword
 );
 
+userRouter.get(
+  "/city/:city",
+  (req, res, next) => new UserController(req, res, next).getByCity(),
+  hidePassword
+);
+
 userRouter.post(
   "/register",
   ifUserAlreadyExists,

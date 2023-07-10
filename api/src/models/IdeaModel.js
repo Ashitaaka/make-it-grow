@@ -47,9 +47,11 @@ class IdeaModel extends BaseModel {
       }
 
       if (this.queryFields.includes("comments")) {
+        this.fields.push(`comments.id AS comment_id`);
         this.fields.push(`comments.content AS comment`);
         this.fields.push(`comments.id_user AS id_user_comment`);
       }
+      
       if (this.queryFields.includes("categories")) {
         this.fields.push(`categories.id AS cat_id`);
         this.fields.push(`categories.label AS category`);
