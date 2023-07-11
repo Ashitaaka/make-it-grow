@@ -9,7 +9,7 @@ import AccordionRisk from './accordion/AccordionRisk';
 import AccordionComment from './accordion/AccordionComment';
 
 const IdeaExtendedDetails = ({ idea, users }) => {
-  const owner = users.find((user) => user.is_owner);
+  // const owner = users.find((user) => user.is_owner);
   const [expandedSections, setExpandedSections] = useState({
     details: true,
     impact: false,

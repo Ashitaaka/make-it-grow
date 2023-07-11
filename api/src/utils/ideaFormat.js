@@ -1,5 +1,5 @@
 module.exports = function (ideasFromDb) {
-  console.log(ideasFromDb);
+
   return ideasFromDb.reduce(
     (
       acc,
@@ -27,7 +27,7 @@ module.exports = function (ideasFromDb) {
         ...user
       }
     ) => {
-      const allComments = acc.comments;
+      const allComments = acc.comment;
       const allCategories = acc.categories;
       const allUsers = acc.users;
 
@@ -39,7 +39,7 @@ module.exports = function (ideasFromDb) {
       }
       if (!allComments.some(({ user_id }) => user_id === id_user_comment)) {
         allComments.push({
-          user_id: id_user_comment,
+          id_user: id_user_comment,
           content: comment,
         });
       }

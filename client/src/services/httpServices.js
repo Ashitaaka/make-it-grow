@@ -15,6 +15,20 @@ export const getIdeaById = (id) => {
       return Promise.reject(error.response.data);
     });
 };
+
+//To post a comment
+export const postComment = (newComment)=>{
+  return axios
+  .post(`/comments`, newComment)
+  .then((res) => {
+    console.log('coool');
+    return res.data;
+  })
+  .catch((error) => {
+    return Promise.reject(error.response.data);
+  });
+}
+
 //To get all locations
 export const getAllLocations = () => {
   return axios
