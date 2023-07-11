@@ -28,7 +28,6 @@
     margin: 1.5em 0;
 }
 
-
 .import_picture_btn{
     font-size: .95em;
     cursor: pointer;
@@ -48,4 +47,12 @@
 .import_validation_btn, 
 .import_cancel_btn{
     width: fit-content;
+    border: 1px solid var(--primary-color);
+}
+
+.import_validation_btn:hover, 
+.import_cancel_btn:hover{
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
 }
