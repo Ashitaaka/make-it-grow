@@ -1,5 +1,6 @@
 const BaseController = require("./BaseController");
 const { UserModel } = require("../models");
+const ideaFormat = require("../utils/ideaFormat");
 
 class UserController extends BaseController {
   constructor(req, res, next) {
@@ -16,6 +17,13 @@ class UserController extends BaseController {
 
   getById() {
     this.model.getById(this.req.params.id).then(([user]) => {
+      this.res.users = user;
+      this.next();
+    });
+  }
+
+  getByCity() {
+    this.model.getByCity(this.req.params.city).then(([user]) => {
       this.res.users = user;
       this.next();
     });

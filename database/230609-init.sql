@@ -77,7 +77,6 @@ CREATE TABLE IF NOT EXISTS `u206369201_mig_db`.`ideas` (
     `benefit` MEDIUMTEXT NOT NULL,
     `impact` MEDIUMTEXT NOT NULL,
     `is_closed` TINYINT NOT NULL,
-    `is_rejected` TINYINT NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_idea_status`
         FOREIGN KEY (`id_status`)
