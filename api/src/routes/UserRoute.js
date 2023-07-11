@@ -9,6 +9,8 @@ const {
   tokenEmission,
   authorizationUser,
   authorizationAdmin,
+  checkIfThereIsFile,
+  renameFile,
 } = require("../middleware/index");
 
 const userRouter = Router();
@@ -40,8 +42,11 @@ userRouter.post(
   tokenEmission
 );
 
-userRouter.put("/:id", (req, res, next) =>
-  new UserController(req, res, next).updateItem()
+userRouter.put("/:id", 
+  checkIfThereIsFile, 
+  renameFile,
+  (req, res, next) =>
+    new UserController(req, res, next).updateItem()
 );
 
 module.exports = userRouter;

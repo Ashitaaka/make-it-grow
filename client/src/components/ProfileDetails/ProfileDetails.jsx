@@ -12,7 +12,7 @@ const ProfileDetails = () => {
   const [locations, setLocations] = useState([]);
   const [updateForm, setUpdateForm] = useState({});
   const [picURL, setPicURL] = useState("")
-console.log(picURL);
+
   //Is Profil picture Modal visible?
   const [isProfilModal, setIsProfilModal] = useState(false);
 

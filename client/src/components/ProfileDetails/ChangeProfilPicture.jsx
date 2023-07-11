@@ -7,22 +7,21 @@ const ChangeProfilPicture = ({ userid, isProfilModal, setIsProfilModal, setPicUR
     
     //Create a ref to the input field
     const myNewPicture = useRef(null);
-    const formData = new FormData();
-
-    //Uploading the picture and updating the user picture in DB
-    const onChangePicture = (e) => {
-        e.preventDefault();
     
+    //Uploading the picture and updating the user picture in DB
+    const onUploadPicture = (e) => {
+
+        e.preventDefault();
+        if(!myNewPicture.current.files[0])  return; //If there is no file selected
+        
+        const formData = new FormData();
         formData.append("profil-picture", myNewPicture.current.files[0]);
 
-        importNewPicture(formData, userid);
-
-        setIsProfilModal(!isProfilModal);
-
-        setTimeout(()=>{
-            setPicURL(`/api/public/profil-pictures/${myNewPicture.current.files[0].name}`);
-        }, 1000)
-        
+        importNewPicture(formData, userid)
+            .then(() =>{
+                setIsProfilModal(!isProfilModal);
+                setPicURL(`/api/public/profil-pictures/${myNewPicture.current.files[0].name}`)
+        })
     }
 
   return (
@@ -30,7 +29,7 @@ const ChangeProfilPicture = ({ userid, isProfilModal, setIsProfilModal, setPicUR
         <div className= "profil_picture_modal">
             <h3>Modifier la photo de profil</h3>
             <hr />
-            <form encType="multipart/form-data" onSubmit={onChangePicture}>
+            <form encType="multipart/form-data" onSubmit={onUploadPicture}>
                 <label htmlFor="profil-picture">
                     <p className="import_picture_btn">Importer une photo</p>
                 </label>

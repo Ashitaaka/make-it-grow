@@ -58,7 +58,7 @@ export const importNewPicture = (formData, userid) =>{
     };
  
   return axios 
-    .post(`/profilpicture/${userid}`, formData)
+    .put(`/users/${userid}`, formData)
     .then((res) => {
       return res.data;
     })
