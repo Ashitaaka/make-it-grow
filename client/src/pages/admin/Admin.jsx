@@ -11,7 +11,7 @@ const Admin = () => {
 
   useEffect(() => {
     axios
-      .get("/ideas/?fields=id,title,status,is_closed")
+      .get("/ideas/?fields=id,title,status")
       .then((res) => res.data)
       .then((data) => setIdeas(...[data]));
   }, []);
@@ -25,8 +25,6 @@ const Admin = () => {
   const sortedinProgressIDeas =
     inProgressIDeas &&
     inProgressIDeas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
-
-  console.log(ideas);
 
   return (
     <div className="admin_page">
