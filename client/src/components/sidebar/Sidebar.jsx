@@ -21,6 +21,7 @@ const Sidebar = ({ token }) => {
     <>
       {/* to fake sidebar space (because it is in fixed position) */}
       <div className="sidebar_space"></div>
+      
 
       {/* sidebar */}
       <div className="sidebar_desktop">

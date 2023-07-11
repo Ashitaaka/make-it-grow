@@ -11,6 +11,7 @@ const {
   ideaRouter,
   locationRouter,
   categoryRouter,
+  commentRouter
 } = require('./src/routes');
 
 //resolving cors issue from fetching from diffrent origins
@@ -36,6 +37,7 @@ APIRouter.use('/users', userRouter);
 APIRouter.use('/ideas', ideaRouter);
 APIRouter.use('/locations', locationRouter);
 APIRouter.use('/categories', categoryRouter);
+APIRouter.use('/comments', commentRouter);
 
 app.listen(port, function () {
   `API is running on port ${port}`;

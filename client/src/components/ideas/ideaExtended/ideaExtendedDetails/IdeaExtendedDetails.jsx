@@ -11,9 +11,10 @@ import AccordionComment from "./accordion/AccordionComment";
 import axios from "axios";
 
 const IdeaExtendedDetails = ({ idea, users }) => {
-  const { removeToken, setToken, token } = tokenStorage();
 
+  const { removeToken, setToken, token } = tokenStorage();
   const owner = users.find((user) => user.is_owner);
+
   const [expandedSections, setExpandedSections] = useState({
     details: true,
     impact: false,
