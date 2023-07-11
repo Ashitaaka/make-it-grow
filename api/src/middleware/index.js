@@ -1,4 +1,5 @@
 const ifUserAlreadyExists = require("./ifUserAlreadyExists");
+
 const {
   hashedPassword,
   hidePassword,
@@ -7,7 +8,13 @@ const {
   authorizationUser,
   authorizationAdmin,
 } = require("./auth.js");
+
 const { validateRequest } = require("./validators");
+
+const {
+  checkIfThereIsFile,
+  renameFile,
+} = require("./uploadFiles");
 
 module.exports = {
   ifUserAlreadyExists,
@@ -18,4 +25,6 @@ module.exports = {
   tokenEmission,
   authorizationUser,
   authorizationAdmin,
+  checkIfThereIsFile,
+  renameFile,
 };
