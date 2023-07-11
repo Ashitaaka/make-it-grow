@@ -52,13 +52,6 @@ const IdeaExtendedStatus = ({ idea }) => {
     }
   };
 
-  // if (idea.status === 'modération'){setProgress(25)} 
-  // débat 
-  // if(idea.status === 'synthèse' ||idea.status === 'expertise') {setProgress=50}
-  // expertise
-  //  if (idea.status === 'vote' ){setProgress=75}
-  // vote
-
   return (
     <div className="idea-status-container">
       <div className="idea-title">
