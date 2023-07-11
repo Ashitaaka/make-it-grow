@@ -1,7 +1,6 @@
 import React from "react";
 import "./archiveModal.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { AiOutlineDelete } from "react-icons/ai";
 import axios from "axios";
 
@@ -42,7 +41,7 @@ const ArchiveModal = ({ idea }) => {
       >
         <div className="archive_modal_content">
           <div className="confirmationMessage">
-            <h3>Etes-vous sur de vouloir supprimer l'idée</h3>
+            <h3>Etes-vous sur de vouloir archiver l'idée</h3>
             <p>"{idea.title}"</p>
           </div>
           <div className="archive_buttons">
