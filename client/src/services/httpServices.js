@@ -49,3 +49,21 @@ export const registerUser = (userDatas) => {
       return Promise.reject(error.response.data);
     });
 };
+
+//To upload a picture
+export const importNewPicture = (formData, userid) =>{
+  for (const value of formData.values()) {
+    if(!value.name){
+      return
+    };
+ 
+  return axios 
+    .post(`/profilpicture/${userid}`, formData)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
+  }
+}
