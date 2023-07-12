@@ -198,7 +198,6 @@ const CreateIdea = ({ token }) => {
         benefit: ideaBenefitsText,
         impact: ideaRiskText,
         is_closed: false,
-        is_rejected: false,
         label: idChoosenCategory && idChoosenCategory[0].id,
         city: idChoosenLocation && idChoosenLocation[0].id,
         id_user: token && token.id,
