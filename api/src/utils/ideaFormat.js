@@ -1,5 +1,4 @@
 module.exports = function (ideasFromDb) {
-
   return ideasFromDb.reduce(
     (
       acc,
