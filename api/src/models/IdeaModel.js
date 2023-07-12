@@ -40,6 +40,9 @@ class IdeaModel extends BaseModel {
       if (this.queryFields.includes("is_closed")) {
         this.fields.push(`ideas.is_closed`);
       }
+      if (this.queryFields.includes("delay_date")) {
+        this.fields.push(`ideas.delay_date`);
+      }
       if (this.queryFields.includes("users")) {
         this.fields.push(`users.id AS user_id`);
         this.fields.push(`users.firstname`);
@@ -54,7 +57,7 @@ class IdeaModel extends BaseModel {
         this.fields.push(`comments.content AS comment`);
         this.fields.push(`comments.id_user AS id_user_comment`);
       }
-      
+
       if (this.queryFields.includes("categories")) {
         this.fields.push(`categories.id AS cat_id`);
         this.fields.push(`categories.label AS category`);
