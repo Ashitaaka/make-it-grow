@@ -5,12 +5,11 @@ const USER_LENGTH = 4;
 
 const IdeaExtendedUsers = ({ users, impactedUsers, idea }) => {
   // Add condition to replace the 11th image if there are more than 11 images
+  const experts = [];
 
-  // const experts = impactedUsers.find((user) =>
-  //   user.user_id_categories.includes(idea.cat_id)
-  // );
-
-  console.log(impactedUsers);
+  experts.push(
+    impactedUsers.find((user) => user.user_id_categories.includes(idea.cat_id))
+  );
 
   const owner = users.find((user) => user.is_owner);
 
@@ -18,11 +17,11 @@ const IdeaExtendedUsers = ({ users, impactedUsers, idea }) => {
     <div className="users-container">
       <div className="creator">
         <p>
-          Par {owner.firstname} {owner.lastname}
+          Par {owner?.firstname} {owner?.lastname}
         </p>
         <img
           className="users-img"
-          src={owner.picture ? owner.picture : genericPicture}
+          src={owner?.picture ? owner?.picture : genericPicture}
         />
       </div>
       <div className="vertical-line"></div>

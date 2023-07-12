@@ -1,17 +1,6 @@
 module.exports = function (usersFromDb) {
   return usersFromDb.reduce(
-    (
-      acc,
-      {
-        user_id,
-        firstname,
-        lastname,
-        picture,
-        user_id_categories,
-        occupation,
-        service,
-      }
-    ) => {
+    (acc, { user_id, firstname, lastname, picture, user_id_categories }) => {
       const allCategories = acc.user_id_categories;
 
       if (!allCategories.includes(user_id_categories)) {
@@ -24,10 +13,8 @@ module.exports = function (usersFromDb) {
         lastname,
         picture,
         user_id_categories: allCategories,
-        occupation,
-        service,
       };
     },
-    { user_id_categories: [], users: [], comment: [] }
+    { user_id_categories: [] }
   );
 };
