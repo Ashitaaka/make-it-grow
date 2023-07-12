@@ -1,4 +1,5 @@
 import React, { useState, createRef } from 'react';
+import DOMPurify from 'dompurify';
 //import css
 import './accordion.css';
 //import assets
@@ -9,6 +10,9 @@ const AccordionBenefit = ({ title, idea }) => {
   const [open, setOpen] = useState(false);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = createRef();
+
+    // Secure HTML injection
+    const cleanHTML = DOMPurify.sanitize(idea.benefit)
 
   let onOpening = (e) => {
     setOpen(!open);
@@ -59,7 +63,7 @@ const AccordionBenefit = ({ title, idea }) => {
         ref={contentContainer}
         className="content_container"
         style={{ maxHeight }}>
-        <div className="p-content">{idea.benefit}</div>
+        <div className="p-content" dangerouslySetInnerHTML={{ __html: cleanHTML }}></div>
       </div>
       <hr />
     </div>
