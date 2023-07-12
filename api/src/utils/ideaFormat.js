@@ -22,7 +22,6 @@ module.exports = function (ideasFromDb) {
         deadline,
         id_status,
         is_closed,
-        is_rejected,
         location_id,
         ...user
       }
@@ -61,7 +60,6 @@ module.exports = function (ideasFromDb) {
         deadline,
         id_status,
         is_closed,
-        is_rejected,
         location_id,
         users: allUsers,
       };
