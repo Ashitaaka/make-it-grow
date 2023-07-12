@@ -1,12 +1,17 @@
 import React, { useRef, useState } from "react";
 import './changeProfilPicture.css';
 import { importNewPicture } from "../../services/httpServices";
+import tokenStorage from "../../hooks/useToken";
 
 
 const ChangeProfilPicture = ({ userid, isProfilModal, setIsProfilModal, setPicURL }) => {
     
     //Create a ref to the input field
     const myNewPicture = useRef(null);
+
+    //to reset the picture URL in the local storage token
+    const { setToken, token } = tokenStorage();
+    console.log(token);
     
     //Uploading the picture and updating the user picture in DB
     const onUploadPicture = (e) => {
@@ -20,8 +25,10 @@ const ChangeProfilPicture = ({ userid, isProfilModal, setIsProfilModal, setPicUR
         importNewPicture(formData, userid)
             .then(() =>{
                 setIsProfilModal(!isProfilModal);
-                setPicURL(`/api/public/profil-pictures/${myNewPicture.current.files[0].name}`)
-        })
+                setPicURL(`/api/public/profil-pictures/${myNewPicture.current.files[0].name}`);
+                setToken({...token, picture : `/api/public/profil-pictures/${myNewPicture.current.files[0].name}`});
+                window.location.reload();
+        });
     }
 
   return (
@@ -40,8 +47,8 @@ const ChangeProfilPicture = ({ userid, isProfilModal, setIsProfilModal, setPicUR
                         type="button" 
                         className="import_cancel_btn" 
                         onClick={() => {
-                        setIsProfilModal(!isProfilModal);
-                        myNewPicture.current.value = null;
+                            setIsProfilModal(!isProfilModal);
+                            myNewPicture.current.value = null;
                         }}
                     >
                             Annuler

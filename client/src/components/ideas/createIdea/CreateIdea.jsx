@@ -7,7 +7,7 @@ import "react-quill/dist/quill.snow.css"; //text editor css
 import confetti from "canvas-confetti"; //confetti for button
 
 import "./createIdea.css";
-import PopUp from "./pop up/PopUp";
+import PopUp from "./pop-up/PopUp";
 
 const CreateIdea = ({ token }) => {
   // state for data
