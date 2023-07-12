@@ -1,65 +1,34 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { postComment } from '../../../../../services/httpServices';
 import "./accordion.css";
 import Monochev from "../../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc.svg";
 import genericIcon from "../../../../../assets/icons/genericPicture_2.jpg";
+import CommentForm from './CommentForm';
 
-const AccordionComment = ({ title, idea, users }) => {
-  const [open, setOpen] = useState(true);
-  const [comments, setComments] = useState(idea.comment || []);
+const AccordionComment = ({ title, idea, users, token }) => {
+  const [open, setOpen] = useState(false);
+  const [comments, setComments] = useState(idea.comment);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = useRef(null);
-
-  const userInfo = JSON.parse(localStorage.getItem('makeItGrowToken'));
-
-  const [newComment, setNewComment] = useState({
-    content: "",
-    id_comment: null,
-    id_user: userInfo.id,
-    id_idea: idea.idea_id,
-  });
 
   const onOpening = () => {
     setOpen(!open);
     setMaxHeight((prevMaxHeight) => (prevMaxHeight === 0 ? contentContainer.current.scrollHeight : 0));
   };
 
-  const textCommentChanging = (e) => {
-    const key = e.target.name;
-    const value = e.target.value;
 
-    setNewComment((prevNewComment) => ({
-      ...prevNewComment,
-      [key]: value,
-    }));
-  };
-
-  const postNewComment = (e) => {
-    e.preventDefault();
-    postComment(newComment).then(() => {
-      setComments((prevComments) => [...prevComments, newComment]);
-      setNewComment({
-        content: "",
-        id_comment: null,
-        id_user: userInfo.id,
-        id_idea: idea.idea_id,
-      });
-    });
-  };
 
   useEffect(() => {
-    setMaxHeight(contentContainer.current.scrollHeight);
+    if(!open){
+      setMaxHeight(0)
+    }else{
+    setMaxHeight(contentContainer.current.scrollHeight)};
   }, [comments]);
-
   return (
     <div className="accordion_container">
       <div
         className="header"
         onClick={onOpening}
-        style={{
-          backgroundColor: open ? "var(--ultra-light-color)" : "transparent",
-        }}
       >
         <div className="title">
           <div
@@ -116,46 +85,9 @@ const AccordionComment = ({ title, idea, users }) => {
               );
             })}
           </div>
-          <form className="comment-form" onChange={textCommentChanging} >
-            <textarea
-              className="comment-zone"
-              id="content"
-              name="content"
-              placeholder="Exprimez-vous..."
-              onFocus={(e) => {
-                e.target.style.outline = "none";
-                e.target.style.borderColor = `var(${idea.color})`;
-                e.target.style.boxShadow = `0 0 10px var(${idea.color})`;
-              }}
-              onBlur={(e) => {
-                e.target.style.outline = "";
-                e.target.style.borderColor = "";
-                e.target.style.boxShadow = "";
-              }}
-              value={newComment.content}
-            />
-            <button
-              className="btn-comment"
-              style={{
-                width: "30%",
-                backgroundColor: "transparent",
-                border: `2px solid var(${idea.color})`,
-                color: `var(${idea.color})`,
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.backgroundColor = `var(${idea.color})`;
-                e.target.style.color = "white";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "transparent";
-                e.target.style.color = `var(${idea.color})`;
-              }}
-              type="submit"
-              onClick={postNewComment}
-            >
-              Commentez
-            </button>
-          </form>
+          
+          {idea.status==='débat' && idea.location_id===token.id_location  ? <CommentForm idea={idea} setComments={setComments}/> :null   }
+         
         </div>
       </div>
     </div>

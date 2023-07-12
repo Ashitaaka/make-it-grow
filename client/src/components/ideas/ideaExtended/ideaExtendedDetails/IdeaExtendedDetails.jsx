@@ -11,24 +11,7 @@ import AccordionComment from "./accordion/AccordionComment";
 import axios from "axios";
 
 const IdeaExtendedDetails = ({ idea, users }) => {
-
-  const { removeToken, setToken, token } = tokenStorage();
-  const owner = users.find((user) => user.is_owner);
-
-  const [expandedSections, setExpandedSections] = useState({
-    details: true,
-    impact: false,
-    benefits: false,
-    risks: false,
-    comments: false,
-  });
-
-  const toggleContent = (section) => {
-    setExpandedSections((prevState) => ({
-      ...prevState,
-      [section]: !prevState[section],
-    }));
-  };
+  const {removeToken , setToken, token}= tokenStorage()
 
   const handleUpdateIdeaStatus = () => {
     axios.put(`ideas/${idea.idea_id}`, { id_status: 2 });
@@ -41,47 +24,12 @@ const IdeaExtendedDetails = ({ idea, users }) => {
       <AccordionImpact idea={idea} title={"Impact sur l'organisation"} />
       <AccordionBenefit idea={idea} title={"Bénéfices"} />
       <AccordionRisk idea={idea} title={"Risque"} />
-      <AccordionComment idea={idea} title={"Commentaires"} users={users} />
+      <AccordionComment idea={idea} title={"Commentaires"} users={users} token={token} />
 
       {/*  Wysiwyg comments section */}
 
       <div className="cta-button-container">
-        <button
-          className="cta-button"
-          style={{
-            backgroundColor: `transparent`,
-            border: `2px solid var(${idea.color})`,
-            color: `var(${idea.color})`,
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = `var(${idea.color})`;
-            e.target.style.color = `white`;
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = `transparent`;
-            e.target.style.color = `var(${idea.color})`;
-          }}
-        >
-          Voter
-        </button>
-        <button
-          className="cta-button"
-          style={{
-            backgroundColor: `transparent`,
-            border: `2px solid var(${idea.color})`,
-            color: `var(${idea.color})`,
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = `var(${idea.color})`;
-            e.target.style.color = `white`;
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = `transparent`;
-            e.target.style.color = `var(${idea.color})`;
-          }}
-        >
-          Donner mon avis
-        </button>
+
         {token && token.id_role === 2 && idea && idea.id_status === 1 ? (
           <button
             className="cta-button"
