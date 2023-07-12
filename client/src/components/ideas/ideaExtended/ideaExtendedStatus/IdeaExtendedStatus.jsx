@@ -93,50 +93,6 @@ const IdeaExtendedStatus = ({ idea }) => {
         ></div>
         <div className="initial"></div>
       </div>
-      <div className="button-timeline">
-        {/* <button
-          className="button-next"
-          onClick={updateProgress}
-          value={-25}
-          disabled={progress <= 0}
-          style={{
-            backgroundColor: `transparent`,
-            border: `2px solid var(${idea.color})`,
-            color: `var(${idea.color})`,
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = `var(${idea.color})`;
-            e.target.style.color = `white`;
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = `transparent`;
-            e.target.style.color = `var(${idea.color})`;
-          }}
-        >
-          Previous
-        </button>
-        <button
-          className="button-next"
-          onClick={updateProgress}
-          value={25}
-          disabled={progress >= 100}
-          style={{
-            backgroundColor: `transparent`,
-            border: `2px solid var(${idea.color})`,
-            color: `var(${idea.color})`,
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = `var(${idea.color})`;
-            e.target.style.color = `white`;
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = `transparent`;
-            e.target.style.color = `var(${idea.color})`;
-          }}
-        >
-          Next
-        </button> */}
-      </div>
     </div>
   );
 };
