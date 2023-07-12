@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import DOMPurify from 'dompurify';
 import './accordion.css';
 import Monochev from '../../../../../assets/icons/mono_chevrons_icone.svg';
 import MonochevBlanc from '../../../../../assets/icons/mono_chevrons_icone_blanc.svg';
@@ -7,6 +8,9 @@ const AccordionDetail = ({ title, idea }) => {
   const [open, setOpen] = useState(true);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainerRef = useRef(null);
+
+   // Secure HTML injection
+   const cleanHTML = DOMPurify.sanitize(idea.detail)
 
   useEffect(() => {
     const contentHeight = contentContainerRef.current.scrollHeight;
@@ -62,7 +66,7 @@ const AccordionDetail = ({ title, idea }) => {
       >
         <div className="p-content">
           <h3>{idea.title}</h3>
-          {idea.detail}
+          <div dangerouslySetInnerHTML={{ __html: cleanHTML }}></div>
         </div>
       </div>
       <hr />
