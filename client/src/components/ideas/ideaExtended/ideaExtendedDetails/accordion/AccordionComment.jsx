@@ -6,7 +6,7 @@ import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc
 import genericIcon from "../../../../../assets/icons/genericPicture_2.jpg";
 
 const AccordionComment = ({ title, idea, users }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [comments, setComments] = useState(idea.comment || []);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = useRef(null);

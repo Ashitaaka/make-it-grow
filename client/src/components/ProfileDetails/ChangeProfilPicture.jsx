@@ -40,8 +40,8 @@ const ChangeProfilPicture = ({ userid, isProfilModal, setIsProfilModal, setPicUR
                         type="button" 
                         className="import_cancel_btn" 
                         onClick={() => {
-                        setIsProfilModal(!isProfilModal);
-                        myNewPicture.current.value = null;
+                            setIsProfilModal(!isProfilModal);
+                            myNewPicture.current.value = null;
                         }}
                     >
                             Annuler

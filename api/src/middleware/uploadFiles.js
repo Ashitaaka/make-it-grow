@@ -25,12 +25,8 @@ const renameFile = (req, res, next) => {
     const { filename } = req.file
     const { destination } = req.file
 
-    console.log(destination)
-
     //Getting picture path to store it to DB
     const finalPath = `/api/public/profil-pictures/${originalname}`;
-
-    console.log(finalPath);
 
     //Renaming the file to it original name
     fs.rename(`${destination}/${filename}`, `${destination}/${originalname}`, (err) => {
