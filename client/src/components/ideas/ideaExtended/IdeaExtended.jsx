@@ -24,7 +24,9 @@ const IdeaExtended = () => {
     ? axios
     .get(`/users/city/${idea.city}/?fields=users`)
     .then((res) => res.data)
-    .then((data) => setusers(...[data]))
+    .then((data) => {
+      console.log(data);
+      setusers(...[data])})
     : null;
   }, [idea]);
   if (!idea) return null;

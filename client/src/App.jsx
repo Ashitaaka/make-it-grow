@@ -41,8 +41,6 @@ function App() {
     setIsMenuBurger(!isMenuBurger);
   };
 
-  console.log(token);
-
   return !token ? (
     <Routes>
       <Route path="*" element={<Navigate to="/login" />} />
