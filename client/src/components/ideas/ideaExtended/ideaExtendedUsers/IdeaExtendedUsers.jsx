@@ -25,7 +25,11 @@ const IdeaExtendedUsers = ({ users, impactedUsers, idea }) => {
           {impactedUsers.map((user, index) => {
             if (index < USER_LENGTH) {
               return (
-                <img key={index} className="users-img" src={user.picture} />
+                <img
+                  key={index}
+                  className="users-img"
+                  src={user.picture ? user.picture : genericPicture}
+                />
               ); // Return the JSX element to render the image
             }
           })}
