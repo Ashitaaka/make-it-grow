@@ -9,6 +9,7 @@ import AccordionImpact from "./accordion/AccordionImpact";
 import AccordionRisk from "./accordion/AccordionRisk";
 import AccordionComment from "./accordion/AccordionComment";
 import axios from "axios";
+import ApproveOrDeclined from "./button/ApproveOrDeclined";
 
 const IdeaExtendedDetails = ({ idea, users }) => {
   const {removeToken , setToken, token}= tokenStorage()
@@ -31,28 +32,7 @@ const IdeaExtendedDetails = ({ idea, users }) => {
       <div className="cta-button-container">
 
         {token && token.id_role === 2 && idea && idea.id_status === 1 ? (
-          <button
-            className="cta-button"
-            style={{
-              backgroundColor: `transparent`,
-              border: `2px solid var(${idea.color})`,
-              color: `var(${idea.color})`,
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = `var(${idea.color})`;
-              e.target.style.color = `white`;
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = `transparent`;
-              e.target.style.color = `var(${idea.color})`;
-            }}
-            onClick={() => {
-              handleUpdateIdeaStatus();
-              window.location.reload(false);
-            }}
-          >
-            Approuver
-          </button>
+          <ApproveOrDeclined idea={idea}/>
         ) : null}
       </div>
     </div>

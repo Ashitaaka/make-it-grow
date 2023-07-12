@@ -18,18 +18,20 @@ const IdeasCardsBackground = () => {
 
   return (
     <div className="test">
-        <FilterBar ideas={ideas}/>
+      <FilterBar ideas={ideas}/>
       <div className="ideas_cards_background">
         {ideas &&
           ideas.map((idea, index) => (
-            <Link
+            idea.id_status !== 8 && ( 
+              <Link
               to={`/idea/${idea.idea_id}`}
               className="card_background"
               key={index}
-            >
-              <IdeasCard idea={idea} />
-            </Link>
-          ))}
+              >
+                <IdeasCard idea={idea} />
+              </Link>
+            )
+            ))}
       </div>
     </div>
   );
