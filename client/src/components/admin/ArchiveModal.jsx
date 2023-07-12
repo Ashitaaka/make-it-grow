@@ -48,7 +48,6 @@ const ArchiveModal = ({ idea }) => {
             <button
               onClick={(e) => {
                 archiveformSending(e, idea.idea_id);
-                console.log(idea.idea_id);
                 window.location.reload(false);
               }}
             >

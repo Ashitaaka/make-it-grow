@@ -116,8 +116,6 @@ const CreateIdea = ({ token }) => {
       );
   }, [choosenCategory]);
 
-  console.log(choosenCategory);
-
   // Take all the locations from the bd and create a new Array with no repeat locations
   const noRepeatLocations = [];
 
@@ -175,7 +173,7 @@ const CreateIdea = ({ token }) => {
   const editorStyle = {
     fontSize: "16px",
   };
-  console.log(token);
+
   //On click Submit button
   const handleButtonClick = () => {
     if (
@@ -205,11 +203,9 @@ const CreateIdea = ({ token }) => {
         is_owner: 1,
       };
 
-      console.log(newIdea);
       // post the new Idea
       axios.post("/ideas", newIdea).then((response) => {
         if (response.status === 201) {
-          console.log(newIdea);
           confetti();
           setPopUpIsActive(true);
         }
@@ -234,11 +230,9 @@ const CreateIdea = ({ token }) => {
         ? setUncompleteTitle(true)
         : null;
 
-      console.log("pas de confetti pour les abrutis");
       setshowMissingInfo(true);
     }
   };
-  console.log(choosenCategory);
 
   return (
     <div className="create_idea_bckg">

@@ -24,7 +24,6 @@ class UserController extends BaseController {
 
   async getByCity() {
     const [results] = await this.model.getByCity(this.req.params.city);
-    this.next(results);
     this.sendJson(
       results.reduce((acc, cur) => {
         const foundUser = acc.find((el) => el.user_id === cur.user_id);
@@ -37,6 +36,7 @@ class UserController extends BaseController {
         return acc;
       }, [])
     );
+    this.next(results);
   }
 
   getByEmailWithPass() {

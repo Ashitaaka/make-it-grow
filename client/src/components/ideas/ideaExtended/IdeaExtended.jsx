@@ -20,22 +20,19 @@ const IdeaExtended = () => {
   }, [id]); // Add `id` to the dependency array to trigger the effect when it changes
 
   useEffect(() => {
-    idea
-      ? axios
-          .get(`/users/city/${idea.city}/?fields=users,categories`)
-          .then((res) => res.data)
-          .then((data) => setusers(...[data]))
-      : null;
+    idea &&
+      axios
+        .get(`/users/city/${idea.city}/?fields=users,categories`)
+        .then((res) => console.log(res.data))
+        .then((data) => setusers(data));
   }, [idea]);
   if (!idea) return null;
-
-  console.log(users);
 
   return (
     <div className="idea-extended-container">
       <IdeaExtendedHeader idea={idea} />
       <IdeaExtendedStatus idea={idea} />
-      <IdeaExtendedUsers users={idea.users} impactedUsers={users} />
+      <IdeaExtendedUsers users={idea.users} impactedUsers={users} idea={idea} />
       <IdeaExtendedDetails idea={idea} users={users} />
     </div>
   );
