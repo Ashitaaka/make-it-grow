@@ -27,7 +27,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    if (token.id_role === 2) {
+    if (token && token.id_role === 2) {
       setIsAdmin(true);
     }
   }, []);
