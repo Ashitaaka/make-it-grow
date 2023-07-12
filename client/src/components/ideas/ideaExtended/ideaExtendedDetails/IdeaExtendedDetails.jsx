@@ -9,21 +9,6 @@ import AccordionRisk from './accordion/AccordionRisk';
 import AccordionComment from './accordion/AccordionComment';
 
 const IdeaExtendedDetails = ({ idea, users }) => {
-  // const owner = users.find((user) => user.is_owner);
-  const [expandedSections, setExpandedSections] = useState({
-    details: true,
-    impact: false,
-    benefits: false,
-    risks: false,
-    comments: false,
-  });
-
-  const toggleContent = (section) => {
-    setExpandedSections((prevState) => ({
-      ...prevState,
-      [section]: !prevState[section],
-    }));
-  };
 
   return (
     <div className="idea-details-container">
@@ -37,31 +22,33 @@ const IdeaExtendedDetails = ({ idea, users }) => {
       {/*  Wysiwyg comments section */}
 
       <div className="cta-button-container">
-        <button className="cta-button"           style={{
-            backgroundColor: `transparent`,
+        <button className="cta-button"           
+          style={{
+            backgroundColor: `var(${idea.color})`,
             border: `2px solid var(${idea.color})`,
-            color: `var(${idea.color})`,
+            color: `white`,
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = `var(${idea.color})`;
-            e.target.style.color = `white`;
+            e.target.style.backgroundColor = `transparent  `;
+            e.target.style.color = ` var(${idea.color})`;
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = `transparent`;
-            e.target.style.color = `var(${idea.color})`;
+            e.target.style.backgroundColor = `var(${idea.color})`;
+            e.target.style.color = `white`;
           }}>Voter</button>
-        <button className="cta-button"           style={{
-            backgroundColor: `transparent`,
+        <button className="cta-button"           
+          style={{
+            backgroundColor: `var(${idea.color})`,
             border: `2px solid var(${idea.color})`,
-            color: `var(${idea.color})`,
+            color: `white`,
           }}
           onMouseEnter={(e) => {
-            e.target.style.backgroundColor = `var(${idea.color})`;
-            e.target.style.color = `white`;
+            e.target.style.backgroundColor = `transparent  `;
+            e.target.style.color = ` var(${idea.color})`;
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = `transparent`;
-            e.target.style.color = `var(${idea.color})`;
+            e.target.style.backgroundColor = `var(${idea.color})`;
+            e.target.style.color = `white`;
           }}>Donner mon avis</button>
       </div>
     </div>

@@ -19,4 +19,5 @@
   padding: 0.5em 1.2em;
   border-radius: 1.2em;
   background-color: var(--primary-color);
+  cursor: pointer;
 }

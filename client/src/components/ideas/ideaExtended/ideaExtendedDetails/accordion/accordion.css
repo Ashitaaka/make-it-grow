@@ -4,7 +4,8 @@
   padding: 2em;
   display: flex;
   justify-content: space-between;
-  background-color: var(--background-color);
+  background-color: var(--ultra-light-color);
+  cursor: pointer;
 }
 .title {
   display: flex;
@@ -95,8 +96,6 @@ hr {
   border-radius: 5px;
   resize: vertical;
 }
-.comment-zone:focus{
-  outline: none !important;
-  border-color: #719ECE;
-  box-shadow: 0 0 10px #719ECE;
+.btn-comment{
+  cursor: pointer;
 }
