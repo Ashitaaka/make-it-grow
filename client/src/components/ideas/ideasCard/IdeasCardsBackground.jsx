@@ -1,11 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import IdeasCard from "./IdeasCard";
-
 import "./IdeasCard.css";
 import { Link } from "react-router-dom";
+import FilterBar from "../../filterBar/FilterBar";
 
 const IdeasCardsBackground = () => {
   const [ideas, setIdeas] = useState([]);
@@ -18,17 +17,20 @@ const IdeasCardsBackground = () => {
   }, []);
 
   return (
-    <div className="ideas_cards_background">
-      {ideas &&
-        ideas.map((idea, index) => (
-          <Link
-            to={`/idea/${idea.idea_id}`}
-            className="card_background"
-            key={index}
-          >
-            <IdeasCard idea={idea} />
-          </Link>
-        ))}
+    <div className="test">
+        <FilterBar ideas={ideas}/>
+      <div className="ideas_cards_background">
+        {ideas &&
+          ideas.map((idea, index) => (
+            <Link
+              to={`/idea/${idea.idea_id}`}
+              className="card_background"
+              key={index}
+            >
+              <IdeasCard idea={idea} />
+            </Link>
+          ))}
+      </div>
     </div>
   );
 };
