@@ -81,8 +81,8 @@ const authorizationUser = (req, res, next) => {
     if (!token) {
       throw new Error("Token absent");
     }
-
     const payload = jwt.verify(token, process.env.JWT_SECRET);
+
   } catch (err) {
     console.error(err);
     return res.sendStatus(401);
@@ -95,7 +95,6 @@ const authorizationAdmin = (req, res, next) => {
     if (!token) {
       throw new Error("Token absent");
     }
-
     const payload = jwt.verify(token, process.env.JWT_SECRET);
 
     if (payload.id_role === 2) {

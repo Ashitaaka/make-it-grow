@@ -1,0 +1,58 @@
+.profil_picture_modal_bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.profil_picture_modal{
+    background-color: var(--ultra-light-color);
+    border-radius: 1em;
+    text-align: center;
+    padding: .5em 0 2em 0;
+}
+
+.visible{
+    display: flex;
+}
+
+.profil_picture_modal h3, 
+.profil_picture_modal .import_picture_btn{
+    padding: 0 2em;
+    margin: 1.5em 0;
+}
+
+.import_picture_btn{
+    font-size: .95em;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.import_picture_btn:hover{
+   text-decoration: underline;
+}
+.profil_picture_buttons{
+    display: flex;
+    justify-content: center;
+    gap:1em;
+    padding: 0 2em;
+}
+
+.import_validation_btn, 
+.import_cancel_btn{
+    width: fit-content;
+    border: 1px solid var(--primary-color);
+}
+
+.import_validation_btn:hover, 
+.import_cancel_btn:hover{
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}

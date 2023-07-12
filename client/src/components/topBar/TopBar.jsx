@@ -75,11 +75,13 @@ const TopBar = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
         <div className="personnal_profile">
           <img className="notification_icon" src={notification_icon} alt="" />
           <div className="profile_infos" onClick={showHideUserModal}>
-            <img
-              className="profile_picture"
-              src={picture ? picture : genericPicture}
-              alt="profile picture"
-            />
+            <div className="picture_container">
+              <img
+                className="profile_picture"
+                src={picture ? picture : genericPicture}
+                alt="profile picture"
+              />
+            </div>
             <p className="profile_name">{`${firstname} ${lastname}`}</p>
           </div>
         </div>

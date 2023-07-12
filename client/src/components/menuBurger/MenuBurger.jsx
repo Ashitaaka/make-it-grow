@@ -34,11 +34,13 @@ const MenuBurger = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) =>
             : 'burger_menu invisible'}
     >
         <div  className="burger_profile_infos">
-            <img 
-                className='burger_profile_picture' 
-                src={picture? picture : genericPicture} 
-                alt="profile picture" 
-            />
+            <div className="burger_picture_container">
+                <img
+                    className='burger_profile_picture'
+                    src={picture? picture : genericPicture}
+                    alt="profile picture"
+                />
+            </div>
             <p className='burger_profile_name'>
                 {`${firstname} ${lastname}`}
             </p>
