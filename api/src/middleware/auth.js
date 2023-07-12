@@ -82,7 +82,6 @@ const authorizationUser = (req, res, next) => {
       throw new Error("Token absent");
     }
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-
   } catch (err) {
     console.error(err);
     return res.sendStatus(401);

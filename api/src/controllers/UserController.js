@@ -36,7 +36,6 @@ class UserController extends BaseController {
         return acc;
       }, [])
     );
-    this.next(results);
   }
 
   getByEmailWithPass() {
