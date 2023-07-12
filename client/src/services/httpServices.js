@@ -17,17 +17,16 @@ export const getIdeaById = (id) => {
 };
 
 //To post a comment
-export const postComment = (newComment)=>{
+export const postComment = (newComment) => {
   return axios
-  .post(`/comments`, newComment)
-  .then((res) => {
-    console.log('coool');
-    return res.data;
-  })
-  .catch((error) => {
-    return Promise.reject(error.response.data);
-  });
-}
+    .post(`/comments`, newComment)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
+};
 
 //To get all locations
 export const getAllLocations = () => {
@@ -66,19 +65,19 @@ export const registerUser = (userDatas) => {
 };
 
 //To upload a picture
-export const importNewPicture = (formData, userid) =>{
+export const importNewPicture = (formData, userid) => {
   for (const value of formData.values()) {
-    if(!value.name){
-      return
-    };
- 
-  return axios 
-    .put(`/users/${userid}`, formData)
-    .then((res) => {
-      return res.data;
-    })
-    .catch((error) => {
-      return Promise.reject(error.response.data);
-    });
+    if (!value.name) {
+      return;
+    }
+
+    return axios
+      .put(`/users/${userid}`, formData)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((error) => {
+        return Promise.reject(error.response.data);
+      });
   }
-}
+};

@@ -27,7 +27,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    if (token.id_role === 2) {
+    if (token && token.id_role === 2) {
       setIsAdmin(true);
     }
   }, []);
@@ -40,8 +40,6 @@ function App() {
     e.stopPropagation();
     setIsMenuBurger(!isMenuBurger);
   };
-
-  console.log(token);
 
   return !token ? (
     <Routes>
