@@ -42,6 +42,7 @@ class UserController extends BaseController {
   getByEmailWithPass() {
     this.model.getByEmailWithPass(this.req.body.email).then(([[user]]) => {
       this.req.user = user;
+      this.next();
     });
   }
 }
