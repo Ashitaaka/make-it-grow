@@ -22,6 +22,7 @@ module.exports = function (ideasFromDb) {
         id_status,
         is_closed,
         location_id,
+        delay_date,
         ...user
       }
     ) => {
@@ -60,6 +61,7 @@ module.exports = function (ideasFromDb) {
         id_status,
         is_closed,
         location_id,
+        delay_date,
         users: allUsers,
       };
     },
