@@ -12,23 +12,25 @@ import axios from "axios";
 const IdeaExtended = () => {
   const [idea, setIdea] = useState(null);
   const [users, setusers] = useState([]);
-  
+
   const { id } = useParams(); // Destructure the `id` property from useParams()
-  
+
   useEffect(() => {
     id && getIdeaById(parseInt(id)).then((data) => setIdea(data));
   }, [id]); // Add `id` to the dependency array to trigger the effect when it changes
-  
+
   useEffect(() => {
     idea
-    ? axios
-    .get(`/users/city/${idea.city}/?fields=users`)
-    .then((res) => res.data)
-    .then((data) => setusers(...[data]))
-    : null;
+      ? axios
+          .get(`/users/city/${idea.city}/?fields=users,categories`)
+          .then((res) => res.data)
+          .then((data) => setusers(...[data]))
+      : null;
   }, [idea]);
   if (!idea) return null;
-  
+
+  console.log(users);
+
   return (
     <div className="idea-extended-container">
       <IdeaExtendedHeader idea={idea} />

@@ -1,6 +1,6 @@
 const BaseController = require("./BaseController");
 const { UserModel } = require("../models");
-const ideaFormat = require("../utils/ideaFormat");
+const userFormat = require("../utils/userFormat");
 
 class UserController extends BaseController {
   constructor(req, res, next) {
@@ -22,17 +22,26 @@ class UserController extends BaseController {
     });
   }
 
-  getByCity() {
-    this.model.getByCity(this.req.params.city).then(([user]) => {
-      this.res.users = user;
-      this.next();
-    });
+  async getByCity() {
+    const [results] = await this.model.getByCity(this.req.params.city);
+    this.next(results);
+    this.sendJson(
+      results.reduce((acc, cur) => {
+        const foundUser = acc.find((el) => el.user_id === cur.user_id);
+        if (!foundUser) {
+          acc.push(
+            userFormat(results.filter((el) => el.user_id === cur.user_id))
+          );
+          return acc;
+        }
+        return acc;
+      }, [])
+    );
   }
 
   getByEmailWithPass() {
     this.model.getByEmailWithPass(this.req.body.email).then(([[user]]) => {
       this.req.user = user;
-      this.next();
     });
   }
 }
