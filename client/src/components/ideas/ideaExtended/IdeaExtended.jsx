@@ -22,12 +22,9 @@ const IdeaExtended = () => {
   useEffect(() => {
     idea &&
       axios
-        .get(`/users/city/${idea.city}/?fields=users,categories`)
+        .get(`/users/city/${idea.city}/?fields=users,categories,is_owner`)
         .then((res) => res.data)
-        .then((data) => {
-          console.log(data);
-          setusers(...[data]);
-        });
+        .then((data) => setusers(...[data]));
   }, [idea]);
   if (!idea) return null;
 
@@ -35,7 +32,7 @@ const IdeaExtended = () => {
     <div className="idea-extended-container">
       <IdeaExtendedHeader idea={idea} />
       <IdeaExtendedStatus idea={idea} />
-      <IdeaExtendedUsers users={idea.users} impactedUsers={users} />
+      <IdeaExtendedUsers users={idea.users} impactedUsers={users} idea={idea} />
       <IdeaExtendedDetails idea={idea} users={users} />
     </div>
   );

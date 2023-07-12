@@ -25,7 +25,6 @@ const hashedPassword = (req, res, next) => {
 
 const hidePassword = (req, res) => {
   const users = res.users;
-
   users.map((user) => {
     delete user.hashed_password;
   });
@@ -51,7 +50,7 @@ const verifyPassword = (req, res, next) => {
 };
 
 const tokenEmission = (req, res, next) => {
-  const { id, id_role, firstname, lastname, picture, id_location} = req.user;
+  const { id, id_role, firstname, lastname, picture, id_location } = req.user;
 
   const payload = {
     sub: id,
@@ -72,7 +71,7 @@ const tokenEmission = (req, res, next) => {
       lastname: lastname,
       picture: picture,
       id_role: id_role,
-      id_location : id_location,
+      id_location: id_location,
     });
 };
 
