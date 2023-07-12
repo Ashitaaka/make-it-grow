@@ -1,0 +1,56 @@
+.validation_modal_section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2em;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.invisible {
+  display: none;
+}
+
+.archive_modal_content {
+  display: flex;
+  flex-direction: column;
+  width: 35em;
+  gap: 3em;
+  background-color: var(--ultra-light-color);
+  padding: 3em;
+  border-radius: 2em;
+  text-align: center;
+}
+
+.confirmationMessage {
+  font-size: 1.5em;
+}
+
+.confirmationMessage h3 {
+  margin-bottom: 1em;
+}
+
+.archive_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4em;
+}
+
+.archive_buttons button {
+  width: 50%;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.archive_buttons button:hover {
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+}

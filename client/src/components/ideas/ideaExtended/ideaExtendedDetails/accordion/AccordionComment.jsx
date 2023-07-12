@@ -5,11 +5,13 @@ import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc
 import genericIcon from "../../../../../assets/icons/genericPicture_2.jpg";
 import CommentForm from './CommentForm';
 
-const AccordionComment = ({ title, idea, users }) => {
+const AccordionComment = ({ title, idea, users, token }) => {
   const [open, setOpen] = useState(false);
   const [comments, setComments] = useState(idea.comment);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = useRef(null);
+
+  console.log(idea.location_id,'-----------',token.id_location);
 
   const onOpening = () => {
     setOpen(!open);
@@ -86,7 +88,7 @@ const AccordionComment = ({ title, idea, users }) => {
             })}
           </div>
           
-          {idea.status==='débat' ? <CommentForm idea={idea} setComments={setComments}/> :null   }
+          {idea.status==='débat' && idea.location_id===token.id_location  ? <CommentForm idea={idea} setComments={setComments}/> :null   }
          
         </div>
       </div>

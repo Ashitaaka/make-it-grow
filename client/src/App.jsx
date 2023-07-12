@@ -12,6 +12,7 @@ import tokenStorage from "./hooks/useToken";
 import CreateIdea from "./components/ideas/createIdea/CreateIdea";
 import IdeaExtended from "./components/ideas/ideaExtended/IdeaExtended";
 import MenuBurger from "./components/menuBurger/MenuBurger";
+import NotAuthorized from "./components/notAuthorized/NotAuthorized";
 //import css
 
 import "./App.css";
@@ -23,6 +24,14 @@ function App() {
   //Getting user infos
   const { removeToken, setToken, token } = tokenStorage();
 
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (token && token.id_role === 2) {
+      setIsAdmin(true);
+    }
+  }, []);
+
   //is Menu Burger opened?
   const [isMenuBurger, setIsMenuBurger] = useState(false);
 
@@ -31,6 +40,8 @@ function App() {
     e.stopPropagation();
     setIsMenuBurger(!isMenuBurger);
   };
+
+  console.log(token);
 
   return !token ? (
     <Routes>
@@ -62,7 +73,10 @@ function App() {
           <Route path="/profile/:userid" element={<ProfileDetails />} />
           <Route path="/newidea" element={<CreateIdea token={token} />} />
           <Route path="/idea/:id" element={<IdeaExtended />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={isAdmin ? <Admin /> : <NotAuthorized />}
+          />
         </Routes>
       </div>
     </div>
