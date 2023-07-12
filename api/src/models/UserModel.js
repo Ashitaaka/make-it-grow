@@ -62,6 +62,12 @@ class UserModel extends BaseModel {
         this.fields.push(`users.lastname`);
         this.fields.push(`users.picture`);
       }
+      if (this.queryFields.includes("users")) {
+        this.fields.push(`users.id AS user_id`);
+        this.fields.push(`users.firstname`);
+        this.fields.push(`users.lastname`);
+        this.fields.push(`users.picture`);
+      }
 
       if (this.queryFields.includes("categories")) {
         this.fields.push(
