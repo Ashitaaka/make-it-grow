@@ -1,6 +1,8 @@
 require('dotenv').config();
-const path = require('path')
+const cron = require('./src/utils/Cron')
+const path = require('path');
 
+cron();
 //import cookie parser 
 const cookieParser = require('cookie-parser');
 

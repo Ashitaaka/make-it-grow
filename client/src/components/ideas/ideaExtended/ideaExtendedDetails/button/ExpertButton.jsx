@@ -3,9 +3,18 @@ import axios from 'axios';
 import '../accordion/accordion.css'
 
 const ExpertButton = ({idea}) => {
+    //approve the idea
     const handleApproveExpertStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { id_status: 5 });
-        };
+
+      //Getting current date
+      const currentDate = new Date;
+      // Add 7 days to current date
+      const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 1));
+
+      axios.put(`ideas/${idea.idea_id}`, { id_status: 5, delay_date: deadline });
+    };
+    
+    //return the idea to previous step
     const handleRejectExpertStatus = () => {
         axios.put(`ideas/${idea.idea_id}`, { id_status: 4})
         };
