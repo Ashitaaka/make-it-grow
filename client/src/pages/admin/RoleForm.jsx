@@ -15,6 +15,7 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
 
   const handleModifyUser = (value) => {
     setIsModifying(value);
+    setsendFormRole(initRole);
   };
 
   const handleRoleChange = (e) => {
@@ -34,6 +35,8 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
     setIsModifying(false);
   };
 
+  console.log(sendFormRole);
+
   return (
     <div className="role_form">
       {!isModifying ? (
@@ -44,14 +47,13 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
           className="modify_form_icons"
           onChange={handleRoleChange}
         >
-          <select defaultValue={sendFormRole.role}>
+          <select>
+            <option disabled selected value>
+              -- select a role --
+            </option>
             {allRoles &&
               allRoles.map((role) => (
-                <option
-                  key={role.role_id}
-                  value={role.role_id}
-                  data-role={role.role}
-                >
+                <option key={role.role_id} value={role.role_id}>
                   {role.role}
                 </option>
               ))}
