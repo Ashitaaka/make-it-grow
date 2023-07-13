@@ -4,8 +4,10 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ArchiveModal from "../../components/admin/ArchiveModal";
 import genericPicture from "../../assets/icons/genericPicture_2.jpg";
-import { TbZoomCheck } from "react-icons/tb";
+import { PiMagnifyingGlassBold } from "react-icons/pi";
+
 import "./admin.css";
+import RoleForm from "./RoleForm";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
@@ -92,7 +94,7 @@ const Admin = () => {
                         to={`/idea/${idea.idea_id}`}
                         className="moderation_icon"
                       >
-                        <TbZoomCheck />
+                        <PiMagnifyingGlassBold />
                       </Link>
                       <div className="moderation_title">{idea.title}</div>
                     </div>
@@ -112,7 +114,7 @@ const Admin = () => {
                         to={`/idea/${idea.idea_id}`}
                         className="moderation_icon"
                       >
-                        <TbZoomCheck />
+                        <PiMagnifyingGlassBold />
                       </Link>
                       <div>{idea.title}</div>
                     </div>
@@ -134,14 +136,11 @@ const Admin = () => {
                 allUsers.map((user) => (
                   <div key={user.user_id} className="user_line">
                     <div className="line_content">
-                      <img
-                        src={user.picture ? user.picture : genericPicture}
-                        alt=""
-                      />
+                      <img src={user.picture ? user.picture : genericPicture} />
                       <p>{user.firstname}</p>
                       <p>{user.lastname}</p>
-                      <p>{user.role}</p>
                     </div>
+                    <RoleForm currentRole={user.role} allRoles={allRoles} />
                   </div>
                 ))}
             </div>

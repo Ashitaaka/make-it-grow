@@ -129,6 +129,10 @@
   gap: 5em;
 }
 
+.user_line .line_content p {
+  width: 3em;
+}
+
 .user_line img {
   width: 2em;
   height: 2em;
