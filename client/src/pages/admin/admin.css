@@ -25,14 +25,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid aqua;
+  border: 2px solid var(--primary-color);
   border-radius: 2em;
+}
+.admin_tab:hover {
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 .active {
-  background-color: aqua;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
+.ideas_tab,
+.users_tab {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
 .ideas_tab,
 .users_tab {
   width: 90%;

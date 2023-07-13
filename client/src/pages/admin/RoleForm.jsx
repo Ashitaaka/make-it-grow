@@ -35,8 +35,6 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
     setIsModifying(false);
   };
 
-  console.log(sendFormRole);
-
   return (
     <div className="role_form">
       {!isModifying ? (
