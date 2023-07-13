@@ -1,23 +1,24 @@
 import React from 'react'
 import "./filterBar.css"
 
-const FilterBar = ({ ideas }) => {
+const FilterBar = ({ ideas, filters, setFilters }) => {
 
-    const ideasInformations = ideas.reduce(
+    //Getting all categories, locations and status available
+    const allFilters = ideas.reduce(
         (accumulator, { categories, city, status }) =>{
             const allCategories = accumulator.categories;
             const allLocations = accumulator.cities;
             const allStatus = accumulator.status;
 
-            if(!allCategories.includes(categories[0])){
+            if(!allCategories.includes(categories[0]) && status !== "rejeté"){
                 allCategories.push(categories[0]);
             };
 
-            if(!allLocations.includes(city)){
+            if(!allLocations.includes(city) && status !== "rejeté"){
                 allLocations.push(city);
             };
 
-            if(!allStatus.includes(status)){
+            if(!allStatus.includes(status) && status !== "rejeté"){
                 allStatus.push(status);
             };
 
@@ -30,57 +31,63 @@ const FilterBar = ({ ideas }) => {
         { categories : [], cities : [], status : [] }
     );
 
-    console.log(ideasInformations)
-    const handleFilterCategories = () =>{
-        
-    }
 
-    const handleFilterlocations = () =>{
+    const handleFiltersChange = (e) =>{
+        const key = e.target.name;
+        const value = e.target.value;
 
-    }
-
-    const handleFilterStatus = () =>{
-
+        setFilters({
+            ...filters,
+            [key] : value,
+        })
     }
 
   return (
     <div className='filter_bar_container'>
-        <form className='filter_form' onChange={handleFilterCategories}>
-            <label htmlFor="categories-filter">
-            Filtrer par catégorie
-                <select name="categories-filter" id="categories-filter">
-                <option value="" disabled selected hidden>Sélectionner une catégorie</option>
-                {ideasInformations &&
-                ideasInformations.categories.map((category, index) => (
-                     <option key={index} value={category}>{category}</option>
-                ))}
+
+        <form className='filter_form' onChange={handleFiltersChange}>
+
+            <div className="filter_field">
+                <label htmlFor="categories-filter">
+                Filtrer par catégorie
+                </label>
+                <select name="categories" id="categories-filter" defaultValue="">
+                    <option value="">Toutes</option>
+                    {allFilters &&
+                    allFilters.categories.map((category, index) => (
+                            <option key={index} value={category}>{category}</option>
+                    ))}
                 </select>
-            </label>
-        </form>
-        <form className='filter_form' onChange={handleFilterlocations}>
-            <label htmlFor="locations-filter">
-            Filtrer par lieu
-                <select name="locations-filter" id="locations-filter">
-                <option value="" disabled selected hidden>Sélectionner un lieu</option>
-                {ideasInformations &&
-                ideasInformations.cities.map((city, index) => (
-                     <option key={index} value={city}>{city}</option>
-                ))}
+            </div>
+
+            <div className="filter_field">
+                <label htmlFor="locations-filter">
+                Filtrer par lieu
+                </label>
+                <select name="city" id="locations-filter" defaultValue="">
+                    <option value="">Tous</option>
+                    {allFilters &&
+                    allFilters.cities.map((city, index) => (
+                            <option key={index} value={city}>{city}</option>
+                    ))}
                 </select>
-            </label>
-        </form>
-        <form className='filter_form' onChange={handleFilterStatus}>
-            <label htmlFor="status-filter">
-            Filtrer par lieu
-                <select name="status-filter" id="status-filter">
-                <option value="" disabled selected hidden>Sélectionner un statut</option>
-                {ideasInformations &&
-                ideasInformations.status.map((status, index) => (
-                     <option key={index} value={status}>{status}</option>
-                ))}
+            </div>
+
+            <div className="filter_field">
+                <label htmlFor="status-filter">
+                Filtrer par Statut
+                </label>
+                <select name="status" id="status-filter" defaultValue="">
+                    <option value="">Tous</option>
+                    {allFilters &&
+                    allFilters.status.map((status, index) => (
+                            <option key={index} value={status}>{status}</option>
+                    ))}
                 </select>
-            </label>
+            </div>
+            
         </form>
+
     </div>
   )
 }

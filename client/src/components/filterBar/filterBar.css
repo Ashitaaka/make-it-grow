@@ -1,5 +1,22 @@
 .filter_bar_container{
+    width: 70%;
+}
+
+.filter_bar_container form{
     width: 100%;
     display: flex;
     justify-content: space-between;
+    gap: 2em;
 }
+
+.filter_field{
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+    flex: 1;
+}
+
+.filter_field option{
+    width: 100%;
+}
+

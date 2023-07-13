@@ -8,6 +8,12 @@ import FilterBar from "../../filterBar/FilterBar";
 
 const IdeasCardsBackground = () => {
   const [ideas, setIdeas] = useState([]);
+  const [filters, setFilters] = useState({
+    categories : "",
+    city : "",
+    status : "",
+  })
+
 
   useEffect(() => {
     axios
@@ -16,12 +22,15 @@ const IdeasCardsBackground = () => {
       .then((data) => setIdeas(...[data]));
   }, []);
 
+
   return (
     <div className="test">
-      <FilterBar ideas={ideas}/>
+      <FilterBar ideas={ideas} setFilters={setFilters} filters={filters} />
       <div className="ideas_cards_background">
         {ideas &&
-          ideas.map((idea, index) => (
+          ideas
+            .filter(idea => (!filters.city || filters.city === idea.city) && (!filters.status || filters.status === idea.status) && (!filters.categories || filters.categories === idea.categories[0]))
+            .map((idea, index) => (
             idea.id_status !== 8 && ( 
               <Link
               to={`/idea/${idea.idea_id}`}
