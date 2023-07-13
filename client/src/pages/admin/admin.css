@@ -102,13 +102,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.7em;
+  gap: 1em;
 }
 
 .moderation_icon {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.admin_idea_status {
+  width: 6em;
+  border: 1px solid black;
+  text-align: center;
+  color: #fff;
+  border-radius: 0.4em;
+}
+
+.main_color {
+  background-color: var(--primary-color);
 }
 
 .moderation_title,

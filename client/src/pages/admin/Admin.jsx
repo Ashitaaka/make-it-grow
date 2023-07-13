@@ -112,8 +112,8 @@ const Admin = () => {
           <div className="admin_ideas_all_other">
             <h1 className="moderation_title">Toutes les decision</h1>
             <div className="moderation_lines">
-              {ideas &&
-                ideas.map((idea, index) => (
+              {sortedAllIdeas &&
+                sortedAllIdeas.map((idea, index) => (
                   <div key={index} className="moderation_line">
                     <div className="line_content">
                       <Link
@@ -122,7 +122,15 @@ const Admin = () => {
                       >
                         <PiMagnifyingGlassBold />
                       </Link>
-                      <div>{idea.status}</div>
+                      <div
+                        className={
+                          idea.id_status === 2
+                            ? "admin_idea_status main_color "
+                            : "admin_idea_status"
+                        }
+                      >
+                        {idea.status}
+                      </div>
                       <div>{idea.title}</div>
                     </div>
 
