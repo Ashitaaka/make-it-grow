@@ -61,9 +61,14 @@ const Admin = () => {
     inProgressIDeas &&
     inProgressIDeas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
 
+  const sortedAllIdeas =
+    ideas && ideas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
+
+  console.log(ideas);
 
   return (
     <div className="admin_page">
@@ -117,6 +122,7 @@ const Admin = () => {
                       >
                         <PiMagnifyingGlassBold />
                       </Link>
+                      <div>{idea.status}</div>
                       <div>{idea.title}</div>
                     </div>
 
