@@ -1,5 +1,6 @@
 .filter_bar_container{
     width: 70%;
+    padding: 1.5em;
 }
 
 .filter_bar_container form{
@@ -14,6 +15,16 @@
     flex-direction: column;
     gap: .5em;
     flex: 1;
+}
+
+.filter_field select{
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom : 1px solid var(--primary-color-light);
+    padding: 1em 0;
+    color: var(--primary-color-light);
 }
 
 .filter_field option{

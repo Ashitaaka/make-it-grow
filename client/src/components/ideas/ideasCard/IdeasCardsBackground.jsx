@@ -24,7 +24,7 @@ const IdeasCardsBackground = () => {
 
 
   return (
-    <div className="test">
+    <div className="ideas_cards_container">
       <FilterBar ideas={ideas} setFilters={setFilters} filters={filters} />
       <div className="ideas_cards_background">
         {ideas &&

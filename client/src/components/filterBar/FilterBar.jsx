@@ -48,11 +48,8 @@ const FilterBar = ({ ideas, filters, setFilters }) => {
         <form className='filter_form' onChange={handleFiltersChange}>
 
             <div className="filter_field">
-                <label htmlFor="categories-filter">
-                Filtrer par catégorie
-                </label>
                 <select name="categories" id="categories-filter" defaultValue="">
-                    <option value="">Toutes</option>
+                    <option value="">Toutes les catégories</option>
                     {allFilters &&
                     allFilters.categories.map((category, index) => (
                             <option key={index} value={category}>{category}</option>
@@ -61,11 +58,8 @@ const FilterBar = ({ ideas, filters, setFilters }) => {
             </div>
 
             <div className="filter_field">
-                <label htmlFor="locations-filter">
-                Filtrer par lieu
-                </label>
                 <select name="city" id="locations-filter" defaultValue="">
-                    <option value="">Tous</option>
+                    <option value="">Tous les lieux</option>
                     {allFilters &&
                     allFilters.cities.map((city, index) => (
                             <option key={index} value={city}>{city}</option>
@@ -74,11 +68,8 @@ const FilterBar = ({ ideas, filters, setFilters }) => {
             </div>
 
             <div className="filter_field">
-                <label htmlFor="status-filter">
-                Filtrer par Statut
-                </label>
                 <select name="status" id="status-filter" defaultValue="">
-                    <option value="">Tous</option>
+                    <option value="">Tous les statuts</option>
                     {allFilters &&
                     allFilters.status.map((status, index) => (
                             <option key={index} value={status}>{status}</option>
