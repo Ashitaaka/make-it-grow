@@ -10,6 +10,7 @@ import AccordionRisk from "./accordion/AccordionRisk";
 import AccordionComment from "./accordion/AccordionComment";
 import axios from "axios";
 import ApproveOrDeclined from "./button/ApproveOrDeclined";
+import ModifyButton from "./button/ModifyButton";
 
 const IdeaExtendedDetails = ({ idea, users }) => {
   const {removeToken , setToken, token}= tokenStorage()
@@ -18,6 +19,7 @@ const IdeaExtendedDetails = ({ idea, users }) => {
     axios.put(`ideas/${idea.idea_id}`, { id_status: 2 });
   };
 
+  console.log('idea:',idea,'---------------', 'users:',users);
   return (
     <div className="idea-details-container">
       {/*  Accordion section */}
@@ -34,6 +36,9 @@ const IdeaExtendedDetails = ({ idea, users }) => {
         {token && token.id_role === 2 && idea && idea.id_status === 1 ? (
           <ApproveOrDeclined idea={idea}/>
         ) : null}
+        {idea && idea.id_status ===3 ? (
+          <ModifyButton idea={idea}/>
+        ):null}
       </div>
     </div>
   );

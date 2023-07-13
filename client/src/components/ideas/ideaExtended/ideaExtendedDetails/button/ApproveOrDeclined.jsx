@@ -4,6 +4,7 @@ import axios from 'axios';
 import '../accordion/accordion.css'
 
 const ApproveOrDeclined = ({idea}) => {
+  console.log(idea);
 
     const navigate = useNavigate();
     const handleUpdateIdeaStatus = () => {
