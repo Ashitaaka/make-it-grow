@@ -33,7 +33,7 @@ const IdeaExtended = () => {
       <IdeaExtendedHeader idea={idea} />
       <IdeaExtendedStatus idea={idea} />
       <IdeaExtendedUsers users={idea.users} impactedUsers={users} idea={idea} />
-      <IdeaExtendedDetails idea={idea} users={users} />
+      <IdeaExtendedDetails idea={idea} users={users} impactedUsers={users} />
     </div>
   );
 };
