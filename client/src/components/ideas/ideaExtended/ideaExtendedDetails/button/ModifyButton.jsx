@@ -26,10 +26,10 @@ const ModifyButton = ({idea}) => {
         axios.get(`ideas/${idea.idea_id}`, { id_status: 2 });
       };
   return (
-    <div className='ModifyButton'>
+    <div className='container_button_action'>
 
           <button
-            className="cta-button"
+            className="cta_button_action_status"
             style={{
               backgroundColor:  `var(${idea.color})`,
               border: `2px solid var(${idea.color})`,
