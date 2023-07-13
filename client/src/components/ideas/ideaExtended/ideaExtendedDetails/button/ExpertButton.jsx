@@ -1,27 +1,19 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../accordion/accordion.css'
 
-const ApproveOrDeclined = ({idea}) => {
-  
-
-    const navigate = useNavigate();
-    const handleUpdateIdeaStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { id_status: 2 });
-      };
-    const handleRejectIdeaStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, {    
-            is_closed: 1,
-            id_status: 8,
-        })
-        navigate("/dashboard")
-
-      };
+const ExpertButton = ({idea}) => {
+    const handleApproveExpertStatus = () => {
+        axios.put(`ideas/${idea.idea_id}`, { id_status: 5 });
+        };
+    const handleRejectExpertStatus = () => {
+        axios.put(`ideas/${idea.idea_id}`, { id_status: 4})
+        };
 
   return (
-    <div className='ApproveOrDeclined'>
-        <button
+    <div className='ExpertButton'>
+
+          <button
             className="cta-button"
             style={{
               backgroundColor:  `var(${idea.color})`,
@@ -37,11 +29,11 @@ const ApproveOrDeclined = ({idea}) => {
               e.target.style.color = "white";
             }}
             onClick={() => {
-              handleUpdateIdeaStatus();
+                handleRejectExpertStatus ();
               window.location.reload(false);
             }}
           >
-            Approuver
+            Rejeter
           </button>
           <button
             className="cta-button"
@@ -59,15 +51,17 @@ const ApproveOrDeclined = ({idea}) => {
               e.target.style.color = "white";
             }}
             onClick={() => {
-                handleRejectIdeaStatus ();
+                handleApproveExpertStatus();
               window.location.reload(false);
             }}
           >
-            Rejeter
+            Approuver
           </button>
 
     </div>
   )
 }
 
-export default ApproveOrDeclined
+
+
+export default ExpertButton
