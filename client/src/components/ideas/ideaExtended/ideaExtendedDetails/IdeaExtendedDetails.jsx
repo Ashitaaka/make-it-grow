@@ -12,6 +12,7 @@ import axios from "axios";
 import ApproveOrDeclined from "./button/ApproveOrDeclined";
 import ModifyButton from "./button/ModifyButton";
 import ExpertButton from "./button/ExpertButton";
+import VoteButton from "./button/VoteButton";
 
 const isUserExpert = (impactedUsers, idea,token) =>{
   return impactedUsers
@@ -52,6 +53,10 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
         {isUserExpert(impactedUsers, idea,token) &&   idea && idea.id_status ===4 ? (
                 <ExpertButton idea={idea} />
               ) : null }
+
+        {idea && idea.id_status ===5 ? (
+          <VoteButton idea={idea}/>
+        ):null}
         
       </div>
     </div>

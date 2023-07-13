@@ -29,9 +29,9 @@ const ApproveOrDeclined = ({idea}) => {
       };
 
   return (
-    <div className='ApproveOrDeclined'>
+    <div className='container_button_action'>
         <button
-            className="cta-button"
+            className="cta_button_action_status"
             style={{
               backgroundColor:  `var(${idea.color})`,
               border: `2px solid var(${idea.color})`,
