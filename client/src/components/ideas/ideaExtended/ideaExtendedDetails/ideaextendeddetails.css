@@ -7,6 +7,7 @@
 .cta-button-container {
   display: flex;
   justify-content: center;
+  flex-direction: row;
   width: 100%;
   margin: auto;
   gap: 1.5em;
@@ -14,10 +15,14 @@
   padding-bottom: 8em;
 }
 
-.cta-button {
-  width: 12em;
-  padding: 0.5em 1.2em;
-  border-radius: 1.2em;
-  background-color: var(--primary-color);
-  cursor: pointer;
+.container_button_action{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
+
+.cta_button_action_status{
+ width: 10em;
+ font-weight:500 ;
+}
+
