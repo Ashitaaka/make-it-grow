@@ -7,8 +7,41 @@
   padding-top: 1.5em;
 }
 
-.admin_ideas_moderation {
+.admin_tabs {
+  display: flex;
+  gap: 2em;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  border-radius: 2em;
+}
+
+.admin_tab {
+  width: 50%;
+  height: 2em;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid aqua;
+  border-radius: 2em;
+}
+
+.active {
+  background-color: aqua;
+}
+
+.ideas_tab,
+.users_tab {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_ideas_moderation {
+  width: 100%;
   /* max-width: 860px; */
   height: fit-content;
   /* min-height: 260px; */
@@ -22,7 +55,7 @@
 }
 
 .admin_ideas_all_other {
-  width: 90%;
+  width: 100%;
   /* max-width: 860px; */
   height: fit-content;
   /* min-height: 260px; */
@@ -35,7 +68,8 @@
   gap: 2em;
 }
 
-.moderation_lines {
+.moderation_lines,
+.users_lines {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,12 +78,20 @@
   width: 100%;
 }
 
-.moderation_line {
+.moderation_line,
+.user_line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+  width: 100%;
+}
+
+.moderation_line .line_content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5em;
-  width: 100%;
+  gap: 0.7em;
 }
 
 .moderation_icon {
@@ -58,10 +100,43 @@
   align-items: center;
 }
 
-.moderation_title {
+.moderation_title,
+.users_title {
   width: 100%;
 }
 
 .moderation_delete_icon {
   cursor: pointer;
+}
+
+.admin_users_management {
+  width: 100%;
+  /* max-width: 860px; */
+  height: fit-content;
+  /* min-height: 260px; */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+  border-radius: 2em;
+  padding: 2em;
+  gap: 2em;
+}
+
+.user_line .line_content {
+  display: flex;
+  align-items: center;
+  gap: 5em;
+}
+
+.user_line .line_content p {
+  width: 3em;
+}
+
+.user_line img {
+  width: 2em;
+  height: 2em;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }

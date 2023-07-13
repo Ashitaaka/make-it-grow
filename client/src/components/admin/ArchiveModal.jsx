@@ -1,7 +1,7 @@
 import React from "react";
 import "./archiveModal.css";
 import { useState } from "react";
-import { AiOutlineDelete } from "react-icons/ai";
+import { FcDeleteRow } from "react-icons/fc";
 import axios from "axios";
 
 const ArchiveModal = ({ idea }) => {
@@ -28,7 +28,7 @@ const ArchiveModal = ({ idea }) => {
 
   return (
     <div>
-      <AiOutlineDelete
+      <FcDeleteRow
         className="moderation_delete_icon"
         onClick={handleArchiveModal}
       />
