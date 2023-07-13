@@ -33,7 +33,8 @@
   background-color: aqua;
 }
 
-.ideas_tab {
+.ideas_tab,
+.users_tab {
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -67,7 +68,8 @@
   gap: 2em;
 }
 
-.moderation_lines {
+.moderation_lines,
+.users_lines {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,12 +78,20 @@
   width: 100%;
 }
 
-.moderation_line {
+.moderation_line,
+.user_line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5em;
+  width: 100%;
+}
+
+.moderation_line .line_content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5em;
-  width: 100%;
+  gap: 0.7em;
 }
 
 .moderation_icon {
@@ -90,10 +100,39 @@
   align-items: center;
 }
 
-.moderation_title {
+.moderation_title,
+.users_title {
   width: 100%;
 }
 
 .moderation_delete_icon {
   cursor: pointer;
+}
+
+.admin_users_management {
+  width: 100%;
+  /* max-width: 860px; */
+  height: fit-content;
+  /* min-height: 260px; */
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3em;
+  border-radius: 2em;
+  padding: 2em;
+  gap: 2em;
+}
+
+.user_line .line_content {
+  display: flex;
+  align-items: center;
+  gap: 5em;
+}
+
+.user_line img {
+  width: 2em;
+  height: 2em;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
 }

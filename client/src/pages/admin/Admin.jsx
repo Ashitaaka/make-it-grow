@@ -3,11 +3,14 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ArchiveModal from "../../components/admin/ArchiveModal";
+import genericPicture from "../../assets/icons/genericPicture_2.jpg";
 import { TbZoomCheck } from "react-icons/tb";
 import "./admin.css";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
+  const [users, setUsers] = useState([]);
+
   const [activeTab, setActiveTab] = useState("ideas");
 
   useEffect(() => {
@@ -15,6 +18,34 @@ const Admin = () => {
       .get("/ideas/?fields=id,title,status")
       .then((res) => res.data)
       .then((data) => setIdeas(...[data]));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("/users/?fields=users,role")
+      .then((res) => res.data)
+      .then((data) => setUsers(...[data]));
+  }, []);
+
+  const allUsers = users.reduce((acc, user) => {
+    const users = acc;
+
+    if (!users.some(({ user_id }) => user_id === user.user_id)) {
+      users.push(user);
+    }
+    return users;
+  }, []);
+
+  const allRoles = users.reduce((acc, user) => {
+    const roles = acc;
+
+    if (!roles.some(({ role_id }) => role_id === user.role_id)) {
+      roles.push({
+        role_id: user.role_id,
+        role: user.role,
+      });
+    }
+    return roles;
   }, []);
 
   const toCheckIdeas = ideas && ideas.filter((idea) => idea.id_status === 1);
@@ -56,13 +87,15 @@ const Admin = () => {
               {toCheckIdeas &&
                 toCheckIdeas.map((idea, index) => (
                   <div key={index} className="moderation_line">
-                    <Link
-                      to={`/idea/${idea.idea_id}`}
-                      className="moderation_icon"
-                    >
-                      <TbZoomCheck />
-                    </Link>
-                    <div className="moderation_title">{idea.title}</div>
+                    <div className="line_content">
+                      <Link
+                        to={`/idea/${idea.idea_id}`}
+                        className="moderation_icon"
+                      >
+                        <TbZoomCheck />
+                      </Link>
+                      <div className="moderation_title">{idea.title}</div>
+                    </div>
                     <ArchiveModal idea={idea} />
                   </div>
                 ))}
@@ -74,12 +107,16 @@ const Admin = () => {
               {ideas &&
                 ideas.map((idea, index) => (
                   <div key={index} className="moderation_line">
-                    <Link
-                      to={`/idea/${idea.idea_id}`}
-                      className="moderation_title"
-                    >
+                    <div className="line_content">
+                      <Link
+                        to={`/idea/${idea.idea_id}`}
+                        className="moderation_icon"
+                      >
+                        <TbZoomCheck />
+                      </Link>
                       <div>{idea.title}</div>
-                    </Link>
+                    </div>
+
                     <ArchiveModal idea={idea} />
                   </div>
                 ))}
@@ -88,9 +125,27 @@ const Admin = () => {
         </div>
       )}
 
-      {activeTab === "ideas" && (
+      {activeTab === "users" && (
         <div className="users_tab">
-          <div className="tab_users"></div>
+          <div className="admin_users_management">
+            <h1 className="users_title">Gestion des utilisateurs</h1>
+            <div className="users_lines">
+              {allUsers &&
+                allUsers.map((user) => (
+                  <div key={user.user_id} className="user_line">
+                    <div className="line_content">
+                      <img
+                        src={user.picture ? user.picture : genericPicture}
+                        alt=""
+                      />
+                      <p>{user.firstname}</p>
+                      <p>{user.lastname}</p>
+                      <p>{user.role}</p>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

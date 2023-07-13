@@ -62,11 +62,9 @@ class UserModel extends BaseModel {
         this.fields.push(`users.lastname`);
         this.fields.push(`users.picture`);
       }
-      if (this.queryFields.includes("users")) {
-        this.fields.push(`users.id AS user_id`);
-        this.fields.push(`users.firstname`);
-        this.fields.push(`users.lastname`);
-        this.fields.push(`users.picture`);
+      if (this.queryFields.includes("role")) {
+        this.fields.push(`users.id_role AS role_id`);
+        this.fields.push(`roles.label AS role`);
       }
 
       if (this.queryFields.includes("categories")) {
@@ -76,6 +74,7 @@ class UserModel extends BaseModel {
       }
       this.join.push(`LEFT JOIN locations ON locations.id = users.id_location
       LEFT JOIN users_has_categories ON users_has_categories.id_user = users.id
+      LEFT JOIN roles ON roles.id = users.id_role
       `);
     }
   }
