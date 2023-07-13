@@ -12,6 +12,7 @@ import RoleForm from "./RoleForm";
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
   const [users, setUsers] = useState([]);
+  // const [isModifying, setIsModifying] = useState(false);
 
   const [activeTab, setActiveTab] = useState("ideas");
 
@@ -19,14 +20,14 @@ const Admin = () => {
     axios
       .get("/ideas/?fields=id,title,status")
       .then((res) => res.data)
-      .then((data) => setIdeas(...[data]));
+      .then(setIdeas);
   }, []);
 
   useEffect(() => {
     axios
       .get("/users/?fields=users,role")
       .then((res) => res.data)
-      .then((data) => setUsers(...[data]));
+      .then(setUsers);
   }, []);
 
   const allUsers = users.reduce((acc, user) => {
@@ -140,7 +141,11 @@ const Admin = () => {
                       <p>{user.firstname}</p>
                       <p>{user.lastname}</p>
                     </div>
-                    <RoleForm currentRole={user.role} allRoles={allRoles} />
+                    <RoleForm
+                      currentRole={user.role}
+                      allRoles={allRoles}
+                      user_id={user.user_id}
+                    />
                   </div>
                 ))}
             </div>
