@@ -7,8 +7,40 @@
   padding-top: 1.5em;
 }
 
-.admin_ideas_moderation {
+.admin_tabs {
+  display: flex;
+  gap: 2em;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  height: 2em;
+  border-radius: 2em;
+}
+
+.admin_tab {
+  width: 50%;
+  height: 2em;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid aqua;
+  border-radius: 2em;
+}
+
+.active {
+  background-color: aqua;
+}
+
+.ideas_tab {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_ideas_moderation {
+  width: 100%;
   /* max-width: 860px; */
   height: fit-content;
   /* min-height: 260px; */
@@ -22,7 +54,7 @@
 }
 
 .admin_ideas_all_other {
-  width: 90%;
+  width: 100%;
   /* max-width: 860px; */
   height: fit-content;
   /* min-height: 260px; */

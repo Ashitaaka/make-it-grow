@@ -8,6 +8,7 @@ import "./admin.css";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
+  const [activeTab, setActiveTab] = useState("ideas");
 
   useEffect(() => {
     axios
@@ -26,37 +27,72 @@ const Admin = () => {
     inProgressIDeas &&
     inProgressIDeas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
 
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <div className="admin_page">
-      <div className="admin_ideas_moderation">
-        <h1 className="moderation_title">Decisions a moderer</h1>
-        <div className="moderation_lines">
-          {toCheckIdeas &&
-            toCheckIdeas.map((idea, index) => (
-              <div key={index} className="moderation_line">
-                <Link to={`/idea/${idea.idea_id}`} className="moderation_icon">
-                  <TbZoomCheck />
-                </Link>
-                <div className="moderation_title">{idea.title}</div>
-                <ArchiveModal idea={idea} />
-              </div>
-            ))}
+      <div className="admin_tabs">
+        <div
+          className={`admin_tab ${activeTab === "ideas" ? "active" : ""}`}
+          onClick={() => handleTabChange("ideas")}
+        >
+          Gestion des idées
+        </div>
+        <div
+          className={`admin_tab ${activeTab === "users" ? "active" : ""}`}
+          onClick={() => handleTabChange("users")}
+        >
+          Gestion des utilisateurs
         </div>
       </div>
-      <div className="admin_ideas_all_other">
-        <h1 className="moderation_title">Toutes les decision</h1>
-        <div className="moderation_lines">
-          {ideas &&
-            ideas.map((idea, index) => (
-              <div key={index} className="moderation_line">
-                <Link to={`/idea/${idea.idea_id}`} className="moderation_title">
-                  <div>{idea.title}</div>
-                </Link>
-                <ArchiveModal idea={idea} />
-              </div>
-            ))}
+
+      {activeTab === "ideas" && (
+        <div className="ideas_tab">
+          <div className="admin_ideas_moderation">
+            <h1 className="moderation_title">Decisions a moderer</h1>
+            <div className="moderation_lines">
+              {toCheckIdeas &&
+                toCheckIdeas.map((idea, index) => (
+                  <div key={index} className="moderation_line">
+                    <Link
+                      to={`/idea/${idea.idea_id}`}
+                      className="moderation_icon"
+                    >
+                      <TbZoomCheck />
+                    </Link>
+                    <div className="moderation_title">{idea.title}</div>
+                    <ArchiveModal idea={idea} />
+                  </div>
+                ))}
+            </div>
+          </div>
+          <div className="admin_ideas_all_other">
+            <h1 className="moderation_title">Toutes les decision</h1>
+            <div className="moderation_lines">
+              {ideas &&
+                ideas.map((idea, index) => (
+                  <div key={index} className="moderation_line">
+                    <Link
+                      to={`/idea/${idea.idea_id}`}
+                      className="moderation_title"
+                    >
+                      <div>{idea.title}</div>
+                    </Link>
+                    <ArchiveModal idea={idea} />
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
+
+      {activeTab === "ideas" && (
+        <div className="users_tab">
+          <div className="tab_users"></div>
+        </div>
+      )}
     </div>
   );
 };
