@@ -11,15 +11,24 @@ import AccordionComment from "./accordion/AccordionComment";
 import axios from "axios";
 import ApproveOrDeclined from "./button/ApproveOrDeclined";
 import ModifyButton from "./button/ModifyButton";
+import ExpertButton from "./button/ExpertButton";
 
-const IdeaExtendedDetails = ({ idea, users }) => {
+const isUserExpert = (impactedUsers, idea,token) =>{
+  return impactedUsers
+  .find((expert) =>
+    expert.user_id_categories.includes(idea.cat_id) && token?.id === expert.user_id
+  )
+  
+
+}
+
+const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   const {removeToken , setToken, token}= tokenStorage()
 
   const handleUpdateIdeaStatus = () => {
     axios.put(`ideas/${idea.idea_id}`, { id_status: 2 });
   };
 
-  console.log('idea:',idea,'---------------', 'users:',users);
   return (
     <div className="idea-details-container">
       {/*  Accordion section */}
@@ -36,9 +45,14 @@ const IdeaExtendedDetails = ({ idea, users }) => {
         {token && token.id_role === 2 && idea && idea.id_status === 1 ? (
           <ApproveOrDeclined idea={idea}/>
         ) : null}
-        {idea && idea.id_status ===3 ? (
+        {idea && idea.id_status ===3  && token && token.id=== idea && idea.users[0].user_id  ? (
           <ModifyButton idea={idea}/>
         ):null}
+
+        {isUserExpert(impactedUsers, idea,token) &&   idea && idea.id_status ===4 ? (
+                <ExpertButton idea={idea} />
+              ) : null }
+        
       </div>
     </div>
   );
