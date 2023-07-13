@@ -28,8 +28,6 @@ const IdeaExtended = () => {
   }, [idea]);
   if (!idea) return null;
 
-  console.log(users);
-
   return (
     <div className="idea-extended-container">
       <IdeaExtendedHeader idea={idea} />

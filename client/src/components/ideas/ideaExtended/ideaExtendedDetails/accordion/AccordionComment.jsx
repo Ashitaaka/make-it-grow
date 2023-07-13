@@ -1,9 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import "./accordion.css";
 import Monochev from "../../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc.svg";
 import genericIcon from "../../../../../assets/icons/genericPicture_2.jpg";
-import CommentForm from './CommentForm';
+import CommentForm from "./CommentForm";
 
 const AccordionComment = ({ title, idea, users, token }) => {
   const [open, setOpen] = useState(false);
@@ -11,27 +11,23 @@ const AccordionComment = ({ title, idea, users, token }) => {
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = useRef(null);
 
-  console.log(idea.location_id,'-----------',token.id_location);
-
   const onOpening = () => {
     setOpen(!open);
-    setMaxHeight((prevMaxHeight) => (prevMaxHeight === 0 ? contentContainer.current.scrollHeight : 0));
+    setMaxHeight((prevMaxHeight) =>
+      prevMaxHeight === 0 ? contentContainer.current.scrollHeight : 0
+    );
   };
 
-
-
   useEffect(() => {
-    if(!open){
-      setMaxHeight(0)
-    }else{
-    setMaxHeight(contentContainer.current.scrollHeight)};
+    if (!open) {
+      setMaxHeight(0);
+    } else {
+      setMaxHeight(contentContainer.current.scrollHeight);
+    }
   }, [comments]);
   return (
     <div className="accordion_container">
-      <div
-        className="header"
-        onClick={onOpening}
-      >
+      <div className="header" onClick={onOpening}>
         <div className="title">
           <div
             className="categorie"
@@ -61,24 +57,34 @@ const AccordionComment = ({ title, idea, users, token }) => {
           />
         )}
       </div>
-      <div ref={contentContainer} className="content_container" style={{ maxHeight: `${maxHeight}px` }}>
+      <div
+        ref={contentContainer}
+        className="content_container"
+        style={{ maxHeight: `${maxHeight}px` }}
+      >
         <div className="p-content">
           <div className="comment_container">
             {comments.map((comment, index) => {
               const commentOfUser = comment.id_user;
-              const userInfos = users.find((user) => user.user_id === commentOfUser);
+              const userInfos = users.find(
+                (user) => user.user_id === commentOfUser
+              );
               return (
                 <div key={index} className="user_comment_container">
                   <div className="user_info">
                     {userInfos && (
                       <img
-                        src={userInfos.picture ? userInfos.picture : genericIcon}
+                        src={
+                          userInfos.picture ? userInfos.picture : genericIcon
+                        }
                         alt="User"
                         className="user_picture"
                       />
                     )}
                     <p>
-                      {userInfos ? `${userInfos.firstname} ${userInfos.lastname}` : null}
+                      {userInfos
+                        ? `${userInfos.firstname} ${userInfos.lastname}`
+                        : null}
                     </p>
                   </div>
                   <div className="comment">{comment.content}</div>
@@ -87,9 +93,10 @@ const AccordionComment = ({ title, idea, users, token }) => {
               );
             })}
           </div>
-          
-          {idea.status==='débat' && idea.location_id===token.id_location  ? <CommentForm idea={idea} setComments={setComments}/> :null   }
-         
+
+          {idea.status === "débat" && idea.location_id === token.id_location ? (
+            <CommentForm idea={idea} setComments={setComments} />
+          ) : null}
         </div>
       </div>
     </div>

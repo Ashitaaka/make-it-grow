@@ -49,10 +49,18 @@
 
 .users-img {
   width: 2em;
+  height: 2em;
   border-radius: 50%;
   margin-left: -0.7em;
   transition: 0.3s ease-in-out;
+  overflow: hidden;
 }
+
+.users-img img{
+  width: 2em;
+  height: 2em;
+object-fit: cover;
+object-position: center;}
 
 .users-container p {
   font-weight: 700;
