@@ -66,8 +66,7 @@ const CommentForm = ({idea, setComments}) => {
         <button
           className="btn-comment"
           style={{
-            width: "30%",
-            backgroundColor:  `var(${idea.color})`,
+            backgroundColor: `var(${idea.color})`,
             border: `2px solid var(${idea.color})`,
             color:"white" ,
           }}

@@ -9,19 +9,19 @@
   justify-content: center;
   flex-direction: row;
   width: 100%;
-  margin: auto;
+  margin: 2em 0;
   gap: 1.5em;
-  padding-top: 5em;
-  padding-bottom: 8em;
 }
 
 .container_button_action{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap : 1.5em;
   width: 100%;
 }
 
-.cta_button_action_status{
+.cta_button_action_status,
+.cta-button{
  width: 10em;
  font-weight:500 ;
 }
