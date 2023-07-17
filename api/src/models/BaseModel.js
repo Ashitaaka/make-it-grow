@@ -35,6 +35,7 @@ class BaseModel {
   }
 
   postItem(reqBody) {
+    console.log(reqBody);
     const paramKeys = Object.keys(reqBody);
     const paramVals = Object.values(reqBody);
 

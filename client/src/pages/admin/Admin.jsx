@@ -13,6 +13,8 @@ import ArchiveUser from "../../components/admin/ArchiveUser";
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
   const [users, setUsers] = useState([]);
+  const [newCategory, setNewCategory] = useState({});
+  const [newLocation, setNewLocation] = useState({});
   // const [isModifying, setIsModifying] = useState(false);
 
   const [activeTab, setActiveTab] = useState("ideas");
@@ -92,6 +94,34 @@ const Admin = () => {
     }
   };
 
+  const handleNewCategory = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    setNewCategory({ [key]: value, color: "--primary-color" });
+  };
+  const handleNewCountry = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    setNewLocation({ ...newLocation, [key]: value });
+  };
+
+  const handleNewCity = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    setNewLocation({ ...newLocation, [key]: value });
+  };
+
+  const handleSendNewParam = (e, param) => {
+    e.preventDefault();
+    param &&
+      axios.post(
+        `/${param}`,
+        param === "categories" ? newCategory : newLocation
+      );
+  };
+
   return (
     <div className="admin_page">
       <div className="admin_tabs">
@@ -106,6 +136,12 @@ const Admin = () => {
           onClick={() => handleTabChange("users")}
         >
           Gestion des utilisateurs
+        </div>
+        <div
+          className={`admin_tab ${activeTab === "params" ? "active" : ""}`}
+          onClick={() => handleTabChange("params")}
+        >
+          Catégories et lieux
         </div>
       </div>
 
@@ -181,6 +217,38 @@ const Admin = () => {
                 ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {activeTab === "params" && (
+        <div className="admin_params_management">
+          <h2>Ajouter une categorie :</h2>
+          <form onChange={handleNewCategory}>
+            <label htmlFor="label">Nouvelle catégorie :</label>
+            <input type="text" id="label" name="label" />
+            {
+              <input
+                type="submit"
+                value={"Submit"}
+                onClick={(e) => handleSendNewParam(e, "categories")}
+              />
+            }
+          </form>
+          <form onChange={handleNewCountry}>
+            <label htmlFor="label">Nouveau pays :</label>
+            <input type="text" id="country" name="country" />
+          </form>
+          <form onChange={handleNewCity}>
+            <label htmlFor="label">Nouvelle ville :</label>
+            <input type="text" id="city" name="city" />
+          </form>
+          {
+            <input
+              type="submit"
+              value={"Submit"}
+              onClick={(e) => handleSendNewParam(e, "locations")}
+            />
+          }
         </div>
       )}
     </div>
