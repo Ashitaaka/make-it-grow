@@ -11,7 +11,6 @@ const ChangeProfilPicture = ({ userid, isProfilModal, setIsProfilModal, setPicUR
 
     //to reset the picture URL in the local storage token
     const { setToken, token } = tokenStorage();
-    console.log(token);
     
     //Uploading the picture and updating the user picture in DB
     const onUploadPicture = (e) => {
