@@ -110,6 +110,7 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
         {token && token.id_role === 2 && idea && idea.id_status === 1 ? (
           <ApproveOrDeclined idea={idea} />
         ) : null}
+
         {idea &&
         idea.id_status === 3 &&
         token &&
@@ -122,9 +123,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
           />
         ) : null}
 
-        {idea && idea.id_status === 3  && token && token.id ===  idea.users[0].user_id  ? (
-          <ModifyButton idea={idea}/>
-        ):null}
 
         {isUserExpert(impactedUsers, idea,token) && idea && idea.id_status === 4 ? (
                 <ExpertButton idea={idea} />
