@@ -54,7 +54,7 @@
   z-index: 2;
 }
 .initial {
-  width: 98%;
+  width: 100%;
   border: 3px solid;
   position: absolute;
   top: 1.8em;
@@ -70,4 +70,28 @@
 .button-next{
   width: 20%;
   cursor: pointer;
+}
+
+@media screen and (max-width:660px) {
+  .idea-status-container{
+    gap : 2em;
+    padding: 0 2em;
+  }
+
+  .idea-title{
+    width: 100%;
+  }
+
+  .creation p,
+  .debate p,
+  .synthese p,
+  .checkpoint p,
+  .deadline p{
+    display: none;
+  }
+
+  .rod, .initial{
+    top : .35em
+  }
+
 }

@@ -100,3 +100,25 @@ object-position: center;}
   border-left: 2px solid var(--tag-background-color);
   height: 100%;
 }
+
+@media screen and (max-width:660px) {
+  .users-container p{
+    font-size: .8em;
+  }
+}
+
+@media screen and (max-width:530px) {
+  .users-container{
+    flex-direction: column;
+    gap: 1.5em;
+  }
+  .vertical-line{
+    display: none;
+  }
+
+  .creator,
+  .experts,
+  .impacted-users{
+    gap:.5em;
+  }
+}

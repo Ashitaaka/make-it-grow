@@ -32,6 +32,7 @@ const ModifyButton = ({
     setReadyToSendV2(true);
   };
   return (
+
     <div className="container_button_action">
       <button
         className="cta_button_action_status"
@@ -76,7 +77,7 @@ const ModifyButton = ({
           Modifier
         </button>
       )}
-
+      
       {modificationAreOn ? (
         <button className="send_valid_modif" onClick={validateModifyIdeaStatus}>
           Valider Modification

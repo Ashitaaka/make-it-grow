@@ -164,6 +164,14 @@
   margin: auto;
   padding: 1em 2em;
   border-radius: 2em;
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+}
+
+#update_button:hover{
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
 }
 
 @media screen and (max-width : 860px) {

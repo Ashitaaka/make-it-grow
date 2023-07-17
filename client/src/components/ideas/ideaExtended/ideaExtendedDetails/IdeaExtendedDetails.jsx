@@ -122,13 +122,18 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
           />
         ) : null}
 
-        {isUserExpert(impactedUsers, idea, token) &&
-        idea &&
-        idea.id_status === 4 ? (
-          <ExpertButton idea={idea} />
-        ) : null}
+        {idea && idea.id_status === 3  && token && token.id ===  idea.users[0].user_id  ? (
+          <ModifyButton idea={idea}/>
+        ):null}
 
-        {idea && idea.id_status === 5 ? <VoteButton idea={idea} /> : null}
+        {isUserExpert(impactedUsers, idea,token) && idea && idea.id_status === 4 ? (
+                <ExpertButton idea={idea} />
+              ) : null }
+
+        {idea && idea.id_status === 5 ? (
+          <VoteButton idea={idea}/>
+        ):null}
+
       </div>
     </div>
   );
