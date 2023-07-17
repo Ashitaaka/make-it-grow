@@ -8,6 +8,7 @@ import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 import "./admin.css";
 import RoleForm from "./RoleForm";
+import ArchiveUser from "../../components/admin/ArchiveUser";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
@@ -175,6 +176,7 @@ const Admin = () => {
                       allRoles={allRoles}
                       user_id={user.user_id}
                     />
+                    <ArchiveUser user={user} />
                   </div>
                 ))}
             </div>
