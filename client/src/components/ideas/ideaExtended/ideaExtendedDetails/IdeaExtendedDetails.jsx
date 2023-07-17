@@ -17,14 +17,6 @@ import ExpertButton from "./button/ExpertButton";
 import VoteButton from "./button/VoteButton";
 import PopUpModifIdea from "../../createIdea/pop-up/PopUpModifIdea";
 
-const isUserExpert = (impactedUsers, idea, token) => {
-  return impactedUsers.find(
-    (expert) =>
-      expert.user_id_categories.includes(idea.cat_id) &&
-      token?.id === expert.user_id
-  );
-};
-
 const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   /* modification section idea */
   const [modificationAreOn, SetModificationAreOn] = useState(false);
@@ -36,10 +28,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   const [ideaBenefit, setIdeaBenefit] = useState(idea.benefit);
   const [idearisk, setIdeaRisk] = useState(idea.risk);
 
-
-const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
-
-  
   
   const isUserExpert = (impactedUsers, idea,token) =>{
     return impactedUsers
@@ -47,7 +35,8 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
       expert.user_id_categories.includes(idea.cat_id) && token?.id === expert.user_id
     )
   }
-  const {removeToken , setToken, token}= tokenStorage()
+
+  const {token}= tokenStorage()
   
   
   useEffect(() => {
