@@ -2,17 +2,15 @@ import React from 'react'
 import axios from 'axios';
 import '../accordion/accordion.css'
 
-const VoteButton = ({idea}) => {
+const VoteButton = ({idea, userId}) => {
     const handleVoteForIdeaStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { 
-            has_voted: 1,
-            value:1 
+        axios.post(`ideas/${idea.idea_id}/users/${userId}/votes`, { 
+            vote_value:1 
         });
       };
     const handleVoteAgainstIdeaStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { 
-            has_voted: 1,
-            value:0
+        axios.post(`ideas/${idea.idea_id}/users/${userId}/votes`, { 
+          vote_value:0
         });
       };
 

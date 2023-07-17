@@ -36,6 +36,19 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   const [ideaBenefit, setIdeaBenefit] = useState(idea.benefit);
   const [idearisk, setIdeaRisk] = useState(idea.risk);
 
+
+const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
+
+  
+  
+  const isUserExpert = (impactedUsers, idea,token) =>{
+    return impactedUsers
+    .find((expert) =>
+      expert.user_id_categories.includes(idea.cat_id) && token?.id === expert.user_id
+    )
+  }
+  const {removeToken , setToken, token}= tokenStorage()
+  
   
   useEffect(() => {
     if(readyToSendV2){
@@ -58,7 +71,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   },[readyToSendV2])
 
   /* end modification section idea */
-  const { removeToken, setToken, token } = tokenStorage();
 
   const handleUpdateIdeaStatus = () => {
     axios.put(`ideas/${idea.idea_id}`, { id_status: 2 });
@@ -129,7 +141,8 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
               ) : null }
 
         {idea && idea.id_status === 5 ? (
-          <VoteButton idea={idea}/>
+          <VoteButton idea={idea} userId={token.id}/>
+
         ):null}
 
       </div>

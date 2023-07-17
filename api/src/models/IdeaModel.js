@@ -49,6 +49,8 @@ class IdeaModel extends BaseModel {
         this.fields.push(`users.lastname`);
         this.fields.push(`users.picture`);
         this.fields.push(`users_has_ideas.is_owner`);
+        this.fields.push(`users_has_ideas.has_voted`);
+        this.fields.push(`users_has_ideas.vote_value`);
         this.fields.push(`roles.label AS role`);
       }
 
