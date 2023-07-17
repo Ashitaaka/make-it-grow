@@ -234,6 +234,7 @@ const Admin = () => {
               />
             }
           </form>
+          <h2>Ajouter une localisation :</h2>
           <form onChange={handleNewCountry}>
             <label htmlFor="label">Nouveau pays :</label>
             <input type="text" id="country" name="country" />
