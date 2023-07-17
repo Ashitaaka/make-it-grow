@@ -68,7 +68,28 @@ const Admin = () => {
     setActiveTab(tab);
   };
 
-  console.log(ideas);
+  const selectIdeasStatusClass = (idea_status) => {
+    switch (idea_status) {
+      case 1:
+        return "admin_idea_status moderation_color";
+      case 2:
+        return "admin_idea_status debat_color";
+      case 3:
+        return "admin_idea_status synthese_color";
+      case 4:
+        return "admin_idea_status expertise_color";
+      case 5:
+        return "admin_idea_status vote_color";
+      case 6:
+        return "admin_idea_status accepted_color";
+      case 7:
+        return "admin_idea_status refused_color";
+      case 8:
+        return "admin_idea_status rejected_color";
+      default:
+        return "admin_idea_status";
+    }
+  };
 
   return (
     <div className="admin_page">
@@ -122,13 +143,7 @@ const Admin = () => {
                       >
                         <PiMagnifyingGlassBold />
                       </Link>
-                      <div
-                        className={
-                          idea.id_status === 2
-                            ? "admin_idea_status main_color "
-                            : "admin_idea_status"
-                        }
-                      >
+                      <div className={selectIdeasStatusClass(idea.id_status)}>
                         {idea.status}
                       </div>
                       <div>{idea.title}</div>

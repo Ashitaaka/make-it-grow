@@ -113,14 +113,43 @@
 
 .admin_idea_status {
   width: 6em;
-  border: 1px solid black;
+  border: 1px solid #fff;
   text-align: center;
-  color: #fff;
+  color: black;
   border-radius: 0.4em;
 }
 
-.main_color {
-  background-color: var(--primary-color);
+.moderation_color {
+  background-color: var(--flame-pea-color);
+  color: #fff;
+}
+.debat_color {
+  background-color: var(--roman-color);
+  color: #fff;
+}
+.synthese_color {
+  background-color: var(--cerise-dark-color);
+  color: #fff;
+}
+.expertise_color {
+  background-color: var(--calypso-color);
+  color: #fff;
+}
+.vote_color {
+  background-color: var(--brick-red-color);
+  color: #fff;
+}
+.accepted_color {
+  background-color: var(--parsley-color);
+  color: #fff;
+}
+.refused_color {
+  background-color: var(--silver-tree-color);
+  color: #fff;
+}
+.rejected_color {
+  background-color: var(--zeus-color);
+  color: #fff;
 }
 
 .moderation_title,
