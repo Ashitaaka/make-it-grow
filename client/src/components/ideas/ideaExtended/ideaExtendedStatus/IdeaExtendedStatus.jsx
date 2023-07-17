@@ -4,7 +4,6 @@ import "./ideaextendedstatus.css";
 const IdeaExtendedStatus = ({ idea }) => {
   const [progress, setProgress] = useState(0);
 
-  console.log(idea)
   useEffect(() => {
     if (idea.status === "modération") {
       setProgress(0);
