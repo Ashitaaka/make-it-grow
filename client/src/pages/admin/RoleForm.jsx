@@ -38,7 +38,7 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
   return (
     <div className="role_form">
       {!isModifying ? (
-        <p>{sendFormRole.role}</p>
+        <p className="moderation_text">{sendFormRole.role}</p>
       ) : (
         <form
           action=""
@@ -51,17 +51,23 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
             </option>
             {allRoles &&
               allRoles.map((role) => (
-                <option key={role.role_id} value={role.role_id}>
+                <option
+                  className="moderation_text"
+                  key={role.role_id}
+                  value={role.role_id}
+                >
                   {role.role}
                 </option>
               ))}
           </select>
           <FcCheckmark
+            size={24}
             className="modify_form_icon"
             type="submit"
             onClick={handleSendForm}
           />
           <FcCancel
+            size={24}
             className="modify_form_icon"
             type="button"
             onClick={() => handleModifyUser(false)}
@@ -70,6 +76,7 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
       )}
 
       <BiSolidPencil
+        size={40}
         className="role_modify_icon"
         onClick={() => handleModifyUser(true)}
       />

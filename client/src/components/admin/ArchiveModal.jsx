@@ -29,6 +29,7 @@ const ArchiveModal = ({ idea }) => {
   return (
     <div>
       <FcDeleteRow
+        size={24}
         className="moderation_delete_icon"
         onClick={handleArchiveModal}
       />
