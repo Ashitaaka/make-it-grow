@@ -92,7 +92,6 @@ const ProfileDetails = () => {
               </h1>
               <p className="occupation">{user.occupation ? user.occupation : 'Travaille chez Makesense'}</p>
             </div>
-            <button className="button_profil">Modifier le profil</button>
           </div>
         </div>
 
