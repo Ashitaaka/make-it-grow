@@ -8,10 +8,13 @@ import { PiMagnifyingGlassBold } from "react-icons/pi";
 
 import "./admin.css";
 import RoleForm from "./RoleForm";
+import ArchiveUser from "../../components/admin/ArchiveUser";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
   const [users, setUsers] = useState([]);
+  const [newCategory, setNewCategory] = useState({});
+  const [newLocation, setNewLocation] = useState({});
   // const [isModifying, setIsModifying] = useState(false);
 
   const [activeTab, setActiveTab] = useState("ideas");
@@ -61,8 +64,62 @@ const Admin = () => {
     inProgressIDeas &&
     inProgressIDeas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
 
+  const sortedAllIdeas =
+    ideas && ideas.sort((a, b) => (a.id_status > b.id_status ? 1 : -1));
+
   const handleTabChange = (tab) => {
     setActiveTab(tab);
+  };
+
+  const selectIdeasStatusClass = (idea_status) => {
+    switch (idea_status) {
+      case 1:
+        return "admin_idea_status moderation_color";
+      case 2:
+        return "admin_idea_status debat_color";
+      case 3:
+        return "admin_idea_status synthese_color";
+      case 4:
+        return "admin_idea_status expertise_color";
+      case 5:
+        return "admin_idea_status vote_color";
+      case 6:
+        return "admin_idea_status accepted_color";
+      case 7:
+        return "admin_idea_status refused_color";
+      case 8:
+        return "admin_idea_status rejected_color";
+      default:
+        return "admin_idea_status";
+    }
+  };
+
+  const handleNewCategory = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    setNewCategory({ [key]: value, color: "--primary-color" });
+  };
+  const handleNewCountry = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+    setNewLocation({ ...newLocation, [key]: value });
+  };
+
+  const handleNewCity = (e) => {
+    const key = e.target.name;
+    const value = e.target.value;
+
+    setNewLocation({ ...newLocation, [key]: value });
+  };
+
+  const handleSendNewParam = (e, param) => {
+    e.preventDefault();
+    param &&
+      axios.post(
+        `/${param}`,
+        param === "categories" ? newCategory : newLocation
+      );
   };
 
   return (
@@ -79,6 +136,12 @@ const Admin = () => {
           onClick={() => handleTabChange("users")}
         >
           Gestion des utilisateurs
+        </div>
+        <div
+          className={`admin_tab ${activeTab === "params" ? "active" : ""}`}
+          onClick={() => handleTabChange("params")}
+        >
+          Catégories et lieux
         </div>
       </div>
 
@@ -107,8 +170,8 @@ const Admin = () => {
           <div className="admin_ideas_all_other">
             <h1 className="moderation_title">Toutes les decision</h1>
             <div className="moderation_lines">
-              {ideas &&
-                ideas.map((idea, index) => (
+              {sortedAllIdeas &&
+                sortedAllIdeas.map((idea, index) => (
                   <div key={index} className="moderation_line">
                     <div className="line_content">
                       <Link
@@ -117,6 +180,9 @@ const Admin = () => {
                       >
                         <PiMagnifyingGlassBold />
                       </Link>
+                      <div className={selectIdeasStatusClass(idea.id_status)}>
+                        {idea.status}
+                      </div>
                       <div>{idea.title}</div>
                     </div>
 
@@ -146,9 +212,72 @@ const Admin = () => {
                       allRoles={allRoles}
                       user_id={user.user_id}
                     />
+                    <ArchiveUser user={user} />
                   </div>
                 ))}
             </div>
+          </div>
+        </div>
+      )}
+
+      {activeTab === "params" && (
+        <div className="params_tab">
+          <div className="admin_params_category">
+            <h2>Ajouter une categorie :</h2>
+            <form onChange={handleNewCategory} className="categ_form">
+              <div className="form_input">
+                <label htmlFor="label">Nouvelle catégorie : </label>
+                <input
+                  className="text_input"
+                  type="text"
+                  id="label"
+                  name="label"
+                />
+              </div>
+              {
+                <input
+                  className="submit_button"
+                  type="submit"
+                  value={"Submit"}
+                  onClick={(e) => handleSendNewParam(e, "categories")}
+                />
+              }
+            </form>
+          </div>
+          <div className="admin_params_location">
+            <h2>Ajouter une localisation :</h2>
+            <div className="location_content">
+              <form onChange={handleNewCountry}>
+                <div className="form_input">
+                  <label htmlFor="label">Nouveau pays : </label>
+                  <input
+                    className="text_input"
+                    type="text"
+                    id="country"
+                    name="country"
+                  />
+                </div>
+              </form>
+              <form onChange={handleNewCity}>
+                <div className="form_input">
+                  <label htmlFor="label">Nouvelle ville : </label>
+                  <input
+                    className="text_input"
+                    type="text"
+                    id="city"
+                    name="city"
+                  />
+                </div>
+              </form>
+            </div>
+            {
+              <input
+                className="submit_button"
+                type="submit"
+                value={"Submit"}
+                onClick={(e) => handleSendNewParam(e, "locations")}
+              />
+            }
           </div>
         </div>
       )}

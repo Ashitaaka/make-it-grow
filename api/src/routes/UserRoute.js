@@ -50,4 +50,8 @@ userRouter.put("/:id", checkIfThereIsFile, renameFile, (req, res, next) =>
   new UserController(req, res, next).updateItem()
 );
 
+userRouter.delete("/:id", (req, res) =>
+  new UserController(req, res).deleteItem()
+);
+
 module.exports = userRouter;
