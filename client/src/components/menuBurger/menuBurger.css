@@ -132,6 +132,7 @@
 @media screen and (max-width: 660px) {
     .burger_menu{
         width: 100%;
+        overflow-y: scroll
     }
     
     .invisible{
