@@ -33,6 +33,7 @@ const ApproveOrDeclined = ({idea}) => {
         <button
             className="cta_button_action_status"
             style={{
+              width : "fit-content",
               backgroundColor:  `var(${idea.color})`,
               border: `2px solid var(${idea.color})`,
               color:"white" ,
@@ -55,6 +56,7 @@ const ApproveOrDeclined = ({idea}) => {
           <button
             className="cta-button"
             style={{
+              width : "fit-content",
               backgroundColor:  `var(${idea.color})`,
               border: `2px solid var(${idea.color})`,
               color:"white" ,

@@ -31,3 +31,16 @@
     width: 100%;
 }
 
+@media screen and (max-width : 1024px) {
+    .filter_bar_container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width : 660px) {
+    .filter_bar_container form{
+        flex-direction: column;
+        gap: 1.5em;
+    }
+}
+
