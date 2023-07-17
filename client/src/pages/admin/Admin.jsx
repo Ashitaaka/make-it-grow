@@ -221,35 +221,53 @@ const Admin = () => {
       )}
 
       {activeTab === "params" && (
-        <div className="admin_params_management">
-          <h2>Ajouter une categorie :</h2>
-          <form onChange={handleNewCategory}>
-            <label htmlFor="label">Nouvelle catégorie :</label>
-            <input type="text" id="label" name="label" />
+        <div className="params_tab">
+          <div className="admin_params_category">
+            <h2>Ajouter une categorie :</h2>
+            <form onChange={handleNewCategory} className="categ_form">
+              <div>
+                <label htmlFor="label">Nouvelle catégorie : </label>
+                <input
+                  className="text_input"
+                  type="text"
+                  id="label"
+                  name="label"
+                />
+              </div>
+              {
+                <input
+                  className="submit_button"
+                  type="submit"
+                  value={"Submit"}
+                  onClick={(e) => handleSendNewParam(e, "categories")}
+                />
+              }
+            </form>
+          </div>
+          <div className="admin_params_location">
+            <h2>Ajouter une localisation :</h2>
+            <form onChange={handleNewCountry}>
+              <label htmlFor="label">Nouveau pays : </label>
+              <input
+                className="text_input"
+                type="text"
+                id="country"
+                name="country"
+              />
+            </form>
+            <form onChange={handleNewCity}>
+              <label htmlFor="label">Nouvelle ville : </label>
+              <input className="text_input" type="text" id="city" name="city" />
+            </form>
             {
               <input
+                className="submit_button"
                 type="submit"
                 value={"Submit"}
-                onClick={(e) => handleSendNewParam(e, "categories")}
+                onClick={(e) => handleSendNewParam(e, "locations")}
               />
             }
-          </form>
-          <h2>Ajouter une localisation :</h2>
-          <form onChange={handleNewCountry}>
-            <label htmlFor="label">Nouveau pays :</label>
-            <input type="text" id="country" name="country" />
-          </form>
-          <form onChange={handleNewCity}>
-            <label htmlFor="label">Nouvelle ville :</label>
-            <input type="text" id="city" name="city" />
-          </form>
-          {
-            <input
-              type="submit"
-              value={"Submit"}
-              onClick={(e) => handleSendNewParam(e, "locations")}
-            />
-          }
+          </div>
         </div>
       )}
     </div>
