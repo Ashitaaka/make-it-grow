@@ -1,5 +1,9 @@
 require('dotenv').config();
-const path = require('path')
+const cron = require('./src/utils/Cron')
+const path = require('path');
+
+//Launching setIntervall to auto change status regarding the deadlines
+cron();
 
 //import cookie parser 
 const cookieParser = require('cookie-parser');

@@ -5,11 +5,20 @@ import '../accordion/accordion.css'
 
 const ApproveOrDeclined = ({idea}) => {
   
-
     const navigate = useNavigate();
-    const handleUpdateIdeaStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { id_status: 2 });
-      };
+
+    //On accepting the Idea
+    const handleUpdateIdeaStatus = (e) => {
+
+      //Getting current date
+      const currentDate = new Date;
+      // Add 7 days to current date
+      const deadline = new Date(currentDate.setDate(currentDate.getDate() + 8));
+
+      axios.put(`ideas/${idea.idea_id}`, { id_status: 2, delay_date: deadline })
+    };
+
+    //On rejecting the idea
     const handleRejectIdeaStatus = () => {
         axios.put(`ideas/${idea.idea_id}`, {    
             is_closed: 1,
