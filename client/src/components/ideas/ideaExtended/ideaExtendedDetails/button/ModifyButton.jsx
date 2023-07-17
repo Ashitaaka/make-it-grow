@@ -31,9 +31,9 @@ const ModifyButton = ({idea}) => {
           <button
             className="cta_button_action_status"
             style={{
-              backgroundColor:  `var(${idea.color})`,
+              backgroundColor: `var(${idea.color})`,
               border: `2px solid var(${idea.color})`,
-              color:"white" ,
+              color: "white" ,
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor ="transparent";
