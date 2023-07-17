@@ -46,8 +46,13 @@ userRouter.post(
   tokenEmission
 );
 
+userRouter.post("/:user_id/ideas/:ideas_id/votes", (req, res, next) =>
+  new UserController(req, res, next).postItem()
+);
 userRouter.put("/:id", checkIfThereIsFile, renameFile, (req, res, next) =>
   new UserController(req, res, next).updateItem()
 );
+
+
 
 module.exports = userRouter;
