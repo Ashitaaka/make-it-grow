@@ -225,7 +225,7 @@ const Admin = () => {
           <div className="admin_params_category">
             <h2>Ajouter une categorie :</h2>
             <form onChange={handleNewCategory} className="categ_form">
-              <div>
+              <div className="form_input">
                 <label htmlFor="label">Nouvelle catégorie : </label>
                 <input
                   className="text_input"
@@ -246,19 +246,30 @@ const Admin = () => {
           </div>
           <div className="admin_params_location">
             <h2>Ajouter une localisation :</h2>
-            <form onChange={handleNewCountry}>
-              <label htmlFor="label">Nouveau pays : </label>
-              <input
-                className="text_input"
-                type="text"
-                id="country"
-                name="country"
-              />
-            </form>
-            <form onChange={handleNewCity}>
-              <label htmlFor="label">Nouvelle ville : </label>
-              <input className="text_input" type="text" id="city" name="city" />
-            </form>
+            <div className="location_content">
+              <form onChange={handleNewCountry}>
+                <div className="form_input">
+                  <label htmlFor="label">Nouveau pays : </label>
+                  <input
+                    className="text_input"
+                    type="text"
+                    id="country"
+                    name="country"
+                  />
+                </div>
+              </form>
+              <form onChange={handleNewCity}>
+                <div className="form_input">
+                  <label htmlFor="label">Nouvelle ville : </label>
+                  <input
+                    className="text_input"
+                    type="text"
+                    id="city"
+                    name="city"
+                  />
+                </div>
+              </form>
+            </div>
             {
               <input
                 className="submit_button"

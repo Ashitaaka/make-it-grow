@@ -74,6 +74,17 @@
   justify-content: center;
 }
 
+.form_input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.location_content {
+  display: flex;
+  gap: 4em;
+}
+
 .params_tab .submit_button {
   background-color: #fff;
   border-style: none;
