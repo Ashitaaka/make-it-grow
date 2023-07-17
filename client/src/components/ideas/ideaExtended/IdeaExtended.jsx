@@ -24,7 +24,6 @@ const IdeaExtended = () => {
    // Add 7 days to current date
    const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 5));
 
-   console.log(deadline)
   
   useEffect(() => {
     idea &&
