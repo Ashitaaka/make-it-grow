@@ -16,3 +16,9 @@
   width: 85%;
   margin: auto;
 }
+
+@media screen and (max-width: 860px) {
+  .idea-extended-container {
+    width: 96%;
+  }
+}

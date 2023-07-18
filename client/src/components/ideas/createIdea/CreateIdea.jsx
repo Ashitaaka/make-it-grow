@@ -7,7 +7,7 @@ import "react-quill/dist/quill.snow.css"; //text editor css
 import confetti from "canvas-confetti"; //confetti for button
 
 import "./createIdea.css";
-import PopUp from "./pop up/PopUp";
+import PopUp from "./pop-up/PopUp";
 
 const CreateIdea = ({ token }) => {
   // state for data
@@ -116,8 +116,6 @@ const CreateIdea = ({ token }) => {
       );
   }, [choosenCategory]);
 
-  console.log(choosenCategory);
-
   // Take all the locations from the bd and create a new Array with no repeat locations
   const noRepeatLocations = [];
 
@@ -175,7 +173,7 @@ const CreateIdea = ({ token }) => {
   const editorStyle = {
     fontSize: "16px",
   };
-  console.log(token);
+
   //On click Submit button
   const handleButtonClick = () => {
     if (
@@ -198,18 +196,15 @@ const CreateIdea = ({ token }) => {
         benefit: ideaBenefitsText,
         impact: ideaRiskText,
         is_closed: false,
-        is_rejected: false,
         label: idChoosenCategory && idChoosenCategory[0].id,
         city: idChoosenLocation && idChoosenLocation[0].id,
         id_user: token && token.id,
         is_owner: 1,
       };
 
-      console.log(newIdea);
       // post the new Idea
       axios.post("/ideas", newIdea).then((response) => {
         if (response.status === 201) {
-          console.log(newIdea);
           confetti();
           setPopUpIsActive(true);
         }
@@ -234,11 +229,9 @@ const CreateIdea = ({ token }) => {
         ? setUncompleteTitle(true)
         : null;
 
-      console.log("pas de confetti pour les abrutis");
       setshowMissingInfo(true);
     }
   };
-  console.log(choosenCategory);
 
   return (
     <div className="create_idea_bckg">
@@ -551,7 +544,7 @@ const CreateIdea = ({ token }) => {
           ) : null}
         </div>
       </div>
-      {popUpIsActive ? <PopUp /> : null}
+      {popUpIsActive ? null : <PopUp /> }
     </div>
   );
 };

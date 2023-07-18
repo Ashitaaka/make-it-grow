@@ -1,6 +1,7 @@
 const BaseController = require("./BaseController");
 const { IdeaModel } = require("../models");
 const ideaFormat = require("../utils/ideaFormat");
+
 class IdeaController extends BaseController {
   constructor(req, res) {
     super(req, res);

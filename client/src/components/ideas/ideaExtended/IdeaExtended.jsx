@@ -19,24 +19,27 @@ const IdeaExtended = () => {
     id && getIdeaById(parseInt(id)).then((data) => setIdea(data));
   }, [id]); // Add `id` to the dependency array to trigger the effect when it changes
 
+   //Getting current date
+   const currentDate = new Date;
+   // Add 7 days to current date
+   const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 5));
+
+  
   useEffect(() => {
-    idea
-      ? axios
-          .get(`/users/city/${idea.city}/?fields=users`)
-          .then((res) => res.data)
-          .then((data) => setusers(...[data]))
-      : null;
+    idea &&
+    axios
+    .get(`/users/city/${idea.city}/?fields=users,categories,is_owner`)
+    .then((res) => res.data)
+    .then((data) => setusers(...[data]));
   }, [idea]);
-  console.log(users);
-
-  if (!idea) return null;
-
+  if (!idea) return null;   
+     
   return (
     <div className="idea-extended-container">
       <IdeaExtendedHeader idea={idea} />
       <IdeaExtendedStatus idea={idea} />
-      <IdeaExtendedUsers users={idea.users} impactedUsers={users} />
-      <IdeaExtendedDetails idea={idea} users={idea.users} />
+      <IdeaExtendedUsers users={idea.users} impactedUsers={users} idea={idea} />
+      <IdeaExtendedDetails idea={idea} users={users} impactedUsers={users} />
     </div>
   );
 };

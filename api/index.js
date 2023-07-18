@@ -1,4 +1,11 @@
 require('dotenv').config();
+const cron = require('./src/utils/Cron')
+const path = require('path');
+
+//Launching setIntervall to auto change status regarding the deadlines
+cron();
+
+//import cookie parser 
 const cookieParser = require('cookie-parser');
 
 const express = require('express');
@@ -6,22 +13,19 @@ const app = express();
 const port = process.env.APP_PORT ?? 5002;
 const APIRouter = express.Router();
 
+// Serve the 'public' folder for public resources
+APIRouter.use('/public',  express.static(path.join(__dirname, "./public")));
+
 const {
   userRouter,
   ideaRouter,
   locationRouter,
   categoryRouter,
+  commentRouter,
 } = require('./src/routes');
 
-//resolving cors issue from fetching from diffrent origins
-const cors = require('cors');
 const { optional } = require('joi');
-const corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200,
-  credentials: true,
-};
-app.use(cors(corsOptions));
+
 app.use(cookieParser());
 app.use(express.json());
 
@@ -36,6 +40,8 @@ APIRouter.use('/users', userRouter);
 APIRouter.use('/ideas', ideaRouter);
 APIRouter.use('/locations', locationRouter);
 APIRouter.use('/categories', categoryRouter);
+APIRouter.use('/comments', commentRouter);
+
 
 app.listen(port, function () {
   `API is running on port ${port}`;

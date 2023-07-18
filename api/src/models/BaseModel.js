@@ -35,6 +35,7 @@ class BaseModel {
   }
 
   postItem(reqBody) {
+    console.log(reqBody);
     const paramKeys = Object.keys(reqBody);
     const paramVals = Object.values(reqBody);
 
@@ -76,6 +77,17 @@ class BaseModel {
       ...paramVals,
       id,
     ]);
+  }
+
+  deleteItem(id) {
+    return this.db.query(
+      `
+      DELETE
+      FROM ${this.table}
+      ${this.join}
+      WHERE ${this.table}.id  = ?`,
+      [id]
+    );
   }
 }
 

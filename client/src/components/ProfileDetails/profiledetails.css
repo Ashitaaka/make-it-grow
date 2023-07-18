@@ -3,9 +3,9 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   gap: 2em;
+  margin-top: 1.5em;
 }
 
 .profile_container {
@@ -17,25 +17,65 @@
   display: flex;
   align-items: center;
   border-radius: 2em;
-  padding: 2em;
-}
-
-.profile_head,
-.profile_content {
-  flex: 1;
+  padding: 3em;
 }
 
 .profile_head {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1em;
+  gap: 2em;
+  padding-right: 1em;
   border-right: var(--separator);
+  position: relative;
+  flex: 3;
 }
 
-.profile_head img {
-  width: 30%;
+.profile_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 2;
+}
+
+.profil_pic{
+  width: 35%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.profil_pic img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profil_pic .overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(236, 243, 239, 0.9);
+  z-index: 5;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.profil_pic:hover .overlay{
+  opacity: 1;
+}
+
+.overlay img{
+  width: 3em;
+  height: auto;
+  cursor: pointer;
 }
 
 .profile_infos {
@@ -62,10 +102,9 @@
   border-radius: 2em;
 }
 
-.profile_content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.profile_details .profil_labels{
+  font-weight: 600;
 }
 
 .update_profile {
@@ -89,8 +128,6 @@
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-
-  /* justify-content: space-between; */
   gap: 2em;
 }
 
@@ -127,4 +164,56 @@
   margin: auto;
   padding: 1em 2em;
   border-radius: 2em;
+  border: 1px solid var(--primary-color);
+  cursor: pointer;
+}
+
+#update_button:hover{
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+@media screen and (max-width : 860px) {
+  .profile_page{
+    gap: 1em;
+  }
+
+  .profile_container {
+    width: 96%;
+    height: auto;
+    min-height: auto;
+    text-align: center;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+    border-radius: 1em;
+  }
+  .profile_head {
+    flex-direction: column;
+    gap: 2em;
+    padding-right: 0;
+    border-right: none;
+    width: auto;
+    flex: 1;
+  }
+
+  .profil_pic{
+    width: 150px;
+  }
+
+  .profile_content{
+    flex: 1;
+  }
+
+  .update_profile{
+    width: 96%;
+  }
+  
+}
+
+@media screen and (max-width : 660px) {
+  .update_content div{
+    width: 100%;
+  }
 }

@@ -26,6 +26,8 @@
 
         "canvas-confetti": "^1.6.0",
 
+        "dompurify": "^3.0.5",
+
         "make-it-grow": "file:..",
 
         "react": "^18.2.0",
