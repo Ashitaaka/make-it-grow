@@ -158,9 +158,9 @@ const Admin = () => {
                         to={`/idea/${idea.idea_id}`}
                         className="moderation_icon"
                       >
-                        <PiMagnifyingGlassBold />
+                        <PiMagnifyingGlassBold size={20} />
                       </Link>
-                      <div className="moderation_title">{idea.title}</div>
+                      <div className="moderation_text">{idea.title}</div>
                     </div>
                     <ArchiveModal idea={idea} />
                   </div>
@@ -178,12 +178,12 @@ const Admin = () => {
                         to={`/idea/${idea.idea_id}`}
                         className="moderation_icon"
                       >
-                        <PiMagnifyingGlassBold />
+                        <PiMagnifyingGlassBold size={20} />
                       </Link>
                       <div className={selectIdeasStatusClass(idea.id_status)}>
                         {idea.status}
                       </div>
-                      <div>{idea.title}</div>
+                      <div className="moderation_text">{idea.title}</div>
                     </div>
 
                     <ArchiveModal idea={idea} />
@@ -204,15 +204,17 @@ const Admin = () => {
                   <div key={user.user_id} className="user_line">
                     <div className="line_content">
                       <img src={user.picture ? user.picture : genericPicture} />
-                      <p>{user.firstname}</p>
-                      <p>{user.lastname}</p>
+                      <p className="moderation_text">{user.firstname}</p>
+                      <p className="moderation_text">{user.lastname}</p>
                     </div>
-                    <RoleForm
-                      currentRole={user.role}
-                      allRoles={allRoles}
-                      user_id={user.user_id}
-                    />
-                    <ArchiveUser user={user} />
+                    <div className="line_forms">
+                      <RoleForm
+                        currentRole={user.role}
+                        allRoles={allRoles}
+                        user_id={user.user_id}
+                      />
+                      <ArchiveUser user={user} />
+                    </div>
                   </div>
                 ))}
             </div>
@@ -238,7 +240,7 @@ const Admin = () => {
                 <input
                   className="submit_button"
                   type="submit"
-                  value={"Submit"}
+                  value={"Valider"}
                   onClick={(e) => handleSendNewParam(e, "categories")}
                 />
               }
@@ -274,7 +276,7 @@ const Admin = () => {
               <input
                 className="submit_button"
                 type="submit"
-                value={"Submit"}
+                value={"Valider"}
                 onClick={(e) => handleSendNewParam(e, "locations")}
               />
             }
