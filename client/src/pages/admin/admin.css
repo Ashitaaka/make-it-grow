@@ -29,7 +29,7 @@
   border: 2px solid var(--primary-color);
   border-radius: 2em;
   padding: 1em;
-  font-size: 1.2em;
+  font-size: 0.8em;
   font-weight: 500;
 }
 .admin_tab:hover {
@@ -138,16 +138,17 @@
 .moderation_line,
 .user_line {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5em;
   width: 100%;
+}
+
+.line_content,
+.line_forms {
+  flex: 1;
 }
 
 .moderation_line .line_content {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1em;
 }
 
@@ -238,7 +239,7 @@
 .user_line .line_content {
   display: flex;
   align-items: center;
-  gap: 5em;
+  gap: 3em;
 }
 
 .user_line .line_content p {
@@ -248,8 +249,8 @@
 .line_forms {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1em;
+  justify-content: space-between;
+  gap: 2em;
 }
 
 .user_line img {
@@ -292,6 +293,30 @@
     align-items: center;
     justify-content: center;
     gap: 1.5em;
+    width: 100%;
+  }
+
+  .moderation_line .line_content {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5em;
+    width: 100%;
+  }
+
+  .moderation_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .admin_ideas_moderation,
+  .admin_ideas_all_other {
+    padding: 3em;
+  }
+
+  .moderation_text {
     width: 100%;
   }
 }
