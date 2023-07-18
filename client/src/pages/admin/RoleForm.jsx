@@ -76,7 +76,7 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
       )}
 
       <BiSolidPencil
-        size={40}
+        size={60}
         className="role_modify_icon"
         onClick={() => handleModifyUser(true)}
       />

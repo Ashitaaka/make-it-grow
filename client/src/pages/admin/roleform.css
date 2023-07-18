@@ -10,7 +10,11 @@
 
 .modify_form_icons {
   display: flex;
+  align-items: center;
   gap: 1em;
+}
+.modify_form_icons select {
+  margin-bottom: 0;
 }
 .modify_form_icon {
   cursor: pointer;
