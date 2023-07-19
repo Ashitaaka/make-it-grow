@@ -200,6 +200,7 @@ const CreateIdea = ({ token }) => {
         city: idChoosenLocation && idChoosenLocation[0].id,
         id_user: token && token.id,
         is_owner: 1,
+        vote_value: 1,
       };
 
       // post the new Idea

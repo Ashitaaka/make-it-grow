@@ -1,19 +1,14 @@
 const BaseModel = require("./BaseModel");
 
 class VoteModel extends BaseModel {
-    constructor({fields}) {
-        super('users_has_ideas')
-
-        //securisation si fields vide et split de la chaine issue de la query
-        this.init(fields && fields.split(","));
-    
+    constructor() {
+        super("users_has_ideas")
       }
-      init(fields) {
-        if (!fields) {
-          this.fields.push("*");
-        }
-      } 
+
+      postItem(reqBody, user_id, idea_id) {
     
+        return this.db.query(`INSERT INTO ${this.table} (vote_value, id_user, id_idea) VALUES (?,?,?)`, [reqBody.vote_value, user_id, idea_id]);
+      }
 }
 
 module.exports = VoteModel

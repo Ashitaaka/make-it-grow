@@ -17,12 +17,13 @@ const IdeasCardsBackground = () => {
 
   useEffect(() => {
     axios
-      .get(`/ideas/?fields=id,title,locations,status,categories,users`)
+      .get(`/ideas/?fields=id,title,locations,status,categories,users,deadline`)
       .then((res) => res.data)
       .then((data) => setIdeas(...[data]));
   }, []);
 
 
+  console.log(ideas);
   return (
     <div className="ideas_cards_container">
       <FilterBar ideas={ideas} setFilters={setFilters} filters={filters} />

@@ -6,20 +6,19 @@ class VoteController extends BaseController {
     constructor(req, res){
 
         super(req, res)
-        this.model = new VoteModel(req.query)
+        this.model = new VoteModel()
 
     }
-    getById() {
-        this.model
-          .getById(this.req.params.id)
-          .then(([results]) => this.sendJson(results));
-      }
     
       postItem() {
-        this.model.postItem(this.req.body)
+        this.model.postItem(this.req.body, this.req.params.user_id, this.req.params.ideas_id)
           .then(([result]) => {
             this.res.status(201).json({ id: result.insertId, ...this.req.body });
-        });
+          })
+          .catch((error) => {
+            console.error(error);
+            this.res.status(500).json({ error: "An error occurred" });
+          });
       }
 }
 
