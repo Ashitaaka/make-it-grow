@@ -24,8 +24,6 @@ const IdeasCardsBackground = () => {
 
   const { search, setSearch } = useContext(SearchContext);
 
-  console.log(search);
-
   return (
     <div className="ideas_cards_container">
       <FilterBar ideas={ideas} setFilters={setFilters} filters={filters} />
@@ -34,6 +32,8 @@ const IdeasCardsBackground = () => {
           ideas
             .filter(
               (idea) =>
+                (!search ||
+                  search.toLowerCase() === idea.title.toLowerCase()) &&
                 (!filters.city || filters.city === idea.city) &&
                 (!filters.status || filters.status === idea.status) &&
                 (!filters.categories ||
