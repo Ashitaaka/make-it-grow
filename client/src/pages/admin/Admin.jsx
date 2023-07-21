@@ -9,6 +9,10 @@ import { PiMagnifyingGlassBold } from "react-icons/pi";
 import "./admin.css";
 import RoleForm from "./RoleForm";
 import ArchiveUser from "../../components/admin/ArchiveUser";
+import {
+  getIdeasbyIdTitleStatus,
+  getUsersByRole,
+} from "../../services/httpServices";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
@@ -20,17 +24,11 @@ const Admin = () => {
   const [activeTab, setActiveTab] = useState("ideas");
 
   useEffect(() => {
-    axios
-      .get("/ideas/?fields=id,title,status")
-      .then((res) => res.data)
-      .then(setIdeas);
+    getIdeasbyIdTitleStatus.then((res) => res.data).then(setIdeas);
   }, []);
 
   useEffect(() => {
-    axios
-      .get("/users/?fields=users,role")
-      .then((res) => res.data)
-      .then(setUsers);
+    getUsersByRole.then((res) => res.data).then(setUsers);
   }, []);
 
   const allUsers = users.reduce((acc, user) => {

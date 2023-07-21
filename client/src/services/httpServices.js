@@ -82,6 +82,32 @@ export const importNewPicture = (formData, userid) => {
   }
 };
 
+//TO get ideas by id title status
+
+export const getIdeasbyIdTitleStatus = () => {
+  return axios
+    .get("/ideas/?fields=id,title,status")
+    .then((res) => {
+      setError(false);
+    })
+    .catch((error) => {
+      setError(true);
+    });
+};
+
+//TO get users by role
+
+export const getUsersByRole = () => {
+  return axios
+    .get("/users/?fields=users,role")
+    .then((res) => {
+      setError(false);
+    })
+    .catch((error) => {
+      setError(true);
+    });
+};
+
 //To delete user
 export const deleteUser = (userid) => {
   return axios
