@@ -83,58 +83,34 @@ export const importNewPicture = (formData, userid) => {
 };
 
 //TO get ideas by id title status
-
 export const getIdeasbyIdTitleStatus = () => {
-  return axios
-    .get("/ideas/?fields=id,title,status")
-    .then((res) => {
-      setError(false);
-    })
-    .catch((error) => {
-      setError(true);
-    });
+  return axios.get("/ideas/?fields=id,title,status");
 };
 
-//TO get users by role
-
+//To get users by role
 export const getUsersByRole = () => {
-  return axios
-    .get("/users/?fields=users,role")
-    .then((res) => {
-      setError(false);
-    })
-    .catch((error) => {
-      setError(true);
-    });
+  return axios.get("/users/?fields=users,role");
 };
 
 //To delete user
 export const deleteUser = (userid) => {
-  return axios
-    .delete(`/users/${userid}`)
-    .then((res) => {
-      setError(false);
-    })
-    .catch((error) => {
-      setError(true);
-    });
+  return axios.delete(`/users/${userid}`);
 };
 
 //To archive idea
-
 export const archiveIdea = (ideaid, archiveIdeaForm) => {
-  return axios
-    .put(`/ideas/${ideaid}`, archiveIdeaForm)
-    .then((res) => {
-      setError(false);
-    })
-    .catch((error) => {
-      setError(true);
-    });
+  return axios.put(`/ideas/${ideaid}`, archiveIdeaForm);
 };
 
 //To change user role
-
 export const userRoleSwitch = (userid, role) => {
   return axios.put(`/users/${userid}`, role);
+};
+
+// TO add location or category
+export const addLocorCat = (param, newCategory, newLocation) => {
+  return axios.post(
+    `/${param}`,
+    param === "categories" ? newCategory : newLocation
+  );
 };
