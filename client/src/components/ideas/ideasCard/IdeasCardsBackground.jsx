@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import IdeasCard from "./IdeasCard";
 import "./IdeasCard.css";
 import { Link } from "react-router-dom";
 import FilterBar from "../../filterBar/FilterBar";
+import SearchContext from "../../../utils/context/SearchContext";
 
 const IdeasCardsBackground = () => {
   const [ideas, setIdeas] = useState([]);
@@ -21,6 +22,8 @@ const IdeasCardsBackground = () => {
       .then((data) => setIdeas(...[data]));
   }, []);
 
+  const { search, setSearch } = useContext(SearchContext);
+
   return (
     <div className="ideas_cards_container">
       <FilterBar ideas={ideas} setFilters={setFilters} filters={filters} />
@@ -29,6 +32,8 @@ const IdeasCardsBackground = () => {
           ideas
             .filter(
               (idea) =>
+                (!search ||
+                  idea.title.toLowerCase().includes(search.toLowerCase())) &&
                 (!filters.city || filters.city === idea.city) &&
                 (!filters.status || filters.status === idea.status) &&
                 (!filters.categories ||
