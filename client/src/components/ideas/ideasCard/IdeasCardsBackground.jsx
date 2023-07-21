@@ -33,7 +33,7 @@ const IdeasCardsBackground = () => {
             .filter(
               (idea) =>
                 (!search ||
-                  search.toLowerCase() === idea.title.toLowerCase()) &&
+                  idea.title.toLowerCase().includes(search.toLowerCase())) &&
                 (!filters.city || filters.city === idea.city) &&
                 (!filters.status || filters.status === idea.status) &&
                 (!filters.categories ||
