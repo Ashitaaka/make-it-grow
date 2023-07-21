@@ -81,3 +81,34 @@ export const importNewPicture = (formData, userid) => {
       });
   }
 };
+
+//To delete user
+export const deleteUser = (userid) => {
+  return axios
+    .delete(`/users/${userid}`)
+    .then((res) => {
+      setError(false);
+    })
+    .catch((error) => {
+      setError(true);
+    });
+};
+
+//To archive idea
+
+export const archiveIdea = (ideaid, archiveIdeaForm) => {
+  return axios
+    .put(`/ideas/${ideaid}`, archiveIdeaForm)
+    .then((res) => {
+      setError(false);
+    })
+    .catch((error) => {
+      setError(true);
+    });
+};
+
+//To change user role
+
+export const userRoleSwitch = (userid, role) => {
+  return axios.put(`/users/${userid}`, role);
+};

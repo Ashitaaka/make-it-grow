@@ -2,6 +2,7 @@ import React from "react";
 import { BiSolidPencil } from "react-icons/bi";
 import { FcCancel, FcCheckmark } from "react-icons/fc";
 import axios from "axios";
+import { userRoleSwitch } from "../../services/httpServices";
 
 import { useState } from "react";
 
@@ -31,7 +32,12 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
 
   const handleSendForm = () => {
     sendFormRole &&
-      axios.put(`/users/${user_id}`, { id_role: sendFormRole.role_id });
+      userRoleSwitch(user_id, { id_role: sendFormRole.role_id })
+        .then((res) => console.log("Supression OK", res))
+        .catch((err) => {
+          setError(true);
+        });
+
     setIsModifying(false);
   };
 
