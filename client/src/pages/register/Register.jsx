@@ -100,7 +100,7 @@ const Register = () => {
             />
             <input
               ref={passwordRef}
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="Password"
