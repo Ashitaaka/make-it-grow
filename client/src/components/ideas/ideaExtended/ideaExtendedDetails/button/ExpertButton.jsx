@@ -16,7 +16,7 @@ const ExpertButton = ({idea}) => {
     
     //return the idea to previous step
     const handleRejectExpertStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { id_status: 4})
+        axios.put(`ideas/${idea.idea_id}`, { id_status: 3})
         };
 
   return (

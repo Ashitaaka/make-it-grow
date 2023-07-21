@@ -206,7 +206,9 @@ const CreateIdea = ({ token }) => {
       // post the new Idea
       axios.post("/ideas", newIdea).then((response) => {
         if (response.status === 201) {
-          confetti();
+          confetti({
+            zIndex: 3000000
+          });
           setPopUpIsActive(true);
         }
       });
@@ -545,7 +547,7 @@ const CreateIdea = ({ token }) => {
           ) : null}
         </div>
       </div>
-      {popUpIsActive ? null : <PopUp /> }
+      {popUpIsActive ?  <PopUp />  : null }
     </div>
   );
 };

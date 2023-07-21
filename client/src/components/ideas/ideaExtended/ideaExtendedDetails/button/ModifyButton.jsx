@@ -45,9 +45,9 @@ const ModifyButton = ({
   };
 
   return (
-    <div className="container_button_action">
+    <div>
       {modificationAreOn ? null : (
-        <div className="modify_buttons">
+        <div className="container_button_action">
           <button
             className="cta_button_action_status"
             style={{
@@ -114,7 +114,7 @@ const ModifyButton = ({
       )}
 
       {modificationAreOn ? (
-        <div className="modify_buttons_2">
+        <div className="container_button_action">
           <button
             className="cta-button"
             onClick={cancelModifyIdeaStatus}

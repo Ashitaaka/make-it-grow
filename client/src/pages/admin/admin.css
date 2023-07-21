@@ -10,7 +10,6 @@
 .admin_tabs {
   display: flex;
   gap: 2em;
-  width: 50%;
   max-width: 860px;
   align-items: center;
   justify-content: center;
@@ -19,14 +18,14 @@
 }
 
 .admin_tab {
-  width: 50%;
+  width: fit-content;
   height: 2em;
   text-align: center;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 2em;
   padding: 1em;
   font-size: 0.8em;
@@ -52,6 +51,11 @@
   flex-direction: column;
 }
 
+.ideas_tab{
+  gap: 2em;
+  padding: 1.5em;
+}
+
 .admin_params_category,
 .admin_params_location,
 .admin_ideas_moderation,
@@ -62,7 +66,7 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  margin-top: 3em;
+  /* margin-top: 1em; */
   border-radius: 2em;
   padding: 2em;
   gap: 2em;
@@ -225,7 +229,6 @@
   width: 100%;
   max-width: 860px;
   height: fit-content;
-  /* min-height: 260px; */
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -310,10 +313,10 @@
     align-items: center;
   }
 
-  .admin_ideas_moderation,
+  /* .admin_ideas_moderation,
   .admin_ideas_all_other {
     padding: 3em;
-  }
+  } */
 
   .moderation_text {
     width: 100%;
