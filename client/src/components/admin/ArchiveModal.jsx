@@ -3,6 +3,7 @@ import "./archiveModal.css";
 import { useState } from "react";
 import { FcDeleteRow } from "react-icons/fc";
 import axios from "axios";
+import { archiveIdea } from "../../services/httpServices";
 
 const ArchiveModal = ({ idea }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -14,12 +15,10 @@ const ArchiveModal = ({ idea }) => {
 
   const archiveformSending = (e, id_idea) => {
     e.preventDefault();
-    axios
-      .put(`/ideas/${id_idea}`, archiveForm)
-      .then((res) => {
-        setError(false);
-      })
-      .catch((error) => {
+
+    archiveIdea(id_idea, archiveForm)
+      .then((res) => console.log("Supression OK", res))
+      .catch((err) => {
         setError(true);
       });
   };
@@ -29,6 +28,7 @@ const ArchiveModal = ({ idea }) => {
   return (
     <div>
       <FcDeleteRow
+        size={24}
         className="moderation_delete_icon"
         onClick={handleArchiveModal}
       />

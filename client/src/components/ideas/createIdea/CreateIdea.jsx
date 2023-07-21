@@ -545,7 +545,7 @@ const CreateIdea = ({ token }) => {
           ) : null}
         </div>
       </div>
-      {popUpIsActive ? <PopUp /> : null}
+      {popUpIsActive ? null : <PopUp /> }
     </div>
   );
 };

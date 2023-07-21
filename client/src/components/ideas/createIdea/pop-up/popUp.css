@@ -66,3 +66,32 @@
   color: var(--primary-color);
   border: solid 1px var(--primary-color);
 }
+
+@media (max-width : 1480px) {
+  .pop_up_content_container{
+    width: 50%;
+  }
+}
+
+@media (max-width : 870px) {
+  .pop_up_content_container{
+    width: 80%;
+  }
+}
+
+@media (max-width : 540px){
+  .pop_up_content_container{
+    padding: 1em 2em;
+  }
+
+  .title_pop_up {
+  font-size: 0.9em;
+
+}
+
+.text_explenation_pop_up {
+  font-size: 0.8em;
+}
+
+
+}

@@ -11,6 +11,7 @@
   display: flex;
   gap: 2em;
   width: 50%;
+  max-width: 860px;
   align-items: center;
   justify-content: center;
   height: 2em;
@@ -27,6 +28,9 @@
   justify-content: center;
   border: 2px solid var(--primary-color);
   border-radius: 2em;
+  padding: 1em;
+  font-size: 0.8em;
+  font-weight: 500;
 }
 .admin_tab:hover {
   background-color: var(--primary-color);
@@ -38,14 +42,9 @@
   color: #fff;
 }
 
+.params_tab,
 .ideas_tab,
 .users_tab {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-}
-
-.params_tab {
   width: 90%;
   display: flex;
   justify-content: center;
@@ -58,6 +57,7 @@
 .admin_ideas_moderation,
 .admin_ideas_all_other {
   width: 100%;
+  max-width: 860px;
   height: fit-content;
   background-color: #fff;
   display: flex;
@@ -86,25 +86,26 @@
 }
 
 .params_tab .submit_button {
-  background-color: #fff;
+  background-color: var(--primary-color);
   border-style: none;
   padding: 0.7em 2em;
   border-radius: 2em;
+  color: #fff;
   border: 1px solid var(--primary-color);
 }
 .params_tab .submit_button:hover {
-  background-color: var(--primary-color);
+  background-color: #fff;
   border-style: none;
-  color: white;
+  color: black;
   padding: 0.7em 2em;
   border-radius: 2em;
   border: 1px solid var(--primary-color);
   cursor: pointer;
 }
+
 .text_input {
   border-style: none;
   border: 1px solid var(--primary-color);
-  color: white;
   padding: 0.7em 2em;
   border-radius: 2em;
 }
@@ -119,6 +120,8 @@
 
 .submit_button {
   width: 10em;
+  font-weight: 450;
+  font-size: 1em;
 }
 
 .moderation_lines,
@@ -134,16 +137,17 @@
 .moderation_line,
 .user_line {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5em;
   width: 100%;
+}
+
+.line_content,
+.line_forms {
+  flex: 1;
 }
 
 .moderation_line .line_content {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1em;
 }
 
@@ -153,12 +157,26 @@
   align-items: center;
 }
 
+.moderation_text {
+  width: 25em;
+  font-size: 1.1em;
+  font-weight: 450;
+  display: flex;
+  align-items: center;
+}
+
 .admin_idea_status {
-  width: 6em;
+  width: 7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  font-weight: 600;
   border: 1px solid #fff;
   text-align: center;
   color: black;
-  border-radius: 0.4em;
+  border-radius: 0.6em;
+  padding: 0.2em;
 }
 
 .moderation_color {
@@ -205,7 +223,7 @@
 
 .admin_users_management {
   width: 100%;
-  /* max-width: 860px; */
+  max-width: 860px;
   height: fit-content;
   /* min-height: 260px; */
   background-color: #fff;
@@ -220,11 +238,18 @@
 .user_line .line_content {
   display: flex;
   align-items: center;
-  gap: 5em;
+  gap: 3em;
 }
 
 .user_line .line_content p {
   width: 3em;
+}
+
+.line_forms {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
 }
 
 .user_line img {
@@ -233,4 +258,64 @@
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
+}
+
+.moderation_delete_icon {
+  size: 64px;
+}
+
+@media screen and (max-width: 860px) {
+  .location_content {
+    flex-direction: column;
+  }
+
+  .admin_tabs {
+    width: 90%;
+  }
+
+  .admin_tab {
+    font-size: 0.6em;
+    padding: 1.4em;
+    width: 100%;
+  }
+
+  .moderation_lines,
+  .users_lines {
+    gap: 4em;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .moderation_line,
+  .user_line {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5em;
+    width: 100%;
+  }
+
+  .moderation_line .line_content {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.5em;
+    width: 100%;
+  }
+
+  .moderation_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .admin_ideas_moderation,
+  .admin_ideas_all_other {
+    padding: 3em;
+  }
+
+  .moderation_text {
+    width: 100%;
+  }
 }
