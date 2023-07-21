@@ -17,7 +17,7 @@ const IdeasCardsBackground = () => {
 
   useEffect(() => {
     axios
-      .get(`/ideas/?fields=id,title,locations,status,categories,users`)
+      .get(`/ideas/?fields=id,title,locations,status,categories,users,deadline`)
       .then((res) => res.data)
       .then((data) => setIdeas(...[data]));
   }, []);
@@ -44,7 +44,11 @@ const IdeasCardsBackground = () => {
                 idea.id_status !== 8 && (
                   <Link
                     to={`/idea/${idea.idea_id}`}
-                    className="card_background"
+                    className={
+                      idea.id_status === 7
+                        ? "card_background rejected"
+                        : "card_background"
+                    }
                     key={index}
                   >
                     <IdeasCard idea={idea} />

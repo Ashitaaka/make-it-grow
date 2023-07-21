@@ -9,14 +9,14 @@ const ExpertButton = ({idea}) => {
       //Getting current date
       const currentDate = new Date;
       // Add 7 days to current date
-      const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 1));
+      const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 2));
 
       axios.put(`ideas/${idea.idea_id}`, { id_status: 5, delay_date: deadline });
     };
     
     //return the idea to previous step
     const handleRejectExpertStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { id_status: 4})
+        axios.put(`ideas/${idea.idea_id}`, { id_status: 3})
         };
 
   return (
