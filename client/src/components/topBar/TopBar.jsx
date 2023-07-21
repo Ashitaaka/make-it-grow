@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 import "./topBar.css";
 //import assets
 import mig_logo from "../../assets/logo_MIG.svg";
-import search_icon from "../../assets/icons/search_icone.svg";
 import notification_icon from "../../assets/icons/notification_icone.svg";
 import genericPicture from "../../assets/icons/genericPicture.jpg";
 import { MdLogout } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { GoGear } from "react-icons/go";
 import BurgerButton from "../menuBurger/BurgerButton";
+import SearchBar from "../searchBar/SearchBar";
 
 const TopBar = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
   //Getting user infos
@@ -47,11 +47,6 @@ const TopBar = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
     setIsUserMenu(!isUserMenu);
   };
 
-  //on changing search bar input
-  const onSearch = (e) => {
-    console.log(e.target.value);
-  };
-
   if (!token) return null;
 
   return (
@@ -61,16 +56,7 @@ const TopBar = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
       </Link>
 
       <div className="right_container">
-        <div className="searchbar">
-          <img className="search_icon" src={search_icon} alt="" />
-          <input
-            type="text"
-            id="search_input"
-            name="search_input"
-            onKeyUp={onSearch}
-            placeholder="Rechercher une idée"
-          />
-        </div>
+        <SearchBar />
 
         <div className="personnal_profile">
           <img className="notification_icon" src={notification_icon} alt="" />

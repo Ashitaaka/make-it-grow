@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
+//import context
+import SearchContext from "./utils/context/SearchContext";
 //import components
 import Home from "./pages/Home";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -21,6 +23,7 @@ import Admin from "./pages/admin/Admin";
 axios.defaults.baseURL = "/api";
 
 function App() {
+  const [search, setSearch] = useState("");
   //Getting user infos
   const { removeToken, setToken, token } = tokenStorage();
 
@@ -48,36 +51,38 @@ function App() {
       <Route path="/register" element={<Register />} />
     </Routes>
   ) : (
-    <div className="app">
-      <MenuBurger
-        removeToken={removeToken}
-        token={token}
-        isMenuBurger={isMenuBurger}
-        setIsMenuBurger={setIsMenuBurger}
-        showHideMenuBurger={showHideMenuBurger}
-      />
-      <Sidebar token={token} />
-      <div className="app_container">
-        <TopBar
+    <SearchContext.Provider value={{ search, setSearch }}>
+      <div className="app">
+        <MenuBurger
           removeToken={removeToken}
           token={token}
           isMenuBurger={isMenuBurger}
           setIsMenuBurger={setIsMenuBurger}
           showHideMenuBurger={showHideMenuBurger}
         />
-        <Routes>
-          <Route path="*" element={<Navigate to="/dashboard" />} />
-          <Route path="/dashboard" element={<Home />} />
-          <Route path="/profile/:userid" element={<ProfileDetails />} />
-          <Route path="/newidea" element={<CreateIdea token={token} />} />
-          <Route path="/idea/:id" element={<IdeaExtended />} />
-          <Route
-            path="/admin"
-            element={isAdmin ? <Admin /> : <NotAuthorized />}
+        <Sidebar token={token} />
+        <div className="app_container">
+          <TopBar
+            removeToken={removeToken}
+            token={token}
+            isMenuBurger={isMenuBurger}
+            setIsMenuBurger={setIsMenuBurger}
+            showHideMenuBurger={showHideMenuBurger}
           />
-        </Routes>
+          <Routes>
+            <Route path="*" element={<Navigate to="/dashboard" />} />
+            <Route path="/dashboard" element={<Home />} />
+            <Route path="/profile/:userid" element={<ProfileDetails />} />
+            <Route path="/newidea" element={<CreateIdea token={token} />} />
+            <Route path="/idea/:id" element={<IdeaExtended />} />
+            <Route
+              path="/admin"
+              element={isAdmin ? <Admin /> : <NotAuthorized />}
+            />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </SearchContext.Provider>
   );
 }
 
