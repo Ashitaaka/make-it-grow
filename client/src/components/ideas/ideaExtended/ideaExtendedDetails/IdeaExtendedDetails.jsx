@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 import Monochev from "../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../assets/icons/mono_chevrons_icone_blanc.svg";
-import confetti from "canvas-confetti"; //confetti for button
 import tokenStorage from "../../../../hooks/useToken";
 import "./ideaextendeddetails.css";
 import AccordionDetail from "./accordion/AccordionDetail";
@@ -22,11 +21,11 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   const [modificationAreOn, SetModificationAreOn] = useState(false);
   const [readyToSendV2, setReadyToSendV2] = useState(false);
   const [popUpActive, setPopUpActive] = useState(false);
-
   const [ideaImpact, setIdeaImpact] = useState(idea.impact);
   const [ideaDetail, setIdeaDetail] = useState(idea.detail);
   const [ideaBenefit, setIdeaBenefit] = useState(idea.benefit);
   const [idearisk, setIdeaRisk] = useState(idea.risk);
+  const [userHasVoted, setUserHasVoted] = useState([]);
 
   const isUserExpert = (impactedUsers, idea, token) => {
     return impactedUsers.find(
@@ -39,10 +38,17 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   //Getting infos about connected user
   const { token } = tokenStorage();
 
+  useEffect(()=>{
+    axios.get(`/ideas/${idea.idea_id}/?fields=users`)
+      .then((res) => setUserHasVoted(res.data.users))
+      .catch((err)=> console.error(err))
+  },[]);
+
+  console.log(userHasVoted);
+
   useEffect(() => {
     if (readyToSendV2) {
       const ideaV2 = {
-        id_status: 4,
         detail: ideaDetail,
         benefit: ideaBenefit,
         impact: ideaImpact,
@@ -50,8 +56,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
       };
       axios.put(`/ideas/${idea.idea_id}`, ideaV2).then((response) => {
         if (response.status === 200) {
-          confetti();
-          setPopUpActive(true);
           setReadyToSendV2(false);
         }
       });
@@ -115,6 +119,7 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
             SetModificationAreOn={SetModificationAreOn}
             modificationAreOn={modificationAreOn}
             setReadyToSendV2={setReadyToSendV2}
+            setPopUpActive={setPopUpActive}
           />
         ) : null}
 
@@ -124,9 +129,11 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
           <ExpertButton idea={idea} />
         ) : null}
 
-        {idea && idea.id_status === 5 && idea.users[0].user_id !== token.id ? (
-          <VoteButton idea={idea} userId={token.id} />
-        ) : null}
+        {
+          idea && idea.id_status === 5 && idea.users[0].user_id !== token.id && !userHasVoted.some(el => el.user_id == token.id) 
+          ? <VoteButton idea={idea} userId={token.id} /> 
+          : null
+        }
       </div>
     </div>
   );

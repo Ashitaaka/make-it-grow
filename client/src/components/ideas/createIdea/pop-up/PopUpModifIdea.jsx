@@ -14,10 +14,10 @@ const PopUpModifIdea = ({ideaId}) => {
         </div>
 
         <p className="text_explenation_pop_up">
-          Un adminstrateur va validé votre idée, puis nous pourrons passer au vote ! Yaou
+          Un adminstrateur va valider votre idée, puis nous pourrons passer au vote ! Yaou
         </p>
-        <Link to={"/"} className="go_home_button">
-          <button>Retour à l'idéé</button>
+        <Link to={`/`} className="go_home_button">
+          <button>Retour au tableau de bord</button>
         </Link>
       </div>
     </div>

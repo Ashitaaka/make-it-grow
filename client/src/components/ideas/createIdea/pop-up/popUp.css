@@ -55,10 +55,10 @@
 
 .go_home_button {
   width: 66%;
- 
 }
 .go_home_button > button {
     cursor: pointer;
+    border: solid 1px var(--primary-color);
   }
 
 .go_home_button:hover button {

@@ -2,12 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../accordion/accordion.css";
+import confetti from "canvas-confetti"; //confetti for button
 
 const ModifyButton = ({
   idea,
   SetModificationAreOn,
   modificationAreOn,
   setReadyToSendV2,
+  setPopUpActive,
 }) => {
   const navigate = useNavigate();
 
@@ -20,7 +22,12 @@ const ModifyButton = ({
   };
 
   const handleUpdateModifIdeaStatus = () => {
-    axios.put(`ideas/${idea.idea_id}`, { id_status: 4 });
+    axios.put(`ideas/${idea.idea_id}`, { id_status: 4 }).then((res) => {
+      setPopUpActive(true);
+      confetti({
+        zIndex: 30000000,
+      });
+    });
   };
 
   const handleModifyIdeaStatus = () => {
@@ -30,82 +37,126 @@ const ModifyButton = ({
   const validateModifyIdeaStatus = () => {
     SetModificationAreOn(false);
     setReadyToSendV2(true);
+    location.reload();
   };
+
+  const cancelModifyIdeaStatus = () => {
+    location.reload();
+  };
+
   return (
-
     <div className="container_button_action">
-      <button
-        className="cta_button_action_status"
-        style={{
-          backgroundColor: `var(${idea.color})`,
-          border: `2px solid var(${idea.color})`,
-          color: "white",
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.backgroundColor = "transparent";
-          e.target.style.color = `var(${idea.color})`;
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.backgroundColor = `var(${idea.color})`;
-          e.target.style.color = "white";
-        }}
-        onClick={() => {
-          handleRejectAfterDebateIdeaStatus();
-          window.location.reload(false);
-        }}
-      >
-        Rejeter
-      </button>
       {modificationAreOn ? null : (
-        <button
-          className="cta-button"
-          style={{
-            backgroundColor: `var(${idea.color})`,
-            border: `2px solid var(${idea.color})`,
-            color: "white",
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = "transparent";
-            e.target.style.color = `var(${idea.color})`;
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = `var(${idea.color})`;
-            e.target.style.color = "white";
-          }}
-          onClick={handleModifyIdeaStatus}
-        >
-          Modifier
-        </button>
+        <div className="modify_buttons">
+          <button
+            className="cta_button_action_status"
+            style={{
+              backgroundColor: `var(${idea.color})`,
+              border: `2px solid var(${idea.color})`,
+              color: "white",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = `var(${idea.color})`;
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = `var(${idea.color})`;
+              e.target.style.color = "white";
+            }}
+            onClick={() => {
+              handleRejectAfterDebateIdeaStatus();
+              window.location.reload(false);
+            }}
+          >
+            Rejeter
+          </button>
+          <button
+            className="cta-button"
+            style={{
+              backgroundColor: `var(${idea.color})`,
+              border: `2px solid var(${idea.color})`,
+              color: "white",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = `var(${idea.color})`;
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = `var(${idea.color})`;
+              e.target.style.color = "white";
+            }}
+            onClick={handleModifyIdeaStatus}
+          >
+            Modifier
+          </button>
+          <button
+            className="cta-button"
+            style={{
+              backgroundColor: `var(${idea.color})`,
+              border: `2px solid var(${idea.color})`,
+              color: "white",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = `var(${idea.color})`;
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = `var(${idea.color})`;
+              e.target.style.color = "white";
+            }}
+            onClick={() => {
+              handleUpdateModifIdeaStatus();
+            }}
+          >
+            Approuver
+          </button>
+        </div>
       )}
-      
-      {modificationAreOn ? (
-        <button className="send_valid_modif" onClick={validateModifyIdeaStatus}>
-          Valider Modification
-        </button>
-      ) : null}
 
-      <button
-        className="cta-button"
-        style={{
-          backgroundColor: `var(${idea.color})`,
-          border: `2px solid var(${idea.color})`,
-          color: "white",
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.backgroundColor = "transparent";
-          e.target.style.color = `var(${idea.color})`;
-        }}
-        onMouseLeave={(e) => {
-          e.target.style.backgroundColor = `var(${idea.color})`;
-          e.target.style.color = "white";
-        }}
-        onClick={() => {
-          handleUpdateModifIdeaStatus();
-          window.location.reload(false);
-        }}
-      >
-        Approuver
-      </button>
+      {modificationAreOn ? (
+        <div className="modify_buttons_2">
+          <button
+            className="cta-button"
+            onClick={cancelModifyIdeaStatus}
+            style={{
+              width: "fit-content",
+              backgroundColor: `var(${idea.color})`,
+              border: `2px solid var(${idea.color})`,
+              color: "white",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = `var(${idea.color})`;
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = `var(${idea.color})`;
+              e.target.style.color = "white";
+            }}
+          >
+            Annuler Modifications
+          </button>
+          <button
+            className="cta-button"
+            onClick={validateModifyIdeaStatus}
+            style={{
+              width: "fit-content",
+              backgroundColor: `var(${idea.color})`,
+              border: `2px solid var(${idea.color})`,
+              color: "white",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.color = `var(${idea.color})`;
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = `var(${idea.color})`;
+              e.target.style.color = "white";
+            }}
+          >
+            Valider Modifications
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };
