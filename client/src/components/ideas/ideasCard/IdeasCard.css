@@ -13,6 +13,17 @@
   padding: 1rem;
   border-radius: 1em;
   background-color: white;
+  position: relative;
+}
+
+.accepted_icon{
+  position: absolute;
+  right: 1em;
+  top: 1em;
+}
+
+.rejected {
+  opacity: .5;
 }
 
 .card_categories {

@@ -102,14 +102,14 @@ class IdeaModel extends BaseModel {
     return this.db.query(insertQuery, [ideaId, cityId]);
   }
 
-  insertIdeasHasUsers(ideaId, userId, is_owner) {
-    const insertQuery = `INSERT INTO users_has_ideas (id_idea, id_user, is_owner) VALUES (?, ?, ?)`;
+  insertIdeasHasUsers(ideaId, userId, is_owner, vote_value) {
+    const insertQuery = `INSERT INTO users_has_ideas (id_idea, id_user, is_owner, vote_value) VALUES (?, ?, ?, ?)`;
 
-    return this.db.query(insertQuery, [ideaId, userId, is_owner]);
+    return this.db.query(insertQuery, [ideaId, userId, is_owner, vote_value]);
   }
 
   postItem(reqBody) {
-    const { label, city, id_user, is_owner, ...ideaData } = reqBody;
+    const { label, city, id_user, is_owner, vote_value, ...ideaData } = reqBody;
 
     const paramKeys = Object.keys(ideaData);
     const paramVals = Object.values(ideaData);
@@ -150,7 +150,7 @@ class IdeaModel extends BaseModel {
       })
       .then(() => {
         if (id_user) {
-          return this.insertIdeasHasUsers(ideaId, id_user, is_owner);
+          return this.insertIdeasHasUsers(ideaId, id_user, is_owner, vote_value);
         } else {
           return Promise.resolve();
         }

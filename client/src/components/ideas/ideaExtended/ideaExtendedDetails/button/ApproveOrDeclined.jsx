@@ -13,7 +13,8 @@ const ApproveOrDeclined = ({idea}) => {
       //Getting current date
       const currentDate = new Date;
       // Add 7 days to current date
-      const deadline = new Date(currentDate.setDate(currentDate.getDate() + 8));
+      const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 2));
+      // const deadline = new Date(currentDate.setDate(currentDate.getDate() + 8));
 
       axios.put(`ideas/${idea.idea_id}`, { id_status: 2, delay_date: deadline })
     };
