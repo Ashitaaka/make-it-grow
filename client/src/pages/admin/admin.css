@@ -106,7 +106,6 @@
 .text_input {
   border-style: none;
   border: 1px solid var(--primary-color);
-  color: white;
   padding: 0.7em 2em;
   border-radius: 2em;
 }

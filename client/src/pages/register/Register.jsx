@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 // Import component
 import { getAllLocations, registerUser } from "../../services/httpServices";
@@ -19,6 +19,8 @@ const Register = () => {
   const [formError, setFormError] = useState([]);
   const [locations, setLocations] = useState([]);
   const [isLocationsLoaded, setIsLocationsLoaded] = useState(false);
+
+  const passwordRef = useRef(null);
 
   useEffect(() => {
     getAllLocations()
@@ -45,7 +47,7 @@ const Register = () => {
         setFormError(error);
       });
 
-    document.getElementById("password").value = "";
+    passwordRef.current.value = "";
   };
 
   return (
@@ -97,6 +99,7 @@ const Register = () => {
               required
             />
             <input
+              ref={passwordRef}
               type="text"
               id="password"
               name="password"

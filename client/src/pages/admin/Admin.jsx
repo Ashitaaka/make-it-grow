@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ArchiveModal from "../../components/admin/ArchiveModal";
 import genericPicture from "../../assets/icons/genericPicture_2.jpg";
@@ -9,6 +9,11 @@ import { PiMagnifyingGlassBold } from "react-icons/pi";
 import "./admin.css";
 import RoleForm from "./RoleForm";
 import ArchiveUser from "../../components/admin/ArchiveUser";
+import {
+  getIdeasbyIdTitleStatus,
+  getUsersByRole,
+  addLocorCat,
+} from "../../services/httpServices";
 
 const Admin = () => {
   const [ideas, setIdeas] = useState([]);
@@ -17,18 +22,20 @@ const Admin = () => {
   const [newLocation, setNewLocation] = useState({});
   // const [isModifying, setIsModifying] = useState(false);
 
+  const catRef = useRef(null);
+  const countryRef = useRef(null);
+  const cityRef = useRef(null);
+
   const [activeTab, setActiveTab] = useState("ideas");
 
   useEffect(() => {
-    axios
-      .get("/ideas/?fields=id,title,status")
+    getIdeasbyIdTitleStatus()
       .then((res) => res.data)
       .then(setIdeas);
   }, []);
 
   useEffect(() => {
-    axios
-      .get("/users/?fields=users,role")
+    getUsersByRole()
       .then((res) => res.data)
       .then(setUsers);
   }, []);
@@ -115,11 +122,11 @@ const Admin = () => {
 
   const handleSendNewParam = (e, param) => {
     e.preventDefault();
-    param &&
-      axios.post(
-        `/${param}`,
-        param === "categories" ? newCategory : newLocation
-      );
+    param && addLocorCat(param, newCategory, newLocation);
+    catRef.current.value = "";
+    countryRef.current.value = "";
+    cityRef.current.value = "";
+    console.log(param);
   };
 
   return (
@@ -230,6 +237,7 @@ const Admin = () => {
               <div className="form_input">
                 <label htmlFor="label">Nouvelle catégorie : </label>
                 <input
+                  ref={catRef}
                   className="text_input"
                   type="text"
                   id="label"
@@ -253,6 +261,7 @@ const Admin = () => {
                 <div className="form_input">
                   <label htmlFor="label">Nouveau pays : </label>
                   <input
+                    ref={countryRef}
                     className="text_input"
                     type="text"
                     id="country"
@@ -264,6 +273,7 @@ const Admin = () => {
                 <div className="form_input">
                   <label htmlFor="label">Nouvelle ville : </label>
                   <input
+                    ref={cityRef}
                     className="text_input"
                     type="text"
                     id="city"

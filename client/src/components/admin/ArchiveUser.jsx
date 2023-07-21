@@ -3,6 +3,7 @@ import "./archiveModal.css";
 import { FcDeleteRow } from "react-icons/fc";
 import { useState } from "react";
 import axios from "axios";
+import { deleteUser } from "../../services/httpServices";
 
 const ArchiveUser = ({ user }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -10,12 +11,9 @@ const ArchiveUser = ({ user }) => {
 
   const archiveformSending = (e, user_id) => {
     e.preventDefault();
-    axios
-      .delete(`/users/${user_id}`)
-      .then((res) => {
-        setError(false);
-      })
-      .catch((error) => {
+    deleteUser(user_id)
+      .then((res) => console.log("Supression OK", res))
+      .catch((err) => {
         setError(true);
       });
   };
@@ -46,9 +44,10 @@ const ArchiveUser = ({ user }) => {
           <div className="archive_buttons">
             <button
               onClick={(e) => {
+                console.log("OUI");
                 archiveformSending(e, user.user_id);
-                handleArchiveModal;
-                // window.location.reload(false);
+                handleArchiveModal();
+                window.location.reload(false);
               }}
             >
               Confirmer
