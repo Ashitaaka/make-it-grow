@@ -123,3 +123,35 @@ export const modifyIdea = (idea, ideaV2) => {
     return false;
   });
 };
+//TO get ideas by id title status
+export const getIdeasbyIdTitleStatus = () => {
+  return axios.get("/ideas/?fields=id,title,status");
+};
+
+//To get users by role
+export const getUsersByRole = () => {
+  return axios.get("/users/?fields=users,role");
+};
+
+//To delete user
+export const deleteUser = (userid) => {
+  return axios.delete(`/users/${userid}`);
+};
+
+//To archive idea
+export const archiveIdea = (ideaid, archiveIdeaForm) => {
+  return axios.put(`/ideas/${ideaid}`, archiveIdeaForm);
+};
+
+//To change user role
+export const userRoleSwitch = (userid, role) => {
+  return axios.put(`/users/${userid}`, role);
+};
+
+// TO add location or category
+export const addLocorCat = (param, newCategory, newLocation) => {
+  return axios.post(
+    `/${param}`,
+    param === "categories" ? newCategory : newLocation
+  );
+};

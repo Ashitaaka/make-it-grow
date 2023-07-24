@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { UserController } = require("../controllers");
+const { UserController, VoteController } = require("../controllers");
 const {
   ifUserAlreadyExists,
   hashedPassword,
@@ -21,6 +21,7 @@ userRouter.get(
   (req, res, next) => new UserController(req, res, next).getAll(),
   hidePassword
 );
+
 userRouter.get(
   "/:id",
   (req, res, next) => new UserController(req, res, next).getById(),
@@ -47,8 +48,9 @@ userRouter.post(
 );
 
 userRouter.post("/:user_id/ideas/:ideas_id/votes", (req, res, next) =>
-  new UserController(req, res, next).postItem()
+  new VoteController(req, res, next).postItem()
 );
+
 userRouter.put("/:id", checkIfThereIsFile, renameFile, (req, res, next) =>
   new UserController(req, res, next).updateItem()
 );

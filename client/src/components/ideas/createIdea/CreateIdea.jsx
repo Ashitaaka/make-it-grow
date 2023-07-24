@@ -42,7 +42,7 @@ const CreateIdea = ({ token }) => {
 
   // state for the pop up section
 
-  const [popUpIsActive, setPopUpIsActive] = useState(true);
+  const [popUpIsActive, setPopUpIsActive] = useState(false);
 
   // Variable to check if date respect a delay of 30 days
   const actualDate = new Date();
@@ -193,6 +193,7 @@ const CreateIdea = ({ token }) => {
         city: idChoosenLocation && idChoosenLocation[0].id,
         id_user: token && token.id,
         is_owner: 1,
+        vote_value: 1,
       };
 
       // post the new Idea
@@ -200,8 +201,10 @@ const CreateIdea = ({ token }) => {
         try {
           const isSuccess = await createIdea(newIdea);
           if (isSuccess) {
-            confetti();
-            setPopUpIsActive(false);
+            confetti({
+              zIndex: 3000000
+            });
+            setPopUpIsActive(true);
           }
         } catch (error) {
           console.error(error)
@@ -533,7 +536,7 @@ const CreateIdea = ({ token }) => {
           ) : null}
         </div>
       </div>
-      {popUpIsActive ? null : <PopUp /> }
+      {popUpIsActive ? <PopUp /> : null }
     </div>
   );
 };
