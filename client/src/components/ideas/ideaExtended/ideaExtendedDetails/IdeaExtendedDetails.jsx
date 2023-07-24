@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
-import Monochev from "../../../../assets/icons/mono_chevrons_icone.svg";
-import MonochevBlanc from "../../../../assets/icons/mono_chevrons_icone_blanc.svg";
+//import components
 import tokenStorage from "../../../../hooks/useToken";
-import "./ideaextendeddetails.css";
 import AccordionDetail from "./accordion/AccordionDetail";
 import AccordionBenefit from "./accordion/AccordionBenefit";
 import AccordionImpact from "./accordion/AccordionImpact";
 import AccordionRisk from "./accordion/AccordionRisk";
 import AccordionComment from "./accordion/AccordionComment";
-import axios from "axios";
 import ApproveOrDeclined from "./button/ApproveOrDeclined";
 import ModifyButton from "./button/ModifyButton";
 import ExpertButton from "./button/ExpertButton";
 import VoteButton from "./button/VoteButton";
 import PopUpModifIdea from "../../createIdea/pop-up/PopUpModifIdea";
+
+//import CSS
+import "./ideaextendeddetails.css";
 
 const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   /* modification section idea */
@@ -65,8 +66,10 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
 
   return (
     <div className="idea-details-container">
-      {/*  Accordion section */}
+
       {popUpActive ? <PopUpModifIdea ideaId={idea.idea_id} /> : null}
+
+      {/*  Accordion section */}
       <AccordionDetail
         idea={idea}
         title={"Détails de l'idée"}

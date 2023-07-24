@@ -10,6 +10,20 @@
   margin-top: 2em;
   overflow: hidden;
   box-shadow: 0 0 18px 0 #3a494215;
+  position: relative;
+}
+
+.idea_extended_flag{
+  position: absolute;
+  width: 25em;
+  font-size: .85em;
+  font-weight: 600;
+  color: var(--ultra-light-color);
+  padding: .7em;
+  text-align: center;
+  transform: rotate(-45deg);
+  top: 5.5em;
+  left:-6.5em;
 }
 
 .separator {
@@ -20,5 +34,14 @@
 @media screen and (max-width: 860px) {
   .idea-extended-container {
     width: 96%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+  .idea_extended_flag{
+    font-size: .75em;
+    padding: .6em;
+    top: 5em;
+    left:-6.5em;
   }
 }

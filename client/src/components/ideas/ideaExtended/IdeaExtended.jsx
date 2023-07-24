@@ -22,7 +22,7 @@ const IdeaExtended = () => {
    //Getting current date
    const currentDate = new Date;
    // Add 7 days to current date
-   const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 5));
+   const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 2));
 
   
   useEffect(() => {
@@ -34,8 +34,27 @@ const IdeaExtended = () => {
   }, [idea]);
   if (!idea) return null;   
      
+  console.log();
   return (
     <div className="idea-extended-container">
+      {idea.id_status === 6 
+      ? <div 
+          className="idea_extended_flag"
+          style={{backgroundColor:`var(${idea.color})`}}
+        >
+        Idée acceptée
+      </div> 
+      : null}
+
+      {idea.id_status === 7 
+      ? <div 
+          className="idea_extended_flag"
+          style={{backgroundColor:`var(${idea.color})`}}
+        >
+        Idée refusée
+      </div> 
+      : null}
+     
       <IdeaExtendedHeader idea={idea} />
       <IdeaExtendedStatus idea={idea} />
       <IdeaExtendedUsers users={idea.users} impactedUsers={users} idea={idea} />
