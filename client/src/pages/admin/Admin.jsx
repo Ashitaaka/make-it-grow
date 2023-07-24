@@ -126,7 +126,6 @@ const Admin = () => {
     catRef.current.value = "";
     countryRef.current.value = "";
     cityRef.current.value = "";
-    console.log(param);
   };
 
   return (

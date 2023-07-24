@@ -43,7 +43,6 @@ const ArchiveUser = ({ user }) => {
           <div className="archive_buttons">
             <button
               onClick={(e) => {
-                console.log("OUI");
                 archiveformSending(e, user.user_id);
                 handleArchiveModal();
                 window.location.reload(false);
