@@ -1,7 +1,6 @@
 import React from "react";
 import { BiSolidPencil } from "react-icons/bi";
 import { FcCancel, FcCheckmark } from "react-icons/fc";
-import axios from "axios";
 import { userRoleSwitch } from "../../services/httpServices";
 
 import { useState } from "react";

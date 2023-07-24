@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "../accordion/accordion.css";
 import confetti from "canvas-confetti"; //confetti for button
 import {
@@ -19,7 +18,7 @@ const ModifyButton = ({
 
   const handleRejectAfterDebateIdeaStatus = () => {
     goToStateRejected(idea);
-  
+
     navigate("/dashboard");
   };
 
@@ -36,8 +35,6 @@ const ModifyButton = ({
       console.error(error);
     }
   };
-
-  
 
   const handleModifyIdeaStatus = () => {
     SetModificationAreOn(true);
