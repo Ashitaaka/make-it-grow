@@ -9,10 +9,10 @@ import profileIcon from "../../assets/icons/profile_icone.svg";
 import notification_icon from "../../assets/icons/notification_icone.svg";
 import genericPicture from "../../assets/icons/genericPicture_2.jpg";
 import addProjectIcon from "../../assets/icons/new_project_icone.svg";
-import search_icon from "../../assets/icons/search_icone.svg";
 
 //import css
 import "./menuBurger.css";
+import SearchBar from "../searchBar/SearchBar";
 
 const MenuBurger = ({
   removeToken,
@@ -120,13 +120,7 @@ const MenuBurger = ({
       <hr />
 
       <div className="burger_searchbar">
-        <img className="burger_search_icon" src={search_icon} alt="" />
-        <input
-          type="text"
-          id="burger_search_input"
-          name="burger_search_input"
-          placeholder="Rechercher une idée"
-        />
+        <SearchBar />
       </div>
 
       <Link
