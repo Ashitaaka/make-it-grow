@@ -141,6 +141,11 @@ export const getUsersByRole = () => {
   return axios.get("/users/?fields=users,role");
 };
 
+//To get users by city
+export const getUsersByCity = (city) => {
+  return axios.get(`/users/city/${city}/?fields=users,categories,is_owner`);
+};
+
 //To delete user
 export const deleteUser = (userid) => {
   return axios.delete(`/users/${userid}`);
