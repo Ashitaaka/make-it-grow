@@ -1,11 +1,20 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./accordion.css";
+
+//import components
 import Monochev from "../../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc.svg";
 import genericIcon from "../../../../../assets/icons/genericPicture_2.jpg";
 import CommentForm from "./CommentForm";
+import { useTheme } from "../../../../../utils/context/ThemeContext";
+
+//import CSS
+import "./accordion.css";
 
 const AccordionComment = ({ title, idea, users, token }) => {
+
+  //To know what's the actual color Theme ('dark' or 'light' mode)
+  const { theme } = useTheme();
+
   const [open, setOpen] = useState(false);
   const [comments, setComments] = useState(idea.comment);
   const [maxHeight, setMaxHeight] = useState(0);
@@ -49,7 +58,7 @@ const AccordionComment = ({ title, idea, users, token }) => {
           />
         ) : (
           <img
-            src={Monochev}
+            src={theme === 'light' ? Monochev : MonochevBlanc}
             alt="Arrow"
             style={{
               backgroundColor: "var(--ultra-light-color)",

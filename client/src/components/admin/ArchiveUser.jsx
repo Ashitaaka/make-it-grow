@@ -1,8 +1,11 @@
-import React from "react";
-import "./archiveModal.css";
+import React, { useState } from "react";
+
+//import components
 import { FcDeleteRow } from "react-icons/fc";
-import { useState } from "react";
 import { deleteUser } from "../../services/httpServices";
+
+//import CSS
+import "./archiveModal.css";
 
 const ArchiveUser = ({ user }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);

@@ -14,7 +14,7 @@
   max-width: 860px;
   height: 35%;
   min-height: 260px;
-  background-color: #fff;
+  background-color: var(--ultra-light-color);
   display: flex;
   align-items: center;
   border-radius: 2em;
@@ -111,7 +111,7 @@
 .update_profile {
   width: 80%;
   max-width: 860px;
-  background-color: #fff;
+  background-color: var(--ultra-light-color);
   display: flex;
   flex-direction: column;
   align-items: center;

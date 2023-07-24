@@ -7,6 +7,8 @@ import "react-quill/dist/quill.snow.css";
 //import assets
 import Monochev from "../../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc.svg";
+import {useTheme} from "../../../../../utils/context/ThemeContext"
+
 
 const AccordionImpact = ({
   title,
@@ -15,6 +17,10 @@ const AccordionImpact = ({
   ideaImpact,
   setIdeaImpact
 }) => {
+
+  //To know what's the actual color Theme ('dark' or 'light' mode)
+  const { theme } = useTheme();
+
   const [open, setOpen] = useState(false);
   let updateIdeaV2Impact = { ideaImpact};
   const [maxHeight, setMaxHeight] = useState(0);
@@ -69,7 +75,7 @@ const AccordionImpact = ({
           />
         ) : (
           <img
-            src={Monochev}
+            src={theme === 'light' ? Monochev : MonochevBlanc}
             alt="Arrow"
             style={{
               backgroundColor: "var(--ultra-light-color)",

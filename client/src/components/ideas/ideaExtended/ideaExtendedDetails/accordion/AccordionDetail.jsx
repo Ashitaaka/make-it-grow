@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import ReactQuill from "react-quill";
-
 import DOMPurify from "dompurify";
-import "./accordion.css";
+
+//import components
 import Monochev from "../../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc.svg";
+import {useTheme} from "../../../../../utils/context/ThemeContext"
+
+//import CSS
 import "react-quill/dist/quill.snow.css";
+import "./accordion.css";
 
 const AccordionDetail = ({
   title,
@@ -14,6 +18,10 @@ const AccordionDetail = ({
   ideaDetail,
   setIdeaDetail,
 }) => {
+
+  //To know what's the actual color Theme ('dark' or 'light' mode)
+  const { theme } = useTheme();
+
   const [open, setOpen] = useState(true);
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainerRef = useRef(null);
@@ -36,6 +44,7 @@ const AccordionDetail = ({
     setOpen((prevOpen) => !prevOpen);
   };
 
+
   return (
     <div className="accordion_container">
       <div
@@ -55,10 +64,10 @@ const AccordionDetail = ({
               }}
             ></div>
           )}
-
           <h2>{title}</h2>
         </div>
-        {modificationAreOn ? null : open ? (
+        
+        {modificationAreOn ? null : open ? 
           <img
             src={MonochevBlanc}
             alt="Arrow"
@@ -67,15 +76,15 @@ const AccordionDetail = ({
               transform: "rotate(270deg)",
             }}
           />
-        ) : (
+         : 
           <img
-            src={Monochev}
+            src={theme === 'light' ? Monochev : MonochevBlanc}
             alt="Arrow"
             style={{
               backgroundColor: "var(--ultra-light-color)",
             }}
           />
-        )}
+        }
       </div>
       <div
         ref={contentContainerRef}

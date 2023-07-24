@@ -3,7 +3,7 @@
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--ultra-light-color);
     display: flex;
     align-items: center;
     padding: 2em;

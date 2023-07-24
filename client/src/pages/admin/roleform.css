@@ -1,7 +1,6 @@
 .role_form {
   display: flex;
   gap: 1em;
-  width: 10em;
 }
 
 .role_modify_icon {
@@ -12,6 +11,11 @@
   display: flex;
   gap: 1em;
 }
+
+.modify_form_icons select {
+  margin: 0;
+}
+
 .modify_form_icon {
   cursor: pointer;
 }
