@@ -33,7 +33,6 @@ const IdeaExtended = () => {
   }, [idea]);
   if (!idea) return null;
 
-  console.log();
   return (
     <div className="idea-extended-container">
       {idea.id_status === 6 ? (
