@@ -176,36 +176,46 @@ export const addLocorCat = (param, newCategory, newLocation) => {
 
 //update idea status to 2
 export const goToState2 = (idea, deadline) => {
-  return axios.put(`ideas/${idea.idea_id}`, { id_status: 2, delay_date: deadline });
+  return axios.put(`ideas/${idea.idea_id}`, {
+    id_status: 2,
+    delay_date: deadline,
+  });
 };
 
 export const goToState3 = (idea, deadline) => {
-  return axios.put(`ideas/${idea.idea_id}`, { id_status: 2, delay_date: deadline });
+  return axios.put(`ideas/${idea.idea_id}`, {
+    id_status: 2,
+    delay_date: deadline,
+  });
 };
 
 export const goToState5 = (idea, deadline) => {
-  return axios.put(`ideas/${idea.idea_id}`, { id_status: 5, delay_date: deadline });
+  return axios.put(`ideas/${idea.idea_id}`, {
+    id_status: 5,
+    delay_date: deadline,
+  });
 };
 
 //reject idea
 export const goToStateRejected = (idea) => {
-  return axios.put(`ideas/${idea.idea_id}`, { is_closed: 1, id_status: 8})
+  return axios.put(`ideas/${idea.idea_id}`, { is_closed: 1, id_status: 8 });
 };
 
 export const goToStateRejectedByExpert = (idea) => {
-  return  axios.put(`ideas/${idea.idea_id}`, { id_status: 3})};
+  return axios.put(`ideas/${idea.idea_id}`, { id_status: 3 });
+};
 
-// modify idea 
+// modify idea
 export const comfirmModifyIdea = (idea) => {
+  return axios
+    .put(`ideas/${idea.idea_id}`, { id_status: 4 })
 
-  return axios.put(`ideas/${idea.idea_id}`, { id_status: 4 })
-
-  .then((response) => {
-    if (response.status === 200) {
-      return true;
-    }
-    return false;
-  });
+    .then((response) => {
+      if (response.status === 200) {
+        return true;
+      }
+      return false;
+    });
 };
 
 //To get all users informations
@@ -221,4 +231,9 @@ export const votePost = (idea, userId, vote_value) => {
   return axios.post(`users/${userId}/ideas/${idea.idea_id}/votes`, {
     vote_value: vote_value,
   });
+};
+
+//To get ideas extended details
+export const getIdeasWithUserInfos = (userid) => {
+  return axios.get(`/ideas/${userid}/?fields=users`);
 };
