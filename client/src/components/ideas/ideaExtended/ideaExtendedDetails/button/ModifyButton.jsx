@@ -1,8 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import "../accordion/accordion.css";
 import confetti from "canvas-confetti"; //confetti for button
+import {
+  comfirmModifyIdea,
+  goToStateRejected,
+} from "../../../../../services/httpServices";
 
 const ModifyButton = ({
   idea,
@@ -14,20 +17,23 @@ const ModifyButton = ({
   const navigate = useNavigate();
 
   const handleRejectAfterDebateIdeaStatus = () => {
-    axios.put(`ideas/${idea.idea_id}`, {
-      is_closed: 1,
-      id_status: 8,
-    });
+    goToStateRejected(idea);
+
     navigate("/dashboard");
   };
 
-  const handleUpdateModifIdeaStatus = () => {
-    axios.put(`ideas/${idea.idea_id}`, { id_status: 4 }).then((res) => {
-      setPopUpActive(true);
-      confetti({
-        zIndex: 30000000,
-      });
-    });
+  const handleUpdateModifIdeaStatus = async () => {
+    try {
+      const isSuccess = await comfirmModifyIdea(idea);
+      if (isSuccess) {
+        setPopUpActive(true);
+        confetti({
+          zIndex: 30000000,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleModifyIdeaStatus = () => {

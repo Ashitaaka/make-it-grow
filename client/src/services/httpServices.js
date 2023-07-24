@@ -122,6 +122,15 @@ export const modifyIdea = (idea, ideaV2) => {
     return false;
   });
 };
+
+// get ideas for dashboard
+
+export const getAllIdeas = () => {
+  return axios.get(
+    `/ideas/?fields=id,title,locations,status,categories,users,deadline`
+  );
+};
+
 //TO get ideas by id title status
 export const getIdeasbyIdTitleStatus = () => {
   return axios.get("/ideas/?fields=id,title,status");
@@ -130,6 +139,11 @@ export const getIdeasbyIdTitleStatus = () => {
 //To get users by role
 export const getUsersByRole = () => {
   return axios.get("/users/?fields=users,role");
+};
+
+//To get users by city
+export const getUsersByCity = (city) => {
+  return axios.get(`/users/city/${city}/?fields=users,categories,is_owner`);
 };
 
 //To delete user
@@ -152,7 +166,7 @@ export const userProfileChange = (userid, updateForm) => {
   return axios.put(`/users/${userid}`, updateForm);
 };
 
-// TO add location or category
+// To add location or category
 export const addLocorCat = (param, newCategory, newLocation) => {
   return axios.post(
     `/${param}`,
@@ -160,10 +174,66 @@ export const addLocorCat = (param, newCategory, newLocation) => {
   );
 };
 
-//To get all users informations
+//update idea status to 2
+export const goToState2 = (idea, deadline) => {
+  return axios.put(`ideas/${idea.idea_id}`, {
+    id_status: 2,
+    delay_date: deadline,
+  });
+};
 
+export const goToState3 = (idea, deadline) => {
+  return axios.put(`ideas/${idea.idea_id}`, {
+    id_status: 2,
+    delay_date: deadline,
+  });
+};
+
+export const goToState5 = (idea, deadline) => {
+  return axios.put(`ideas/${idea.idea_id}`, {
+    id_status: 5,
+    delay_date: deadline,
+  });
+};
+
+//reject idea
+export const goToStateRejected = (idea) => {
+  return axios.put(`ideas/${idea.idea_id}`, { is_closed: 1, id_status: 8 });
+};
+
+export const goToStateRejectedByExpert = (idea) => {
+  return axios.put(`ideas/${idea.idea_id}`, { id_status: 3 });
+};
+
+// modify idea
+export const comfirmModifyIdea = (idea) => {
+  return axios
+    .put(`ideas/${idea.idea_id}`, { id_status: 4 })
+
+    .then((response) => {
+      if (response.status === 200) {
+        return true;
+      }
+      return false;
+    });
+};
+
+//To get all users informations
 export const getUserProfile = (userid) => {
   return axios.get(
     `/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
   );
+};
+
+//To vote
+
+export const votePost = (idea, userId, vote_value) => {
+  return axios.post(`users/${userId}/ideas/${idea.idea_id}/votes`, {
+    vote_value: vote_value,
+  });
+};
+
+//To get ideas extended details
+export const getIdeasWithUserInfos = (userid) => {
+  return axios.get(`/ideas/${userid}/?fields=users`);
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "axios";
+
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import ArchiveModal from "../../components/admin/ArchiveModal";
@@ -126,7 +126,6 @@ const Admin = () => {
     catRef.current.value = "";
     countryRef.current.value = "";
     cityRef.current.value = "";
-    console.log(param);
   };
 
   return (

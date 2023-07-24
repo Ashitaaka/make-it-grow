@@ -20,7 +20,6 @@
 
 .admin_tab {
   width: fit-content;
-  height: 2em;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -32,6 +31,7 @@
   font-size: 0.8em;
   font-weight: 500;
 }
+
 .admin_tab:hover {
   background-color: var(--primary-color);
   color: var(--ultra-light-color);
@@ -52,11 +52,11 @@
   flex-direction: column;
 }
 
-.params_tab{
+.params_tab {
   gap: 2em;
 }
 
-.ideas_tab{
+.ideas_tab {
   gap: 2em;
   padding: 1.5em;
 }
@@ -101,6 +101,7 @@
   color: var(--ultra-light-color);
   border: 1px solid var(--primary-color);
 }
+
 .params_tab .submit_button:hover {
   background-color: var(--ultra-light-color);
   border-style: none;
@@ -166,7 +167,6 @@
 }
 
 .moderation_text {
-  width: 25em;
   font-size: 1.1em;
   font-weight: 450;
   display: flex;
@@ -191,30 +191,37 @@
   background-color: var(--flame-pea-color);
   color: var(--ultra-light-color);
 }
+
 .debat_color {
   background-color: var(--roman-color);
   color: var(--ultra-light-color);
 }
+
 .synthese_color {
   background-color: var(--cerise-dark-color);
   color: var(--ultra-light-color);
 }
+
 .expertise_color {
   background-color: var(--calypso-color);
   color: var(--ultra-light-color);
 }
+
 .vote_color {
   background-color: var(--primary-color);
   color: var(--ultra-light-color);
 }
+
 .accepted_color {
   background-color: var(--parsley-color);
   color: var(--ultra-light-color);
 }
+
 .refused_color {
   background-color: var(--silver-tree-color);
   color: var(--ultra-light-color);
 }
+
 .rejected_color {
   background-color: var(--zeus-color);
   color: var(--ultra-light-color);
@@ -255,7 +262,7 @@
 .line_forms {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 2em;
 }
 
@@ -267,36 +274,30 @@
   border-radius: 50%;
 }
 
-.moderation_delete_icon {
-  size: 64px;
-}
-
 @media screen and (max-width: 860px) {
 
   .admin_tabs {
     width: 90%;
+    gap: 1em;
   }
 
   .admin_tab {
-    font-size: 0.6em;
-    padding: 1.4em;
+    font-size: 0.8em;
+    padding: .5em 1.4em;
     width: 100%;
   }
 
   .moderation_lines,
   .users_lines {
-    /* gap: 4em; */
     align-items: center;
     justify-content: center;
   }
 
-  
+
 
   .moderation_line .line_content {
-    /* flex-direction: column-reverse; */
     align-items: flex-start;
     justify-content: center;
-    /* gap: 1.5em; */
     width: 100%;
   }
 
@@ -328,19 +329,19 @@
     width: 100%;
   }
 
-  .moderation_line{
+  .moderation_line {
     border-bottom: var(--separator);
     padding-bottom: 1em;
   }
 
-  .moderation_line:last-child{
+  .moderation_line:last-child {
     border-bottom: none;
     padding-bottom: 0;
   }
 
   .moderation_line,
   .moderation_line .line_content {
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     font-size: 1em;
@@ -348,13 +349,13 @@
 
   .moderation_title,
   .line_content .moderation_text,
-  .users_title{
-        text-align: center;
-        display: block;
+  .users_title {
+    text-align: center;
+    display: block;
   }
 
   .admin_params_category,
-  .admin_params_location{
+  .admin_params_location {
     text-align: center;
   }
 }

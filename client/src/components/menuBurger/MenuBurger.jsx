@@ -1,10 +1,9 @@
-import React, { useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-
+import React, { useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 //import assets
-import { MdLogout } from 'react-icons/md'
-import { GoGear } from 'react-icons/go'
-import { TbFilter } from 'react-icons/tb'
+import { MdLogout } from "react-icons/md";
+import { GoGear } from "react-icons/go";
+import { TbFilter } from "react-icons/tb";
 import homeIcon from "../../assets/icons/home_icone.svg";
 import homeIconDark from "../../assets/icons/home_icone_dark.svg";
 import profileIcon from "../../assets/icons/profile_icone.svg";
@@ -14,163 +13,164 @@ import notificationIconDark from "../../assets/icons/notification_icone_dark.svg
 import genericPicture from "../../assets/icons/genericPicture_2.jpg" 
 import addProjectIcon from "../../assets/icons/new_project_icone.svg";
 import addProjectIconDark from "../../assets/icons/new_project_icone_dark.svg";
-import search_icon from '../../assets/icons/search_icone.svg'
 import  {useTheme}  from '../../utils/context/ThemeContext'
+import ToggleButton from "../toggleButton/ToggleButton";
 
 //import css
-import "./menuBurger.css"
+import "./menuBurger.css";
+import SearchBar from "../searchBar/SearchBar";
 
-const MenuBurger = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) => {
+const MenuBurger = ({
+  removeToken,
+  token,
+  isMenuBurger,
+  showHideMenuBurger,
+}) => {
+  //To know what's the current URL
+  const location = useLocation().pathname;
 
-    //To know what's the current URL
-    const location = useLocation().pathname;
+  //Getting user infos
+  const { id, firstname, lastname, picture, id_role } = token;
 
-    //Getting actual theme mode ("dark" or "light" mode)
-    const { theme } = useTheme();
+  //Getting actual theme mode ("dark" or "light" mode)
+  const { theme } = useTheme();
 
-    //Getting user infos
-    const { id, firstname, lastname, picture, id_role } = token;
-    
-    //on changing search bar input
-    const onSearch = (e) =>{
-        console.log(e.target.value)
-    }
-    
   return (
-    <div 
-        className={isMenuBurger 
-            ? 'burger_menu' 
-            : 'burger_menu invisible'}
-    >
-        <div  className="burger_profile_infos">
-            <div className="burger_picture_container">
-                <img
-                    className='burger_profile_picture'
-                    src={picture? picture : genericPicture}
-                    alt="profile picture"
-                />
-            </div>
-            <p className='burger_profile_name'>
-                {`${firstname} ${lastname}`}
-            </p>
+    <div className={isMenuBurger ? "burger_menu" : "burger_menu invisible"}>
+      <div className="burger_profile_infos">
+        <div className="burger_picture_container">
+          <img
+            className="burger_profile_picture"
+            src={picture ? picture : genericPicture}
+            alt="profile picture"
+          />
         </div>
-                
-        <hr />
+        <p className="burger_profile_name">{`${firstname} ${lastname}`}</p>
+      </div>
 
-        <div className={location.includes("dashboard") 
+      <hr />
+
+      <div
+        className={
+          location.includes("dashboard")
             ? "burger_button_container active_button"
-            : "burger_button_container"}
+            : "burger_button_container"
+        }
+      >
+        <Link
+          to={"/dashboard"}
+          className="burger_button"
+          onClick={showHideMenuBurger}
         >
-            <Link 
-                to={"/dashboard"} 
-                className="burger_button"
-                onClick={showHideMenuBurger}
-            >
-                <img 
-                    className="burger_icon" 
-                    src={theme === "light" ? homeIcon : homeIconDark} 
-                    alt="Home" 
-                />
-                <span>Home</span>
-            </Link>
-        </div>
+          <img 
+              className="burger_icon" 
+              src={theme === "light" ? homeIcon : homeIconDark} 
+              alt="Home" 
+          />
+          <span>Home</span>
+        </Link>
+      </div>
 
-        <div className={location.includes("profile") 
+      <div
+        className={
+          location.includes("profile")
             ? "burger_button_container active_button"
-            : "burger_button_container"}
+            : "burger_button_container"
+        }
+      >
+        <Link
+          to={`/profile/${id}`}
+          className="burger_button"
+          onClick={showHideMenuBurger}
         >
-            <Link 
-                to={`/profile/${id}`} 
-                className="burger_button"
-                onClick={showHideMenuBurger}
-            >
-                <img
-                className="burger_icon"
-                src={theme === "light" ? profileIcon : profileIconDark}
-                alt="Profile"
-                />
-                <span>Profil</span>
-            </Link>
-        </div>
+          <img
+            className="burger_icon"
+            src={theme === "light" ? profileIcon : profileIconDark}
+            alt="Profile"
+          />
+          <span>Profil</span>
+        </Link>
+      </div>
 
-        <div className={location.includes("notifications") 
+      <div
+        className={
+          location.includes("notifications")
             ? "burger_button_container active_button"
-            : "burger_button_container"}
+            : "burger_button_container"
+        }
+      >
+        <Link
+          to={"/notifications"}
+          className="burger_button"
+          onClick={showHideMenuBurger}
         >
-            <Link 
-                to={"/notifications"} 
-                className="burger_button"
-                onClick={showHideMenuBurger}
-            >
-                <img
-                className="burger_notifications_icon"
-                src={theme === "light" ? notificationIcon : notificationIconDark}
-                alt="Notifications"
-                />
-                <span>Notifications</span>
-            </Link>
-        </div>
+          <img
+            className="burger_notifications_icon"
+            src={theme === "light" ? notificationIcon : notificationIconDark}
+            alt="Notifications"
+          />
+          <span>Notifications</span>
+        </Link>
+      </div>
 
-        <div className={location.includes("newIdea")
+      <div
+        className={
+          location.includes("newIdea")
             ? "burger_button_container idea_button active_button"
-            : "burger_button_container idea_button"}
+            : "burger_button_container idea_button"
+        }
+      >
+        <Link
+          to={"/newIdea"}
+          className="burger_button"
+          onClick={showHideMenuBurger}
         >
-            <Link 
-                to={"/newIdea"} 
-                className="burger_button"
-                onClick={showHideMenuBurger}
-            >
-                <img
-                className="burger_notifications_icon"
-                src={theme === "light" ? addProjectIcon : addProjectIconDark}
-                alt="Notifications"
-                />
-                <span>Ajouter une idée</span>
-            </Link>
-        </div>
+          <img
+            className="burger_notifications_icon"
+            src={theme === "light" ? addProjectIcon : addProjectIconDark}
+            alt="Notifications"
+          />
+          <span>Ajouter une idée</span>
+        </Link>
+      </div>
 
-        <hr />
+      <hr />
 
-        <div className="burger_searchbar">
-            <img className="burger_search_icon" src={search_icon} alt="" />
-            <input 
-                type="text" 
-                id="burger_search_input" 
-                name="burger_search_input" 
-                onKeyUp={onSearch} 
-                placeholder="Rechercher une idée" 
-            />
-        </div>
+      <div className="burger_searchbar">
+        <SearchBar />
+      </div>
 
-        <Link 
-            to={"/filters"} 
-            className="burger_logout_container"
-            onClick={showHideMenuBurger}
+      <Link
+        to={"/filters"}
+        className="burger_logout_container"
+        onClick={showHideMenuBurger}
+      >
+        <TbFilter className="filter_icon" />
+        <p className="logout">Filtres</p>
+      </Link>
+
+      {id_role === 2 ? (
+        <Link
+          to={"/admin"}
+          className="burger_config_container"
+          onClick={showHideMenuBurger}
         >
-            <TbFilter className='filter_icon'/>
-            <p className="logout">Filtres</p>
-        </Link> 
-      
-        {id_role === 2
-        ?<Link 
-            to={"/admin"} 
-            className="burger_config_container"
-            onClick={showHideMenuBurger}
-        >
-            <GoGear className='config_icon'/>
-            <p className="logout">Administration</p>
-        </Link> 
-        : null}
-        <div 
-            className="burger_logout_container"  
-            onClick={removeToken}
-        >
-            <MdLogout className='logout_icon'/>
-            <p className="logout">Se déconnecter</p>
-        </div> 
-
+          <GoGear className="config_icon" />
+          <p className="logout">Administration</p>
+        </Link>
+      ) : null}
+      <div className="burger_logout_container" onClick={removeToken}>
+        <MdLogout className="logout_icon" />
+        <p className="logout">Se déconnecter</p>
+      </div>
+      <div className="toggle_button_container">
+        <ToggleButton/>
+        <p className="dark-mode-burger-txt">
+          {theme === "dark" ? "Dark mode" : "Light mode"}
+        </p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuBurger
+export default MenuBurger;

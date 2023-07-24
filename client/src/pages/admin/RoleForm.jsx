@@ -1,11 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSolidPencil } from "react-icons/bi";
 import { FcCancel, FcCheckmark } from "react-icons/fc";
-import axios from "axios";
 import { userRoleSwitch } from "../../services/httpServices";
-
-import { useState } from "react";
-
 import "./roleform.css";
 
 const RoleForm = ({ currentRole, allRoles, user_id }) => {
@@ -82,7 +78,7 @@ const RoleForm = ({ currentRole, allRoles, user_id }) => {
       )}
 
       <BiSolidPencil
-        size={40}
+        size={20}
         className="role_modify_icon"
         onClick={() => handleModifyUser(true)}
       />

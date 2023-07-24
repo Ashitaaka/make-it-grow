@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+
 import { useParams } from "react-router-dom";
-import genericPicture from "../../assets/icons/genericPicture_2.jpg";
+
 import "./profiledetails.css";
 import camera from "../../assets/icons/camera.svg";
 import ChangeProfilPicture from "./ChangeProfilPicture";

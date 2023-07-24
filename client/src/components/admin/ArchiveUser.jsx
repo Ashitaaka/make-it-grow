@@ -1,9 +1,11 @@
-import React from "react";
-import "./archiveModal.css";
+import React, { useState } from "react";
+
+//import components
 import { FcDeleteRow } from "react-icons/fc";
-import { useState } from "react";
-import axios from "axios";
 import { deleteUser } from "../../services/httpServices";
+
+//import CSS
+import "./archiveModal.css";
 
 const ArchiveUser = ({ user }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -44,7 +46,6 @@ const ArchiveUser = ({ user }) => {
           <div className="archive_buttons">
             <button
               onClick={(e) => {
-                console.log("OUI");
                 archiveformSending(e, user.user_id);
                 handleArchiveModal();
                 window.location.reload(false);
