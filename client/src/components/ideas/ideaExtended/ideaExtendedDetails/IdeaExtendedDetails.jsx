@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 //import components
-import {modifyIdea } from "../../../../services/httpServices";
+import { modifyIdea } from "../../../../services/httpServices";
 import tokenStorage from "../../../../hooks/useToken";
 import AccordionDetail from "./accordion/AccordionDetail";
 import AccordionBenefit from "./accordion/AccordionBenefit";
@@ -14,6 +14,8 @@ import ModifyButton from "./button/ModifyButton";
 import ExpertButton from "./button/ExpertButton";
 import VoteButton from "./button/VoteButton";
 import PopUpModifIdea from "../../createIdea/pop-up/PopUpModifIdea";
+
+import { getIdeasWithUserInfos } from "../../../../services/httpServices";
 
 //import CSS
 import "./ideaextendeddetails.css";
@@ -40,12 +42,11 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   //Getting infos about connected user
   const { token } = tokenStorage();
 
-  useEffect(()=>{
-    axios.get(`/ideas/${idea.idea_id}/?fields=users`)
+  useEffect(() => {
+    getIdeasWithUserInfos(idea.idea_id)
       .then((res) => setUserHasVoted(res.data.users))
-      .catch((err)=> console.error(err))
-  },[]);
-
+      .catch((err) => console.error(err));
+  }, []);
 
   useEffect(() => {
     if (readyToSendV2) {
@@ -53,9 +54,9 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
         detail: ideaDetail,
         benefit: ideaBenefit,
         impact: ideaImpact,
-        risk: idearisk
+        risk: idearisk,
       };
-  
+
       const handleIdeaIsModify = async (ideaV2) => {
         try {
           const isSuccess = await modifyIdea(idea, ideaV2);
@@ -67,7 +68,7 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
           console.error(error);
         }
       };
-  
+
       handleIdeaIsModify(ideaV2);
     }
   }, [readyToSendV2]);
@@ -76,7 +77,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
 
   return (
     <div className="idea-details-container">
-
       {popUpActive ? <PopUpModifIdea ideaId={idea.idea_id} /> : null}
 
       {/*  Accordion section */}
@@ -142,11 +142,12 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
           <ExpertButton idea={idea} />
         ) : null}
 
-        {
-          idea && idea.id_status === 5 && idea.users[0].user_id !== token.id && !userHasVoted.some(el => el.user_id == token.id) 
-          ? <VoteButton idea={idea} userId={token.id} /> 
-          : null
-        }
+        {idea &&
+        idea.id_status === 5 &&
+        idea.users[0].user_id !== token.id &&
+        !userHasVoted.some((el) => el.user_id == token.id) ? (
+          <VoteButton idea={idea} userId={token.id} />
+        ) : null}
       </div>
     </div>
   );
