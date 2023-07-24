@@ -2,7 +2,6 @@ import React from "react";
 import "./archiveModal.css";
 import { useState } from "react";
 import { FcDeleteRow } from "react-icons/fc";
-import axios from "axios";
 import { archiveIdea } from "../../services/httpServices";
 
 const ArchiveModal = ({ idea }) => {

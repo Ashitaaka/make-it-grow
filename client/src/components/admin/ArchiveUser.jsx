@@ -2,7 +2,6 @@ import React from "react";
 import "./archiveModal.css";
 import { FcDeleteRow } from "react-icons/fc";
 import { useState } from "react";
-import axios from "axios";
 import { deleteUser } from "../../services/httpServices";
 
 const ArchiveUser = ({ user }) => {

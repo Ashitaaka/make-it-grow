@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 //import components
 import { modifyIdea } from "../../../../services/httpServices";

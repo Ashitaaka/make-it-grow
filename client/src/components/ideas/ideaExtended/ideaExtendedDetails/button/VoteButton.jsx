@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import "../accordion/accordion.css";
 import { votePost } from "../../../../../services/httpServices";
 
