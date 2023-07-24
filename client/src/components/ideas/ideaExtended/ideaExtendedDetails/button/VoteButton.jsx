@@ -1,17 +1,15 @@
 import React from "react";
 import axios from "axios";
 import "../accordion/accordion.css";
+import { votePost } from "../../../../../services/httpServices";
 
 const VoteButton = ({ idea, userId }) => {
   const handleVoteForIdeaStatus = () => {
-    axios.post(`users/${userId}/ideas/${idea.idea_id}/votes`, {
-      vote_value: 1,
-    });
+    votePost(idea, userId, 1);
   };
+
   const handleVoteAgainstIdeaStatus = () => {
-    axios.post(`users/${userId}/ideas/${idea.idea_id}/votes`, {
-      vote_value: 0,
-    });
+    votePost(idea, userId, 0);
   };
 
   return (
