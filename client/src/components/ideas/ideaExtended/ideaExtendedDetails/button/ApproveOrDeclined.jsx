@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../accordion/accordion.css'
+import { goToState2, goToStateRejected } from '../../../../../services/httpServices';
 
 const ApproveOrDeclined = ({idea}) => {
   
@@ -16,15 +17,13 @@ const ApproveOrDeclined = ({idea}) => {
       const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 2));
       // const deadline = new Date(currentDate.setDate(currentDate.getDate() + 8));
 
-      axios.put(`ideas/${idea.idea_id}`, { id_status: 2, delay_date: deadline })
+      goToState2(idea, deadline)
+
     };
 
     //On rejecting the idea
     const handleRejectIdeaStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, {    
-            is_closed: 1,
-            id_status: 8,
-        })
+        goToStateRejected(idea)
         navigate("/dashboard")
 
       };
