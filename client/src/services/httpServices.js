@@ -161,7 +161,7 @@ export const userProfileChange = (userid, updateForm) => {
   return axios.put(`/users/${userid}`, updateForm);
 };
 
-// TO add location or category
+// To add location or category
 export const addLocorCat = (param, newCategory, newLocation) => {
   return axios.post(
     `/${param}`,
@@ -170,9 +170,16 @@ export const addLocorCat = (param, newCategory, newLocation) => {
 };
 
 //To get all users informations
-
 export const getUserProfile = (userid) => {
   return axios.get(
     `/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
   );
+};
+
+//To vote
+
+export const votePost = (idea, userId, vote_value) => {
+  return axios.post(`users/${userId}/ideas/${idea.idea_id}/votes`, {
+    vote_value: vote_value,
+  });
 };
