@@ -50,7 +50,7 @@ const IdeasCard = ({ idea }) => {
         <div>
           <p className="card_state">{idea.status}</p>
         </div>
-        <p className="card_number_day_left">{`${dayLeft} days left`}</p>
+        <p className="card_number_day_left">{`${dayLeft} jours restants`}</p>
       </div>
     </>
   );

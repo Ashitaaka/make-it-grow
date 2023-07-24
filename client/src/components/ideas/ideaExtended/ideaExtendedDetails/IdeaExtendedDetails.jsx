@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 //import components
+import {modifyIdea } from "../../../../services/httpServices";
 import tokenStorage from "../../../../hooks/useToken";
 import AccordionDetail from "./accordion/AccordionDetail";
 import AccordionBenefit from "./accordion/AccordionBenefit";
@@ -45,7 +46,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
       .catch((err)=> console.error(err))
   },[]);
 
-  console.log(userHasVoted);
 
   useEffect(() => {
     if (readyToSendV2) {
@@ -53,15 +53,25 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
         detail: ideaDetail,
         benefit: ideaBenefit,
         impact: ideaImpact,
-        risk: idearisk,
+        risk: idearisk
       };
-      axios.put(`/ideas/${idea.idea_id}`, ideaV2).then((response) => {
-        if (response.status === 200) {
-          setReadyToSendV2(false);
+  
+      const handleIdeaIsModify = async (ideaV2) => {
+        try {
+          const isSuccess = await modifyIdea(idea, ideaV2);
+          if (isSuccess) {
+            setPopUpActive(true);
+            setReadyToSendV2(false);
+          }
+        } catch (error) {
+          console.error(error);
         }
-      });
+      };
+  
+      handleIdeaIsModify(ideaV2);
     }
   }, [readyToSendV2]);
+
   /* end modification section idea */
 
   return (

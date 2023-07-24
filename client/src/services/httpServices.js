@@ -82,6 +82,46 @@ export const importNewPicture = (formData, userid) => {
   }
 };
 
+// section create idea
+
+export const getCategories = () => {
+  return axios
+    .get("/categories")
+    .then((res) => res.data)
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
+};
+
+export const getLocations = () => {
+  return axios
+    .get("/locations")
+    .then((res) => res.data)
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
+};
+
+// post idea
+
+export const createIdea = (newIdea) => {
+  return axios.post("/ideas", newIdea).then((response) => {
+    if (response.status === 201) {
+      return true;
+    }
+    return false;
+  });
+};
+
+// modify idea
+export const modifyIdea = (idea, ideaV2) => {
+  return axios.put(`/ideas/${idea.idea_id}`, ideaV2).then((response) => {
+    if (response.status === 201) {
+      return true;
+    }
+    return false;
+  });
+};
 //TO get ideas by id title status
 export const getIdeasbyIdTitleStatus = () => {
   return axios.get("/ideas/?fields=id,title,status");
@@ -107,10 +147,23 @@ export const userRoleSwitch = (userid, role) => {
   return axios.put(`/users/${userid}`, role);
 };
 
+//To update user profile
+export const userProfileChange = (userid, updateForm) => {
+  return axios.put(`/users/${userid}`, updateForm);
+};
+
 // TO add location or category
 export const addLocorCat = (param, newCategory, newLocation) => {
   return axios.post(
     `/${param}`,
     param === "categories" ? newCategory : newLocation
+  );
+};
+
+//To get all users informations
+
+export const getUserProfile = (userid) => {
+  return axios.get(
+    `/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
   );
 };
