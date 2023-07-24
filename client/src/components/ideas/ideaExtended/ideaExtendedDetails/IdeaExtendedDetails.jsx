@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import {modifyIdea } from "../../../../services/httpServices";
 import Monochev from "../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../assets/icons/mono_chevrons_icone_blanc.svg";
 import tokenStorage from "../../../../hooks/useToken";
@@ -44,7 +44,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
       .catch((err)=> console.error(err))
   },[]);
 
-  console.log(userHasVoted);
 
   useEffect(() => {
     if (readyToSendV2) {
@@ -52,15 +51,25 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
         detail: ideaDetail,
         benefit: ideaBenefit,
         impact: ideaImpact,
-        risk: idearisk,
+        risk: idearisk
       };
-      axios.put(`/ideas/${idea.idea_id}`, ideaV2).then((response) => {
-        if (response.status === 200) {
-          setReadyToSendV2(false);
+  
+      const handleIdeaIsModify = async (ideaV2) => {
+        try {
+          const isSuccess = await modifyIdea(idea, ideaV2);
+          if (isSuccess) {
+            setPopUpActive(true);
+            setReadyToSendV2(false);
+          }
+        } catch (error) {
+          console.error(error);
         }
-      });
+      };
+  
+      handleIdeaIsModify(ideaV2);
     }
   }, [readyToSendV2]);
+
   /* end modification section idea */
 
   return (

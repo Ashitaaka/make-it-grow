@@ -25,7 +25,7 @@ const cron = () =>{
             }
         });
 
-    },5000);
+    },300000);
 }
 
 module.exports = cron;
