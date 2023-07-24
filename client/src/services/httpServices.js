@@ -180,7 +180,6 @@ export const goToStateRejectedByExpert = (idea) => {
 // modify idea 
 export const comfirmModifyIdea = (idea) => {
 
-  console.log(idea)
   return axios.put(`ideas/${idea.idea_id}`, { id_status: 4 })
 
   .then((response) => {
