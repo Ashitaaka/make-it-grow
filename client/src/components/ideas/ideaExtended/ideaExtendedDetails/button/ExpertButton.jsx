@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import '../accordion/accordion.css'
+import { goToState5, goToStateRejectedByExpert } from '../../../../../services/httpServices';
 
 const ExpertButton = ({idea}) => {
     //approve the idea
@@ -10,13 +11,14 @@ const ExpertButton = ({idea}) => {
       const currentDate = new Date;
       // Add 7 days to current date
       const deadline = new Date(currentDate.setMinutes(currentDate.getMinutes() + 2));
-
-      axios.put(`ideas/${idea.idea_id}`, { id_status: 5, delay_date: deadline });
+      goToState5(idea, deadline )
+    
     };
     
     //return the idea to previous step
     const handleRejectExpertStatus = () => {
-        axios.put(`ideas/${idea.idea_id}`, { id_status: 3})
+      goToStateRejectedByExpert(idea)
+    
         };
 
   return (
