@@ -1,5 +1,6 @@
 .admin_page {
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,6 +50,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.params_tab{
+  gap: 2em;
 }
 
 .ideas_tab{
@@ -231,7 +236,7 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  margin-top: 3em;
+  margin: 1.5em 0;
   border-radius: 2em;
   padding: 2em;
   gap: 2em;
@@ -267,9 +272,6 @@
 }
 
 @media screen and (max-width: 860px) {
-  .location_content {
-    flex-direction: column;
-  }
 
   .admin_tabs {
     width: 90%;
@@ -283,9 +285,38 @@
 
   .moderation_lines,
   .users_lines {
-    gap: 4em;
+    /* gap: 4em; */
     align-items: center;
     justify-content: center;
+  }
+
+  
+
+  .moderation_line .line_content {
+    /* flex-direction: column-reverse; */
+    align-items: flex-start;
+    justify-content: center;
+    /* gap: 1.5em; */
+    width: 100%;
+  }
+
+  .moderation_line {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .moderation_text {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 660px) {
+
+  .location_content {
+    flex-direction: column;
+    gap: 2em;
   }
 
   .moderation_line,
@@ -297,27 +328,33 @@
     width: 100%;
   }
 
+  .moderation_line{
+    border-bottom: var(--separator);
+    padding-bottom: 1em;
+  }
+
+  .moderation_line:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .moderation_line,
   .moderation_line .line_content {
-    flex-direction: column-reverse;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1.5em;
-    width: 100%;
-  }
-
-  .moderation_line {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column; 
+    justify-content: flex-start;
     align-items: center;
+    font-size: 1em;
   }
 
-  /* .admin_ideas_moderation,
-  .admin_ideas_all_other {
-    padding: 3em;
-  } */
+  .moderation_title,
+  .line_content .moderation_text,
+  .users_title{
+        text-align: center;
+        display: block;
+  }
 
-  .moderation_text {
-    width: 100%;
+  .admin_params_category,
+  .admin_params_location{
+    text-align: center;
   }
 }

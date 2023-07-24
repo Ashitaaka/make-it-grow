@@ -3,8 +3,13 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import genericPicture from "../../assets/icons/genericPicture_2.jpg";
 import "./profiledetails.css";
-import camera from "../../assets/icons/camera.svg"
+import camera from "../../assets/icons/camera.svg";
 import ChangeProfilPicture from "./ChangeProfilPicture";
+import {
+  getUserProfile,
+  getLocations,
+  userProfileChange,
+} from "../../services/httpServices";
 
 const ProfileDetails = () => {
   const { userid } = useParams();
@@ -12,20 +17,17 @@ const ProfileDetails = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [locations, setLocations] = useState([]);
   const [updateForm, setUpdateForm] = useState({});
-  const [picURL, setPicURL] = useState("")
+  const [picURL, setPicURL] = useState("");
 
   //Is Profil picture Modal visible?
   const [isProfilModal, setIsProfilModal] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(
-        `/users/${userid}/?fields=id,firstname,lastname,picture,service,occupation,locations,email`
-      )
+    getUserProfile(userid)
       .then((res) => res.data)
       .then(([data]) => {
         setUser(data);
-        setPicURL(data.picture)
+        setPicURL(data.picture);
         setIsDataLoaded(true);
         setUpdateForm({
           firstname: data.firstname,
@@ -39,8 +41,7 @@ const ProfileDetails = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`/locations`)
+    getLocations()
       .then((res) => res.data)
       .then((data) => {
         setLocations(data);
@@ -53,8 +54,7 @@ const ProfileDetails = () => {
 
   const updateformSending = (e) => {
     e.preventDefault();
-    axios
-      .put(`/users/${userid}`, updateForm)
+    userProfileChange(userid, updateForm)
       .then((res) => {
         setError(false);
       })
@@ -63,24 +63,30 @@ const ProfileDetails = () => {
       });
   };
 
-
   return !isDataLoaded ? null : (
     <div className="profile_page">
-      
       {/* Modal to upload new profil picture */}
-      <ChangeProfilPicture 
+      <ChangeProfilPicture
         userid={userid}
         isProfilModal={isProfilModal}
-        setIsProfilModal={setIsProfilModal} 
+        setIsProfilModal={setIsProfilModal}
         setPicURL={setPicURL}
-      /> 
+      />
 
       {/* All user infos */}
       <div className="profile_container">
         <div className="profile_head">
           <div className="profil_pic">
-            <img src={picURL ? picURL : '../../src/assets/icons/genericPicture_2.jpg'} alt="photo de profil" />
-            <div className="overlay" onClick={() => setIsProfilModal(!isProfilModal)}>
+            <img
+              src={
+                picURL ? picURL : "../../src/assets/icons/genericPicture_2.jpg"
+              }
+              alt="photo de profil"
+            />
+            <div
+              className="overlay"
+              onClick={() => setIsProfilModal(!isProfilModal)}
+            >
               <img src={camera} alt="" />
             </div>
           </div>
@@ -90,7 +96,9 @@ const ProfileDetails = () => {
               <h1>
                 {user.firstname} {user.lastname}
               </h1>
-              <p className="occupation">{user.occupation ? user.occupation : 'Travaille chez Makesense'}</p>
+              <p className="occupation">
+                {user.occupation ? user.occupation : "Travaille chez Makesense"}
+              </p>
             </div>
           </div>
         </div>
@@ -112,7 +120,7 @@ const ProfileDetails = () => {
       {/* Form to update user infos */}
       <div className="update_profile">
         <h2>Modifiez vos informations</h2>
-        
+
         <form className="update_form" action="" onSubmit={updateformSending}>
           <div className="update_content">
             <div>
