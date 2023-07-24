@@ -50,6 +50,8 @@
     border-radius: 1.5em;
 }
 
+
+
 .burger_search_icon{
     height: 1.5em;
 }
@@ -58,7 +60,7 @@
     flex:1;
     border: none;
     background-color: var(--tag-background-color);
-
+    color: var(--primary-color);
 }
 
 .burger_button_container{

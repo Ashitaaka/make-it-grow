@@ -34,12 +34,12 @@
 }
 .admin_tab:hover {
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 
 .active {
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 
 .params_tab,
@@ -68,7 +68,7 @@
   width: 100%;
   max-width: 860px;
   height: fit-content;
-  background-color: #fff;
+  background-color: var(--ultra-light-color);
   display: flex;
   flex-direction: column;
   border-radius: 2em;
@@ -98,11 +98,11 @@
   border-style: none;
   padding: 0.7em 2em;
   border-radius: 2em;
-  color: #fff;
+  color: var(--ultra-light-color);
   border: 1px solid var(--primary-color);
 }
 .params_tab .submit_button:hover {
-  background-color: #fff;
+  background-color: var(--ultra-light-color);
   border-style: none;
   color: black;
   padding: 0.7em 2em;
@@ -180,7 +180,7 @@
   justify-content: center;
   font-size: 0.8em;
   font-weight: 600;
-  border: 1px solid #fff;
+  border: 1px solid var(--ultra-light-color);
   text-align: center;
   color: black;
   border-radius: 0.6em;
@@ -189,35 +189,35 @@
 
 .moderation_color {
   background-color: var(--flame-pea-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 .debat_color {
   background-color: var(--roman-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 .synthese_color {
   background-color: var(--cerise-dark-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 .expertise_color {
   background-color: var(--calypso-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 .vote_color {
   background-color: var(--primary-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 .accepted_color {
   background-color: var(--parsley-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 .refused_color {
   background-color: var(--silver-tree-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 .rejected_color {
   background-color: var(--zeus-color);
-  color: #fff;
+  color: var(--ultra-light-color);
 }
 
 .moderation_title,
@@ -233,7 +233,7 @@
   width: 100%;
   max-width: 860px;
   height: fit-content;
-  background-color: #fff;
+  background-color: var(--ultra-light-color);
   display: flex;
   flex-direction: column;
   margin: 1.5em 0;

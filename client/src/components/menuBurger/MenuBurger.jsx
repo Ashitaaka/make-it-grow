@@ -1,15 +1,21 @@
 import React, { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+
 //import assets
 import { MdLogout } from 'react-icons/md'
 import { GoGear } from 'react-icons/go'
 import { TbFilter } from 'react-icons/tb'
 import homeIcon from "../../assets/icons/home_icone.svg";
+import homeIconDark from "../../assets/icons/home_icone_dark.svg";
 import profileIcon from "../../assets/icons/profile_icone.svg";
-import notification_icon from "../../assets/icons/notification_icone.svg"
+import profileIconDark from "../../assets/icons/profile_icone_dark.svg";
+import notificationIcon from "../../assets/icons/notification_icone.svg"
+import notificationIconDark from "../../assets/icons/notification_icone_dark.svg"
 import genericPicture from "../../assets/icons/genericPicture_2.jpg" 
 import addProjectIcon from "../../assets/icons/new_project_icone.svg";
+import addProjectIconDark from "../../assets/icons/new_project_icone_dark.svg";
 import search_icon from '../../assets/icons/search_icone.svg'
+import  {useTheme}  from '../../utils/context/ThemeContext'
 
 //import css
 import "./menuBurger.css"
@@ -18,6 +24,9 @@ const MenuBurger = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) =>
 
     //To know what's the current URL
     const location = useLocation().pathname;
+
+    //Getting actual theme mode ("dark" or "light" mode)
+    const { theme } = useTheme();
 
     //Getting user infos
     const { id, firstname, lastname, picture, id_role } = token;
@@ -57,7 +66,11 @@ const MenuBurger = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) =>
                 className="burger_button"
                 onClick={showHideMenuBurger}
             >
-                <img className="burger_icon" src={homeIcon} alt="Home" />
+                <img 
+                    className="burger_icon" 
+                    src={theme === "light" ? homeIcon : homeIconDark} 
+                    alt="Home" 
+                />
                 <span>Home</span>
             </Link>
         </div>
@@ -73,7 +86,7 @@ const MenuBurger = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) =>
             >
                 <img
                 className="burger_icon"
-                src={profileIcon}
+                src={theme === "light" ? profileIcon : profileIconDark}
                 alt="Profile"
                 />
                 <span>Profil</span>
@@ -91,7 +104,7 @@ const MenuBurger = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) =>
             >
                 <img
                 className="burger_notifications_icon"
-                src={notification_icon}
+                src={theme === "light" ? notificationIcon : notificationIconDark}
                 alt="Notifications"
                 />
                 <span>Notifications</span>
@@ -109,7 +122,7 @@ const MenuBurger = ({ removeToken, token, isMenuBurger, showHideMenuBurger }) =>
             >
                 <img
                 className="burger_notifications_icon"
-                src={addProjectIcon}
+                src={theme === "light" ? addProjectIcon : addProjectIconDark}
                 alt="Notifications"
                 />
                 <span>Ajouter une idée</span>

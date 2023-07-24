@@ -12,7 +12,7 @@
   justify-content: space-between;
   padding: 1rem;
   border-radius: 1em;
-  background-color: white;
+  background-color: var(--ultra-light-color);
   position: relative;
 }
 
@@ -34,13 +34,13 @@
   border-radius: 1.5em;
   font-size: 0.3em;
   font-weight: bold;
-  color: var(--ultra-light-color);
   transition: font-size 0.5s ease;
+  color: #fff;
 }
 
 .card_background:hover .card_categories {
   font-size: 0.7em;
-  color: rgb(255, 255, 255);
+  color: #fff;
 }
 
 .card_title {
@@ -61,6 +61,7 @@
 .card_state {
   display: inline;
   background-color: var(--secondary-color);
+  color: #0c3944;
   padding: 0.3em 0.8em;
   border-radius: 1em;
   font-weight: bold;
