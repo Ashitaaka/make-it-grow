@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import {modifyIdea } from "../../../../services/httpServices";
 import Monochev from "../../../../assets/icons/mono_chevrons_icone.svg";
 import MonochevBlanc from "../../../../assets/icons/mono_chevrons_icone_blanc.svg";
 import confetti from "canvas-confetti"; //confetti for button
@@ -40,24 +40,31 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
   
   
   useEffect(() => {
-    if(readyToSendV2){
-      const ideaV2= {
-        id_status : 4,
-        detail : ideaDetail,
-        benefit : ideaBenefit,
+    if (readyToSendV2) {
+      const ideaV2 = {
+        id_status: 4,
+        detail: ideaDetail,
+        benefit: ideaBenefit,
         impact: ideaImpact,
-        risk : idearisk
-      }
-      axios.put(`/ideas/${idea.idea_id}`, ideaV2).then((response) => {
-        if (response.status === 200) {
-          confetti();
-          setPopUpActive(true);
-          setReadyToSendV2(false)
+        risk: idearisk
+      };
+  
+      const handleIdeaIsModify = async (ideaV2) => {
+        try {
+          const isSuccess = await modifyIdea(idea, ideaV2);
+          if (isSuccess) {
+            confetti();
+            setPopUpActive(true);
+            setReadyToSendV2(false);
+          }
+        } catch (error) {
+          console.error(error);
         }
-      });
-
+      };
+  
+      handleIdeaIsModify(ideaV2);
     }
-  },[readyToSendV2])
+  }, [readyToSendV2]);
 
   /* end modification section idea */
 

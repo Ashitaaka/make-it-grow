@@ -81,3 +81,45 @@ export const importNewPicture = (formData, userid) => {
       });
   }
 };
+
+// section create idea
+
+export const getCategories = () => {
+  return axios
+    .get("/categories")
+    .then((res) => res.data)
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
+};
+
+export const getLocations = () => {
+  return axios
+    .get("/locations")
+    .then((res) => res.data)
+    .catch((error) => {
+      return Promise.reject(error.response.data);
+    });
+};
+
+// post idea 
+
+export const createIdea = (newIdea) => {
+  return axios.post('/ideas', newIdea).then((response) => {
+    if (response.status === 201) {
+      return true;
+    }
+    return false;
+  });
+};
+
+// modify idea 
+export const modifyIdea = (idea, ideaV2) => {
+  return axios.put(`/ideas/${idea.idea_id}`, ideaV2)
+  .then((response) => {
+    if (response.status === 201) {
+      return true;
+    }
+    return false;
+  });
+};
