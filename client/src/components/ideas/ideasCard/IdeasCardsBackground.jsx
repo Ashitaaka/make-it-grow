@@ -6,6 +6,7 @@ import "./IdeasCard.css";
 import { Link } from "react-router-dom";
 import FilterBar from "../../filterBar/FilterBar";
 import SearchContext from "../../../utils/context/SearchContext";
+import { getAllIdeas } from "../../../services/httpServices";
 
 const IdeasCardsBackground = () => {
   const [ideas, setIdeas] = useState([]);
@@ -16,8 +17,7 @@ const IdeasCardsBackground = () => {
   });
 
   useEffect(() => {
-    axios
-      .get(`/ideas/?fields=id,title,locations,status,categories,users,deadline`)
+    getAllIdeas()
       .then((res) => res.data)
       .then((data) => setIdeas(...[data]));
   }, []);

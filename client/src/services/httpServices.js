@@ -122,6 +122,15 @@ export const modifyIdea = (idea, ideaV2) => {
     return false;
   });
 };
+
+// get ideas for dashboard
+
+export const getAllIdeas = () => {
+  return axios.get(
+    `/ideas/?fields=id,title,locations,status,categories,users,deadline`
+  );
+};
+
 //TO get ideas by id title status
 export const getIdeasbyIdTitleStatus = () => {
   return axios.get("/ideas/?fields=id,title,status");
