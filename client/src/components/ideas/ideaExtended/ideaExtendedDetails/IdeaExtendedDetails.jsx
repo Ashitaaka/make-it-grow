@@ -44,7 +44,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
       .catch((err)=> console.error(err))
   },[]);
 
-  console.log(userHasVoted);
 
   useEffect(() => {
     if (readyToSendV2) {
