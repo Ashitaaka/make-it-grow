@@ -1,14 +1,40 @@
-import React, { useState, createRef } from 'react';
-//import css
-import './accordion.css';
-//import assets
-import Monochev from '../../../../../assets/icons/mono_chevrons_icone.svg';
-import MonochevBlanc from '../../../../../assets/icons/mono_chevrons_icone_blanc.svg';
+import React, { useState, createRef } from "react";
+import ReactQuill from "react-quill";
+import DOMPurify from "dompurify";
 
-const AccordionBenefit = ({ title, idea }) => {
+//import css
+import "./accordion.css";
+import "react-quill/dist/quill.snow.css";
+
+//import assets
+import Monochev from "../../../../../assets/icons/mono_chevrons_icone.svg";
+import MonochevBlanc from "../../../../../assets/icons/mono_chevrons_icone_blanc.svg";
+import { useTheme } from "../../../../../utils/context/ThemeContext";
+
+const AccordionBenefit = ({
+  title,
+  idea,
+  modificationAreOn,
+  ideaBenefit,
+  setIdeaBenefit,
+}) => {
+
+  //To know what's the actual color Theme ('dark' or 'light' mode)
+  const { theme } = useTheme();
+  
   const [open, setOpen] = useState(false);
+  let updateIdeaV2Benefit = { ideaBenefit };
   const [maxHeight, setMaxHeight] = useState(0);
   const contentContainer = createRef();
+
+  // Secure HTML injection
+  const cleanHTML = DOMPurify.sanitize(idea.benefit);
+
+  // modification value detail de l'idée
+
+  const handleReactQuillChange = (content) => {
+    setIdeaBenefit(content);
+  };
 
   let onOpening = (e) => {
     setOpen(!open);
@@ -23,33 +49,36 @@ const AccordionBenefit = ({ title, idea }) => {
         onClick={onOpening}
         style={{
           backgroundColor: `var(--ultra-light-color)`,
-        }}>
+        }}
+      >
         <div className="title">
-          <div
-            className="categorie"
-            style={{
-              backgroundColor: open ? `var(${idea.color})` : 'transparent',
-              border: open ? 'none' : `2px solid var(${idea.color})`,
-            }}></div>
+          {modificationAreOn ? null : (
+            <div
+              className="categorie"
+              style={{
+                backgroundColor: open ? `var(${idea.color})` : "transparent",
+                border: open ? "none" : `2px solid var(${idea.color})`,
+              }}
+            ></div>
+          )}
 
           <h2>{title}</h2>
         </div>
-
-        {open ? (
+        {modificationAreOn ? null : open ? (
           <img
             src={MonochevBlanc}
             alt="Arrow"
             style={{
               backgroundColor: `var(${idea.color})`,
-              transform: 'rotate(270deg)',
+              transform: "rotate(270deg)",
             }}
           />
         ) : (
           <img
-            src={Monochev}
+            src={theme === 'light' ? Monochev : MonochevBlanc}
             alt="Arrow"
             style={{
-              backgroundColor: 'var(--ultra-light-color)',
+              backgroundColor: "var(--ultra-light-color)",
             }}
           />
         )}
@@ -58,8 +87,22 @@ const AccordionBenefit = ({ title, idea }) => {
       <div
         ref={contentContainer}
         className="content_container"
-        style={{ maxHeight }}>
-        <div className="p-content">{idea.benefit}</div>
+        style={
+          modificationAreOn ? { height: "100%", padding: "2em" } : { maxHeight }
+        }
+      >
+        {modificationAreOn ? (
+          <ReactQuill
+            theme="snow"
+            value={ideaBenefit}
+            onChange={handleReactQuillChange}
+          />
+        ) : (
+          <div
+            className="p-content"
+            dangerouslySetInnerHTML={{ __html: cleanHTML }}
+          ></div>
+        )}
       </div>
       <hr />
     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from "axios";
+import { getCategories, getLocations, createIdea } from "../../../services/httpServices";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactQuill from "react-quill"; //text editor
@@ -7,7 +7,7 @@ import "react-quill/dist/quill.snow.css"; //text editor css
 import confetti from "canvas-confetti"; //confetti for button
 
 import "./createIdea.css";
-import PopUp from "./pop up/PopUp";
+import PopUp from "./pop-up/PopUp";
 
 const CreateIdea = ({ token }) => {
   // state for data
@@ -84,19 +84,12 @@ const CreateIdea = ({ token }) => {
     setUncompleteLocation(false);
   };
 
+  //get all the locations and categories
   useEffect(() => {
-    axios
-      .get(`/categories`)
-      .then((res) => res.data)
-      .then((data) => setCategory(data));
+    getCategories().then((data) => setCategory(data));
+    getLocations().then((data) => setIdeaLocation(data));
   }, []);
 
-  useEffect(() => {
-    axios
-      .get(`/locations`)
-      .then((res) => res.data)
-      .then((data) => setIdeaLocation(data));
-  }, []);
 
   // Take all the categorys from the bd and create a new Array with no repeat categorys
   const noRepeatCategorys = [];
@@ -115,8 +108,6 @@ const CreateIdea = ({ token }) => {
         categorys.filter((el) => el.label === choosenCategory)
       );
   }, [choosenCategory]);
-
-  console.log(choosenCategory);
 
   // Take all the locations from the bd and create a new Array with no repeat locations
   const noRepeatLocations = [];
@@ -175,8 +166,8 @@ const CreateIdea = ({ token }) => {
   const editorStyle = {
     fontSize: "16px",
   };
-  console.log(token);
-  //On click Submit button
+
+  //On click Submit button 
   const handleButtonClick = () => {
     if (
       detailsQuillRef.current.getEditor().getLength() > 200 &&
@@ -198,47 +189,41 @@ const CreateIdea = ({ token }) => {
         benefit: ideaBenefitsText,
         impact: ideaRiskText,
         is_closed: false,
-        is_rejected: false,
         label: idChoosenCategory && idChoosenCategory[0].id,
         city: idChoosenLocation && idChoosenLocation[0].id,
         id_user: token && token.id,
         is_owner: 1,
+        vote_value: 1,
       };
 
-      console.log(newIdea);
       // post the new Idea
-      axios.post("/ideas", newIdea).then((response) => {
-        if (response.status === 201) {
-          console.log(newIdea);
-          confetti();
-          setPopUpIsActive(true);
+      const handleCreateIdea = async (newIdea) => {
+        try {
+          const isSuccess = await createIdea(newIdea);
+          if (isSuccess) {
+            confetti({
+              zIndex: 3000000
+            });
+            setPopUpIsActive(true);
+          }
+        } catch (error) {
+          console.error(error)
         }
-      });
+      };
+  
+      handleCreateIdea(newIdea);
     } else {
-      detailsQuillRef.current.getEditor().getLength() < 200
-        ? setUncompleteIdeaDetailsText(true)
-        : null;
-      impactQuillRef.current.getEditor().getLength() < 200
-        ? setUncompleteIdeaImpactText(true)
-        : null;
-      benefitsQuillRef.current.getEditor().getLength() < 200
-        ? setUncompleteIdeaBenefitsText(true)
-        : null;
-      riskQuillRef.current.getEditor().getLength() < 200
-        ? setUncompleteIdeaRiskText(true)
-        : null;
-      selectedDate < minimumDelay ? setUncompleteDate(true) : null;
-      choosenCategory === "" ? setUncompleteCategory(true) : null;
-      choosenLocation === "" ? setUncompleteLocation(true) : null;
-      title === "" || title === "Titre de l'idée *"
-        ? setUncompleteTitle(true)
-        : null;
-
-      console.log("pas de confetti pour les abrutis");
+      setUncompleteIdeaDetailsText(!isEditorLengthValid(detailsQuillRef));
+      setUncompleteIdeaImpactText(!isEditorLengthValid(impactQuillRef));
+      setUncompleteIdeaBenefitsText(!isEditorLengthValid(benefitsQuillRef));
+      setUncompleteIdeaRiskText(!isEditorLengthValid(riskQuillRef));
+      setUncompleteDate(selectedDate < minimumDelay);
+      setUncompleteCategory(choosenCategory === "");
+      setUncompleteLocation(choosenLocation === "");
+      setUncompleteTitle(title === "" || title === "Titre de l'idée *");
       setshowMissingInfo(true);
     }
   };
-  console.log(choosenCategory);
 
   return (
     <div className="create_idea_bckg">
@@ -551,7 +536,7 @@ const CreateIdea = ({ token }) => {
           ) : null}
         </div>
       </div>
-      {popUpIsActive ? <PopUp /> : null}
+      {popUpIsActive ? <PopUp /> : null }
     </div>
   );
 };

@@ -3,8 +3,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5em;
   padding: 0 4em;
+  gap: 4em;
+  margin: 1em 0;
 }
 .idea-title {
   width: 65%;
@@ -53,7 +54,7 @@
   z-index: 2;
 }
 .initial {
-  width: 98%;
+  width: 100%;
   border: 3px solid;
   position: absolute;
   top: 1.8em;
@@ -62,13 +63,6 @@
   transition: 0.8s ease-in-out;
   
 }
-.button-timeline{
-  margin: 5em;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
 .button-previous{
   width: 20%;
   cursor: pointer;
@@ -78,4 +72,26 @@
   cursor: pointer;
 }
 
+@media screen and (max-width:660px) {
+  .idea-status-container{
+    gap : 2em;
+    padding: 0 2em;
+  }
 
+  .idea-title{
+    width: 100%;
+  }
+
+  .creation p,
+  .debate p,
+  .synthese p,
+  .checkpoint p,
+  .deadline p{
+    display: none;
+  }
+
+  .rod, .initial{
+    top : .35em
+  }
+
+}

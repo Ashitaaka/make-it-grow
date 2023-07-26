@@ -37,19 +37,29 @@ class IdeaModel extends BaseModel {
       if (this.queryFields.includes("impact")) {
         this.fields.push(`ideas.impact`);
       }
+      if (this.queryFields.includes("is_closed")) {
+        this.fields.push(`ideas.is_closed`);
+      }
+      if (this.queryFields.includes("delay_date")) {
+        this.fields.push(`ideas.delay_date`);
+      }
       if (this.queryFields.includes("users")) {
         this.fields.push(`users.id AS user_id`);
         this.fields.push(`users.firstname`);
         this.fields.push(`users.lastname`);
         this.fields.push(`users.picture`);
         this.fields.push(`users_has_ideas.is_owner`);
+        this.fields.push(`users_has_ideas.has_voted`);
+        this.fields.push(`users_has_ideas.vote_value`);
         this.fields.push(`roles.label AS role`);
       }
 
       if (this.queryFields.includes("comments")) {
+        this.fields.push(`comments.id AS comment_id`);
         this.fields.push(`comments.content AS comment`);
         this.fields.push(`comments.id_user AS id_user_comment`);
       }
+
       if (this.queryFields.includes("categories")) {
         this.fields.push(`categories.id AS cat_id`);
         this.fields.push(`categories.label AS category`);
@@ -63,6 +73,7 @@ class IdeaModel extends BaseModel {
       if (this.queryFields.includes("status")) {
         this.fields.push(`status.label AS status`);
         this.fields.push(`status.delay AS delay`);
+        this.fields.push(`status.id AS id_status`);
       }
 
       this.join
@@ -91,14 +102,14 @@ class IdeaModel extends BaseModel {
     return this.db.query(insertQuery, [ideaId, cityId]);
   }
 
-  insertIdeasHasUsers(ideaId, userId, is_owner) {
-    const insertQuery = `INSERT INTO users_has_ideas (id_idea, id_user, is_owner) VALUES (?, ?, ?)`;
+  insertIdeasHasUsers(ideaId, userId, is_owner, vote_value) {
+    const insertQuery = `INSERT INTO users_has_ideas (id_idea, id_user, is_owner, vote_value) VALUES (?, ?, ?, ?)`;
 
-    return this.db.query(insertQuery, [ideaId, userId, is_owner]);
+    return this.db.query(insertQuery, [ideaId, userId, is_owner, vote_value]);
   }
 
   postItem(reqBody) {
-    const { label, city, id_user, is_owner, ...ideaData } = reqBody;
+    const { label, city, id_user, is_owner, vote_value, ...ideaData } = reqBody;
 
     const paramKeys = Object.keys(ideaData);
     const paramVals = Object.values(ideaData);
@@ -139,7 +150,7 @@ class IdeaModel extends BaseModel {
       })
       .then(() => {
         if (id_user) {
-          return this.insertIdeasHasUsers(ideaId, id_user, is_owner);
+          return this.insertIdeasHasUsers(ideaId, id_user, is_owner, vote_value);
         } else {
           return Promise.resolve();
         }

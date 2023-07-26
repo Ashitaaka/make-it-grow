@@ -77,6 +77,17 @@ class BaseModel {
       id,
     ]);
   }
+
+  deleteItem(id) {
+    return this.db.query(
+      `
+      DELETE
+      FROM ${this.table}
+      ${this.join}
+      WHERE ${this.table}.id  = ?`,
+      [id]
+    );
+  }
 }
 
 module.exports = BaseModel;

@@ -9,13 +9,11 @@ import "./login.css";
 import mig_logo from "../../assets/logo_MIG.svg";
 import gellule from "../../assets/icons/gellule.svg";
 
-
 const login = ({ setToken }) => {
-
   //form Email/Password
-  const [form, setForm] = useState({ 
+  const [form, setForm] = useState({
     email: "",
-    password: "" 
+    password: "",
   });
 
   //Check if there is a login error
@@ -26,7 +24,7 @@ const login = ({ setToken }) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  //On submiting login form 
+  //On submiting login form
   const formSending = (e) => {
     e.preventDefault();
 
@@ -34,7 +32,6 @@ const login = ({ setToken }) => {
     loginUser(form)
       .then((res) => {
         setToken(res);
-        console.log(res);
       })
       .catch((error) => {
         setFormError(true);
@@ -43,7 +40,6 @@ const login = ({ setToken }) => {
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
   };
-
 
   return (
     <div className="login">
@@ -78,7 +74,7 @@ const login = ({ setToken }) => {
               required
             />
             <input
-              type="text"
+              type="password"
               id="password"
               name="password"
               placeholder="Password"

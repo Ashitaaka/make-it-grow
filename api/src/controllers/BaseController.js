@@ -33,6 +33,12 @@ class BaseController {
       });
   }
 
+  deleteItem() {
+    this.model
+      .deleteItem(this.req.params.id)
+      .then(([results]) => this.sendJson(results));
+  }
+
   sendJson(data) {
     this.res.status(200).json(data);
   }

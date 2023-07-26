@@ -3,7 +3,7 @@
     overflow: hidden;
     width: 100vw;
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--ultra-light-color);
     display: flex;
     align-items: center;
     padding: 2em;
@@ -97,4 +97,20 @@ button{
 .login_error{
     color: red;
     margin : 1em 0
+}
+
+@media screen and (max-width : 660px) {
+
+    .login{
+       justify-content: center;
+    }
+    
+    .gellule_large{  
+        left: -25em;
+        top: 55%;
+    }
+    
+    .left_container{
+        width: 100%;
+    }
 }
