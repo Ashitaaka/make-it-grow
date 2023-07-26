@@ -18,6 +18,7 @@ import ToggleButton from "../toggleButton/ToggleButton";
 
 //import css
 import "./menuBurger.css";
+
 import SearchBar from "../searchBar/SearchBar";
 
 const MenuBurger = ({
