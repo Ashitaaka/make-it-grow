@@ -1,13 +1,17 @@
 import React from "react";
-import "./ideaextendedheader.css";
 import { Link } from "react-router-dom";
+
+//import components
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
-const IdeaExtendedHeader = ({ clickedButton, setClickedButton, idea }) => {
+//import css
+import "./ideaextendedheader.css";
+
+const IdeaExtendedHeader = ({ idea }) => {
   return (
     <div className="header-container">
       <div className="top-header">
-        <Link to={"/"} onClick={() => setClickedButton("home")}>
+        <Link to={"/dashboard"}>
           <AiOutlineArrowLeft className="closing-button" />
         </Link>
         <div className="tags-container">

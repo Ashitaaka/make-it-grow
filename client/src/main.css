@@ -1,11 +1,6 @@
-:root {
+:root {  
   /* Color Variables */
-  --primary-color: #0c3944;
-  --primary-color-light: #859ca1;
   --secondary-color: #fff30d;
-  --background-color: #ecf3ef;
-  --ultra-light-color: #fff;
-  --tag-background-color: #f1f6f8;
   --separator-color: #dbebe3;
   --flame-pea-color: #f3976b;
   --roman-color: #e36164;
@@ -16,10 +11,27 @@
   --calypso-color: #196c84;
   --silver-tree-color: #70af90;
   --parsley-color: #24673a;
-  --zeus-color: #474136;
+  --zeus-color: #cb8f20;
+}
 
-  /* Separator */
+/* Color Variables */
+.light_mode {
+  --primary-color: #0c3944;
+  --primary-color-light: #859ca1;
+  --background-color: #ecf3ef;
+  --ultra-light-color: #fff;
+  --tag-background-color: #f1f6f8;
   --separator: 1px solid #dbebe3;
+}
+
+.dark_mode {
+  --primary-color: #F4F9F6;
+  --primary-color-light: #91A5AB;
+  --background-color: #20363c;
+  --ultra-light-color: #0f1d1f;
+  --tag-background-color: #233e45;
+  --separator-color: #132428;
+  --separator: 1px solid #6D888F;
 }
 
 * {

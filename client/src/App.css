@@ -18,7 +18,3 @@ a {
   text-decoration: none;
   color: var(--primary-color);
 }
-
-.tag_categories {
-  color: var(--ultra-light-color);
-}

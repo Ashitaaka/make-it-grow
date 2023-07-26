@@ -1,16 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
-import  UserProvider  from './hooks/UserContext'
+
+//import components
+import  {ThemeProvider}  from './utils/context/ThemeContext'
 import App from './App.jsx'
+
+//import CSS
 import './main.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  //<React.StrictMode>
-  <UserProvider>
-    <Router>
+  <React.StrictMode>
+    <ThemeProvider>
+      <Router>
         <App />
-    </Router>
-  </UserProvider>
-  //</React.StrictMode>,
+      </Router>
+    </ThemeProvider>
+  </React.StrictMode>,
 )

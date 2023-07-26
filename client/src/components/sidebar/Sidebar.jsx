@@ -3,16 +3,22 @@ import { Link, useLocation } from "react-router-dom";
 
 //import assets
 import homeIcon from "../../assets/icons/home_icone.svg";
+import homeIconDark from "../../assets/icons/home_icone_dark.svg";
 import profileIcon from "../../assets/icons/profile_icone.svg";
+import profileIconDark from "../../assets/icons/profile_icone_dark.svg";
 import addProjectIcon from "../../assets/icons/new_project_icone.svg";
+import addProjectIconDark from "../../assets/icons/new_project_icone_dark.svg";
 import filterIcon from "../../assets/icons/filter-icon.svg";
+import filterIconDark from "../../assets/icons/filter-icon_dark.svg";
+import ToggleButton from "../toggleButton/ToggleButton";
+import  {useTheme}  from '../../utils/context/ThemeContext'
 
 //import css
 import "./sidebar.css";
-import ToggleButton from "../toggleButton/ToggleButton";
 
 const Sidebar = ({ token }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  //To know what's the actual color Theme ('dark' or 'light' mode)
+  const { theme } = useTheme();
 
   //To know what's the current URL
   const location = useLocation().pathname;
@@ -35,7 +41,11 @@ const Sidebar = ({ token }) => {
             }
           >
             <Link to={"/dashboard"} className="sidebar_desktop_button">
-              <img className="sidebar_desktop_icon" src={homeIcon} alt="Home" />
+              <img 
+                className="sidebar_desktop_icon" 
+                src={theme === "light" ? homeIcon : homeIconDark} 
+                alt="Home"
+              />
               <span>Home</span>
             </Link>
           </div>
@@ -53,7 +63,7 @@ const Sidebar = ({ token }) => {
             >
               <img
                 className="sidebar_desktop_icon"
-                src={profileIcon}
+                src={theme === "light" ? profileIcon : profileIconDark}
                 alt="Profile"
               />
               <span>Profil</span>
@@ -72,7 +82,7 @@ const Sidebar = ({ token }) => {
             <Link to="/newIdea" className="sidebar_desktop_button">
               <img
                 className="sidebar_desktop_icon"
-                src={addProjectIcon}
+                src={theme === "light" ? addProjectIcon : addProjectIconDark}
                 alt="Nouvelle idée"
               />
               <span className="new_project_txt">Ajouter une idée</span>
@@ -94,7 +104,7 @@ const Sidebar = ({ token }) => {
             <Link to="/filters" className="sidebar_desktop_button">
               <img
                 className="sidebar_desktop_icon"
-                src={filterIcon}
+                src={theme === "light" ? filterIcon : filterIconDark}
                 alt="filtres"
               />
               <span>Filtres</span>
@@ -102,12 +112,9 @@ const Sidebar = ({ token }) => {
           </div>
 
           <div className="toggle_button_container">
-            <ToggleButton
-              isDarkMode={isDarkMode}
-              setIsDarkMode={setIsDarkMode}
-            />
+            <ToggleButton/>
             <p className="dark-mode-txt">
-              {isDarkMode ? "Dark mode" : "Light mode"}
+              {theme === "dark" ? "Dark mode" : "Light mode"}
             </p>
           </div>
         </div>

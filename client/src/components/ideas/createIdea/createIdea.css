@@ -5,7 +5,7 @@
 }
 
 .create_idea_background_form {
-  background-color: white;
+  background-color: var(--ultra-light-color);
   width: 70%;
   display: flex;
   align-items: center;
@@ -33,6 +33,7 @@
   color: var(--primary-color-light);
   border: none;
   border-bottom: solid 0.08em var(--primary-color-light);
+  background-color: var(--ultra-light-color);
   transition: padding-bottom 0.3s;
 }
 
@@ -58,6 +59,11 @@
   gap: 2em;
   position: relative;
   flex-wrap: wrap;
+}
+
+.section_date_categorie_place input,
+.section_date_categorie_place select{
+  color: var(--primary-color);
 }
 
 .react-datepicker__input-container {
@@ -131,9 +137,17 @@
   border: 0.2em solid var(--primary-color);
 }
 
-.ql-toolbar {
+.ql-toolbar.ql-snow,
+.ql-toolbar{
   background-color: var(--background-color);
   border-radius: 0.5em 0.5em 0 0;
+  border: 1px solid var(--primary-color-light);
+  background-color: #ecf3ef;
+}
+
+.ql-container.ql-snow,
+.ql-container {
+  border: 1px solid var(--primary-color-light);
 }
 
 .title_section {
