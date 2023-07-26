@@ -12,6 +12,7 @@ import addProjectIcon from "../../assets/icons/new_project_icone.svg";
 
 //import css
 import "./menuBurger.css";
+
 import SearchBar from "../searchBar/SearchBar";
 
 const MenuBurger = ({
