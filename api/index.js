@@ -1,6 +1,6 @@
+const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 const cron = require("./src/utils/Cron");
-const path = require("path");
 
 //Launching setIntervall to auto change status regarding the deadlines
 cron();
