@@ -1,8 +1,12 @@
 import React from "react";
-import "./archiveModal.css";
 import { useState } from "react";
+
+//import components
 import { FcDeleteRow } from "react-icons/fc";
 import { archiveIdea } from "../../services/httpServices";
+
+//import CSS
+import "./archiveModal.css";
 
 const ArchiveModal = ({ idea }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -12,6 +16,7 @@ const ArchiveModal = ({ idea }) => {
     id_status: 8,
   });
 
+  //function to archive an idea
   const archiveformSending = (e, id_idea) => {
     e.preventDefault();
 
@@ -19,9 +24,11 @@ const ArchiveModal = ({ idea }) => {
       .then((res) => console.log("Supression OK", res))
       .catch((err) => {
         setError(true);
+        console.error(err);
       });
   };
 
+  //function to show/hide modal
   const handleArchiveModal = () => setIsModalVisible(!isModalVisible);
 
   return (

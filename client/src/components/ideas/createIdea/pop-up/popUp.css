@@ -32,11 +32,13 @@
 }
 
 .title_pop_up {
-    position: relative;
+  color: #03171d;
+  position: relative;
   font-size: 1.5em;
   font-weight: 800;
   z-index: 2100;
 }
+
 .square_bckg {
   position: absolute;
   top: 0;
@@ -56,10 +58,11 @@
 .go_home_button {
   width: 66%;
 }
-.go_home_button > button {
-    cursor: pointer;
-    border: solid 1px var(--primary-color);
-  }
+
+.go_home_button>button {
+  cursor: pointer;
+  border: solid 1px var(--primary-color);
+}
 
 .go_home_button:hover button {
   background-color: var(--background-color);
@@ -68,30 +71,30 @@
 }
 
 @media (max-width : 1480px) {
-  .pop_up_content_container{
+  .pop_up_content_container {
     width: 50%;
   }
 }
 
 @media (max-width : 870px) {
-  .pop_up_content_container{
+  .pop_up_content_container {
     width: 80%;
   }
 }
 
-@media (max-width : 540px){
-  .pop_up_content_container{
+@media (max-width : 540px) {
+  .pop_up_content_container {
     padding: 1em 2em;
   }
 
   .title_pop_up {
-  font-size: 0.9em;
+    font-size: 0.9em;
 
-}
+  }
 
-.text_explenation_pop_up {
-  font-size: 0.8em;
-}
+  .text_explenation_pop_up {
+    font-size: 0.8em;
+  }
 
 
 }
