@@ -74,6 +74,7 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
 
   /* end modification section idea */
 
+  
   return (
     <div className="idea-details-container">
       {popUpActive ? <PopUpModifIdea ideaId={idea.idea_id} /> : null}
@@ -144,6 +145,7 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
         {idea &&
         idea.id_status === 5 &&
         idea.users[0].user_id !== token.id &&
+        idea.location_id === token.id_location &&
         !userHasVoted.some((el) => el.user_id == token.id) ? (
           <VoteButton idea={idea} userId={token.id} />
         ) : null}
