@@ -26,7 +26,7 @@ const cron = () => {
         db.query(`UPDATE ideas SET id_status = 7 WHERE id = ?`, [vote.id]);
       }
     });
-  }, 300000);
+  }, 60000);
 };
 
 module.exports = cron;
