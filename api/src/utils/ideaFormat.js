@@ -29,6 +29,7 @@ module.exports = function (ideasFromDb) {
       const allComments = acc.comment;
       const allCategories = acc.categories;
       const allUsers = acc.users;
+      const uniqueCommentIds = acc.uniqueCommentIds;
 
       if (!allCategories.includes(category)) {
         allCategories.push(category);
@@ -36,11 +37,18 @@ module.exports = function (ideasFromDb) {
       if (!allUsers.some(({ user_id }) => user_id === user.user_id)) {
         allUsers.push(user);
       }
-      if (!allComments.some(({ user_id }) => user_id === id_user_comment)) {
+
+      // Check if the comment_id is not in the set of uniqueCommentIds
+      if (!uniqueCommentIds.has(comment_id)) {
+        // If the comment_id does not exist, add the comment to the dictionary
         allComments.push({
+          id: comment_id,
           id_user: id_user_comment,
           content: comment,
         });
+
+        // Add the comment_id to the set of uniqueCommentIds
+        uniqueCommentIds.add(comment_id);
       }
 
       return {
@@ -63,8 +71,9 @@ module.exports = function (ideasFromDb) {
         location_id,
         delay_date,
         users: allUsers,
+        uniqueCommentIds,
       };
     },
-    { categories: [], users: [], comment: [] }
+    { categories: [], users: [], comment: [], uniqueCommentIds: new Set() }
   );
 };

@@ -11,7 +11,6 @@ import { useTheme } from "../../../../../utils/context/ThemeContext";
 import "./accordion.css";
 
 const AccordionComment = ({ title, idea, users, token }) => {
-
   //To know what's the actual color Theme ('dark' or 'light' mode)
   const { theme } = useTheme();
 
@@ -34,6 +33,7 @@ const AccordionComment = ({ title, idea, users, token }) => {
       setMaxHeight(contentContainer.current.scrollHeight);
     }
   }, [comments]);
+
   return (
     <div className="accordion_container">
       <div className="header" onClick={onOpening}>
@@ -58,7 +58,7 @@ const AccordionComment = ({ title, idea, users, token }) => {
           />
         ) : (
           <img
-            src={theme === 'light' ? Monochev : MonochevBlanc}
+            src={theme === "light" ? Monochev : MonochevBlanc}
             alt="Arrow"
             style={{
               backgroundColor: "var(--ultra-light-color)",
