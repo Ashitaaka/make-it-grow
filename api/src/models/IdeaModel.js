@@ -150,7 +150,12 @@ class IdeaModel extends BaseModel {
       })
       .then(() => {
         if (id_user) {
-          return this.insertIdeasHasUsers(ideaId, id_user, is_owner, vote_value);
+          return this.insertIdeasHasUsers(
+            ideaId,
+            id_user,
+            is_owner,
+            vote_value
+          );
         } else {
           return Promise.resolve();
         }

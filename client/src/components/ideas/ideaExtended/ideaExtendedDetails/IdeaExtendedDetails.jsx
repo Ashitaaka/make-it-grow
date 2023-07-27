@@ -74,7 +74,6 @@ const IdeaExtendedDetails = ({ idea, users, impactedUsers }) => {
 
   /* end modification section idea */
 
-  
   return (
     <div className="idea-details-container">
       {popUpActive ? <PopUpModifIdea ideaId={idea.idea_id} /> : null}
