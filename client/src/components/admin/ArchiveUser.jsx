@@ -11,6 +11,7 @@ const ArchiveUser = ({ user }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [error, setError] = useState(false);
 
+  //function to archive a user
   const archiveformSending = (e, user_id) => {
     e.preventDefault();
     deleteUser(user_id)
@@ -20,6 +21,7 @@ const ArchiveUser = ({ user }) => {
       });
   };
 
+  //function to show/hide modal
   const handleArchiveModal = () => setIsModalVisible(!isModalVisible);
 
   return (
