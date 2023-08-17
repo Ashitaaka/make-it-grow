@@ -1,20 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-
-//import components
-import {
-  getCategories,
-  getLocations,
-  createIdea,
-} from "../../../services/httpServices";
+import { getCategories, getLocations, createIdea } from "../../../services/httpServices";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ReactQuill from "react-quill"; //text editor
 import "react-quill/dist/quill.snow.css"; //text editor css
 import confetti from "canvas-confetti"; //confetti for button
-import PopUp from "./pop-up/PopUp";
 
-//import css
 import "./createIdea.css";
+import PopUp from "./pop-up/PopUp";
 
 const CreateIdea = ({ token }) => {
   // state for data
@@ -48,6 +41,7 @@ const CreateIdea = ({ token }) => {
   const [uncompleteTitle, setUncompleteTitle] = useState(false);
 
   // state for the pop up section
+
   const [popUpIsActive, setPopUpIsActive] = useState(false);
 
   // Variable to check if date respect a delay of 30 days
@@ -64,32 +58,27 @@ const CreateIdea = ({ token }) => {
   const benefitsQuillRef = useRef();
   const riskQuillRef = useRef();
 
-  //On changing idea title
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
     setUncompleteTitle(false);
   };
 
-  //if title field is empty
   const emptytheTitle = () => {
     if (title === "Titre de l'idée *") {
       setTitle("");
     }
   };
 
-  //On selecting Dates
   const handleDateChange = (date) => {
     setSelectedDate(date);
     setUncompleteDate(false);
   };
 
-  //On selecting Category
   const handleCategoryChange = (event) => {
     setChoosenCategory(event.target.value);
     setUncompleteCategory(false);
   };
 
-  //On selecting location
   const handleLocationChange = (event) => {
     setChoosenLocation(event.target.value);
     setUncompleteLocation(false);
@@ -97,15 +86,12 @@ const CreateIdea = ({ token }) => {
 
   //get all the locations and categories
   useEffect(() => {
-    getCategories()
-      .then((data) => setCategory(data))
-      .catch((err) => console.error(err));
-    getLocations()
-      .then((data) => setIdeaLocation(data))
-      .catch((err) => console.error(err));
+    getCategories().then((data) => setCategory(data));
+    getLocations().then((data) => setIdeaLocation(data));
   }, []);
 
-  // Take all the categories from database and create a new Array with no repeat category
+
+  // Take all the categorys from the bd and create a new Array with no repeat categorys
   const noRepeatCategorys = [];
 
   for (let i = 0; i < categorys.length; i++) {
@@ -134,6 +120,7 @@ const CreateIdea = ({ token }) => {
   }
 
   // get the id location
+
   useEffect(() => {
     ideaLocation &&
       setIdChoosenLocation(
@@ -141,7 +128,8 @@ const CreateIdea = ({ token }) => {
       );
   }, [choosenLocation]);
 
-  //On changing any texteArea
+  // handle pour texteArea
+
   const handleDetailsChange = (content) => {
     setIdeaDetailsText(content);
     setshowMissingInfo(false);
@@ -167,18 +155,19 @@ const CreateIdea = ({ token }) => {
   };
 
   // option for react quill
+
   const toolbarOptions = [
     ["bold", "italic", "underline", "strike"],
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
     [{ size: ["small", false, "large", "huge"] }],
-    ["link", "image", "video"],
+    ["link"],
   ];
 
   const editorStyle = {
     fontSize: "16px",
   };
 
-  //On click Submit button
+  //On click Submit button 
   const handleButtonClick = () => {
     if (
       detailsQuillRef.current.getEditor().getLength() > 200 &&
@@ -213,21 +202,22 @@ const CreateIdea = ({ token }) => {
           const isSuccess = await createIdea(newIdea);
           if (isSuccess) {
             confetti({
-              zIndex: 3000000,
+              zIndex: 3000000
             });
             setPopUpIsActive(true);
           }
         } catch (error) {
-          console.error(error);
+          console.error(error)
         }
       };
-
+  
       handleCreateIdea(newIdea);
     } else {
-      setUncompleteIdeaDetailsText(!isEditorLengthValid(detailsQuillRef));
-      setUncompleteIdeaImpactText(!isEditorLengthValid(impactQuillRef));
-      setUncompleteIdeaBenefitsText(!isEditorLengthValid(benefitsQuillRef));
-      setUncompleteIdeaRiskText(!isEditorLengthValid(riskQuillRef));
+      // Here all the info of the formulary are check if some are missing then they are underline in red
+      setUncompleteIdeaDetailsText(detailsQuillRef.current.getEditor().getLength() < 200);
+      setUncompleteIdeaImpactText(impactQuillRef.current.getEditor().getLength() < 200);
+      setUncompleteIdeaBenefitsText(benefitsQuillRef.current.getEditor().getLength() < 200);
+      setUncompleteIdeaRiskText(riskQuillRef.current.getEditor().getLength() < 200);
       setUncompleteDate(selectedDate < minimumDelay);
       setUncompleteCategory(choosenCategory === "");
       setUncompleteLocation(choosenLocation === "");
@@ -547,7 +537,7 @@ const CreateIdea = ({ token }) => {
           ) : null}
         </div>
       </div>
-      {popUpIsActive ? <PopUp /> : null}
+      {popUpIsActive ? <PopUp /> : null }
     </div>
   );
 };
