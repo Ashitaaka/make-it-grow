@@ -23,6 +23,7 @@ import Admin from "./pages/admin/Admin";
 axios.defaults.baseURL = "/api";
 
 function App() {
+
   const [search, setSearch] = useState("");
   //Getting user infos
   const { removeToken, setToken, token } = tokenStorage();
